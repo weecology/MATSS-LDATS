@@ -40,3 +40,6 @@ matssldats.Rproj
 .DS_Store
 
 .Rbuildignore
+.Rproj.user
+
+drake/*
