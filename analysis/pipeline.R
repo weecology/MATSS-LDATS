@@ -12,8 +12,7 @@ if (FALSE)
 
 
 ## Clean and transform the data into the appropriate format
-datasets <- bind_rows(build_datasets_plan(), 
-                      drake_plan(bad_portal = portal_data[[1]])
+datasets <- bind_rows(build_datasets_plan()
 )
 
 ## Analysis methods
