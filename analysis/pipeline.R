@@ -17,7 +17,7 @@ datasets <- build_datasets_plan()
 
 ## Analysis methods
 methods <- drake_plan(
-  lda = function(dataset) {run_LDA2(dataset, max_topics = 3, nseeds = 4)}
+  lda = function(dataset) {matssldats::run_LDA(dataset, max_topics = 3, nseeds = 4)}
 )
 
 analyses <- build_analyses_plan(methods, datasets)

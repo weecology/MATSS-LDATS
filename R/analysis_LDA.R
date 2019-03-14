@@ -1,4 +1,4 @@
-#' @name run_LDA2
+#' @name run_LDA
 #' @title Run Latent Dirichlet Allocation on Tabular Data
 #' @description Test the Latent Dirichlet Allocation (LDA) model on the data
 #'   with different number of topics (from 2 to `max_topics`), select the best
@@ -17,7 +17,7 @@
 #' @return the best fit model object, from running `LDATS::parLDA()`
 #' @export
 #'
-run_LDA2 <- function(data, 
+run_LDA <- function(data,
                     max_topics = 6, nseeds = 200,
                     control = LDATS::LDA_controls_list())
 {
