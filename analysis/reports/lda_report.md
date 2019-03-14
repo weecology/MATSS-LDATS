@@ -34,6 +34,22 @@ Plot LDAS
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-3.png)
 
+    ## [1] "analysis_lda_portal_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-4.png)
+
+    ## [1] "analysis_lda_bbs_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-5.png)
+
+    ## [1] "analysis_lda_sdl_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-6.png)
+
+    ## [1] "analysis_lda_mtquad_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-7.png)
+
 Summarize LDA results
 ---------------------
 
@@ -57,5 +73,9 @@ lda_summary
     ## 1 analysis_lda_maizuru_data       3          15        285
     ## 2 analysis_lda_jornada_data       3          17         24
     ## 3     analysis_lda_sgs_data       3          11         13
+    ## 4  analysis_lda_portal_data       3          21        295
+    ## 5     analysis_lda_bbs_data       3         164      69564
+    ## 6     analysis_lda_sdl_data       3          98         22
+    ## 7  analysis_lda_mtquad_data       3          42         14
 
 ![](lda_report_files/figure-markdown_github/plot%20lda%20summary-1.png)![](lda_report_files/figure-markdown_github/plot%20lda%20summary-2.png)

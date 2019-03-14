@@ -12,7 +12,7 @@ if (FALSE)
 
 
 ## Clean and transform the data into the appropriate format
-datasets <- build_datasets_plan()
+datasets <- build_datasets_plan(include_downloaded_data = T)
 
 
 ## Analysis methods
