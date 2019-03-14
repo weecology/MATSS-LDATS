@@ -13,7 +13,7 @@ if (FALSE)
 
 ## Clean and transform the data into the appropriate format
 datasets <- bind_rows(build_datasets_plan()
-)
+
 
 ## Analysis methods
 methods <- drake_plan(
