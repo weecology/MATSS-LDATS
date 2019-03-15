@@ -4,9 +4,8 @@
 \alias{run_TS}
 \title{Run Changepoint Model on LDA + TimeSeries Data}
 \usage{
-run_TS(data, ldamodels, formulas = ~sin_year + cos_year,
-  nchangepoints = c(0:6), weighting = "proportional",
-  control = LDATS::TS_controls_list())
+run_TS(data, ldamodels, formulas = ~1, nchangepoints = c(0:6),
+  weighting = "proportional", control = LDATS::TS_controls_list())
 }
 \arguments{
 \item{formulas}{Vector of \code{\link[stats]{formula}}(s) for the 
