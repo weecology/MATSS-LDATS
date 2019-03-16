@@ -34,6 +34,9 @@ ts_analyses <- build_ts_analysis_plan(ts_methods, datasets, lda_analyses)
 reports <- drake_plan(
   lda_report = rmarkdown::render(
     knitr_in("analysis/reports/lda_report.Rmd")
+  ),
+  ts_report = rmarkdown::render(
+    knitr_in("analysis/reports/ts_report.Rmd")
   )
 )
 
