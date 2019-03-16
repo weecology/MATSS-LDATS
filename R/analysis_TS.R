@@ -23,6 +23,12 @@ run_TS <- function(data, ldamodels,
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
 
+  if (!check_time_data_format(data))
+  {
+    wrongFormat = simpleWarning("Timename column is cannot be made integers without losing information")
+    tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
+  }
+
     #### Run TS models ####
   if(weighting == 'proportional') {
     weights <- LDATS::document_weights(data$abundance)
