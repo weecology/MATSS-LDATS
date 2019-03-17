@@ -6,10 +6,6 @@
 \usage{
 select_TS(changepoint_models)
 }
-\arguments{
-\item{changepoint_models}{the maximum number of topics to try (the function will
-test a number of topics from 2 to \code{max_topics})}
-}
 \value{
 best fit TS model
 }

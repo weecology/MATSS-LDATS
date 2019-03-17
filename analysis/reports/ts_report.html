@@ -33,7 +33,9 @@ body {
 db &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(), here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;drake&quot;</span>, <span class="st">&quot;drake-cache.sqlite&quot;</span>))
 cache &lt;-<span class="st"> </span>storr<span class="op">::</span><span class="kw">storr_dbi</span>(<span class="st">&quot;datatable&quot;</span>, <span class="st">&quot;keystable&quot;</span>, db)
 
-ts_results &lt;-<span class="st"> </span><span class="kw">readd</span>(results_ts, <span class="dt">cache =</span> cache)</code></pre></div>
+ts_results &lt;-<span class="st"> </span><span class="kw">readd</span>(results_ts, <span class="dt">cache =</span> cache)
+
+selected_ts_results &lt;-<span class="st"> </span><span class="kw">readd</span>(results_ts_select, <span class="dt">cache =</span> cache)</code></pre></div>
 <h2 id="errors">Errors</h2>
 <p>Find TS models that threw errors and remove them:</p>
 <pre><code>## [1] &quot;analysis_ts_jornada_data_analysis_lda_jornada_data&quot;
@@ -47,6 +49,18 @@ ts_results &lt;-<span class="st"> </span><span class="kw">readd</span>(results_t
 ## [2] &quot;analysis_ts_portal_data_analysis_lda_portal_data&quot;  
 ## [3] &quot;analysis_ts_sdl_data_analysis_lda_sdl_data&quot;        
 ## [4] &quot;analysis_ts_mtquad_data_analysis_lda_mtquad_data&quot;</code></pre>
+<p>Find TS models that threw errors in selection and remove them:</p>
+<pre><code>## [1] &quot;analysis_ts_select_analysis_ts_jornada_data_analysis_lda_jornada_data&quot;
+## [1] &quot;Incorrect input structure&quot;
+## [1] &quot;analysis_ts_select_analysis_ts_sgs_data_analysis_lda_sgs_data&quot;
+## [1] &quot;Incorrect input structure&quot;
+## [1] &quot;analysis_ts_select_analysis_ts_bbs_data_analysis_lda_bbs_data&quot;
+## [1] &quot;Incorrect input structure&quot;
+
+## [1] &quot;analysis_ts_select_analysis_ts_maizuru_data_analysis_lda_maizuru_data&quot;
+## [2] &quot;analysis_ts_select_analysis_ts_portal_data_analysis_lda_portal_data&quot;  
+## [3] &quot;analysis_ts_select_analysis_ts_sdl_data_analysis_lda_sdl_data&quot;        
+## [4] &quot;analysis_ts_select_analysis_ts_mtquad_data_analysis_lda_mtquad_data&quot;</code></pre>
 
 </body>
 </html>

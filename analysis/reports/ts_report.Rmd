@@ -20,6 +20,8 @@ db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
 ts_results <- readd(results_ts, cache = cache)
+
+selected_ts_results <- readd(results_ts_select, cache = cache)
 ```
 
 ## Errors
@@ -38,4 +40,21 @@ for (i in seq(ts_results)){
   
   # Remaining ts models:
   names(ts_results)
+```
+
+Find TS models that threw errors in selection and remove them:
+```{r find error ts select, echo = F}
+ts_select_errors <- NULL
+for (i in seq(selected_ts_results)){
+    if(!is.list(selected_ts_results[[i]])) {
+        print(names(selected_ts_results)[i])
+        print(selected_ts_results[[i]])
+        ts_select_errors <- c(ts_select_errors, i)
+    }
+}
+  selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
+
+  
+  # Remaining ts models:
+  names(selected_ts_results)
 ```
