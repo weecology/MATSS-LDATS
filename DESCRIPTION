@@ -2,23 +2,49 @@ Package: matssldats
 Type: Package
 Title: LDA_TS meta-analysis using MATSS
 Version: 0.0.0.9000
-Authors@R:
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph)
-License: What license it uses
+Authors@R: c(
+    person("Renata", "Diaz", role = c("aut", "cre"), 
+           email = "diaz.renatam@gmail.com",
+    	   comment = c(ORCID = "0000-0003-0803-4734")),
+    person("Ellen", "Bledsoe", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0002-3629-7235")),
+    person("Erica", "Christensen", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0002-5635-2502")),
+    person("Juniper", "Simonis", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0001-9798-0460")),
+    person("S. K. Morgan", "Ernest", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0002-6026-8530")),
+    person("Ethan", "White", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0001-6728-7745")),
+    person("Hao", "Ye", role = c("aut"), 
+           comment = c(ORCID = "0000-0002-8630-1458")),
+    person("Glenda", "Yenni", role = c("aut"), 
+    	   comment = c(ORCID = "0000-0001-6969-1848"))
+  )
+Description: This project investigates properties of community change, using the analysis methods of the `LDATS` package, and the dataset and workflow infrastructure of the `MATSS` package.
+License: MIT + file LICENSE
+URL: https://github.com/weecology/MATSS-LDATS, https://weecology.github.io/MATSS-LDATS/
+BugReports: https://github.com/weecology/MATSS-LDATS/issues
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    MATSS (>= 0.0.2),
+    drake (>= 6.2.1.9004),
+    LDATS (>= 0.1.0), 
+    dplyr,
+    magrittr,
+    rlang
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown,
+    pkgdown,
+    covr
+Remotes: 
+    weecology/LDATS,
+    weecology/MATSS,
+    ropensci/drake
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Imports:
-    bookdown,
-    MATSS (>= 0.0.2),
-    dplyr,
-    drake,
-    LDATS (>= 0.1.0)
-Remotes:
-    weecology/LDATS
+VignetteBuilder: knitr

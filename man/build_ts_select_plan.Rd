@@ -7,11 +7,13 @@
 build_ts_select_plan(methods, cpt_targets)
 }
 \arguments{
-\item{changepoint_models}{}
+\item{methods}{the drake plan for the methods to run}
+
+\item{cpt_targets}{the drake plan for the changepoint models to construct}
 }
 \value{
 a drake plan
 }
 \description{
-Build a drake plan for select_TS analysis
+Construct the expanded Drake plan for selecting changepoint models
 }

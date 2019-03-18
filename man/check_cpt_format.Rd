@@ -7,7 +7,7 @@
 check_cpt_format(cpt_model)
 }
 \arguments{
-\item{data}{model to check}
+\item{cpt_model}{model to check}
 }
 \value{
 TRUE or FALSE
