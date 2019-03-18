@@ -1,6 +1,7 @@
 library(MATSS)
 library(dplyr)
 library(drake)
+library(matssldats)
 
 ## Make sure we have downloaded the raw datasets from retriever first
 if (FALSE)
@@ -16,22 +17,41 @@ datasets <- build_datasets_plan(include_downloaded_data = T)
 
 
 ## Analysis methods
-methods <- drake_plan(
+lda_methods <- drake_plan(
   lda = function(dataset) {matssldats::run_LDA(dataset, max_topics = 3, nseeds = 4)}
 )
 
-analyses <- build_analyses_plan(methods, datasets)
+run_ts_methods <- drake_plan(
+  ts = function(lda, dataset){matssldats::run_TS(dataset, lda, nchangepoints = c(2:3))}
+  )
+
+select_ts_methods <- drake_plan(
+  ts_select = function(ts){matssldats::select_TS(ts)}
+)
+
+
+lda_analyses <- build_analyses_plan(lda_methods, datasets)
+
+run_ts_analyses <- build_ts_analysis_plan(run_ts_methods, datasets, lda_analyses)
+
+ts_select_analyses <- build_ts_select_plan(select_ts_methods, run_ts_analyses)
+
+
 
 ## Summary reports
 # I don't quite understand the pathing here... - Hao
 reports <- drake_plan(
   lda_report = rmarkdown::render(
     knitr_in("analysis/reports/lda_report.Rmd")
+  ),
+  ts_report = rmarkdown::render(
+    knitr_in("analysis/reports/ts_report.Rmd")
   )
 )
 
 ## The entire pipeline
-pipeline <- bind_rows(datasets, methods, analyses, reports)
+pipeline <- bind_rows(datasets, lda_methods, lda_analyses,
+                      run_ts_methods, run_ts_analyses, select_ts_methods, ts_select_analyses, reports)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))

@@ -1,0 +1,60 @@
+---
+title: "TS on LDA report"
+author: "Renata Diaz"
+date: "10/12/2018"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MATSS)
+library(drake)
+```
+
+## Read in the results
+
+```{r load TS results}
+# define where the cache is located
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+ts_results <- readd(results_ts, cache = cache)
+
+selected_ts_results <- readd(results_ts_select, cache = cache)
+```
+
+## Errors
+Find TS models that threw errors and remove them:
+```{r find error ts, echo = F}
+ts_errors <- NULL
+for (i in seq(ts_results)){
+    if(!is.list(ts_results[[i]])) {
+        print(names(ts_results)[i])
+        print(ts_results[[i]])
+        ts_errors <- c(ts_errors, i)
+    }
+}
+  ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors))]]
+
+  
+  # Remaining ts models:
+  names(ts_results)
+```
+
+Find TS models that threw errors in selection and remove them:
+```{r find error ts select, echo = F}
+ts_select_errors <- NULL
+for (i in seq(selected_ts_results)){
+    if(!is.list(selected_ts_results[[i]])) {
+        print(names(selected_ts_results)[i])
+        print(selected_ts_results[[i]])
+        ts_select_errors <- c(ts_select_errors, i)
+    }
+}
+  selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
+
+  
+  # Remaining ts models:
+  names(selected_ts_results)
+```

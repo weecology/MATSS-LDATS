@@ -36,4 +36,5 @@ run_LDA <- function(data,
 
     #### Select the best LDA (AIC) ####
     LDATS::select_LDA(LDA_models = LDA_models, control = control)
+
 }
