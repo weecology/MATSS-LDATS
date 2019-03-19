@@ -31,7 +31,7 @@ check_time_data_format <- function(data)
 #'
 #' @description Check whether the changepoint model is a changepoint model
 #'
-#' @param data model to check
+#' @param cpt_model model to check
 #'
 #' @return TRUE or FALSE
 #'

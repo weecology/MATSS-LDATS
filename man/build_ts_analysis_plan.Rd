@@ -7,11 +7,15 @@
 build_ts_analysis_plan(methods, datasets, lda_targets)
 }
 \arguments{
-\item{datasets}{}
+\item{methods}{the drake plan for the methods to run}
+
+\item{datasets}{the drake plan for the datasets to analyze}
+
+\item{lda_targets}{the drake plan for the LDA targets}
 }
 \value{
 a drake plan
 }
 \description{
-Build a drake plan for TS analysis
+Construct the expanded Drake plan for LDA time series analyses
 }

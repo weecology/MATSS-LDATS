@@ -6,6 +6,9 @@
 \usage{
 select_TS(changepoint_models)
 }
+\arguments{
+\item{changepoint_models}{changepoint model object to check}
+}
 \value{
 best fit TS model
 }
