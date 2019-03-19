@@ -1,5 +1,14 @@
 # MATSS-LDATS
 
+<!-- badges: start -->
+
+[![Build Status](https://travis-ci.org/weecology/MATSS-LDATS.svg?branch=master)](https://travis-ci.org/weecology/MATSS-LDATS)
+
+[![Codecov test
+coverage](https://codecov.io/gh/weecology/MATSS-LDATS/branch/master/graph/badge.svg)](https://codecov.io/gh/weecology/MATSS-LDATS?branch=master)
+
+<!-- badges: end -->
+
 ## Contributors
 
 ## Overview
