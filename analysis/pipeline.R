@@ -26,15 +26,17 @@ run_ts_methods <- drake_plan(
   )
 
 select_ts_methods <- drake_plan(
-  ts_select = function(ts){matssldats::select_TS(ts)}
+  ts_select = select_TS
 )
 
 
 lda_analyses <- build_analyses_plan(lda_methods, datasets)
+lda_targets <- lda_analyses %>% filter(grepl("^analysis_", target))
 
-run_ts_analyses <- build_ts_analysis_plan(run_ts_methods, datasets, lda_analyses)
+run_ts_analyses <- build_ts_analysis_plan(run_ts_methods, datasets, lda_targets)
+cpt_targets <- run_ts_analyses %>% filter(grepl("^analysis_", target))
 
-ts_select_analyses <- build_ts_select_plan(select_ts_methods, run_ts_analyses)
+ts_select_analyses <- build_ts_select_plan(select_ts_methods, cpt_targets)
 
 
 

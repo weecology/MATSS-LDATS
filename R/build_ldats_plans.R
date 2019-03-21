@@ -10,7 +10,6 @@
 #'
 build_ts_analysis_plan <- function(methods, datasets, lda_targets)
 {
-  lda_targets <- lda_targets[1:nrow(lda_targets) - 1, ]
   drake::drake_plan(
     analysis = target(fun(lda, data),
                       transform = map(fun = !!rlang::syms(methods$target),
@@ -33,7 +32,6 @@ build_ts_analysis_plan <- function(methods, datasets, lda_targets)
 #'
 build_ts_select_plan <- function(methods, cpt_targets)
 {
-  cpt_targets <- cpt_targets[1:nrow(cpt_targets) - 1, ]
   drake::drake_plan(
     analysis = target(fun(cpt),
                       transform = map(fun = !!rlang::syms(methods$target),
