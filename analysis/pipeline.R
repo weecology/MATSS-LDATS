@@ -3,12 +3,17 @@ library(dplyr)
 library(drake)
 library(matssldats)
 
+## make sure the package functions in MATSS and matssldats are loaded in as
+##   dependencies
+expose_imports(MATSS)
+expose_imports(matssldats)
+
 ## Make sure we have downloaded the raw datasets from retriever first
 if (FALSE)
 {
-  install_retriever_data("breed-bird-survey", data_path = folder_path)
-  install_retriever_data("veg-plots-sdl", data_path = folder_path)
-  install_retriever_data("mapped-plant-quads-mt", data_path = folder_path)
+  install_retriever_data("breed-bird-survey")
+  install_retriever_data("veg-plots-sdl")
+  install_retriever_data("mapped-plant-quads-mt")
 }
 
 
