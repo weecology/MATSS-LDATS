@@ -73,7 +73,7 @@ if (interactive())
 }
 
 ## Run the pipeline
-make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt")
+make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt"))
 
 ## Run the pipeline (parallelized)
 # future::plan(future::multiprocess)
