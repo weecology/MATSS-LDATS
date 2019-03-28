@@ -34,11 +34,11 @@ Imports:
     LDATS (>= 0.1.0), 
     dplyr,
     magrittr,
+    knitr,
+    rmarkdown,
     rlang
 Suggests:
     testthat,
-    knitr,
-    rmarkdown,
     pkgdown,
     covr
 Remotes: 
