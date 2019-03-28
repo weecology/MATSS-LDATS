@@ -2,6 +2,7 @@ library(MATSS)
 library(dplyr)
 library(drake)
 library(matssldats)
+library(future.batchtools)
 
 ## make sure the package functions in MATSS and matssldats are loaded in as
 ##   dependencies
@@ -73,14 +74,21 @@ if (interactive())
 }
 
 ## Run the pipeline
-make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt"))
+hostname <- Sys.getenv("HOSTNAME")
 
-## Run the pipeline (parallelized)
-# future::plan(future::multiprocess)
-# make(pipeline,
-#      force = TRUE,
-#      cache = cache,
-#      verbose = 2,
-#      parallelism = "future",
-#      jobs = 2,
-#      caching = "master") # Important for DBI caches!
+if (grepl("ufhpc", hostname)){
+  ## Run the pipeline parallelized for HiPerGator
+  future::plan(batchtools_slurm, template = "slurm_batchtools.tmpl")
+  drake_hpc_template_file("slurm_batchtools.tmpl")
+  make(pipeline,
+      force = TRUE,
+      cache = cache,
+      cache_log_file = here::here("drake", "cache_log.txt"),
+      verbose = 2,
+      parallelism = "future",
+      jobs = 16,
+      caching = "master") # Important for DBI caches!
+} else {
+  ## Run the pipeline on a single local core
+  make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt"))
+}
