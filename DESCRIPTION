@@ -30,7 +30,7 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     MATSS (>= 0.0.2),
-    drake (>= 6.2.1.9004),
+    drake (>= 7.0.0),
     LDATS (>= 0.1.0), 
     dplyr,
     magrittr,
@@ -43,8 +43,7 @@ Suggests:
     covr
 Remotes: 
     weecology/LDATS,
-    weecology/MATSS,
-    ropensci/drake
+    weecology/MATSS
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
