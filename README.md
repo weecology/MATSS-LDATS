@@ -36,3 +36,26 @@ https://github.com/weecology/MATSS
 https://github.com/weecology/LDATS
 
 https://github.com/emchristensen/Extreme-events-LDA
+
+## To use on HiperGator
+
+Follow the instructions in the `MATSS` repo: https://github.com/weecology/MATSS/blob/master/vignettes/hipergator-install.Rmd
+
+In R on HiperGator, install `MATSS-LDATS`:
+
+```r
+devtools::install_github('weecology/MATSS-LDATS')
+```
+
+
+Then in shell, navigate to our group's shared folder:
+``` bash
+cd orange/ewhite/MATSS-LDATS
+```
+
+Run `pipeline.R`:
+
+```bash
+Rscript analysis/pipeline.R
+```
+
