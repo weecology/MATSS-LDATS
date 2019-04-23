@@ -22,7 +22,7 @@ before_install:
   - sudo apt-get install python3
   - sudo pip3 install --upgrade pip
   - sudo pip3 install --upgrade git+https://git@github.com/weecology/retriever.git
-  - Rscript -e 'install.packages(weecology/MATSS)'
+  - Rscript -e 'remotes::install_github("weecology/MATSS")'
   
 matrix:
   include:
