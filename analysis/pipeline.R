@@ -23,28 +23,7 @@ datasets <- build_datasets_plan(include_downloaded_data = T)
 
 
 ## Analysis methods
-lda_methods <- drake_plan(
-  lda = function(dataset) {matssldats::run_LDA(dataset, max_topics = 3, nseeds = 4)}
-)
-
-run_ts_methods <- drake_plan(
-  ts = function(lda, dataset){matssldats::run_TS(dataset, lda, nchangepoints = c(2:3))}
-  )
-
-select_ts_methods <- drake_plan(
-  ts_select = select_TS
-)
-
-
-lda_analyses <- build_analyses_plan(lda_methods, datasets)
-lda_targets <- lda_analyses %>% filter(grepl("^analysis_", target))
-
-run_ts_analyses <- build_ts_analysis_plan(run_ts_methods, datasets, lda_targets)
-cpt_targets <- run_ts_analyses %>% filter(grepl("^analysis_", target))
-
-ts_select_analyses <- build_ts_select_plan(select_ts_methods, cpt_targets)
-
-
+analyses <- build_ldats_analyses_plan(datasets)
 
 ## Summary reports
 # I don't quite understand the pathing here... - Hao
@@ -58,8 +37,7 @@ reports <- drake_plan(
 )
 
 ## The entire pipeline
-pipeline <- bind_rows(datasets, lda_methods, lda_analyses,
-                      run_ts_methods, run_ts_analyses, select_ts_methods, ts_select_analyses, reports)
+pipeline <- bind_rows(datasets, analyses, reports)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
