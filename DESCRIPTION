@@ -35,7 +35,6 @@ Imports:
     dplyr,
     magrittr,
     knitr,
-    remotes,
     rmarkdown,
     rlang, 
     future.batchtools
