@@ -19,7 +19,7 @@ library(drake)
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-lda_results <- readd(results_lda, cache = cache)
+lda_results <- readd(lda_results, cache = cache)
 ```
 
 ## Errors

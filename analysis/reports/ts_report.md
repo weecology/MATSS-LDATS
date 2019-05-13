@@ -11,9 +11,9 @@ Read in the results
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-ts_results <- readd(results_ts, cache = cache)
+ts_results <- readd(ts_results, cache = cache)
 
-selected_ts_results <- readd(results_ts_select, cache = cache)
+selected_ts_results <- readd(ts_select_results, cache = cache)
 ```
 
 Errors
@@ -21,28 +21,16 @@ Errors
 
 Find TS models that threw errors and remove them:
 
-    ## [1] "analysis_ts_jornada_data_analysis_lda_jornada_data"
-    ## [1] "Incorrect data structure"
-    ## [1] "analysis_ts_sgs_data_analysis_lda_sgs_data"
-    ## [1] "Incorrect data structure"
-    ## [1] "analysis_ts_bbs_data_analysis_lda_bbs_data"
+    ## [1] "ts_jornada_data_lda_jornada_data"
     ## [1] "Incorrect data structure"
 
-    ## [1] "analysis_ts_maizuru_data_analysis_lda_maizuru_data"
-    ## [2] "analysis_ts_portal_data_analysis_lda_portal_data"  
-    ## [3] "analysis_ts_sdl_data_analysis_lda_sdl_data"        
-    ## [4] "analysis_ts_mtquad_data_analysis_lda_mtquad_data"
+    ## [1] "ts_maizuru_data_lda_maizuru_data"            
+    ## [2] "ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11"
 
 Find TS models that threw errors in selection and remove them:
 
-    ## [1] "analysis_ts_select_analysis_ts_jornada_data_analysis_lda_jornada_data"
-    ## [1] "Incorrect input structure"
-    ## [1] "analysis_ts_select_analysis_ts_sgs_data_analysis_lda_sgs_data"
-    ## [1] "Incorrect input structure"
-    ## [1] "analysis_ts_select_analysis_ts_bbs_data_analysis_lda_bbs_data"
+    ## [1] "ts_select_ts_jornada_data_lda_jornada_data"
     ## [1] "Incorrect input structure"
 
-    ## [1] "analysis_ts_select_analysis_ts_maizuru_data_analysis_lda_maizuru_data"
-    ## [2] "analysis_ts_select_analysis_ts_portal_data_analysis_lda_portal_data"  
-    ## [3] "analysis_ts_select_analysis_ts_sdl_data_analysis_lda_sdl_data"        
-    ## [4] "analysis_ts_select_analysis_ts_mtquad_data_analysis_lda_mtquad_data"
+    ## [1] "ts_select_ts_maizuru_data_lda_maizuru_data"            
+    ## [2] "ts_select_ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11"

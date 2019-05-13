@@ -19,9 +19,9 @@ library(drake)
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-ts_results <- readd(results_ts, cache = cache)
+ts_results <- readd(ts_results, cache = cache)
 
-selected_ts_results <- readd(results_ts_select, cache = cache)
+selected_ts_results <- readd(ts_select_results, cache = cache)
 ```
 
 ## Errors
@@ -57,4 +57,5 @@ for (i in seq(selected_ts_results)){
   
   # Remaining ts models:
   names(selected_ts_results)
+  
 ```

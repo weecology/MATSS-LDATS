@@ -19,8 +19,11 @@ if (FALSE)
 
 
 ## Clean and transform the data into the appropriate format
-datasets <- build_datasets_plan(include_downloaded_data = T)
+datasets <- build_datasets_plan(include_downloaded_data = T, include_bbs_data = T)
 
+### Trim datasets so as not to use all 2500 BBS communities for now
+#datasets <- datasets[1:15, ]
+datasets <- datasets[c(1:2, 14), ]
 
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
