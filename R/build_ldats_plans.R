@@ -1,3 +1,34 @@
+#' @name build_ldats_analyses_plan
+#' @title Build a drake plan for LDATS analysis
+#' @description Construct the expanded Drake plan for LDA time series analyses
+#' @param datasets the drake plan for the datasets to analyze
+#' @inheritParams run_LDA
+#' @inheritParams run_TS
+#'
+#' @return a drake plan
+#' @export
+#'
+build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4, 
+                             nchangepoints = c(2, 3))
+{
+    drake::drake_plan(
+        lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
+                     transform = map(data = !!rlang::syms(datasets$target))),
+        ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints), 
+                    transform = map(data = !!rlang::syms(datasets$target), 
+                                    lda)), 
+        ts_select = target(select_TS(ts), 
+                           transform = map(ts)), 
+        lda_results = target(collect_analyses(list(lda)),
+                             transform = combine(lda)), 
+        ts_results = target(collect_analyses(list(ts)),
+                            transform = combine(ts)), 
+        ts_select_results = target(collect_analyses(list(ts_select)),
+                                   transform = combine(ts_select)), 
+    )
+}
+
+
 #' @name build_ts_analysis_plan
 #' @title Build a drake plan for TS analysis
 #' @description Construct the expanded Drake plan for LDA time series analyses
