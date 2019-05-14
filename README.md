@@ -39,7 +39,7 @@ https://github.com/emchristensen/Extreme-events-LDA
 
 ## To use on HiperGator
 
-Follow the instructions in the `MATSS` repo: https://github.com/weecology/MATSS/blob/master/vignettes/hipergator-install.Rmd
+Follow the instructions in the `MATSS` repo: https://weecology.github.io/MATSS/articles/hipergator-install.html
 
 In R on HiperGator, install `MATSS-LDATS`:
 
