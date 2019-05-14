@@ -44,7 +44,7 @@ Follow the instructions in the `MATSS` repo: https://weecology.github.io/MATSS/a
 In R on HiperGator, install `MATSS-LDATS`:
 
 ```r
-devtools::install_github('weecology/MATSS-LDATS')
+remotes::install_github('weecology/MATSS-LDATS')
 ```
 
 
