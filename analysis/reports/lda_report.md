@@ -22,17 +22,9 @@ Find LDAs that threw errors and remove them:
 Plot LDAS
 ---------
 
-    ## [1] "lda_maizuru_data"
+    ## [1] "lda_bbs_data_rtrg_3_11"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-1.png)
-
-    ## [1] "lda_jornada_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-2.png)
-
-    ## [1] "lda_bbs_data_rtrg_4_11"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-3.png)
 
 Summarize LDA results
 ---------------------
@@ -54,8 +46,6 @@ lda_summary
 ```
 
     ##       names(lda_results) ntopics ntimeseries ntimesteps
-    ## 1       lda_maizuru_data       3          15        285
-    ## 2       lda_jornada_data       3          17         24
-    ## 3 lda_bbs_data_rtrg_4_11       3         192         51
+    ## 1 lda_bbs_data_rtrg_3_11       3         192         51
 
 ![](lda_report_files/figure-markdown_github/plot%20lda%20summary-1.png)![](lda_report_files/figure-markdown_github/plot%20lda%20summary-2.png)

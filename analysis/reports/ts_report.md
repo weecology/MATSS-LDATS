@@ -21,16 +21,8 @@ Errors
 
 Find TS models that threw errors and remove them:
 
-    ## [1] "ts_jornada_data_lda_jornada_data"
-    ## [1] "Incorrect data structure"
-
-    ## [1] "ts_maizuru_data_lda_maizuru_data"            
-    ## [2] "ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11"
+    ## [1] "ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11"
 
 Find TS models that threw errors in selection and remove them:
 
-    ## [1] "ts_select_ts_jornada_data_lda_jornada_data"
-    ## [1] "Incorrect input structure"
-
-    ## [1] "ts_select_ts_maizuru_data_lda_maizuru_data"            
-    ## [2] "ts_select_ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11"
+    ## [1] "ts_select_ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11"
