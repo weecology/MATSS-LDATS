@@ -1,5 +1,4 @@
 # until BBS branch is merged
-devtools::install_github('weecology/MATSS@by-route', force = T)
 library(MATSS)
 library(dplyr)
 library(drake)
