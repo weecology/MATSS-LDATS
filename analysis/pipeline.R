@@ -11,7 +11,7 @@ expose_imports(MATSS)
 expose_imports(matssldats)
 
 ## Make sure we have downloaded the raw datasets from retriever first
-if (FALSE)
+#if (FALSE)
 {
   install_retriever_data("breed-bird-survey")
   install_retriever_data("veg-plots-sdl")
