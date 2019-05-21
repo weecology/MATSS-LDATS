@@ -23,7 +23,7 @@ if (FALSE)
 datasets <- build_datasets_plan(include_downloaded_data = T, include_bbs_data = T)
 
 ### Trim datasets so as not to use all 2500 BBS communities for now
-datasets <- datasets[1:15, ]
+datasets <- datasets[c(1:3, 6:15), ]
 
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
