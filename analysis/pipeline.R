@@ -24,6 +24,8 @@ if (FALSE)
 datasets <- build_datasets_plan(include_downloaded_data = T, include_bbs_data = T,
                                 bbs_subset = c(1:5))
 
+datasets <- datasets[8:15, ]
+
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
 
