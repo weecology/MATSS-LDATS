@@ -14,16 +14,15 @@ expose_imports(matssldats)
 if (FALSE)
 {
   install_retriever_data("breed-bird-survey")
+  prepare_bbs_ts_data()
   install_retriever_data("veg-plots-sdl")
   install_retriever_data("mapped-plant-quads-mt")
 }
 
 
 ## Clean and transform the data into the appropriate format
-datasets <- build_datasets_plan(include_downloaded_data = T, include_bbs_data = T)
-
-### Trim datasets so as not to use all 2500 BBS communities for now
-datasets <- datasets[c(1:3, 6:15), ]
+datasets <- build_datasets_plan(include_downloaded_data = T, include_bbs_data = T,
+                                bbs_subset = c(1:5))
 
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
