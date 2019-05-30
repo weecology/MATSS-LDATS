@@ -42,3 +42,5 @@ matssldats.Rproj
 .Rproj.user
 
 drake/*
+/drake/
+/drake/*
