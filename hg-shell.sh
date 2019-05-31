@@ -10,9 +10,9 @@
 #SBATCH --error pipeline%j.err
 
 #SBATCH --ntasks=1
-#SBATCH --mem=10gb   # Per processor memory
+#SBATCH --mem=4gb   # Per processor memory
 #SBATCH --cpus-per-task=1
-#SBATCH --time=5:00:00   # Walltime
+#SBATCH --time=1:00:00   # Walltime
 
 #Record the time and compute node the job ran on
 date;hostname; pwd
