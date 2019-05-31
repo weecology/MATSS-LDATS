@@ -23,7 +23,7 @@ if (FALSE)
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,
                                 bbs_subset = c(1:5))
 
-datasets <- datasets[8:20, ]
+datasets <- datasets[8:30, ]
 
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
@@ -33,14 +33,14 @@ analyses <- build_ldats_analyses_plan(datasets)
 reports <- drake_plan(
   lda_report = rmarkdown::render(
     knitr_in("analysis/reports/lda_report.Rmd")
-  ),
-  ts_report = rmarkdown::render(
-    knitr_in("analysis/reports/ts_report.Rmd")
-  )
+   ) #,
+  # ts_report = rmarkdown::render(
+  #   knitr_in("analysis/reports/ts_report.Rmd")
+  # )
 )
 
 ## The entire pipeline
-pipeline <- bind_rows(datasets, analyses) #, reports)
+pipeline <- bind_rows(datasets, analyses, reports)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
