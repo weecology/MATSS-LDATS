@@ -30,8 +30,8 @@ if (!"ncpus" %in% names(resources)) {
 }
 
 # Job name and who to send updates to
-#SBATCH --mail-user=diaz.renata@ufl.edu
-#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=<diaz.renata@ufl.edu>
+#SBATCH --mail-type=ALL
 #SBATCH --account=ewhite
 #SBATCH --partition=hpg2-compute
 #SBATCH --qos=ewhite-b   # Remove the `-b` if the script will take more than 4 days; see "bursting" below
