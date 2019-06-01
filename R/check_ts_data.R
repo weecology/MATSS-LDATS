@@ -40,7 +40,7 @@ check_time_data_format <- function(data)
 check_cpt_format <- function(cpt_model)
 {
   # check if timename column exists
-  if ((class(cpt_model)[[1]] == 'TS_on_LDA'))
+  if (!(class(cpt_model)[[1]] == 'TS_on_LDA'))
   {
     message("Not a changepoint model")
     return(FALSE)
