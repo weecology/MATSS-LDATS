@@ -68,4 +68,5 @@ module load R
 
 ## Run R:
 ## we merge R output with stdout from SLURM, which gets then logged via --output option
+echo "submitting job"
 Rscript -e 'batchtools::doJobCollection("<%= uri %>")'
