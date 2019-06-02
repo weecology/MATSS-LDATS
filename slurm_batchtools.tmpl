@@ -49,7 +49,7 @@ if (!"memory" %in% names(resources)) {
 #SBATCH --job-name=matssldats
 #SBATCH --output=<%= log.file %>
 #SBATCH --error=<%= log.file %>
-#SBATCH --time= <%=resources$walltime %>
+#SBATCH --time=<%=resources$walltime %>
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=<%= resources$ncpus %>
 #SBATCH --mem-per-cpu=<%= resources$memory %>
