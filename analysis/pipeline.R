@@ -2,7 +2,6 @@ library(MATSS)
 library(dplyr)
 library(drake)
 library(matssldats)
-library(future.batchtools)
 
 ## make sure the package functions in MATSS and matssldats are loaded in as
 ##   dependencies
@@ -57,10 +56,12 @@ if (interactive())
 ## Run the pipeline
 hostname <- Sys.getenv("HOSTNAME")
 
+library(future.batchtools)
+
+
 if (grepl("ufhpc", hostname)){
   ## Run the pipeline parallelized for HiPerGator
   future::plan(batchtools_slurm, template = "slurm_batchtools.tmpl")
-  drake_hpc_template_file("slurm_batchtools.tmpl")
   make(pipeline,
       force = TRUE,
       cache = cache,
