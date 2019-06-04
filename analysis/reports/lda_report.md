@@ -22,6 +22,8 @@ Find LDAs that threw errors and remove them:
 Plot LDAS
 ---------
 
+Plot a maximum of 5.
+
     ## [1] "lda_portal_data"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-1.png)
