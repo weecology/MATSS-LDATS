@@ -23,37 +23,49 @@ Find TS models that threw errors while running and remove them:
 
 These TS models ran successfully:
 
-    ## [1] "ts_portal_data_lda_portal_data" "ts_sdl_data_lda_sdl_data"
+    ## [1] "ts_portal_data_lda_portal_data" "ts_sdl_data_lda_sdl_data"      
+    ## [3] "ts_mtquad_data_lda_mtquad_data"
 
 Find TS models that threw errors in selection and remove them:
 
-    ## [1] "ts_select_ts_portal_data_lda_portal_data"
-    ## [1] "Incorrect input structure"
-    ## [1] "ts_select_ts_sdl_data_lda_sdl_data"
-    ## [1] "Incorrect input structure"
-
 These TS models were selected correctly:
 
-    ## character(0)
+    ## [1] "ts_select_ts_portal_data_lda_portal_data"
+    ## [2] "ts_select_ts_sdl_data_lda_sdl_data"      
+    ## [3] "ts_select_ts_mtquad_data_lda_mtquad_data"
 
 Community-level results
 -----------------------
 
 ``` r
-# Number of changepoints
-
-for(i in seq(selected_ts_results)) {
-    this_ts = selected_ts_results[[i]]
-    # Number of changepoints
-    print(names(selected_ts_results)[i])
-    print('# Changepoints:')
-    print(this_ts$nchangepoints)
-    
-    # Summary of timesteps (newmoon values) for each changepoint
-    print('Timesteps for changepoints:')
-    print(this_ts$rho_summary)
-}
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
+lda_ts_result_summary
 ```
+
+    ##          lda_name ntopics ntimeseries ntimesteps        data
+    ## 1 lda_portal_data       3          21        295 portal_data
+    ## 2    lda_sdl_data       3          98         22    sdl_data
+    ## 3 lda_mtquad_data       3          42         14 mtquad_data
+    ##                                    ts_name nchangepoints
+    ## 1 ts_select_ts_portal_data_lda_portal_data             3
+    ## 2       ts_select_ts_sdl_data_lda_sdl_data             2
+    ## 3 ts_select_ts_mtquad_data_lda_mtquad_data             2
 
 Cross-community results
 -----------------------
+
+``` r
+plot(lda_ts_result_summary$ntopics, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by number of LDA topics', 
+     xlab = 'Number of LDA topics', ylab = 'Number of changepoints')
+```
+
+![](ts_report_files/figure-markdown_github/plot%20ts%20cross%20comm%20results-1.png)
+
+``` r
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by length of timeseries', 
+     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
+```
+
+![](ts_report_files/figure-markdown_github/plot%20ts%20cross%20comm%20results-2.png)

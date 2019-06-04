@@ -38,24 +38,18 @@ Summarize LDA results
 ---------------------
 
 ``` r
-lda_summary <- as.data.frame(names(lda_results))
-lda_summary$ntopics <- NA
-lda_summary$ntimeseries <- NA
-lda_summary$ntimesteps <- NA
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 
-for (i in seq(lda_results))
-{
-    lda_summary$ntopics[i] <- lda_results[[i]][1]$k@k
-    lda_summary$ntimeseries[i] <- as.integer(length(lda_results[[i]][1]$k@terms))
-    lda_summary$ntimesteps[i] <- lda_results[[i]][1]$k@wordassignments$nrow
-}
-
-lda_summary
+lda_ts_result_summary
 ```
 
-    ##   names(lda_results) ntopics ntimeseries ntimesteps
-    ## 1    lda_portal_data       3          21        295
-    ## 2       lda_sdl_data       3          98         22
-    ## 3    lda_mtquad_data       3          42         14
+    ##          lda_name ntopics ntimeseries ntimesteps        data
+    ## 1 lda_portal_data       3          21        295 portal_data
+    ## 2    lda_sdl_data       3          98         22    sdl_data
+    ## 3 lda_mtquad_data       3          42         14 mtquad_data
+    ##                                    ts_name nchangepoints
+    ## 1 ts_select_ts_portal_data_lda_portal_data             3
+    ## 2       ts_select_ts_sdl_data_lda_sdl_data             2
+    ## 3 ts_select_ts_mtquad_data_lda_mtquad_data             2
 
 ![](lda_report_files/figure-markdown_github/plot%20lda%20summary-1.png)![](lda_report_files/figure-markdown_github/plot%20lda%20summary-2.png)

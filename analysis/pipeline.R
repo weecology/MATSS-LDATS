@@ -27,19 +27,24 @@ datasets <- datasets[8:10, ]
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
 
+summary_tables <- drake_plan(
+    lda_result_summary = collect_lda_result_summary(lda_results = lda_results),
+    ts_result_summary = collect_ts_result_summary(selected_ts_results = ts_select_results),
+    lda_ts_result_summary = collect_lda_ts_results(lda_result_summary, ts_result_summary)
+)
 ## Summary reports
 # I don't quite understand the pathing here... - Hao
 reports <- drake_plan(
     lda_report = rmarkdown::render(
         knitr_in("analysis/reports/lda_report.Rmd")
-    ) #,
-    # ts_report = rmarkdown::render(
-    #   knitr_in("analysis/reports/ts_report.Rmd")
-    # )
+    ) ,
+    ts_report = rmarkdown::render(
+      knitr_in("analysis/reports/ts_report.Rmd")
+    )
 )
 
 ## The entire pipeline
-pipeline <- bind_rows(datasets, analyses, reports)
+pipeline <- bind_rows(datasets, analyses, summary_tables, reports)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))

@@ -69,22 +69,19 @@ print(names(selected_ts_results))
 ## Community-level results
 
 ```{r community level summary stats}
-# Number of changepoints
-
-for(i in seq(selected_ts_results)) {
-    this_ts = selected_ts_results[[i]]
-    # Number of changepoints
-    print(names(selected_ts_results)[i])
-    print('# Changepoints:')
-    print(this_ts$nchangepoints)
-    
-    # Summary of timesteps (newmoon values) for each changepoint
-    print('Timesteps for changepoints:')
-    print(this_ts$rho_summary)
-}
-
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
+lda_ts_result_summary
 ```
 
 ## Cross-community results
+```{r plot ts cross comm results}
 
+plot(lda_ts_result_summary$ntopics, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by number of LDA topics', 
+     xlab = 'Number of LDA topics', ylab = 'Number of changepoints')
+
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by length of timeseries', 
+     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
+```
 
