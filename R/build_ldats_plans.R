@@ -17,14 +17,14 @@ build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4,
         ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints), 
                     transform = map(data = !!rlang::syms(datasets$target), 
                                     lda)), 
-        ts_select = target(LDATS::select_TS(ts), 
+        ts_select = target(try(LDATS::select_TS(ts)), 
                            transform = map(ts)), 
         lda_results = target(collect_analyses(list(lda)),
                              transform = combine(lda)), 
         ts_results = target(collect_analyses(list(ts)),
                             transform = combine(ts)), 
         ts_select_results = target(collect_analyses(list(ts_select)),
-                                   transform = combine(ts_select)), 
+                                   transform = combine(ts_select)) 
     )
 }
 

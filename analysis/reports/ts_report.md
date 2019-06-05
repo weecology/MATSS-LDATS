@@ -21,18 +21,25 @@ Errors
 
 Find TS models that threw errors while running and remove them:
 
+    ## [1] "ts_jornada_data_lda_jornada_data"
+    ## [1] "Incorrect data structure"
+
 These TS models ran successfully:
 
-    ## [1] "ts_portal_data_lda_portal_data" "ts_sdl_data_lda_sdl_data"      
-    ## [3] "ts_mtquad_data_lda_mtquad_data"
+    ## [1] "ts_sdl_data_lda_sdl_data"
 
 Find TS models that threw errors in selection and remove them:
 
+    ## [1] "ts_select_ts_jornada_data_lda_jornada_data"
+    ## [1] "Error in LDATS::select_TS(ts_jornada_data_lda_jornada_data) : \n  TS_models must be of class TS_on_LDA\n"
+    ## attr(,"class")
+    ## [1] "try-error"
+    ## attr(,"condition")
+    ## <simpleError in LDATS::select_TS(ts_jornada_data_lda_jornada_data): TS_models must be of class TS_on_LDA>
+
 These TS models were selected correctly:
 
-    ## [1] "ts_select_ts_portal_data_lda_portal_data"
-    ## [2] "ts_select_ts_sdl_data_lda_sdl_data"      
-    ## [3] "ts_select_ts_mtquad_data_lda_mtquad_data"
+    ## [1] "ts_select_ts_sdl_data_lda_sdl_data"
 
 Community-level results
 -----------------------
@@ -42,14 +49,12 @@ lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
 
-    ##          lda_name ntopics ntimeseries ntimesteps        data
-    ## 1 lda_portal_data       3          21        295 portal_data
-    ## 2    lda_sdl_data       3          98         22    sdl_data
-    ## 3 lda_mtquad_data       3          42         14 mtquad_data
-    ##                                    ts_name nchangepoints
-    ## 1 ts_select_ts_portal_data_lda_portal_data             2
-    ## 2       ts_select_ts_sdl_data_lda_sdl_data             2
-    ## 3 ts_select_ts_mtquad_data_lda_mtquad_data             2
+    ##           lda_name ntopics ntimeseries ntimesteps         data
+    ## 1 lda_jornada_data       3          17         24 jornada_data
+    ## 2     lda_sdl_data       3          98         22     sdl_data
+    ##                                      ts_name nchangepoints
+    ## 1 ts_select_ts_jornada_data_lda_jornada_data            NA
+    ## 2         ts_select_ts_sdl_data_lda_sdl_data             2
 
 Cross-community results
 -----------------------

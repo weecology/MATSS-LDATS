@@ -43,11 +43,14 @@ collect_lda_result_summary <- function(lda_results) {
 #' @return value of that variable
 #' @export
 extract_ts_variable <- function(ts_result, variable_name) {
+    if(!is.null(names(ts_result))) {
     if(variable_name == "nchangepoints") {
         return(ts_result$nchangepoints)
     }
     return("Variable not recognized")
-    
+    } else {
+        return(NA)
+    }
 }
 
 #' Make TS result summary table
@@ -57,7 +60,7 @@ extract_ts_variable <- function(ts_result, variable_name) {
 collect_ts_result_summary <- function(selected_ts_results) {
     ts_result_summary <- data.frame(
         ts_name = names(selected_ts_results),
-        nchangepoints = vapply(selected_ts_results, FUN = extract_ts_variable, variable_name = "nchangepoints", FUN.VALUE = 3),
+        nchangepoints = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
         stringsAsFactors = FALSE,
         row.names = NULL
     )
