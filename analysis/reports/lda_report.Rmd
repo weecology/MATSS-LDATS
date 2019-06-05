@@ -37,9 +37,11 @@ for (i in seq(lda_results)){
 
 ## Plot LDAS
 
+Plot a maximum of 5.
+
 ```{r plot LDA, echo = F}
 
-for (i in seq(lda_results))
+for (i in 1:min(5, length(lda_results)))
 {
     print(names(lda_results)[i])
     
@@ -61,29 +63,18 @@ for (i in seq(lda_results))
 
 ```{r summarize LDA results}
 
-lda_summary <- as.data.frame(names(lda_results))
-lda_summary$ntopics <- NA
-lda_summary$ntimeseries <- NA
-lda_summary$ntimesteps <- NA
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 
-for (i in seq(lda_results))
-{
-    lda_summary$ntopics[i] <- lda_results[[i]][1]$k@k
-    lda_summary$ntimeseries[i] <- as.integer(length(lda_results[[i]][1]$k@terms))
-    lda_summary$ntimesteps[i] <- lda_results[[i]][1]$k@wordassignments$nrow
-}
-
-lda_summary
-
+lda_ts_result_summary
 ```
 
 ```{r plot lda summary, echo = F}
 
-plot(lda_summary$ntimeseries, lda_summary$ntopics, 
+plot(lda_ts_result_summary$ntimeseries, lda_ts_result_summary$ntopics, 
      main = 'Number of topics by number of timeseries', 
      xlab = 'Number of timeseries', ylab = 'Number of topics')
 
-plot(lda_summary$ntimesteps, lda_summary$ntopics, 
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$ntopics, 
      main = 'Number of topics by length of timeseries', 
      xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of topics')
 

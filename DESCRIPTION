@@ -37,6 +37,7 @@ Imports:
     knitr,
     rmarkdown,
     rlang, 
+    stringr,
     future.batchtools
 Suggests:
     testthat,

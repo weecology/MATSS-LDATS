@@ -43,25 +43,3 @@ run_TS <- function(data, ldamodels,
                      weights = weights,
                      control = LDATS::TS_controls_list(nit = 100, timename = data$metadata$timename))
 }
-
-
-#' @name select_TS
-#' @title Run Changepoint Model on LDA + TimeSeries Data
-#' @description Run the timeseries model from `ldats` on LDA models and time-series data.
-#' @param changepoint_models changepoint model object to check
-#' @inheritParams LDATS::TS_on_LDA
-#'
-#' @return best fit TS model
-#' @export
-#'
-select_TS <- function(changepoint_models) {
-    #### Check that changepoint_models is a changepoint model ####
-    
-    if (!check_cpt_format(changepoint_models))
-    {
-        wrongFormat = simpleWarning("Not a TS_on_LDA")
-        tryCatch(warning(wrongFormat), finally = return('Incorrect input structure'))
-    }
-    #### Select the best changepoint ####
-    selected_changepoint_model <- LDATS::select_TS(changepoint_models)
-}

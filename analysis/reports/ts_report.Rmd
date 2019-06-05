@@ -25,7 +25,7 @@ selected_ts_results <- readd(ts_select_results, cache = cache)
 ```
 
 ## Errors
-Find TS models that threw errors and remove them:
+Find TS models that threw errors while running and remove them:
 ```{r find error ts, echo = F}
 ts_errors <- NULL
 for (i in seq(ts_results)){
@@ -35,11 +35,15 @@ for (i in seq(ts_results)){
         ts_errors <- c(ts_errors, i)
     }
 }
-  ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors))]]
+ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors))]]
 
-  
-  # Remaining ts models:
-  names(ts_results)
+```
+
+These TS models ran successfully:
+
+```{r successful ts, echo = F}
+# Remaining ts models:
+print(names(ts_results))
 ```
 
 Find TS models that threw errors in selection and remove them:
@@ -52,10 +56,32 @@ for (i in seq(selected_ts_results)){
         ts_select_errors <- c(ts_select_errors, i)
     }
 }
-  selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
-
-  
-  # Remaining ts models:
-  names(selected_ts_results)
-  
+selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
 ```
+
+These TS models were selected correctly:
+
+```{r successful ts_select, echo = F}
+# Remaining ts models:
+print(names(selected_ts_results))
+```
+
+## Community-level results
+
+```{r community level summary stats}
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
+lda_ts_result_summary
+```
+
+## Cross-community results
+```{r plot ts cross comm results}
+
+plot(lda_ts_result_summary$ntopics, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by number of LDA topics', 
+     xlab = 'Number of LDA topics', ylab = 'Number of changepoints')
+
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by length of timeseries', 
+     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
+```
+
