@@ -22,8 +22,6 @@ if (FALSE)
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,
                                 bbs_subset = c(1:5))
 
-datasets <- datasets[8:10, ]
-
 ## Analysis methods
 analyses <- build_ldats_analyses_plan(datasets)
 
