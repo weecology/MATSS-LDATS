@@ -39,7 +39,7 @@ reports <- drake_plan(
         knitr_in("analysis/reports/lda_report.Rmd")
     ) ,
     ts_report = rmarkdown::render(
-      knitr_in("analysis/reports/ts_report.Rmd")
+        knitr_in("analysis/reports/ts_report.Rmd")
     )
 )
 
@@ -59,23 +59,22 @@ if (interactive())
 }
 
 ## Run the pipeline
-hostname <- Sys.getenv("HOSTNAME")
-
 library(future.batchtools)
 
-
-#if (grepl("ufhpc", hostname)){
-## Run the pipeline parallelized for HiPerGator
-future::plan(batchtools_slurm, template = "slurm_batchtools.tmpl")
-make(pipeline,
-     force = TRUE,
-     cache = cache,
-     cache_log_file = here::here("drake", "cache_log.txt"),
-     verbose = 2,
-     parallelism = "future",
-     jobs = 2,
-     caching = "master") # Important for DBI caches!
-# } else {
-# # Run the pipeline on a single local core
-make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt"))
-# }
+nodename <- Sys.info()["nodename"]
+if(grepl("ufhpc", nodename)) {
+    print("I know I am on SLURM!")
+    ## Run the pipeline parallelized for HiPerGator
+    future::plan(batchtools_slurm, template = "slurm_batchtools.tmpl")
+    make(pipeline,
+         force = TRUE,
+         cache = cache,
+         cache_log_file = here::here("drake", "cache_log.txt"),
+         verbose = 2,
+         parallelism = "future",
+         jobs = 16,
+         caching = "master") # Important for DBI caches!
+} else {
+    # Run the pipeline on a single local core
+    make(pipeline, cache = cache, cache_log_file = here::here("drake", "cache_log.txt"))
+}
