@@ -1,0 +1,161 @@
+Please look at our data formats by running `vignette("data-formats")`
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+..............target ts_select_ts_mtquad_data_lda_mtquad_data
+.target ts_select_ts_sdl_data_lda_sdl_data
+.target ts_select_ts_portal_data_lda_portal_data
+.target lda_results
+target ts_results
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_select_ts_mtquad_data_lda_mtquad_data warnings:
+  the condition has length > 1 and only the first element will be used
+.
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_select_ts_sdl_data_lda_sdl_data warnings:
+  the condition has length > 1 and only the first element will be used
+.
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_select_ts_portal_data_lda_portal_data warnings:
+  the condition has length > 1 and only the first element will be used
+.target ts_select_results
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_result_summary
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+fail lda_result_summary
+Error: Target `lda_result_summary` failed. Call `diagnose(lda_result_summary)` for details. Error message:
+  could not find function "collect_lda_result_summary"
+In addition: Warning messages:
+1: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+2: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+3: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+4: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+5: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+6: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+7: In readLines(template) :
+  incomplete final line found on '/orange/ewhite/MATSS-LDATS/slurm_batchtools.tmpl'
+Execution halted
