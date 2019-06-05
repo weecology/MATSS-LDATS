@@ -32,6 +32,10 @@ vignettes/*.pdf
 .drake
 /.drake/*
 
+.future/*
+.future
+/.future/*
+
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
