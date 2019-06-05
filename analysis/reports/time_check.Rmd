@@ -1,0 +1,36 @@
+---
+title: "Time format"
+author: "Renata Diaz"
+date: "6/5/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(MATSS)
+library(drake)
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+time_check_results <- readd(time_check_results, cache = cache)
+
+```
+
+This is a quick report on which datasets have non-integer timesteps. It is not meant to be included in the pipeline. This branch should not be merged. 
+
+```{r print time check results}
+time_check_results[which(!(unlist(time_check_results)))]
+```
+
+
+```{r time check results}
+
+jornada_data <- readd(jornada_data, cache = cache)
+jornada_data$metadata$timename
+jornada_data$covariates$time
+
+sgs_data <- readd(sgs_data, cache = cache)
+sgs_data$metadata$timename
+sgs_data$covariates$samples
+
+```
+
+Both sites have years evaluated at intervals of .5. 
