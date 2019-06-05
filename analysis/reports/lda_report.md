@@ -50,7 +50,7 @@ lda_ts_result_summary
     ## 2    lda_sdl_data       3          98         22    sdl_data
     ## 3 lda_mtquad_data       3          42         14 mtquad_data
     ##                                    ts_name nchangepoints
-    ## 1 ts_select_ts_portal_data_lda_portal_data             3
+    ## 1 ts_select_ts_portal_data_lda_portal_data             2
     ## 2       ts_select_ts_sdl_data_lda_sdl_data             2
     ## 3 ts_select_ts_mtquad_data_lda_mtquad_data             2
 
