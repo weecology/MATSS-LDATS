@@ -29,6 +29,10 @@ run_TS <- function(data, ldamodels,
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
     
+    ## Get time for formulas
+    
+    form <- as.formula(paste0("~ ", data$metadata$timename))
+    
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {
         weights <- LDATS::document_weights(data$abundance)
@@ -38,7 +42,7 @@ run_TS <- function(data, ldamodels,
     
     LDATS::TS_on_LDA(LDA_models = ldamodels,
                      document_covariate_table = as.data.frame(data$covariates),
-                     formulas = formulas,
+                     formulas = form,
                      nchangepoints = nchangepoints,
                      weights = weights,
                      control = LDATS::TS_controls_list(nit = 100, timename = data$metadata$timename))

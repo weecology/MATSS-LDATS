@@ -59,10 +59,9 @@ if (interactive())
 }
 
 ## Run the pipeline
-library(future.batchtools)
-
 nodename <- Sys.info()["nodename"]
 if(grepl("ufhpc", nodename)) {
+    library(future.batchtools)
     print("I know I am on SLURM!")
     ## Run the pipeline parallelized for HiPerGator
     future::plan(batchtools_slurm, template = "slurm_batchtools.tmpl")
