@@ -22,7 +22,7 @@ Find LDAs that threw errors and remove them:
 Plot LDAS
 ---------
 
-Plot a maximum of 5.
+Plot a maximum of 10.
 
     ## [1] "lda_maizuru_data"
 
@@ -43,6 +43,26 @@ Plot a maximum of 5.
     ## [1] "lda_cowley_snakes_data"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-5.png)
+
+    ## [1] "lda_karoo_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-6.png)
+
+    ## [1] "lda_kruger_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-7.png)
+
+    ## [1] "lda_portal_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-8.png)
+
+    ## [1] "lda_sdl_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-9.png)
+
+    ## [1] "lda_mtquad_data"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-10.png)
 
 Summarize LDA results
 ---------------------
