@@ -37,11 +37,11 @@ for (i in seq(lda_results)){
 
 ## Plot LDAS
 
-Plot a maximum of 5.
+Plot a maximum of 10.
 
 ```{r plot LDA, echo = F}
 
-for (i in 1:min(5, length(lda_results)))
+for (i in 1:min(10, length(lda_results)))
 {
     print(names(lda_results)[i])
     
