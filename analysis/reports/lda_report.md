@@ -22,7 +22,7 @@ Find LDAs that threw errors and remove them:
 Plot LDAS
 ---------
 
-Plot a maximum of 10.
+Plot a maximum of 15.
 
     ## [1] "lda_maizuru_data"
 
@@ -63,6 +63,26 @@ Plot a maximum of 10.
     ## [1] "lda_mtquad_data"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-10.png)
+
+    ## [1] "lda_bbs_data_rtrg_1_11"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-11.png)
+
+    ## [1] "lda_bbs_data_rtrg_2_11"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-12.png)
+
+    ## [1] "lda_bbs_data_rtrg_3_11"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-13.png)
+
+    ## [1] "lda_bbs_data_rtrg_4_11"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-14.png)
+
+    ## [1] "lda_bbs_data_rtrg_6_11"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-15.png)
 
 Summarize LDA results
 ---------------------
