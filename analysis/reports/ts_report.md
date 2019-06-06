@@ -124,11 +124,11 @@ lda_ts_result_summary
     ## 8                  ts_select_ts_portal_data_lda_portal_data             2
     ## 9                        ts_select_ts_sdl_data_lda_sdl_data             2
     ## 10                 ts_select_ts_mtquad_data_lda_mtquad_data             2
-    ## 11                                                     <NA>            NA
-    ## 12                                                     <NA>            NA
-    ## 13                                                     <NA>            NA
-    ## 14                                                     <NA>            NA
-    ## 15                                                     <NA>            NA
+    ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11             2
+    ## 12   ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11             2
+    ## 13   ts_select_ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11             2
+    ## 14   ts_select_ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11             2
+    ## 15   ts_select_ts_bbs_data_rtrg_6_11_lda_bbs_data_rtrg_6_11             2
 
 Cross-community results
 -----------------------
