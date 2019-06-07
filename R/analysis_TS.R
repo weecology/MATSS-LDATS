@@ -45,5 +45,5 @@ run_TS <- function(data, ldamodels,
                      formulas = form,
                      nchangepoints = nchangepoints,
                      weights = weights,
-                     control = LDATS::TS_controls_list(nit = 100, timename = data$metadata$timename))
+                     control = LDATS::TS_controls_list(nit = 1000, timename = data$metadata$timename))
 }
