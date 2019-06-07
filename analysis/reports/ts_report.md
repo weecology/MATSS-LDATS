@@ -82,21 +82,21 @@ lda_ts_result_summary
 ```
 
     ##                   lda_name ntopics ntimeseries ntimesteps
-    ## 1         lda_maizuru_data       3          15        285
-    ## 2         lda_jornada_data       3          17         24
-    ## 3             lda_sgs_data       3          11         13
+    ## 1         lda_maizuru_data       6          15        285
+    ## 2         lda_jornada_data       6          17         24
+    ## 3             lda_sgs_data       5          11         13
     ## 4  lda_cowley_lizards_data       2           6         14
     ## 5   lda_cowley_snakes_data       2          16         14
-    ## 6           lda_karoo_data       3          16         13
-    ## 7          lda_kruger_data       3          12         31
-    ## 8          lda_portal_data       3          21        319
-    ## 9             lda_sdl_data       3          98         22
-    ## 10         lda_mtquad_data       3          42         14
-    ## 11  lda_bbs_data_rtrg_1_11       3          99         51
-    ## 12  lda_bbs_data_rtrg_2_11       3         120         51
-    ## 13  lda_bbs_data_rtrg_3_11       3         115         51
-    ## 14  lda_bbs_data_rtrg_4_11       3         113         51
-    ## 15  lda_bbs_data_rtrg_6_11       3          81         40
+    ## 6           lda_karoo_data       6          16         13
+    ## 7          lda_kruger_data       6          12         31
+    ## 8          lda_portal_data       5          21        319
+    ## 9             lda_sdl_data       6          98         22
+    ## 10         lda_mtquad_data       6          42         14
+    ## 11  lda_bbs_data_rtrg_1_11       6          99         51
+    ## 12  lda_bbs_data_rtrg_2_11       6         120         51
+    ## 13  lda_bbs_data_rtrg_3_11       6         115         51
+    ## 14  lda_bbs_data_rtrg_4_11       6         113         51
+    ## 15  lda_bbs_data_rtrg_6_11       6          81         40
     ##                   data
     ## 1         maizuru_data
     ## 2         jornada_data
