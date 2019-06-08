@@ -1,0 +1,566 @@
+[1] ".Rprofile loaded"
+<environment: R_GlobalEnv>
+<environment: R_GlobalEnv>
+[1] "I know I am on SLURM!"
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 2 topics (seed 6)
+Running LDA with 2 topics (seed 8)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
+Running LDA with 3 topics (seed 6)
+Running LDA with 3 topics (seed 8)
+Running LDA with 4 topics (seed 2)
+Running LDA with 4 topics (seed 4)
+Running LDA with 4 topics (seed 6)
+Running LDA with 4 topics (seed 8)
+Running LDA with 5 topics (seed 2)
+Running LDA with 5 topics (seed 4)
+Running LDA with 5 topics (seed 6)
+Running LDA with 5 topics (seed 8)
+Running LDA with 6 topics (seed 2)
+Running LDA with 6 topics (seed 4)
+Running LDA with 6 topics (seed 6)
+Running LDA with 6 topics (seed 8)
+Running TS model with 2 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 4 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 5 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 4
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+  |                                                                         |                                                                 |   0%  |                                                                         |.....                                                            |   8%
+  ordinary text without R code
+
+  |                                                                         |...........                                                      |  17%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |................                                                 |  25%
+  ordinary text without R code
+
+  |                                                                         |......................                                           |  33%
+label: load LDA results
+  |                                                                         |...........................                                      |  42%
+  ordinary text without R code
+
+  |                                                                         |................................                                 |  50%
+label: find error LDAS (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |......................................                           |  58%
+  ordinary text without R code
+
+  |                                                                         |...........................................                      |  67%
+label: plot LDA (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |.................................................                |  75%
+  ordinary text without R code
+
+  |                                                                         |......................................................           |  83%
+label: summarize LDA results
+  |                                                                         |............................................................     |  92%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: plot lda summary (with options) 
+List of 1
+ $ echo: symbol F
+
+
+/usr/bin/pandoc +RTS -K512m -RTS lda_report.utf8.md --to markdown_github-ascii_identifiers --from markdown+autolink_bare_uris+tex_math_single_backslash --output lda_report.md --standalone --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/default.md 
+/usr/bin/pandoc +RTS -K512m -RTS lda_report.md --to html4 --from markdown_github-ascii_identifiers --output lda_report.html --standalone --self-contained --highlight-style pygments --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/preview.html --variable 'github-markdown-css:/home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/github.css' --email-obfuscation none 
+  |                                                                         |                                                                 |   0%  |                                                                         |....                                                             |   6%
+  ordinary text without R code
+
+  |                                                                         |........                                                         |  12%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |...........                                                      |  18%
+  ordinary text without R code
+
+  |                                                                         |...............                                                  |  24%
+label: load TS results
+  |                                                                         |...................                                              |  29%
+  ordinary text without R code
+
+  |                                                                         |.......................                                          |  35%
+label: find error ts (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |...........................                                      |  41%
+  ordinary text without R code
+
+  |                                                                         |...............................                                  |  47%
+label: successful ts (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |..................................                               |  53%
+  ordinary text without R code
+
+  |                                                                         |......................................                           |  59%
+label: find error ts select (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |..........................................                       |  65%
+  ordinary text without R code
+
+  |                                                                         |..............................................                   |  71%
+label: successful ts_select (with options) 
+List of 1
+ $ echo: symbol F
+
+  |                                                                         |..................................................               |  76%
+  ordinary text without R code
+
+  |                                                                         |......................................................           |  82%
+label: community level summary stats
+  |                                                                         |.........................................................        |  88%
+  ordinary text without R code
+
+  |                                                                         |.............................................................    |  94%
+label: plot ts cross comm results
+  |                                                                         |.................................................................| 100%
+  ordinary text without R code
+
+
+/usr/bin/pandoc +RTS -K512m -RTS ts_report.utf8.md --to markdown_github-ascii_identifiers --from markdown+autolink_bare_uris+tex_math_single_backslash --output ts_report.md --standalone --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/default.md 
+/usr/bin/pandoc +RTS -K512m -RTS ts_report.md --to html4 --from markdown_github-ascii_identifiers --output ts_report.html --standalone --self-contained --highlight-style pygments --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/preview.html --variable 'github-markdown-css:/home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/github.css' --email-obfuscation none 

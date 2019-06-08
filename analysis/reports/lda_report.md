@@ -96,7 +96,7 @@ lda_ts_result_summary
     ##                   lda_name ntopics ntimeseries ntimesteps
     ## 1         lda_maizuru_data       6          15        285
     ## 2         lda_jornada_data       6          17         24
-    ## 3             lda_sgs_data       5          11         13
+    ## 3             lda_sgs_data       6          11         13
     ## 4  lda_cowley_lizards_data       2           6         14
     ## 5   lda_cowley_snakes_data       2          16         14
     ## 6           lda_karoo_data       6          16         13
