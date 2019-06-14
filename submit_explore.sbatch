@@ -13,4 +13,4 @@
 
 #This is a generic R submission script
 module load R
-Rscript analysis/reports/changepoint_tests.R
+Rscript analysis/test_changepoint_pipeline.R
