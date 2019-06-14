@@ -1,3 +1,0 @@
-Please look at our data formats by running `vignette("data-formats")`
-Loading in data version 1.114.0
-Error in "TS_on_LDA" %in% class(TS_models) : object 'portal_ts' not found

@@ -6,6 +6,7 @@ portal_lda <- run_LDA(portal_data, max_topics = 6, nseeds = 100)
 
 data <- portal_data
 data$covariates$month <- as.numeric(format(data$covariates$censusdate, "%m"))
+
 ## Get time for formulas
 form <- as.formula(paste0("~ ", data$metadata$timename))
 weights <- LDATS::document_weights(data$abundance)
@@ -40,6 +41,7 @@ ts_month <- LDATS::TS_on_LDA(LDA_models = ldamodels,
 ts_month_selected <- try(LDATS::select_TS(ts_month))
 
 ts_matssldats <- run_TS(portal_data, portal_lda, nchangepoints = 0:5)
-ts_matssldats_selected <- try(LDATS::select_TS(portal_ts))
+ts_matssldats_selected <- try(LDATS::select_TS(ts_matssldats))
+
 
 save.image(file = "changepoint_tests.RData")
