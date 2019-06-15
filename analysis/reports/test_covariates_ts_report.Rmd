@@ -1,0 +1,29 @@
+---
+title: "TS on LDA report"
+author: "Renata Diaz"
+date: "10/12/2018"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MATSS)
+library(drake)
+```
+
+## Read in the results
+
+```{r load TS results}
+# define where the cache is located
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+ts_result_summary <- readd(ts_result_summary, cache = cache)
+
+print(ts_result_summary)
+```
+
+Default = `formula = ~1`. 
+
+
