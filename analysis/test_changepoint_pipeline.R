@@ -79,8 +79,14 @@ summary_tables <- drake_plan(
     ts_result_summary = collect_ts_result_summary(selected_ts_results = list(default = default_ts_select, newmoon = newmoon_ts_select,month = month_ts_select, timestep = timestep_ts_select, normalnoise = normalnoise_ts_select))
 )
 
+report <- drake_plan(
+    covariates_report = rmarkdown::render(
+        knitr_in("analysis/reports/test_covariates_ts_report.Rmd")
+    ) 
+)
+
 ## The entire pipeline
-pipeline <- bind_rows(datasets, lda_plan, cpt_plan, summary_tables)
+pipeline <- bind_rows(datasets, lda_plan, cpt_plan, summary_tables, report)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
