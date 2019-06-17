@@ -3,7 +3,7 @@
 #' @description Run the timeseries model from `ldats` on LDA models and time-series data.
 #' @param data The dataset, in the `MATSS` format. Including covariates & metadata.
 #' @param ldamodels The LDA model(s) produced by running `run_LDA` on the dataset.
-#' @param formulas Defaults to ~1.
+#' @param formulas Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.
 #' @param nchangepoints Vector of integers: which numbers of changepoints to try.
 #' @param weighting Weight samples equally or proportional to number of individuals captured. Defaults to `'proprotional'`; any other value will weight samples equally.
 #' 
@@ -13,7 +13,7 @@
 #' @export
 #'
 run_TS <- function(data, ldamodels,
-                   formulas = ~ 1,
+                   formulas = NULL,
                    nchangepoints = 0:6,
                    weighting = 'proportional',
                    control = LDATS::TS_controls_list())
@@ -32,6 +32,10 @@ run_TS <- function(data, ldamodels,
     ## Get time for formulas
     
     form <- as.formula(paste0("~ ", data$metadata$timename))
+    
+    if(!is.null(formulas)) {
+       form <- formulas 
+    }
     
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {

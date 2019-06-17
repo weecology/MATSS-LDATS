@@ -4,7 +4,7 @@
 \alias{run_TS}
 \title{Run Changepoint Model on LDA + TimeSeries Data}
 \usage{
-run_TS(data, ldamodels, formulas = ~1, nchangepoints = 0:6,
+run_TS(data, ldamodels, formulas = NULL, nchangepoints = 0:6,
   weighting = "proportional", control = LDATS::TS_controls_list())
 }
 \arguments{
@@ -12,7 +12,7 @@ run_TS(data, ldamodels, formulas = ~1, nchangepoints = 0:6,
 
 \item{ldamodels}{The LDA model(s) produced by running \code{run_LDA} on the dataset.}
 
-\item{formulas}{Defaults to ~1.}
+\item{formulas}{Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.}
 
 \item{nchangepoints}{Vector of integers: which numbers of changepoints to try.}
 

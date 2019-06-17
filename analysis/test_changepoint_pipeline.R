@@ -12,81 +12,57 @@ source(here::here("analysis", "add_toy_covariates.R"))
 
 ## Clean and transform the data into the appropriate format
 
-datasets <- drake_plan(
-    portal_rodents = get_portal_rodents(),
-    portal_rodents_cov = add_toy_covariates(portal_rodents))
+datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,
+                                bbs_subset = c(1:5))
 
-## LDA
-lda_plan <- drake_plan(
-    portal_rodents_lda = run_LDA(data = portal_rodents_cov)
+datasets <- datasets[1:20, ]
+datasets_cov <- drake_plan(
+    cov = target(add_toy_covariates(data),
+                 transform = map(data = !!rlang::syms(datasets$target))
+    )
 )
 
+## Analysis methods
 
-
+lda_plan <- drake_plan(
+    lda = target(run_LDA(data, max_topics = 6, nseeds = 100),
+                 transform = map(data = !!rlang::syms(datasets_cov$target))
+    )
+)
 
 
 ## Cpt
-cpt_plan <- drake_plan(
-    default_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
-                                  document_covariate_table = 
-                                      as.data.frame(portal_rodents_cov$covariates),
-                                  formulas = ~1,
-                                  nchangepoints = c(0:6),
-                                  weights = LDATS::document_weights(portal_rodents_cov$abundance),
-                                  control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)), 
+cpt_plan <-  drake_plan (
+    ts_timename = target(run_TS(data, lda, nchangepoints = c(0:6)), 
+                         transform = map(data = !!rlang::syms(datasets$target), 
+                                         lda)),
+    ts_timestep = target(run_TS(data, lda, nchangepoints = c(0:6),
+                                formulas = ~timestep),
+                         transform = map(data = !!rlang::syms(datasets$target), 
+                                         lda)),
+    ts_normalnoise = target(run_TS(data, lda, nchangepoints = c(0:6),
+                                   formulas = ~normalnoise),
+                            transform = map(data = !!rlang::syms(datasets$target), 
+                                            lda)),
     
-    newmoon_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
-                                  document_covariate_table = 
-                                      as.data.frame(portal_rodents_cov$covariates),
-                                  formulas = ~newmoonnumber,
-                                  nchangepoints = c(0:6),
-                                  weights = LDATS::document_weights(portal_rodents_cov$abundance),
-                                  control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)), 
+    ts_select_timename = target(try(LDATS::select_TS(ts_timename)), 
+                       transform = map(ts_timename)),
+    ts_select_timestep =  target(try(LDATS::select_TS(ts_timestep)), 
+                                 transform = map(ts_timestep)),
     
-    month_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
-                                  document_covariate_table = 
-                                      as.data.frame(portal_rodents_cov$covariates),
-                                  formulas = ~month,
-                                  nchangepoints = c(0:6),
-                                  weights = LDATS::document_weights(portal_rodents_cov$abundance),
-                                  control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)),
-    
-    timestep_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
-                                  document_covariate_table = 
-                                      as.data.frame(portal_rodents_cov$covariates),
-                                  formulas = ~timestep,
-                                  nchangepoints = c(0:6),
-                                  weights = LDATS::document_weights(portal_rodents_cov$abundance),
-                                  control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)),
-    
-    normalnoise_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
-                                      document_covariate_table = 
-                                          as.data.frame(portal_rodents_cov$covariates),
-                                      formulas = ~normalnoise,
-                                      nchangepoints = c(0:6),
-                                      weights = LDATS::document_weights(portal_rodents_cov$abundance),
-                                      control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)),
-    
-    default_ts_select = try(LDATS::select_TS(default_ts)),
-    newmoon_ts_select = try(LDATS::select_TS(newmoon_ts)),
-    month_ts_select = try(LDATS::select_TS(month_ts)),
-    timestep_ts_select = try(LDATS::select_TS(timestep_ts)),
-    normalnoise_ts_select = try(LDATS::select_TS(normalnoise_ts))
+    ts_select_normalnoise =  target(try(LDATS::select_TS(ts_normalnoise)), 
+                                 transform = map(ts_normalnoise)),
+    ts_select_timename_results = target(collect_analyses(list(ts_select_timename)),
+                               transform = combine(ts_select_timename)),
+    ts_select_timestep_results = target(collect_analyses(list(ts_select_timestep)),
+                                        transform = combine(ts_select_timestep)),
+    ts_select_normalnoise_results = target(collect_analyses(list(ts_select_normalnoise)),
+                                        transform = combine(ts_select_normalnoise))
 )
 
-
-summary_tables <- drake_plan(
-    ts_result_summary = collect_ts_result_summary(selected_ts_results = list(default = default_ts_select, newmoon = newmoon_ts_select,month = month_ts_select, timestep = timestep_ts_select, normalnoise = normalnoise_ts_select))
-)
-
-report <- drake_plan(
-    covariates_report = rmarkdown::render(
-        knitr_in("analysis/reports/test_covariates_ts_report.Rmd")
-    ) 
-)
 
 ## The entire pipeline
-pipeline <- bind_rows(datasets, lda_plan, cpt_plan, summary_tables, report)
+pipeline <- bind_rows(datasets, datasets_cov, lda_plan, cpt_plan)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
