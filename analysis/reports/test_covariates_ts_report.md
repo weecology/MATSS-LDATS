@@ -16,10 +16,11 @@ ts_result_summary <- readd(ts_result_summary, cache = cache)
 print(ts_result_summary)
 ```
 
-    ##    ts_name nchangepoints
-    ## 1  default             5
-    ## 2  newmoon             2
-    ## 3    month             4
-    ## 4 timestep             2
+    ##       ts_name nchangepoints
+    ## 1     default             6
+    ## 2     newmoon             2
+    ## 3       month             4
+    ## 4    timestep             3
+    ## 5 normalnoise             4
 
 Default = `formula = ~1`.
