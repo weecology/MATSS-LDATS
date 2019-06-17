@@ -59,15 +59,24 @@ cpt_plan <- drake_plan(
                                   weights = LDATS::document_weights(portal_rodents_cov$abundance),
                                   control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)),
     
+    normalnoise_ts = LDATS::TS_on_LDA(LDA_models = portal_rodents_lda,
+                                      document_covariate_table = 
+                                          as.data.frame(portal_rodents_cov$covariates),
+                                      formulas = ~normalnoise,
+                                      nchangepoints = c(0:6),
+                                      weights = LDATS::document_weights(portal_rodents_cov$abundance),
+                                      control = LDATS::TS_controls_list(nit = 1000, timename = portal_rodents_cov$metadata$timename)),
+    
     default_ts_select = try(LDATS::select_TS(default_ts)),
     newmoon_ts_select = try(LDATS::select_TS(newmoon_ts)),
     month_ts_select = try(LDATS::select_TS(month_ts)),
-    timestep_ts_select = try(LDATS::select_TS(timestep_ts))
+    timestep_ts_select = try(LDATS::select_TS(timestep_ts)),
+    normalnoise_ts_select = try(LDATS::select_TS(normalnoise_ts))
 )
 
 
 summary_tables <- drake_plan(
-    ts_result_summary = collect_ts_result_summary(selected_ts_results = list(default = default_ts_select, newmoon = newmoon_ts_select,month = month_ts_select, timestep = timestep_ts_select))
+    ts_result_summary = collect_ts_result_summary(selected_ts_results = list(default = default_ts_select, newmoon = newmoon_ts_select,month = month_ts_select, timestep = timestep_ts_select, normalnoise = normalnoise_ts_select))
 )
 
 ## The entire pipeline
