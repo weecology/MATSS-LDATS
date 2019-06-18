@@ -15,7 +15,6 @@ source(here::here("analysis", "add_toy_covariates.R"))
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,
                                 bbs_subset = c(1:5))
 
-datasets <- datasets[1:20, ]
 datasets_cov <- drake_plan(
     cov = target(add_toy_covariates(data),
                  transform = map(data = !!rlang::syms(datasets$target))
