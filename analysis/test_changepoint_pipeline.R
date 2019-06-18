@@ -59,9 +59,19 @@ cpt_plan <-  drake_plan (
                                         transform = combine(ts_select_normalnoise))
 )
 
+summary_tables <- drake_plan(
+    timename_result_summary = collect_ts_result_summary(selected_ts_results = ts_select_timename_results),
+    timestep_result_summary = collect_ts_result_summary(selected_ts_results = ts_select_timestep_results),
+    normalnoise_result_summary = collect_ts_result_summary(selected_ts_results = ts_select_normalnoise_results)
+)
 
+report <- drake_plan(
+    ts_test_report = rmarkdown::render(
+        knitr_in("analysis/reports/test_covariates_ts_report.Rmd")
+    )
+)
 ## The entire pipeline
-pipeline <- bind_rows(datasets, datasets_cov, lda_plan, cpt_plan)
+pipeline <- bind_rows(datasets, datasets_cov, lda_plan, cpt_plan, summary_tables, report)
 
 ## Set up the cache and config
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
