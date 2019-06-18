@@ -33,17 +33,17 @@ lda_plan <- drake_plan(
 
 ## Cpt
 cpt_plan <-  drake_plan (
-    ts_timename = target(run_TS(data, lda, nchangepoints = c(0:6)), 
+    ts_timename = target(run_TS(data, lda_cov, nchangepoints = c(0:6)), 
                          transform = map(data = !!rlang::syms(datasets$target), 
-                                         lda)),
-    ts_timestep = target(run_TS(data, lda, nchangepoints = c(0:6),
+                                         lda_cov = !!rlang::syms(lda_plan$target))),
+    ts_timestep = target(run_TS(data, lda_cov, nchangepoints = c(0:6),
                                 formulas = ~timestep),
                          transform = map(data = !!rlang::syms(datasets$target), 
-                                         lda)),
-    ts_normalnoise = target(run_TS(data, lda, nchangepoints = c(0:6),
+                                         lda_cov = !!rlang::syms(lda_plan$target))),
+    ts_normalnoise = target(run_TS(data, lda_cov, nchangepoints = c(0:6),
                                    formulas = ~normalnoise),
                             transform = map(data = !!rlang::syms(datasets$target), 
-                                            lda)),
+                                            lda_cov = !!rlang::syms(lda_plan$target))),
     
     ts_select_timename = target(try(LDATS::select_TS(ts_timename)), 
                        transform = map(ts_timename)),
