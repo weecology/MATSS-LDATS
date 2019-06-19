@@ -117,18 +117,18 @@ lda_ts_result_summary
     ## 1                ts_select_ts_maizuru_data_lda_maizuru_data             2
     ## 2                ts_select_ts_jornada_data_lda_jornada_data            NA
     ## 3                        ts_select_ts_sgs_data_lda_sgs_data            NA
-    ## 4  ts_select_ts_cowley_lizards_data_lda_cowley_lizards_data             2
-    ## 5    ts_select_ts_cowley_snakes_data_lda_cowley_snakes_data             2
-    ## 6                    ts_select_ts_karoo_data_lda_karoo_data             2
-    ## 7                  ts_select_ts_kruger_data_lda_kruger_data             2
-    ## 8                  ts_select_ts_portal_data_lda_portal_data             2
-    ## 9                        ts_select_ts_sdl_data_lda_sdl_data             2
-    ## 10                 ts_select_ts_mtquad_data_lda_mtquad_data             2
-    ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11             2
-    ## 12   ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11             2
-    ## 13   ts_select_ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11             2
-    ## 14   ts_select_ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11             2
-    ## 15   ts_select_ts_bbs_data_rtrg_6_11_lda_bbs_data_rtrg_6_11             2
+    ## 4  ts_select_ts_cowley_lizards_data_lda_cowley_lizards_data             0
+    ## 5    ts_select_ts_cowley_snakes_data_lda_cowley_snakes_data             0
+    ## 6                    ts_select_ts_karoo_data_lda_karoo_data             0
+    ## 7                  ts_select_ts_kruger_data_lda_kruger_data             0
+    ## 8                  ts_select_ts_portal_data_lda_portal_data             3
+    ## 9                        ts_select_ts_sdl_data_lda_sdl_data             0
+    ## 10                 ts_select_ts_mtquad_data_lda_mtquad_data             0
+    ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11             0
+    ## 12   ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11             1
+    ## 13   ts_select_ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11             0
+    ## 14   ts_select_ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11             0
+    ## 15   ts_select_ts_bbs_data_rtrg_6_11_lda_bbs_data_rtrg_6_11             0
 
 Cross-community results
 -----------------------
