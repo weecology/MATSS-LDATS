@@ -114,14 +114,14 @@ lda_ts_result_summary
     ## 14  bbs_data_rtrg_4_11
     ## 15  bbs_data_rtrg_6_11
     ##                                                     ts_name nchangepoints
-    ## 1                ts_select_ts_maizuru_data_lda_maizuru_data             2
+    ## 1                ts_select_ts_maizuru_data_lda_maizuru_data             1
     ## 2                ts_select_ts_jornada_data_lda_jornada_data            NA
     ## 3                        ts_select_ts_sgs_data_lda_sgs_data            NA
     ## 4  ts_select_ts_cowley_lizards_data_lda_cowley_lizards_data             0
     ## 5    ts_select_ts_cowley_snakes_data_lda_cowley_snakes_data             0
     ## 6                    ts_select_ts_karoo_data_lda_karoo_data             0
     ## 7                  ts_select_ts_kruger_data_lda_kruger_data             0
-    ## 8                  ts_select_ts_portal_data_lda_portal_data             3
+    ## 8                  ts_select_ts_portal_data_lda_portal_data             2
     ## 9                        ts_select_ts_sdl_data_lda_sdl_data             0
     ## 10                 ts_select_ts_mtquad_data_lda_mtquad_data             0
     ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11             0
