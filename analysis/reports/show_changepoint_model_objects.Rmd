@@ -1,0 +1,74 @@
+---
+title: "Changepoint model objects"
+author: "Renata Diaz"
+date: "10/12/2018"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MATSS)
+library(drake)
+```
+
+## Read in the results
+
+```{r load TS results}
+# define where the cache is located
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+```
+
+Portal:
+```{r portal TS select}
+
+ts_select_ts_portal_data_lda_portal_data <- readd(ts_select_ts_portal_data_lda_portal_data,
+                                                  cache = cache)
+
+print(ts_select_ts_portal_data_lda_portal_data$formula)
+
+print(ts_select_ts_portal_data_lda_portal_data$control)
+
+print(ts_select_ts_portal_data_lda_portal_data$ptMCMC_diagnostics)
+
+print(plot(ts_select_ts_portal_data_lda_portal_data))
+```
+
+
+BBS rtrg_1_11:
+
+```{r BBS rtrg1_11}
+
+
+ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11,
+                                                  cache = cache)
+
+print(ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11$formula)
+
+print(ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11$control)
+
+print(ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11$ptMCMC_diagnostics)
+
+print(plot(ts_select_ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11))
+
+```
+
+
+
+```{r BBS rtrg2_11}
+
+
+ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11 <- readd(ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11,
+                                                  cache = cache)
+
+print(ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11$formula)
+
+print(ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11$control)
+
+print(ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11$ptMCMC_diagnostics)
+
+print(plot(ts_select_ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11))
+
+```
