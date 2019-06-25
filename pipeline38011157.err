@@ -1,86 +1,0 @@
-Please look at our data formats by running `vignette("data-formats")`
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-Loading required package: future
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-
-..................Registered S3 methods overwritten by 'ggplot2':
-  method         from 
-  [.quosures     rlang
-  c.quosures     rlang
-  print.quosures rlang
-.....................target ts_maizuru_data_lda_maizuru_data
-.target ts_jornada_data_lda_jornada_data
-.target ts_sgs_data_lda_sgs_data
-.target ts_cowley_lizards_data_lda_cowley_lizards_data
-.target ts_cowley_snakes_data_lda_cowley_snakes_data
-.target ts_karoo_data_lda_karoo_data
-.target ts_kruger_data_lda_kruger_data
-.target ts_portal_data_lda_portal_data
-.target ts_sdl_data_lda_sdl_data
-.target ts_mtquad_data_lda_mtquad_data
-.target ts_bbs_data_rtrg_1_11_lda_bbs_data_rtrg_1_11
-.target ts_bbs_data_rtrg_2_11_lda_bbs_data_rtrg_2_11
-.target ts_bbs_data_rtrg_3_11_lda_bbs_data_rtrg_3_11
-.target ts_bbs_data_rtrg_4_11_lda_bbs_data_rtrg_4_11
-.target ts_bbs_data_rtrg_6_11_lda_bbs_data_rtrg_6_11
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_jornada_data_lda_jornada_data warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_jornada_data_lda_jornada_data messages:
-  The timename column cannot be coerced to integers without losing information.
-..
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_sgs_data_lda_sgs_data warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_sgs_data_lda_sgs_data messages:
-  The timename column cannot be coerced to integers without losing information.
-..slurmstepd: error: *** JOB 38011157 ON c34b-s42 CANCELLED AT 2019-06-19T16:58:17 ***
