@@ -47,6 +47,9 @@ extract_ts_variable <- function(ts_result, variable_name) {
     if(variable_name == "nchangepoints") {
         return(ts_result$nchangepoints)
     }
+    if(variable_name == "formula") {
+        return(as.character(ts_result$formula))
+    }
     return("Variable not recognized")
     } else {
         return(NA)
@@ -61,6 +64,7 @@ collect_ts_result_summary <- function(selected_ts_results) {
     ts_result_summary <- data.frame(
         ts_name = names(selected_ts_results),
         nchangepoints = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
+        formula = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "formula", FUN.VALUE = "~1"),
         stringsAsFactors = FALSE,
         row.names = NULL
     )
