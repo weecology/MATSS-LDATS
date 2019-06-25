@@ -48,6 +48,7 @@ extract_ts_variable <- function(ts_result, variable_name) {
         return(ts_result$nchangepoints)
     }
     if(variable_name == "formula") {
+        library(formula.tools)
         return(as.character(ts_result$formula))
     }
     return("Variable not recognized")
