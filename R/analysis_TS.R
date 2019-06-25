@@ -13,7 +13,7 @@
 #' @export
 #'
 run_TS <- function(data, ldamodels,
-                   formulas = NULL,
+                   formulas = c("intercept", "time"),
                    nchangepoints = 0:6,
                    weighting = 'proportional',
                    control = LDATS::TS_controls_list())
@@ -29,13 +29,15 @@ run_TS <- function(data, ldamodels,
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
     
-    ## Get time for formulas
-    
-    form <- as.formula(paste0("~ ", data$metadata$timename))
-    
-    if(!is.null(formulas)) {
-       form <- formulas 
+    ## Get formulas
+    if(("time" %in% formulas) && ("intercept" %in% formulas)) {
+        form <- as.formula(paste0("~ ", data$metadata$timename))
+        form2 <- ~1
+        formulas <- c(form, form2)
+    } else {
+        formulas <- formulas
     }
+    
     
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {
@@ -46,7 +48,7 @@ run_TS <- function(data, ldamodels,
     
     LDATS::TS_on_LDA(LDA_models = ldamodels,
                      document_covariate_table = as.data.frame(data$covariates),
-                     formulas = form,
+                     formulas = formulas,
                      nchangepoints = nchangepoints,
                      weights = weights,
                      control = LDATS::TS_controls_list(nit = 1000, timename = data$metadata$timename, magnitude = max(1, floor(0.03 * nrow(data$abundance)))))

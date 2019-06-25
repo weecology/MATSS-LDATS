@@ -5,7 +5,7 @@
 \title{Build a drake plan for LDATS analysis}
 \usage{
 build_ldats_analyses_plan(datasets, max_topics = 3, nseeds = 4,
-  nchangepoints = c(2, 3))
+  nchangepoints = c(2, 3), formulas = c("time", "intercept"))
 }
 \arguments{
 \item{datasets}{the drake plan for the datasets to analyze}
@@ -17,6 +17,8 @@ test a number of topics from 2 to \code{max_topics})}
 value of \code{topics}. Must be conformable to \code{integer} value.}
 
 \item{nchangepoints}{Vector of integers: which numbers of changepoints to try.}
+
+\item{formulas}{Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.}
 }
 \value{
 a drake plan

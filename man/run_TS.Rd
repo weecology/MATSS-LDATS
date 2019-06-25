@@ -4,8 +4,9 @@
 \alias{run_TS}
 \title{Run Changepoint Model on LDA + TimeSeries Data}
 \usage{
-run_TS(data, ldamodels, formulas = NULL, nchangepoints = 0:6,
-  weighting = "proportional", control = LDATS::TS_controls_list())
+run_TS(data, ldamodels, formulas = c("intercept", "time"),
+  nchangepoints = 0:6, weighting = "proportional",
+  control = LDATS::TS_controls_list())
 }
 \arguments{
 \item{data}{The dataset, in the \code{MATSS} format. Including covariates & metadata.}

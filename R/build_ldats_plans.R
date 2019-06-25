@@ -9,12 +9,12 @@
 #' @export
 #'
 build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4, 
-                             nchangepoints = c(2, 3))
+                             nchangepoints = c(2, 3), formulas = c("time", "intercept"))
 {
     drake::drake_plan(
         lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
                      transform = map(data = !!rlang::syms(datasets$target))),
-        ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints), 
+        ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints, formulas = !!formulas), 
                     transform = map(data = !!rlang::syms(datasets$target), 
                                     lda)), 
         ts_select = target(try(LDATS::select_TS(ts)), 
