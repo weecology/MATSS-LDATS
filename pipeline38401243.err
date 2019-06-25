@@ -1,0 +1,53 @@
+Please look at our data formats by running `vignette("data-formats")`
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+.......Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+.......target ts_result_summary
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+fail ts_result_summary
+Error: Target `ts_result_summary` failed. Call `diagnose(ts_result_summary)` for details. Error message:
+  values must be length 1,
+ but FUN(X[[1]]) result is length 3
+In addition: Warning message:
+In if (nzchar(expr)) { :
+  the condition has length > 1 and only the first element will be used
+Execution halted
