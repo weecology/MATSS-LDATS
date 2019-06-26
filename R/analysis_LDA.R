@@ -34,7 +34,4 @@ run_LDA <- function(data,
                                 topics = topics_vector,
                                 nseeds = nseeds, control = control)
 
-    #### Select the best LDA (AIC) ####
-    LDATS::select_LDA(LDA_models = LDA_models, control = control)
-
 }
