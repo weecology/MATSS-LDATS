@@ -52,7 +52,7 @@ extract_ts_variable <- function(ts_result, variable_name) {
     }
     return("Variable not recognized")
     } else {
-        return(NA)
+        return(NULL)
     }
 }
 
