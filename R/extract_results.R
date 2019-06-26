@@ -65,9 +65,9 @@ collect_ts_result_summary <- function(selected_ts_results) {
     successful_ts_select_results <- selected_ts_results[ which(unlist(lapply(selected_ts_results, FUN = is.list)))]
     
     ts_result_summary <- data.frame(
-        ts_name = names(selected_ts_results),
-        nchangepoints = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
-        formula = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "formula", FUN.VALUE = "~1"),
+        ts_name = names(successful_ts_select_results),
+        nchangepoints = vapply(successful_ts_select_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
+        formula = vapply(successful_ts_select_results, FUN = try(extract_ts_variable), variable_name = "formula", FUN.VALUE = "~1"),
         stringsAsFactors = FALSE,
         row.names = NULL
     )
