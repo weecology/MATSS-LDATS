@@ -33,7 +33,6 @@ Imports:
     drake (>= 7.0.0),
     LDATS (>= 0.1.0), 
     dplyr,
-    formula.tools,
     magrittr,
     knitr,
     rmarkdown,
