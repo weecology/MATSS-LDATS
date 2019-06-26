@@ -52,7 +52,7 @@ extract_ts_variable <- function(ts_result, variable_name) {
     }
     return("Variable not recognized")
     } else {
-        return(NULL)
+        return()
     }
 }
 
@@ -61,6 +61,9 @@ extract_ts_variable <- function(ts_result, variable_name) {
 #' @return table of ts name, nchangepoints
 #' @export
 collect_ts_result_summary <- function(selected_ts_results) {
+    
+    successful_ts_select_results <- selected_ts_results[ which(unlist(lapply(selected_ts_results, FUN = is.list)))]
+    
     ts_result_summary <- data.frame(
         ts_name = names(selected_ts_results),
         nchangepoints = vapply(selected_ts_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
