@@ -1,0 +1,244 @@
+[1] ".Rprofile loaded"
+<environment: R_GlobalEnv>
+<environment: R_GlobalEnv>
+[1] "I know I am on SLURM!"
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 96
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 96
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 96
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+Running TS model with 1 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 134
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 134
+Running TS model with 1 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Year on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 134
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 158
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 158
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 158
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 120
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 120
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 120
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 100
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 100
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 100
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 144
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 144
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 144
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 84
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 84
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 84
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 12
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 12
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 12
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 170
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 170
+Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ year on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ year on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 170
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 156
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 156
+Running TS model with 1 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ newmoonnumber on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 0 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 156
+Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 156
+Running TS model with 1 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 2 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ Date on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
+Running TS model with 3 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 156
+  Estimating changepoint distribution 
+  Estimating regressor distribution 
