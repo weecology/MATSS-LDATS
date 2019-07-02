@@ -30,7 +30,7 @@ analyses <- build_ldats_analyses_plan(datasets, max_topics = 6, nchangepoints = 
 analyses <- analyses[ which(!grepl("ts_", analyses$target)), ]
 
 summary_tables <- drake_plan(
-    lda_result_summary = collect_lda_result_summary(lda_results = lda_results),
+    lda_result_summary = collect_lda_result_summary(lda_results = lda_results)
   #  ts_result_summary = collect_ts_result_summary(selected_ts_results = ts_select_results),
   #  lda_ts_result_summary = collect_lda_ts_results(lda_result_summary, ts_result_summary)
 )
@@ -39,10 +39,11 @@ summary_tables <- drake_plan(
 reports <- drake_plan(
     lda_report = rmarkdown::render(
         knitr_in("analysis/reports/lda_report.Rmd")
-    ) ,
+   # ) ,
     # ts_report = rmarkdown::render(
     #     knitr_in("analysis/reports/ts_report.Rmd")
     # )
+)
 )
 
 ## The entire pipeline
