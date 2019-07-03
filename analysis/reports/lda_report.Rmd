@@ -68,7 +68,7 @@ lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
 
-```{r plot lda summary, echo = F}
+```{r plot lda summary, echo = F, eval = F}
 
 plot(lda_ts_result_summary$ntimeseries, lda_ts_result_summary$ntopics, 
      main = 'Number of topics by number of timeseries', 

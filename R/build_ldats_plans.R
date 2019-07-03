@@ -11,21 +11,10 @@
 build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4, 
                              nchangepoints = c(2, 3), formulas = c("time", "intercept"))
 {
-    AICc <- function(x, dat){
-        ll <- logLik(x)
-        np <- attr(ll, "df")
-        nd <- dim(dat)[1] * dim(dat)[2]
-        AIC <- AIC(x)
-        pen <- (2*np^2 + 2*np)/(nd - np - 1)
-        AIC + pen
-    }
-    
     drake::drake_plan(
         lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
                      transform = map(data = !!rlang::syms(datasets$target))),
-        lda_select = target(LDATS::select_LDA(lda, control = LDATS::LDA_controls_list(measurer = AICc
-            
-        )),
+        lda_select = target(LDATS::select_LDA(lda, control = LDATS::LDA_controls_list(measurer = AICc)),
                             transform = map(lda)),
         ts = target(run_TS(data, lda_select, nchangepoints = !!nchangepoints, formulas = !!formulas), 
                     transform = map(data = !!rlang::syms(datasets$target), 
@@ -85,4 +74,23 @@ build_ts_select_plan <- function(methods, cpt_targets)
                      transform = combine(analysis, .by = fun))
   )
 }
+
+
+#' AICc measurer function 
+#'
+#' @param x LDA model
+#'
+#' @return AICc
+#' @export
+#
+AICc <- function(x){
+    ll <- logLik(x)
+    np <- attr(ll, "df")
+    nd <- x@Dim[1] * x@Dim[2]
+    AIC <- AIC(x)
+    pen <- (2*np^2 + 2*np)/(nd - np - 1)
+    out = AIC + pen
+    return(out)
+}
+
 
