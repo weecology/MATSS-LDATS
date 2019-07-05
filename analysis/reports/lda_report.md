@@ -109,19 +109,51 @@ lda_ts_result_summary
     ## 13  lda_select_lda_bbs_data_rtrg_3_11       6         115         51
     ## 14  lda_select_lda_bbs_data_rtrg_4_11       6         113         51
     ## 15  lda_select_lda_bbs_data_rtrg_6_11       6          81         40
-    ##                              data ts_name nchangepoints formula
-    ## 1         select_lda_maizuru_data    <NA>            NA    <NA>
-    ## 2         select_lda_jornada_data    <NA>            NA    <NA>
-    ## 3             select_lda_sgs_data    <NA>            NA    <NA>
-    ## 4  select_lda_cowley_lizards_data    <NA>            NA    <NA>
-    ## 5   select_lda_cowley_snakes_data    <NA>            NA    <NA>
-    ## 6           select_lda_karoo_data    <NA>            NA    <NA>
-    ## 7          select_lda_kruger_data    <NA>            NA    <NA>
-    ## 8          select_lda_portal_data    <NA>            NA    <NA>
-    ## 9             select_lda_sdl_data    <NA>            NA    <NA>
-    ## 10         select_lda_mtquad_data    <NA>            NA    <NA>
-    ## 11  select_lda_bbs_data_rtrg_1_11    <NA>            NA    <NA>
-    ## 12  select_lda_bbs_data_rtrg_2_11    <NA>            NA    <NA>
-    ## 13  select_lda_bbs_data_rtrg_3_11    <NA>            NA    <NA>
-    ## 14  select_lda_bbs_data_rtrg_4_11    <NA>            NA    <NA>
-    ## 15  select_lda_bbs_data_rtrg_6_11    <NA>            NA    <NA>
+    ##                   data
+    ## 1         maizuru_data
+    ## 2         jornada_data
+    ## 3             sgs_data
+    ## 4  cowley_lizards_data
+    ## 5   cowley_snakes_data
+    ## 6           karoo_data
+    ## 7          kruger_data
+    ## 8          portal_data
+    ## 9             sdl_data
+    ## 10         mtquad_data
+    ## 11  bbs_data_rtrg_1_11
+    ## 12  bbs_data_rtrg_2_11
+    ## 13  bbs_data_rtrg_3_11
+    ## 14  bbs_data_rtrg_4_11
+    ## 15  bbs_data_rtrg_6_11
+    ##                                                                ts_name
+    ## 1                ts_select_ts_maizuru_data_lda_select_lda_maizuru_data
+    ## 2                                                                 <NA>
+    ## 3                                                                 <NA>
+    ## 4  ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data
+    ## 5    ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data
+    ## 6                    ts_select_ts_karoo_data_lda_select_lda_karoo_data
+    ## 7                  ts_select_ts_kruger_data_lda_select_lda_kruger_data
+    ## 8                  ts_select_ts_portal_data_lda_select_lda_portal_data
+    ## 9                        ts_select_ts_sdl_data_lda_select_lda_sdl_data
+    ## 10                 ts_select_ts_mtquad_data_lda_select_lda_mtquad_data
+    ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
+    ## 12   ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
+    ## 13   ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
+    ## 14   ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11
+    ## 15   ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11
+    ##    nchangepoints               formula
+    ## 1              3             gamma ~ 1
+    ## 2             NA                  <NA>
+    ## 3             NA                  <NA>
+    ## 4              0             gamma ~ 1
+    ## 5              0             gamma ~ 1
+    ## 6              0             gamma ~ 1
+    ## 7              0             gamma ~ 1
+    ## 8              2 gamma ~ newmoonnumber
+    ## 9              0             gamma ~ 1
+    ## 10             0          gamma ~ year
+    ## 11             0          gamma ~ year
+    ## 12             1             gamma ~ 1
+    ## 13             0          gamma ~ year
+    ## 14             0          gamma ~ year
+    ## 15             0             gamma ~ 1
