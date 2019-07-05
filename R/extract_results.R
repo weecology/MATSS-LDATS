@@ -84,9 +84,10 @@ collect_ts_result_summary <- function(selected_ts_results) {
 #' @importFrom stringr str_split
 collect_lda_ts_results <- function(lda_result_summary, ts_result_summary){
     lda_result_summary <- lda_result_summary %>%
-        dplyr::mutate(data = substr(lda_name, 5, nchar(lda_name)))
+        dplyr::mutate(data = stringr::str_split(lda_result_summary$lda_name, 
+                                                "select_lda_", simplify = T)[,2])
     ts_result_summary <- ts_result_summary %>%
-        dplyr::mutate(data = stringr::str_split(ts_result_summary$ts_name, "_lda_", simplify = T)[,2])
+        dplyr::mutate(data = stringr::str_split(ts_result_summary$ts_name, "select_lda_", simplify = T)[,2])
     
     lda_ts_result_summary <- dplyr::left_join(lda_result_summary, ts_result_summary, by = "data")
     
