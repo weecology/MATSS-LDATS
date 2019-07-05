@@ -32,8 +32,6 @@ vignettes/*.pdf
 .drake
 /.drake/*
 
-.drake_history/*
-.drake_history
 
 .future/*
 .future
