@@ -4,10 +4,10 @@
 \alias{AICc}
 \title{AICc measurer function}
 \usage{
-AICc(x)
+AICc(object)
 }
 \arguments{
-\item{x}{LDA model}
+\item{object}{LDA model}
 }
 \value{
 AICc

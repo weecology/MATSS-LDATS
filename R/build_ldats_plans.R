@@ -78,19 +78,33 @@ build_ts_select_plan <- function(methods, cpt_targets)
 
 #' AICc measurer function 
 #'
-#' @param x LDA model
+#' @param object LDA model
 #'
 #' @return AICc
 #' @export
 #
-AICc <- function(x){
-    ll <- logLik(x)
+AICc <- function(object){
+    aic <- AIC(object)
+    ll <- matssldats::logLik(object)
     np <- attr(ll, "df")
-    nd <- x@Dim[1] * x@Dim[2]
-    AIC <- AIC(x)
-    pen <- (2*np^2 + 2*np)/(nd - np - 1)
-    out = AIC + pen
-    return(out)
+    no <- attr(ll, "nobs")
+    aic + (2 * np^2 + 2 * np)/(no - np - 1)
+}
+
+#' Logliklihood (From updated LDATS)
+#'
+#' @param object for example an LDA model
+#' @param ... other arugments
+#'
+#' @return loglikelihood
+#' @export
+logLik.LDA_VEM <- function(object, ...){
+    val <- sum(object@loglikelihood)
+    df <- as.integer(object@control@estimate.alpha) + length(object@beta)
+    attr(val, "df") <- df
+    attr(val, "nobs") <- object@Dim[1] * object@Dim[2]
+    class(val) <- "logLik"
+    val
 }
 
 
