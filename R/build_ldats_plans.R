@@ -14,7 +14,7 @@ build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4,
     drake::drake_plan(
         lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
                      transform = map(data = !!rlang::syms(datasets$target))),
-        lda_select = target(LDATS::select_LDA(lda, control = LDATS::LDA_controls_list(measurer = AICc)),
+        lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
                             transform = map(lda)),
         ts = target(run_TS(data, lda_select, nchangepoints = !!nchangepoints, formulas = !!formulas), 
                     transform = map(data = !!rlang::syms(datasets$target), 
@@ -73,38 +73,6 @@ build_ts_select_plan <- function(methods, cpt_targets)
     results = target(MATSS::collect_analyses(list(analysis)),
                      transform = combine(analysis, .by = fun))
   )
-}
-
-
-#' AICc measurer function 
-#'
-#' @param object LDA model
-#'
-#' @return AICc
-#' @export
-#
-AICc <- function(object){
-    aic <- AIC(object)
-    ll <- matssldats::logLik(object)
-    np <- attr(ll, "df")
-    no <- attr(ll, "nobs")
-    aic + (2 * np^2 + 2 * np)/(no - np - 1)
-}
-
-#' Logliklihood (From updated LDATS)
-#'
-#' @param object for example an LDA model
-#' @param ... other arugments
-#'
-#' @return loglikelihood
-#' @export
-logLik <- function(object, ...){
-    val <- sum(object@loglikelihood)
-    df <- as.integer(object@control@estimate.alpha) + length(object@beta)
-    attr(val, "df") <- df
-    attr(val, "nobs") <- object@Dim[1] * object@Dim[2]
-    class(val) <- "logLik"
-    val
 }
 
 
