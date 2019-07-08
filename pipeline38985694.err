@@ -1,0 +1,4 @@
+Please look at our data formats by running `vignette("data-formats")`
+Error in dots_values(...) : object 'analysis' not found
+Calls: <Anonymous> -> flatten_bindable -> dots_values
+Execution halted
