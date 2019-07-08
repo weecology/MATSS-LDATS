@@ -20,26 +20,33 @@ if (FALSE)
 ## Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
+# 
+# lda_models_lists <-  drake::drake_plan(
+#     lda = target(run_LDA(data, max_topics = 3, nseeds = 2),
+#                  transform = map(data = !!rlang::syms(datasets$target))
+#     )
+# )
+# 
+# lda_models_selected <- drake::drake_plan(
+#     lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
+#                         transform = map(lda = !!rlang::syms(lda_models_lists$target)))
+# )
+# 
+# 
+# ts_models_lists <- drake::drake_plan(
+#     ts = target(run_TS(data, lda_select, nchangepoints = c(0,1),formulas = c("intercept", "time"), control = list()), 
+#                 transform = map(data = !!rlang::syms(datasets$target), 
+#                                 lda_select = !!rlang::syms(lda_models_selected$target))))
+# 
+# ts_selects <- drake::drake_plan(
+#     ts_select = target(try(LDATS::select_TS(ts)), 
+#                        transform = map(ts = !!rlang::syms(ts_models_lists$target)))
+# )
 
-lda_models_lists <-  drake::drake_plan(
-    lda = target(run_LDA(data, max_topics = 3, nseeds = 2),
-                 transform = map(data = !!rlang::syms(datasets$target))
-    )
-)
+analyses <- build_ldats_analyses_plan(datasets, max_topics = 3, nchangepoints = c(0:1), formulas = c("time", "intercept"), nseeds = 5)
 
-lda_models_selected <- drake::drake_plan(
-    lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
-                        transform = map(lda = !!rlang::syms(lda_models_lists$target)))
-)
-
-
-ts_models_lists <- drake::drake_plan(
-    ts = target(run_TS(data, lda_select, nchangepoints = c(0,1),formulas = c("intercept", "time"), control = list()), 
-            transform = map(data = !!rlang::syms(datasets$target), 
-                            lda_select = !!rlang::syms(lda_models_selected$target))))
-
-
-pipeline <- dplyr::bind_rows(datasets, lda_models_lists, lda_models_selected, ts_models_lists)
+pipeline <- dplyr::bind_rows(datasets, analysis)
+                             #lda_models_lists, lda_models_selected, ts_models_lists, ts_selects, summary_tables)
 
 
 
