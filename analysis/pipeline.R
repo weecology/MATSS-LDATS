@@ -46,7 +46,7 @@ datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T
 
 analyses <- build_ldats_analyses_plan(datasets, max_topics = 3, nchangepoints = c(0:1), formulas = c("time", "intercept"), nseeds = 5)
 
-pipeline <- dplyr::bind_rows(datasets, analysis)
+pipeline <- dplyr::bind_rows(datasets, analyses)
 #lda_models_lists, lda_models_selected, ts_models_lists, ts_selects, summary_tables)
 
 
