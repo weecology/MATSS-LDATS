@@ -20,13 +20,13 @@ build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4,
                     transform = map(data = !!rlang::syms(datasets$target), 
                                     lda_select)), 
         ts_select = target(try(LDATS::select_TS(ts)), 
-                           transform = map(ts)), 
-        lda_results = target(collect_analyses(list(lda_select)),
-                             transform = combine(lda_select)), 
-        ts_results = target(collect_analyses(list(ts)),
-                            transform = combine(ts)), 
-        ts_select_results = target(collect_analyses(list(ts_select)),
-                                   transform = combine(ts_select)) 
+                           transform = map(ts))#, 
+        # lda_results = target(collect_analyses(list(lda_select)),
+        #                      transform = combine(lda_select)), 
+        # ts_results = target(collect_analyses(list(ts)),
+        #                     transform = combine(ts)), 
+        # ts_select_results = target(collect_analyses(list(ts_select)),
+        #                            transform = combine(ts_select)) 
     )
 }
 
