@@ -41,6 +41,14 @@ ts_models_lists <- drake::drake_plan(
 
 pipeline <- dplyr::bind_rows(datasets, lda_models_lists, lda_models_selected, ts_models_lists)
 
+
+
+
+## Set up the cache and config
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+
 ## Run the pipeline
 nodename <- Sys.info()["nodename"]
 if(grepl("ufhpc", nodename)) {
