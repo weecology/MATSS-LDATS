@@ -98,7 +98,7 @@ AICc <- function(object){
 #'
 #' @return loglikelihood
 #' @export
-logLik.LDA_VEM <- function(object, ...){
+logLik <- function(object, ...){
     val <- sum(object@loglikelihood)
     df <- as.integer(object@control@estimate.alpha) + length(object@beta)
     attr(val, "df") <- df
