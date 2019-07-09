@@ -1,37 +1,0 @@
-Please look at our data formats by running `vignette("data-formats")`
-Loading required package: future
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-
-.............................target lda_maizuru_data
-.target lda_jornada_data
-.target lda_sgs_data
-.target lda_cowley_lizards_data
-.target lda_cowley_snakes_data
-.target lda_karoo_data
-.target lda_kruger_data
-.target lda_portal_data
-.target lda_sdl_data
-.target lda_mtquad_data
-.target lda_bbs_data_rtrg_1_11
-.target lda_bbs_data_rtrg_2_11
-.target lda_bbs_data_rtrg_3_11
-.target lda_bbs_data_rtrg_4_11
-.target lda_bbs_data_rtrg_6_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-fail lda_bbs_data_rtrg_2_11
-Error: Target `lda_bbs_data_rtrg_2_11` failed. Call `diagnose(lda_bbs_data_rtrg_2_11)` for details. Error message:
-  control is not of class LDA_controls
-In addition: There were 15 warnings (use warnings() to see them)
-Execution halted
