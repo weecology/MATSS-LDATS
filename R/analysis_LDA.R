@@ -21,11 +21,11 @@ run_LDA <- function(data,
                     max_topics = 6, nseeds = 200,
                     control = list())
 {
-    # if (!MATSS::check_data_format(data))
-    # {
-    #     wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
-    #     tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
-    # }
+    if (!MATSS::check_data_format(data))
+    {
+        wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
+        tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
+    }
 
     #### Run LDAs ####
     abundances <- data$abundance
