@@ -8,7 +8,7 @@ The following object is masked from ‘package:drake’:
     plan
 
 
-................................target maizuru_data
+..............................target maizuru_data
 target jornada_data
 target sgs_data
 target cowley_lizards_data
@@ -23,64 +23,6 @@ The following object is masked from ‘package:drake’:
 target bbs_data_rtrg_3_11
 target bbs_data_rtrg_4_11
 target bbs_data_rtrg_6_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_cowley_lizards_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_cowley_snakes_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_karoo_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_kruger_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Target portal_data messages:
-  Loading in data version 1.117.0
-.target lda_portal_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_sdl_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_mtquad_data
 
 Attaching package: ‘future’
 
@@ -152,6 +94,96 @@ The following object is masked from ‘package:drake’:
 
     plan
 
+.target lda_cowley_lizards_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target lda_cowley_snakes_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_karoo_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_kruger_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target portal_data messages:
+  Loading in data version 1.117.0
+.target lda_portal_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target lda_sdl_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_mtquad_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_select_lda_bbs_data_rtrg_2_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_select_lda_bbs_data_rtrg_3_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_select_lda_bbs_data_rtrg_4_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_select_lda_bbs_data_rtrg_6_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
 .target lda_select_lda_maizuru_data
 
 Attaching package: ‘future’
@@ -216,7 +248,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target lda_select_lda_sdl_data
+..target lda_select_lda_sdl_data
 
 Attaching package: ‘future’
 
@@ -224,7 +256,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-..target lda_select_lda_mtquad_data
+.target lda_select_lda_mtquad_data
 
 Attaching package: ‘future’
 
@@ -240,62 +272,6 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target lda_select_lda_bbs_data_rtrg_2_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_select_lda_bbs_data_rtrg_3_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_select_lda_bbs_data_rtrg_4_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_select_lda_bbs_data_rtrg_6_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_sdl_data_lda_select_lda_sdl_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_mtquad_data_lda_select_lda_mtquad_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
 .target ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
 
 Attaching package: ‘future’
@@ -304,7 +280,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
+..target ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
 
 Attaching package: ‘future’
 
@@ -360,7 +336,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data
+..target ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data
 
 Attaching package: ‘future’
 
@@ -368,7 +344,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target ts_karoo_data_lda_select_lda_karoo_data
+..target ts_karoo_data_lda_select_lda_karoo_data
 
 Attaching package: ‘future’
 
@@ -376,7 +352,7 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target ts_kruger_data_lda_select_lda_kruger_data
+..target ts_kruger_data_lda_select_lda_kruger_data
 
 Attaching package: ‘future’
 
@@ -386,67 +362,31 @@ The following object is masked from ‘package:drake’:
 
 .
 target ts_portal_data_lda_select_lda_portal_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_sdl_data_lda_select_lda_sdl_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_mtquad_data_lda_select_lda_mtquad_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
 target lda_results
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target lda_result_summary
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_jornada_data_lda_select_lda_jornada_data warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_jornada_data_lda_select_lda_jornada_data messages:
-  The timename column cannot be coerced to integers without losing information.
-.target ts_select_ts_jornada_data_lda_select_lda_jornada_data
 
 Attaching package: ‘future’
 
@@ -498,14 +438,6 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.target ts_select_ts_portal_data_lda_select_lda_portal_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
 .target ts_select_ts_sdl_data_lda_select_lda_sdl_data
 
 Attaching package: ‘future’
@@ -522,7 +454,68 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-.
+.target ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target lda_result_summary
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_jornada_data_lda_select_lda_jornada_data warnings:
+  Timename column is cannot be made integers without losing information
+Target ts_jornada_data_lda_select_lda_jornada_data messages:
+  The timename column cannot be coerced to integers without losing information.
+.target ts_select_ts_jornada_data_lda_select_lda_jornada_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target ts_select_ts_portal_data_lda_select_lda_portal_data
+
 Attaching package: ‘future’
 
 The following object is masked from ‘package:drake’:
@@ -600,6 +593,13 @@ The following object is masked from ‘package:drake’:
     plan
 
 .
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
 Attaching package: ‘future’
 
 The following object is masked from ‘package:drake’:
@@ -667,26 +667,9 @@ The following object is masked from ‘package:drake’:
 
     plan
 
-..target lda_report
+.target lda_report
 target ts_report
 
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Target lda_report messages:
-  
-
-processing file: lda_report.Rmd
-  output file: lda_report.knit.md
-
-  
-Preview created: lda_report.html
-  
-Output created: lda_report.md
-.
 Attaching package: ‘future’
 
 The following object is masked from ‘package:drake’:
@@ -703,4 +686,21 @@ processing file: ts_report.Rmd
 Preview created: ts_report.html
   
 Output created: ts_report.md
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_report messages:
+  
+
+processing file: lda_report.Rmd
+  output file: lda_report.knit.md
+
+  
+Preview created: lda_report.html
+  
+Output created: lda_report.md
 ..There were 15 warnings (use warnings() to see them)
