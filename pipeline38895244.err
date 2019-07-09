@@ -1,65 +1,0 @@
-Please look at our data formats by running `vignette("data-formats")`
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-Loading required package: future
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-
-...............Registered S3 method overwritten by 'LDATS':
-  method         from      
-  logLik.LDA_VEM matssldats
-.....................target lda_select_lda_bbs_data_rtrg_1_11
-.target lda_select_lda_karoo_data
-.target lda_select_lda_bbs_data_rtrg_2_11
-.target lda_select_lda_bbs_data_rtrg_6_11
-.target lda_select_lda_mtquad_data
-.target lda_select_lda_cowley_lizards_data
-.target lda_select_lda_cowley_snakes_data
-.target lda_select_lda_sdl_data
-.target lda_select_lda_sgs_data
-.target lda_select_lda_bbs_data_rtrg_3_11
-.target lda_select_lda_portal_data
-.target lda_select_lda_bbs_data_rtrg_4_11
-.target lda_select_lda_jornada_data
-.target lda_select_lda_maizuru_data
-.target lda_select_lda_kruger_data
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Target lda_select_lda_bbs_data_rtrg_1_11 messages:
-  Registered S3 method overwritten by 'LDATS':
-  method         from      
-  logLik.LDA_VEM matssldats
-fail lda_select_lda_bbs_data_rtrg_1_11
-Error: Target `lda_select_lda_bbs_data_rtrg_1_11` failed. Call `diagnose(lda_select_lda_bbs_data_rtrg_1_11)` for details. Error message:
-  'logLik' is not an exported object from 'namespace:matssldats'
-Execution halted
