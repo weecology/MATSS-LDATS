@@ -21,57 +21,19 @@ Errors
 
 Find TS models that threw errors while running and remove them:
 
-    ## [1] "ts_jornada_data_lda_select_lda_jornada_data"
-    ## [1] "Incorrect data structure"
-    ## [1] "ts_sgs_data_lda_select_lda_sgs_data"
-    ## [1] "Incorrect data structure"
-
 These TS models ran successfully:
 
-    ##  [1] "ts_maizuru_data_lda_select_lda_maizuru_data"              
-    ##  [2] "ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data"
-    ##  [3] "ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data"  
-    ##  [4] "ts_karoo_data_lda_select_lda_karoo_data"                  
-    ##  [5] "ts_kruger_data_lda_select_lda_kruger_data"                
-    ##  [6] "ts_portal_data_lda_select_lda_portal_data"                
-    ##  [7] "ts_sdl_data_lda_select_lda_sdl_data"                      
-    ##  [8] "ts_mtquad_data_lda_select_lda_mtquad_data"                
-    ##  [9] "ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11"  
-    ## [10] "ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11"  
-    ## [11] "ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11"  
-    ## [12] "ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11"  
-    ## [13] "ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11"
+    ## [1] "ts_mtquad_data_lda_select_lda_mtquad_data"              
+    ## [2] "ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11"
+    ## [3] "ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11"
 
 Find TS models that threw errors in selection and remove them:
 
-    ## [1] "ts_select_ts_jornada_data_lda_select_lda_jornada_data"
-    ## [1] "Error in LDATS::select_TS(ts_jornada_data_lda_select_lda_jornada_data) : \n  TS_models must be of class TS_on_LDA\n"
-    ## attr(,"class")
-    ## [1] "try-error"
-    ## attr(,"condition")
-    ## <simpleError in LDATS::select_TS(ts_jornada_data_lda_select_lda_jornada_data): TS_models must be of class TS_on_LDA>
-    ## [1] "ts_select_ts_sgs_data_lda_select_lda_sgs_data"
-    ## [1] "Error in LDATS::select_TS(ts_sgs_data_lda_select_lda_sgs_data) : \n  TS_models must be of class TS_on_LDA\n"
-    ## attr(,"class")
-    ## [1] "try-error"
-    ## attr(,"condition")
-    ## <simpleError in LDATS::select_TS(ts_sgs_data_lda_select_lda_sgs_data): TS_models must be of class TS_on_LDA>
-
 These TS models were selected correctly:
 
-    ##  [1] "ts_select_ts_maizuru_data_lda_select_lda_maizuru_data"              
-    ##  [2] "ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data"
-    ##  [3] "ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data"  
-    ##  [4] "ts_select_ts_karoo_data_lda_select_lda_karoo_data"                  
-    ##  [5] "ts_select_ts_kruger_data_lda_select_lda_kruger_data"                
-    ##  [6] "ts_select_ts_portal_data_lda_select_lda_portal_data"                
-    ##  [7] "ts_select_ts_sdl_data_lda_select_lda_sdl_data"                      
-    ##  [8] "ts_select_ts_mtquad_data_lda_select_lda_mtquad_data"                
-    ##  [9] "ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11"  
-    ## [10] "ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11"  
-    ## [11] "ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11"  
-    ## [12] "ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11"  
-    ## [13] "ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11"
+    ## [1] "ts_select_ts_mtquad_data_lda_select_lda_mtquad_data"              
+    ## [2] "ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11"
+    ## [3] "ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11"
 
 Community-level results
 -----------------------
@@ -81,70 +43,22 @@ lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
 
-    ##                              lda_name ntopics ntimeseries ntimesteps
-    ## 1         lda_select_lda_maizuru_data       6          15        285
-    ## 2         lda_select_lda_jornada_data       6          17         24
-    ## 3             lda_select_lda_sgs_data       4          11         13
-    ## 4  lda_select_lda_cowley_lizards_data       2           6         14
-    ## 5   lda_select_lda_cowley_snakes_data       2          16         14
-    ## 6           lda_select_lda_karoo_data       6          16         13
-    ## 7          lda_select_lda_kruger_data       6          12         31
-    ## 8          lda_select_lda_portal_data       5          21        319
-    ## 9             lda_select_lda_sdl_data       6          98         22
-    ## 10         lda_select_lda_mtquad_data       6          42         14
-    ## 11  lda_select_lda_bbs_data_rtrg_1_11       6          99         51
-    ## 12  lda_select_lda_bbs_data_rtrg_2_11       6         120         51
-    ## 13  lda_select_lda_bbs_data_rtrg_3_11       6         115         51
-    ## 14  lda_select_lda_bbs_data_rtrg_4_11       6         113         51
-    ## 15  lda_select_lda_bbs_data_rtrg_6_11       6          81         40
-    ##                   data
-    ## 1         maizuru_data
-    ## 2         jornada_data
-    ## 3             sgs_data
-    ## 4  cowley_lizards_data
-    ## 5   cowley_snakes_data
-    ## 6           karoo_data
-    ## 7          kruger_data
-    ## 8          portal_data
-    ## 9             sdl_data
-    ## 10         mtquad_data
-    ## 11  bbs_data_rtrg_1_11
-    ## 12  bbs_data_rtrg_2_11
-    ## 13  bbs_data_rtrg_3_11
-    ## 14  bbs_data_rtrg_4_11
-    ## 15  bbs_data_rtrg_6_11
-    ##                                                                ts_name
-    ## 1                ts_select_ts_maizuru_data_lda_select_lda_maizuru_data
-    ## 2                                                                 <NA>
-    ## 3                                                                 <NA>
-    ## 4  ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data
-    ## 5    ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data
-    ## 6                    ts_select_ts_karoo_data_lda_select_lda_karoo_data
-    ## 7                  ts_select_ts_kruger_data_lda_select_lda_kruger_data
-    ## 8                  ts_select_ts_portal_data_lda_select_lda_portal_data
-    ## 9                        ts_select_ts_sdl_data_lda_select_lda_sdl_data
-    ## 10                 ts_select_ts_mtquad_data_lda_select_lda_mtquad_data
-    ## 11   ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
-    ## 12   ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
-    ## 13   ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11
-    ## 14   ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11
-    ## 15   ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11
-    ##    nchangepoints               formula
-    ## 1              3             gamma ~ 1
-    ## 2             NA                  <NA>
-    ## 3             NA                  <NA>
-    ## 4              0             gamma ~ 1
-    ## 5              0             gamma ~ 1
-    ## 6              0             gamma ~ 1
-    ## 7              0             gamma ~ 1
-    ## 8              2 gamma ~ newmoonnumber
-    ## 9              0             gamma ~ 1
-    ## 10             0          gamma ~ year
-    ## 11             0          gamma ~ year
-    ## 12             1             gamma ~ 1
-    ## 13             0          gamma ~ year
-    ## 14             0          gamma ~ year
-    ## 15             0             gamma ~ 1
+    ##                            lda_name ntopics ntimeseries ntimesteps
+    ## 1        lda_select_lda_mtquad_data       3          42         14
+    ## 2 lda_select_lda_bbs_data_rtrg_1_11       3          99         51
+    ## 3 lda_select_lda_bbs_data_rtrg_2_11       3         120         51
+    ##                 data
+    ## 1        mtquad_data
+    ## 2 bbs_data_rtrg_1_11
+    ## 3 bbs_data_rtrg_2_11
+    ##                                                             ts_name
+    ## 1               ts_select_ts_mtquad_data_lda_select_lda_mtquad_data
+    ## 2 ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
+    ## 3 ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
+    ##   nchangepoints      formula
+    ## 1             0    gamma ~ 1
+    ## 2             0 gamma ~ year
+    ## 3             0 gamma ~ year
 
 Cross-community results
 -----------------------

@@ -15,18 +15,18 @@ build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4,
         lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
                      transform = map(data = !!rlang::syms(datasets$target))),
         lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
-                            transform = map(lda)),
-        ts = target(run_TS(data, lda_select, nchangepoints = !!nchangepoints, formulas = !!formulas), 
-                    transform = map(data = !!rlang::syms(datasets$target), 
-                                    lda_select)), 
-        ts_select = target(try(LDATS::select_TS(ts)), 
-                           transform = map(ts))#, 
-        # lda_results = target(collect_analyses(list(lda_select)),
-        #                      transform = combine(lda_select)), 
-        # ts_results = target(collect_analyses(list(ts)),
-        #                     transform = combine(ts)), 
-        # ts_select_results = target(collect_analyses(list(ts_select)),
-        #                            transform = combine(ts_select)) 
+                             transform = map(lda)),
+        ts = target(run_TS(data, lda_select, nchangepoints = !!nchangepoints, formulas = !!formulas),
+                    transform = map(data = !!rlang::syms(datasets$target),
+                                    lda_select)),
+        ts_select = target(try(LDATS::select_TS(ts)),
+                           transform = map(ts)),
+        lda_results = target(collect_analyses(list(lda_select)),
+                             transform = combine(lda_select)),
+        ts_results = target(collect_analyses(list(ts)),
+                            transform = combine(ts)),
+        ts_select_results = target(collect_analyses(list(ts_select)),
+                                   transform = combine(ts_select))
     )
 }
 
@@ -63,8 +63,7 @@ build_ts_analysis_plan <- function(methods, datasets, lda_targets)
 #' @return a drake plan
 #' @export
 #'
-build_ts_select_plan <- function(methods, cpt_targets)
-{
+build_ts_select_plan <- function(methods, cpt_targets){
   drake::drake_plan(
     analysis = target(fun(cpt),
                       transform = map(fun = !!rlang::syms(methods$target),
@@ -74,5 +73,3 @@ build_ts_select_plan <- function(methods, cpt_targets)
                      transform = combine(analysis, .by = fun))
   )
 }
-
-

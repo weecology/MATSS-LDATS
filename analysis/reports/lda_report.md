@@ -24,65 +24,17 @@ Plot LDAS
 
 Plot a maximum of 15.
 
-    ## [1] "lda_select_lda_maizuru_data"
+    ## [1] "lda_select_lda_mtquad_data"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-1.png)
 
-    ## [1] "lda_select_lda_jornada_data"
+    ## [1] "lda_select_lda_bbs_data_rtrg_1_11"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-2.png)
 
-    ## [1] "lda_select_lda_sgs_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-3.png)
-
-    ## [1] "lda_select_lda_cowley_lizards_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-4.png)
-
-    ## [1] "lda_select_lda_cowley_snakes_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-5.png)
-
-    ## [1] "lda_select_lda_karoo_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-6.png)
-
-    ## [1] "lda_select_lda_kruger_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-7.png)
-
-    ## [1] "lda_select_lda_portal_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-8.png)
-
-    ## [1] "lda_select_lda_sdl_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-9.png)
-
-    ## [1] "lda_select_lda_mtquad_data"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-10.png)
-
-    ## [1] "lda_select_lda_bbs_data_rtrg_1_11"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-11.png)
-
     ## [1] "lda_select_lda_bbs_data_rtrg_2_11"
 
-![](lda_report_files/figure-markdown_github/plot%20LDA-12.png)
-
-    ## [1] "lda_select_lda_bbs_data_rtrg_3_11"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-13.png)
-
-    ## [1] "lda_select_lda_bbs_data_rtrg_4_11"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-14.png)
-
-    ## [1] "lda_select_lda_bbs_data_rtrg_6_11"
-
-![](lda_report_files/figure-markdown_github/plot%20LDA-15.png)
+![](lda_report_files/figure-markdown_github/plot%20LDA-3.png)
 
 Summarize LDA results
 ---------------------
@@ -93,4 +45,19 @@ lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
 
-    ## [1] NA
+    ##                            lda_name ntopics ntimeseries ntimesteps
+    ## 1        lda_select_lda_mtquad_data       3          42         14
+    ## 2 lda_select_lda_bbs_data_rtrg_1_11       3          99         51
+    ## 3 lda_select_lda_bbs_data_rtrg_2_11       3         120         51
+    ##                 data
+    ## 1        mtquad_data
+    ## 2 bbs_data_rtrg_1_11
+    ## 3 bbs_data_rtrg_2_11
+    ##                                                             ts_name
+    ## 1               ts_select_ts_mtquad_data_lda_select_lda_mtquad_data
+    ## 2 ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11
+    ## 3 ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11
+    ##   nchangepoints      formula
+    ## 1             0    gamma ~ 1
+    ## 2             0 gamma ~ year
+    ## 3             0 gamma ~ year
