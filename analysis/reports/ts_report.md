@@ -137,7 +137,7 @@ lda_ts_result_summary
     ## 5              0             gamma ~ 1
     ## 6              0             gamma ~ 1
     ## 7              0             gamma ~ 1
-    ## 8              2 gamma ~ newmoonnumber
+    ## 8              1 gamma ~ newmoonnumber
     ## 9              0             gamma ~ 1
     ## 10             0             gamma ~ 1
     ## 11             0          gamma ~ year

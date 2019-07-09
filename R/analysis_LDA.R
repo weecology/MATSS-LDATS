@@ -19,7 +19,7 @@
 #'
 run_LDA <- function(data,
                     max_topics = 6, nseeds = 200,
-                    control = LDATS::LDA_controls_list())
+                    control = list())
 {
     if (!MATSS::check_data_format(data))
     {

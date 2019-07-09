@@ -16,7 +16,7 @@ run_TS <- function(data, ldamodels,
                    formulas = c("intercept", "time"),
                    nchangepoints = 0:6,
                    weighting = 'proportional',
-                   control = LDATS::TS_controls_list())
+                   control = list())
 {
     if (!MATSS::check_data_format(data)) {
         wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
@@ -38,6 +38,7 @@ run_TS <- function(data, ldamodels,
         formulas <- formulas
     }
     
+    timename <- data$metadata$timename
     
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {
@@ -50,6 +51,7 @@ run_TS <- function(data, ldamodels,
                      document_covariate_table = as.data.frame(data$covariates),
                      formulas = formulas,
                      nchangepoints = nchangepoints,
+                     timename = timename,
                      weights = weights,
-                     control = LDATS::TS_controls_list(nit = 1000, timename = data$metadata$timename, magnitude = max(1, floor(0.03 * nrow(data$abundance)))))
+                     control = list(nit = 1000, magnitude = max(1, floor(0.03 * nrow(data$abundance)))))
 }
