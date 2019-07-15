@@ -9,7 +9,7 @@ extract_ts_variable(ts_result, variable_name)
 \arguments{
 \item{ts_result}{a TS model}
 
-\item{variable_name}{"nchangepoints", to be expanded}
+\item{variable_name}{"nchangepoints", "formula", "AIC", to be expanded}
 }
 \value{
 value of that variable

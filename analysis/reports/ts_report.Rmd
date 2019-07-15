@@ -9,6 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(MATSS)
+library(matssldats)
 library(drake)
 ```
 
@@ -85,3 +86,13 @@ plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints,
      xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
 ```
 
+## Detailed model results
+
+```{r detailed ts model results}
+
+#ts_models_summary <- readd(ts_models_summary, cache = cache)
+
+ts_results <- readd(ts_results, cache =cache)
+ts_models_summary <- collect_ts_result_models_summary(ts_results)
+print(ts_models_summary)
+```

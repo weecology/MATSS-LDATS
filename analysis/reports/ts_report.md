@@ -164,3 +164,121 @@ plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints,
 ```
 
 ![](ts_report_files/figure-markdown_github/plot%20ts%20cross%20comm%20results-2.png)
+
+Detailed model results
+----------------------
+
+``` r
+#ts_models_summary <- readd(ts_models_summary, cache = cache)
+
+ts_results <- readd(ts_results, cache =cache)
+ts_models_summary <- collect_ts_result_models_summary(ts_results)
+print(ts_models_summary)
+```
+
+    ##                                                      ts_name nchangepoints
+    ## 1                ts_maizuru_data_lda_select_lda_maizuru_data             0
+    ## 2                ts_maizuru_data_lda_select_lda_maizuru_data             0
+    ## 3                ts_maizuru_data_lda_select_lda_maizuru_data             1
+    ## 4                ts_maizuru_data_lda_select_lda_maizuru_data             1
+    ## 5  ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data             0
+    ## 6  ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data             0
+    ## 7  ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data             1
+    ## 8  ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data             1
+    ## 9    ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data             0
+    ## 10   ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data             0
+    ## 11   ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data             1
+    ## 12   ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data             1
+    ## 13                   ts_karoo_data_lda_select_lda_karoo_data             0
+    ## 14                   ts_karoo_data_lda_select_lda_karoo_data             0
+    ## 15                   ts_karoo_data_lda_select_lda_karoo_data             1
+    ## 16                   ts_karoo_data_lda_select_lda_karoo_data             1
+    ## 17                 ts_kruger_data_lda_select_lda_kruger_data             0
+    ## 18                 ts_kruger_data_lda_select_lda_kruger_data             0
+    ## 19                 ts_kruger_data_lda_select_lda_kruger_data             1
+    ## 20                 ts_kruger_data_lda_select_lda_kruger_data             1
+    ## 21                 ts_portal_data_lda_select_lda_portal_data             0
+    ## 22                 ts_portal_data_lda_select_lda_portal_data             0
+    ## 23                 ts_portal_data_lda_select_lda_portal_data             1
+    ## 24                 ts_portal_data_lda_select_lda_portal_data             1
+    ## 25                       ts_sdl_data_lda_select_lda_sdl_data             0
+    ## 26                       ts_sdl_data_lda_select_lda_sdl_data             0
+    ## 27                       ts_sdl_data_lda_select_lda_sdl_data             1
+    ## 28                       ts_sdl_data_lda_select_lda_sdl_data             1
+    ## 29                 ts_mtquad_data_lda_select_lda_mtquad_data             0
+    ## 30                 ts_mtquad_data_lda_select_lda_mtquad_data             0
+    ## 31                 ts_mtquad_data_lda_select_lda_mtquad_data             1
+    ## 32                 ts_mtquad_data_lda_select_lda_mtquad_data             1
+    ## 33   ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11             0
+    ## 34   ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11             0
+    ## 35   ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11             1
+    ## 36   ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11             1
+    ## 37   ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11             0
+    ## 38   ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11             0
+    ## 39   ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11             1
+    ## 40   ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11             1
+    ## 41   ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11             0
+    ## 42   ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11             0
+    ## 43   ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11             1
+    ## 44   ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11             1
+    ## 45   ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11             0
+    ## 46   ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11             0
+    ## 47   ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11             1
+    ## 48   ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11             1
+    ## 49   ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11             0
+    ## 50   ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11             0
+    ## 51   ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11             1
+    ## 52   ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11             1
+    ##                  formula              AIC
+    ## 1           gamma ~ Date   1239.216283538
+    ## 2              gamma ~ 1 1232.58903602349
+    ## 3           gamma ~ Date 1256.29518563602
+    ## 4              gamma ~ 1 1221.92840394499
+    ## 5           gamma ~ Year  125.89881325928
+    ## 6              gamma ~ 1 99.8988134974066
+    ## 7           gamma ~ Year 179.898695298947
+    ## 8              gamma ~ 1  127.89868898743
+    ## 9           gamma ~ Year 125.893589099337
+    ## 10             gamma ~ 1 99.8935887320816
+    ## 11          gamma ~ Year 179.893286868156
+    ## 12             gamma ~ 1 127.893282359831
+    ## 13          gamma ~ year 98.3967318590179
+    ## 14             gamma ~ 1 84.1730721271733
+    ## 15          gamma ~ year 141.776342222664
+    ## 16             gamma ~ 1 99.0884516706373
+    ## 17          gamma ~ year 167.084747872161
+    ## 18             gamma ~ 1 144.675170307421
+    ## 19          gamma ~ year 218.219162762875
+    ## 20             gamma ~ 1 169.560295720885
+    ## 21 gamma ~ newmoonnumber  907.42060599499
+    ## 22             gamma ~ 1 964.518503589393
+    ## 23 gamma ~ newmoonnumber 833.755879181036
+    ## 24             gamma ~ 1  879.89914319893
+    ## 25          gamma ~ year 110.991333996799
+    ## 26             gamma ~ 1 108.488587192427
+    ## 27          gamma ~ year 122.801823076567
+    ## 28             gamma ~ 1 111.995549949425
+    ## 29          gamma ~ year 87.1827182320061
+    ## 30             gamma ~ 1 70.8076353913618
+    ## 31          gamma ~ year 135.988608868389
+    ## 32             gamma ~ 1 92.6714869133408
+    ## 33          gamma ~ year 260.754431324107
+    ## 34             gamma ~ 1 259.202306757965
+    ## 35          gamma ~ year 289.094998994228
+    ## 36             gamma ~ 1 259.442808713852
+    ## 37          gamma ~ year 316.069215166655
+    ## 38             gamma ~ 1 290.094886665959
+    ## 39          gamma ~ year 325.245886122481
+    ## 40             gamma ~ 1 293.221638454894
+    ## 41          gamma ~ year 262.971124018683
+    ## 42             gamma ~ 1 245.052916300025
+    ## 43          gamma ~ year  257.76994137243
+    ## 44             gamma ~ 1 240.676217105201
+    ## 45          gamma ~ year 315.801074488283
+    ## 46             gamma ~ 1 289.847218958367
+    ## 47          gamma ~ year 321.784384721694
+    ## 48             gamma ~ 1 292.219758280276
+    ## 49          gamma ~ year 225.663870407715
+    ## 50             gamma ~ 1 205.663264146165
+    ## 51          gamma ~ year 238.632879433397
+    ## 52             gamma ~ 1  208.00667211371

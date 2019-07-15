@@ -15,7 +15,7 @@ extract_lda_variable <- function(lda_result, variable_name) {
     if(variable_name == "ntimesteps") {
         return(lda_result$k@wordassignments$nrow)
     }
-
+    
     return("Variable not recognized")
     
 }
@@ -39,18 +39,21 @@ collect_lda_result_summary <- function(lda_results) {
 
 #' Extract results from TS results
 #' @param ts_result a TS model
-#' @param variable_name "nchangepoints", to be expanded
+#' @param variable_name "nchangepoints", "formula", "AIC", to be expanded
 #' @return value of that variable
 #' @export
 extract_ts_variable <- function(ts_result, variable_name) {
     if(!is.null(names(ts_result))) {
-    if(variable_name == "nchangepoints") {
-        return(ts_result$nchangepoints)
-    }
-    if(variable_name == "formula") {
-                return(deparse(ts_result$formula))
-    }
-    return("Variable not recognized")
+        if(variable_name == "nchangepoints") {
+            return(ts_result$nchangepoints)
+        }
+        if(variable_name == "formula") {
+            return(deparse(ts_result$formula))
+        }
+        if(variable_name == "AIC") {
+            return(deparse(ts_result$AIC))
+        }
+        return("Variable not recognized")
     } else {
         return()
     }
@@ -92,4 +95,33 @@ collect_lda_ts_results <- function(lda_result_summary, ts_result_summary){
     lda_ts_result_summary <- dplyr::left_join(lda_result_summary, ts_result_summary, by = "data")
     
     return(lda_ts_result_summary)
+}
+
+
+#' Make detailed TS result summary table
+#' @param ts_results All ts results (not selected)
+#' @return table of ts name, nchangepoints, formula, and AIC for each model
+#' @export
+collect_ts_result_models_summary <- function(ts_results) {
+    
+    successful_ts_results <- ts_results[ which(unlist(lapply(ts_results, FUN = is.list)))]
+    
+    # do this per dataset
+    ts_result_summaries <- list()
+    
+    for(i in 1:length(successful_ts_results)) {
+        this_ts <- successful_ts_results[[i]]
+        ts_result_summaries[[i]] <- data.frame(
+            ts_name = names(successful_ts_results)[i],
+            nchangepoints = vapply(this_ts, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
+            formula = vapply(this_ts, FUN = try(extract_ts_variable), variable_name = "formula", FUN.VALUE = "~1"),
+            AIC = vapply(this_ts, FUN = try(extract_ts_variable), variable_name = "AIC", FUN.VALUE = "430"),
+            stringsAsFactors = FALSE,
+            row.names = NULL
+        )
+    }
+    
+    ts_result_summary <- dplyr::bind_rows(ts_result_summaries)
+    
+    return(ts_result_summary)
 }
