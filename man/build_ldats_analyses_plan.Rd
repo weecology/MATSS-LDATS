@@ -4,7 +4,7 @@
 \alias{build_ldats_analyses_plan}
 \title{Build a drake plan for LDATS analysis}
 \usage{
-build_ldats_analyses_plan(datasets, max_topics = 3, nseeds = 4,
+build_ldats_analyses_plan(datasets, max_topics = c(3), nseeds = 4,
   nchangepoints = c(2, 3), formulas = c("time", "intercept"))
 }
 \arguments{

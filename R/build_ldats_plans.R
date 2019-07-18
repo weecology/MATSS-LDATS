@@ -8,12 +8,13 @@
 #' @return a drake plan
 #' @export
 #'
-build_ldats_analyses_plan <- function(datasets, max_topics = 3, nseeds = 4, 
+build_ldats_analyses_plan <- function(datasets, max_topics = c(3), nseeds = 4, 
                              nchangepoints = c(2, 3), formulas = c("time", "intercept"))
 {
     drake::drake_plan(
-        lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds),
-                     transform = map(data = !!rlang::syms(datasets$target))),
+        lda = target(run_LDA(data, max_topics = topic_limit, nseeds = !!nseeds),
+                     transform = cross(data = !!rlang::syms(datasets$target),
+                                       topic_limit = !!(max_topics))),
         lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
                              transform = map(lda)),
         ts = target(run_TS(data, lda_select, nchangepoints = !!nchangepoints, formulas = !!formulas),

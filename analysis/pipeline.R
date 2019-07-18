@@ -20,9 +20,9 @@ if (FALSE)
 ## Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
-#datasets <- datasets[10:12, ]
+datasets <- datasets[10:12, ]
 
-analyses <- build_ldats_analyses_plan(datasets, max_topics = 16, nchangepoints = c(0:1), formulas = c("time", "intercept"), nseeds = 100)
+analyses <- build_ldats_analyses_plan(datasets, max_topics = c(5, 16), nchangepoints = c(0:1), formulas = c("time", "intercept"), nseeds = 100)
 
 summary_tables <- drake_plan(
     lda_result_summary = collect_lda_result_summary(lda_results = lda_results),

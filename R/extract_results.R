@@ -20,6 +20,20 @@ extract_lda_variable <- function(lda_result, variable_name) {
     
 }
 
+
+#' Get max topics
+#'
+#' @param lda_name lda name
+#'
+#' @return limit on number of topics
+#' @export
+extract_max_topics <- function(lda_name) {
+    maxtopics <- unlist(strsplit(lda_name, split = "_"))
+    maxtopics <- maxtopics[ length(maxtopics)]
+    maxtopics <- as.numeric(maxtopics)
+    return(maxtopics)
+}
+
 #' Make LDA result summary table
 #' @param lda_results lda_results
 #' @return table of lda name, ntopics, nterms (species), ntimesteps
@@ -28,6 +42,7 @@ collect_lda_result_summary <- function(lda_results) {
     lda_result_summary <- data.frame(
         lda_name = names(lda_results),
         ntopics = vapply(lda_results, FUN = extract_lda_variable, variable_name = "ntopics", FUN.VALUE = 3),
+        maxtopics = vapply(names(lda_results), extract_max_topics, FUN.VALUE = 10),
         ntimeseries = vapply(lda_results, FUN = extract_lda_variable, variable_name = "ntimeseries", FUN.VALUE = 3),
         ntimesteps = vapply(lda_results, FUN = extract_lda_variable, variable_name = "ntimesteps", FUN.VALUE = 3),
         stringsAsFactors = FALSE,
