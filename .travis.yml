@@ -5,6 +5,9 @@ sudo: required
 dist: "xenial"
 warnings_are_errors: false
 
+r_packages:
+  - covr
+
 addons:
   apt:
     packages:
@@ -15,16 +18,17 @@ addons:
     update: true
 
 before_install:
-  - sudo pip3 install --upgrade pip
+  - sudo pip3 install --upgrade setuptools
   - sudo pip3 install --upgrade git+https://git@github.com/weecology/retriever.git
   - python3 -c 'import retriever;retriever.check_for_updates()'
-  
+
 matrix:
   include:
   - r: devel
   - r: release
     after_success:
     - R CMD INSTALL .
+    - rm README.Rmd
     - Rscript -e 'pkgdown::build_site()'
     - Rscript -e 'covr::codecov()'
     deploy:
