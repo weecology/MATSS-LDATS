@@ -2,7 +2,7 @@ language: r
 cache:
 - packages
 sudo: required
-dist: bionic
+dist: "trusty"
 warnings_are_errors: false
 
 addons:
