@@ -24,29 +24,65 @@ Plot LDAS
 
 Plot a maximum of 15.
 
-    ## [1] "lda_select_lda_mtquad_data_5"
+    ## [1] "lda_select_lda_maizuru_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-1.png)
 
-    ## [1] "lda_select_lda_bbs_data_rtrg_1_11_5"
+    ## [1] "lda_select_lda_jornada_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-2.png)
 
-    ## [1] "lda_select_lda_bbs_data_rtrg_2_11_5"
+    ## [1] "lda_select_lda_sgs_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-3.png)
 
-    ## [1] "lda_select_lda_mtquad_data_16"
+    ## [1] "lda_select_lda_cowley_lizards_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-4.png)
 
-    ## [1] "lda_select_lda_bbs_data_rtrg_1_11_16"
+    ## [1] "lda_select_lda_cowley_snakes_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-5.png)
 
-    ## [1] "lda_select_lda_bbs_data_rtrg_2_11_16"
+    ## [1] "lda_select_lda_karoo_data_5"
 
 ![](lda_report_files/figure-markdown_github/plot%20LDA-6.png)
+
+    ## [1] "lda_select_lda_kruger_data_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-7.png)
+
+    ## [1] "lda_select_lda_portal_data_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-8.png)
+
+    ## [1] "lda_select_lda_sdl_data_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-9.png)
+
+    ## [1] "lda_select_lda_mtquad_data_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-10.png)
+
+    ## [1] "lda_select_lda_bbs_data_rtrg_1_11_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-11.png)
+
+    ## [1] "lda_select_lda_bbs_data_rtrg_2_11_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-12.png)
+
+    ## [1] "lda_select_lda_bbs_data_rtrg_3_11_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-13.png)
+
+    ## [1] "lda_select_lda_bbs_data_rtrg_4_11_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-14.png)
+
+    ## [1] "lda_select_lda_bbs_data_rtrg_6_11_5"
+
+![](lda_report_files/figure-markdown_github/plot%20LDA-15.png)
 
 Summarize LDA results
 ---------------------
@@ -57,31 +93,247 @@ lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
 
-    ##                               lda_name ntopics maxtopics ntimeseries
-    ## 1         lda_select_lda_mtquad_data_5       5         5          42
-    ## 2  lda_select_lda_bbs_data_rtrg_1_11_5       5         5          99
-    ## 3  lda_select_lda_bbs_data_rtrg_2_11_5       5         5         120
-    ## 4        lda_select_lda_mtquad_data_16      14        16          42
-    ## 5 lda_select_lda_bbs_data_rtrg_1_11_16      12        16          99
-    ## 6 lda_select_lda_bbs_data_rtrg_2_11_16      14        16         120
-    ##   ntimesteps                  data
-    ## 1         14         mtquad_data_5
-    ## 2         51  bbs_data_rtrg_1_11_5
-    ## 3         51  bbs_data_rtrg_2_11_5
-    ## 4         14        mtquad_data_16
-    ## 5         51 bbs_data_rtrg_1_11_16
-    ## 6         51 bbs_data_rtrg_2_11_16
-    ##                                                                ts_name
-    ## 1                ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_5
-    ## 2  ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5
-    ## 3  ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_5
-    ## 4               ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_16
-    ## 5 ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16
-    ## 6 ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_16
-    ##   nchangepoints      formula
-    ## 1             0 gamma ~ year
-    ## 2             0 gamma ~ year
-    ## 3             1    gamma ~ 1
-    ## 4             0    gamma ~ 1
-    ## 5             0    gamma ~ 1
-    ## 6             0    gamma ~ 1
+    ##                                          lda_name ntopics maxtopics
+    ## 1                   lda_select_lda_maizuru_data_5       5         5
+    ## 2                   lda_select_lda_jornada_data_5       5         5
+    ## 3                       lda_select_lda_sgs_data_5       4         5
+    ## 4            lda_select_lda_cowley_lizards_data_5       2         5
+    ## 5             lda_select_lda_cowley_snakes_data_5       2         5
+    ## 6                     lda_select_lda_karoo_data_5       5         5
+    ## 7                    lda_select_lda_kruger_data_5       5         5
+    ## 8                    lda_select_lda_portal_data_5       5         5
+    ## 9                       lda_select_lda_sdl_data_5       5         5
+    ## 10                   lda_select_lda_mtquad_data_5       5         5
+    ## 11            lda_select_lda_bbs_data_rtrg_1_11_5       5         5
+    ## 12            lda_select_lda_bbs_data_rtrg_2_11_5       5         5
+    ## 13            lda_select_lda_bbs_data_rtrg_3_11_5       5         5
+    ## 14            lda_select_lda_bbs_data_rtrg_4_11_5       5         5
+    ## 15            lda_select_lda_bbs_data_rtrg_6_11_5       5         5
+    ## 16         lda_select_lda_filtered_maizuru_data_5       5         5
+    ## 17         lda_select_lda_filtered_jornada_data_5       5         5
+    ## 18             lda_select_lda_filtered_sgs_data_5       5         5
+    ## 19  lda_select_lda_filtered_cowley_lizards_data_5       2         5
+    ## 20   lda_select_lda_filtered_cowley_snakes_data_5       2         5
+    ## 21           lda_select_lda_filtered_karoo_data_5       5         5
+    ## 22          lda_select_lda_filtered_kruger_data_5       5         5
+    ## 23          lda_select_lda_filtered_portal_data_5       4         5
+    ## 24             lda_select_lda_filtered_sdl_data_5       5         5
+    ## 25          lda_select_lda_filtered_mtquad_data_5       5         5
+    ## 26   lda_select_lda_filtered_bbs_data_rtrg_1_11_5       5         5
+    ## 27   lda_select_lda_filtered_bbs_data_rtrg_2_11_5       5         5
+    ## 28   lda_select_lda_filtered_bbs_data_rtrg_3_11_5       5         5
+    ## 29   lda_select_lda_filtered_bbs_data_rtrg_4_11_5       5         5
+    ## 30   lda_select_lda_filtered_bbs_data_rtrg_6_11_5       5         5
+    ## 31                 lda_select_lda_maizuru_data_16      14        16
+    ## 32                 lda_select_lda_jornada_data_16       6        16
+    ## 33                     lda_select_lda_sgs_data_16      13        16
+    ## 34          lda_select_lda_cowley_lizards_data_16      14        16
+    ## 35           lda_select_lda_cowley_snakes_data_16      14        16
+    ## 36                   lda_select_lda_karoo_data_16      13        16
+    ## 37                  lda_select_lda_kruger_data_16      14        16
+    ## 38                  lda_select_lda_portal_data_16       5        16
+    ## 39                     lda_select_lda_sdl_data_16       9        16
+    ## 40                  lda_select_lda_mtquad_data_16      14        16
+    ## 41           lda_select_lda_bbs_data_rtrg_1_11_16      12        16
+    ## 42           lda_select_lda_bbs_data_rtrg_2_11_16      14        16
+    ## 43           lda_select_lda_bbs_data_rtrg_3_11_16      10        16
+    ## 44           lda_select_lda_bbs_data_rtrg_4_11_16      14        16
+    ## 45           lda_select_lda_bbs_data_rtrg_6_11_16      11        16
+    ## 46        lda_select_lda_filtered_maizuru_data_16      10        16
+    ## 47        lda_select_lda_filtered_jornada_data_16       7        16
+    ## 48            lda_select_lda_filtered_sgs_data_16      13        16
+    ## 49 lda_select_lda_filtered_cowley_lizards_data_16      14        16
+    ## 50  lda_select_lda_filtered_cowley_snakes_data_16      14        16
+    ## 51          lda_select_lda_filtered_karoo_data_16      13        16
+    ## 52         lda_select_lda_filtered_kruger_data_16      14        16
+    ## 53         lda_select_lda_filtered_portal_data_16       4        16
+    ## 54            lda_select_lda_filtered_sdl_data_16      11        16
+    ## 55         lda_select_lda_filtered_mtquad_data_16      14        16
+    ## 56  lda_select_lda_filtered_bbs_data_rtrg_1_11_16      14        16
+    ## 57  lda_select_lda_filtered_bbs_data_rtrg_2_11_16      14        16
+    ## 58  lda_select_lda_filtered_bbs_data_rtrg_3_11_16      10        16
+    ## 59  lda_select_lda_filtered_bbs_data_rtrg_4_11_16      16        16
+    ## 60  lda_select_lda_filtered_bbs_data_rtrg_6_11_16      13        16
+    ##    ntimeseries ntimesteps                            data
+    ## 1           15        285                  maizuru_data_5
+    ## 2           17         24                  jornada_data_5
+    ## 3           11         13                      sgs_data_5
+    ## 4            6         14           cowley_lizards_data_5
+    ## 5           16         14            cowley_snakes_data_5
+    ## 6           16         13                    karoo_data_5
+    ## 7           12         31                   kruger_data_5
+    ## 8           21        319                   portal_data_5
+    ## 9           98         22                      sdl_data_5
+    ## 10          42         14                   mtquad_data_5
+    ## 11          99         51            bbs_data_rtrg_1_11_5
+    ## 12         120         51            bbs_data_rtrg_2_11_5
+    ## 13         115         51            bbs_data_rtrg_3_11_5
+    ## 14         113         51            bbs_data_rtrg_4_11_5
+    ## 15          81         40            bbs_data_rtrg_6_11_5
+    ## 16          10        285         filtered_maizuru_data_5
+    ## 17          13         24         filtered_jornada_data_5
+    ## 18           7         13             filtered_sgs_data_5
+    ## 19           4         14  filtered_cowley_lizards_data_5
+    ## 20          11         14   filtered_cowley_snakes_data_5
+    ## 21          13         13           filtered_karoo_data_5
+    ## 22          12         31          filtered_kruger_data_5
+    ## 23          11        319          filtered_portal_data_5
+    ## 24          39         22             filtered_sdl_data_5
+    ## 25          24         14          filtered_mtquad_data_5
+    ## 26          59         51   filtered_bbs_data_rtrg_1_11_5
+    ## 27          72         51   filtered_bbs_data_rtrg_2_11_5
+    ## 28          68         51   filtered_bbs_data_rtrg_3_11_5
+    ## 29          58         51   filtered_bbs_data_rtrg_4_11_5
+    ## 30          53         40   filtered_bbs_data_rtrg_6_11_5
+    ## 31          15        285                 maizuru_data_16
+    ## 32          17         24                 jornada_data_16
+    ## 33          11         13                     sgs_data_16
+    ## 34           6         14          cowley_lizards_data_16
+    ## 35          16         14           cowley_snakes_data_16
+    ## 36          16         13                   karoo_data_16
+    ## 37          12         31                  kruger_data_16
+    ## 38          21        319                  portal_data_16
+    ## 39          98         22                     sdl_data_16
+    ## 40          42         14                  mtquad_data_16
+    ## 41          99         51           bbs_data_rtrg_1_11_16
+    ## 42         120         51           bbs_data_rtrg_2_11_16
+    ## 43         115         51           bbs_data_rtrg_3_11_16
+    ## 44         113         51           bbs_data_rtrg_4_11_16
+    ## 45          81         40           bbs_data_rtrg_6_11_16
+    ## 46          10        285        filtered_maizuru_data_16
+    ## 47          13         24        filtered_jornada_data_16
+    ## 48           7         13            filtered_sgs_data_16
+    ## 49           4         14 filtered_cowley_lizards_data_16
+    ## 50          11         14  filtered_cowley_snakes_data_16
+    ## 51          13         13          filtered_karoo_data_16
+    ## 52          12         31         filtered_kruger_data_16
+    ## 53          11        319         filtered_portal_data_16
+    ## 54          39         22            filtered_sdl_data_16
+    ## 55          24         14         filtered_mtquad_data_16
+    ## 56          59         51  filtered_bbs_data_rtrg_1_11_16
+    ## 57          72         51  filtered_bbs_data_rtrg_2_11_16
+    ## 58          68         51  filtered_bbs_data_rtrg_3_11_16
+    ## 59          58         51  filtered_bbs_data_rtrg_4_11_16
+    ## 60          53         40  filtered_bbs_data_rtrg_6_11_16
+    ##                                                                                     ts_name
+    ## 1                                   ts_select_ts_maizuru_data_lda_select_lda_maizuru_data_5
+    ## 2                                                                                      <NA>
+    ## 3                                                                                      <NA>
+    ## 4                     ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_5
+    ## 5                       ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_5
+    ## 6                                       ts_select_ts_karoo_data_lda_select_lda_karoo_data_5
+    ## 7                                     ts_select_ts_kruger_data_lda_select_lda_kruger_data_5
+    ## 8                                     ts_select_ts_portal_data_lda_select_lda_portal_data_5
+    ## 9                                           ts_select_ts_sdl_data_lda_select_lda_sdl_data_5
+    ## 10                                    ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_5
+    ## 11                      ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5
+    ## 12                      ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_5
+    ## 13                      ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_5
+    ## 14                      ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_5
+    ## 15                      ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_5
+    ## 16                ts_select_ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_data_5
+    ## 17                                                                                     <NA>
+    ## 18                                                                                     <NA>
+    ## 19  ts_select_ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cowley_lizards_data_5
+    ## 20    ts_select_ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowley_snakes_data_5
+    ## 21                    ts_select_ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_5
+    ## 22                  ts_select_ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_5
+    ## 23                  ts_select_ts_filtered_portal_data_lda_select_lda_filtered_portal_data_5
+    ## 24                        ts_select_ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_5
+    ## 25                  ts_select_ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_5
+    ## 26    ts_select_ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_data_rtrg_1_11_5
+    ## 27    ts_select_ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_data_rtrg_2_11_5
+    ## 28    ts_select_ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_data_rtrg_3_11_5
+    ## 29    ts_select_ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_data_rtrg_4_11_5
+    ## 30    ts_select_ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_data_rtrg_6_11_5
+    ## 31                                 ts_select_ts_maizuru_data_lda_select_lda_maizuru_data_16
+    ## 32                                                                                     <NA>
+    ## 33                                                                                     <NA>
+    ## 34                   ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_16
+    ## 35                     ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_16
+    ## 36                                     ts_select_ts_karoo_data_lda_select_lda_karoo_data_16
+    ## 37                                   ts_select_ts_kruger_data_lda_select_lda_kruger_data_16
+    ## 38                                   ts_select_ts_portal_data_lda_select_lda_portal_data_16
+    ## 39                                         ts_select_ts_sdl_data_lda_select_lda_sdl_data_16
+    ## 40                                   ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_16
+    ## 41                     ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16
+    ## 42                     ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_16
+    ## 43                     ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_16
+    ## 44                     ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_16
+    ## 45                     ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_16
+    ## 46               ts_select_ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_data_16
+    ## 47                                                                                     <NA>
+    ## 48                                                                                     <NA>
+    ## 49 ts_select_ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cowley_lizards_data_16
+    ## 50   ts_select_ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowley_snakes_data_16
+    ## 51                   ts_select_ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_16
+    ## 52                 ts_select_ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_16
+    ## 53                 ts_select_ts_filtered_portal_data_lda_select_lda_filtered_portal_data_16
+    ## 54                       ts_select_ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_16
+    ## 55                 ts_select_ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_16
+    ## 56   ts_select_ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_data_rtrg_1_11_16
+    ## 57   ts_select_ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_data_rtrg_2_11_16
+    ## 58   ts_select_ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_data_rtrg_3_11_16
+    ## 59   ts_select_ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_data_rtrg_4_11_16
+    ## 60   ts_select_ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_data_rtrg_6_11_16
+    ##    nchangepoints               formula
+    ## 1              1          gamma ~ Date
+    ## 2             NA                  <NA>
+    ## 3             NA                  <NA>
+    ## 4              0             gamma ~ 1
+    ## 5              0             gamma ~ 1
+    ## 6              0             gamma ~ 1
+    ## 7              0             gamma ~ 1
+    ## 8              1 gamma ~ newmoonnumber
+    ## 9              1             gamma ~ 1
+    ## 10             0          gamma ~ year
+    ## 11             0          gamma ~ year
+    ## 12             1             gamma ~ 1
+    ## 13             0          gamma ~ year
+    ## 14             0          gamma ~ year
+    ## 15             0             gamma ~ 1
+    ## 16             1          gamma ~ Date
+    ## 17            NA                  <NA>
+    ## 18            NA                  <NA>
+    ## 19             0             gamma ~ 1
+    ## 20             0             gamma ~ 1
+    ## 21             0             gamma ~ 1
+    ## 22             0             gamma ~ 1
+    ## 23             1 gamma ~ newmoonnumber
+    ## 24             0             gamma ~ 1
+    ## 25             0          gamma ~ year
+    ## 26             1             gamma ~ 1
+    ## 27             0          gamma ~ year
+    ## 28             0          gamma ~ year
+    ## 29             0          gamma ~ year
+    ## 30             0             gamma ~ 1
+    ## 31             1             gamma ~ 1
+    ## 32            NA                  <NA>
+    ## 33            NA                  <NA>
+    ## 34             0             gamma ~ 1
+    ## 35             0             gamma ~ 1
+    ## 36             0             gamma ~ 1
+    ## 37             0             gamma ~ 1
+    ## 38             1 gamma ~ newmoonnumber
+    ## 39             0             gamma ~ 1
+    ## 40             0             gamma ~ 1
+    ## 41             0             gamma ~ 1
+    ## 42             0             gamma ~ 1
+    ## 43             1             gamma ~ 1
+    ## 44             0             gamma ~ 1
+    ## 45             0             gamma ~ 1
+    ## 46             1             gamma ~ 1
+    ## 47            NA                  <NA>
+    ## 48            NA                  <NA>
+    ## 49             0             gamma ~ 1
+    ## 50             0             gamma ~ 1
+    ## 51             0             gamma ~ 1
+    ## 52             0             gamma ~ 1
+    ## 53             1 gamma ~ newmoonnumber
+    ## 54             0             gamma ~ 1
+    ## 55             0             gamma ~ 1
+    ## 56             0             gamma ~ 1
+    ## 57             0             gamma ~ 1
+    ## 58             0          gamma ~ year
+    ## 59             0             gamma ~ 1
+    ## 60             0             gamma ~ 1
