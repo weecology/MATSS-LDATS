@@ -165,7 +165,7 @@ ts_aic_plot <- ggplot(data = ts_models_summary, aes(x = filtered_topics,
     facet_wrap(facets = data_name ~ .)
 
 
-ts_aic_plot
+print(ts_aic_plot)
 
 nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
                                                      y = nb_close)) +
@@ -173,6 +173,6 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
     theme(legend.position = "none")  +
     theme_bw() +
     facet_wrap(facets = data_name ~ .)
-nb_close_plot
+print(nb_close_plot)
 
 ```

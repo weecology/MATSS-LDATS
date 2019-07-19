@@ -1180,7 +1180,7 @@ ts_aic_plot <- ggplot(data = ts_models_summary, aes(x = filtered_topics,
     facet_wrap(facets = data_name ~ .)
 
 
-ts_aic_plot
+print(ts_aic_plot)
 ```
 
 ![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-1.png)
@@ -1192,7 +1192,7 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
     theme(legend.position = "none")  +
     theme_bw() +
     facet_wrap(facets = data_name ~ .)
-nb_close_plot
+print(nb_close_plot)
 ```
 
 ![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-2.png)
