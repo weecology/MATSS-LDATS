@@ -1169,18 +1169,23 @@ nb_close_summary <- ts_models_summary %>%
     dplyr::ungroup()
 
 library(ggplot2)
-# 
-# ts_aic_plot <- ggplot(data = ts_models_summary, aes(x = filtered_topics,
-#                                                     y = AIC,
-#                                                     color = cpts_formula)) +
-#     geom_point() +
-#     facet_wrap(facets = data_name ~ .) +
-#     ylab("AIC") +
-#     scale_y_discrete(labels = NULL) +
-#     theme_bw()
-# 
-# ts_aic_plot
 
+ts_aic_plot <- ggplot(data = ts_models_summary, aes(x = filtered_topics,
+                                                    y = AIC,
+                                                    color = cpts_formula)) +
+    geom_point() +
+    ylab("AIC") +
+    scale_y_discrete(labels = NULL) +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
+
+
+ts_aic_plot
+```
+
+![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-1.png)
+
+``` r
 nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
                                                      y = nb_close)) +
     geom_jitter(height = 0, width = .05) +
@@ -1190,4 +1195,4 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
 nb_close_plot
 ```
 
-![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-1.png)
+![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-2.png)
