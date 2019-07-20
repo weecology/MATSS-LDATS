@@ -37,7 +37,7 @@ vignettes/*.pdf
 
 .future/*
 .future
-/.future/*
+*/.future/*
 
 # Temporary files created by R markdown
 *.utf8.md
@@ -49,6 +49,7 @@ rsconnect/
 matssldats.Rproj
 
 .DS_Store
+*.DS_Store*
 
 .Rproj.user
 
