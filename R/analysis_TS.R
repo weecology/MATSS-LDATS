@@ -6,7 +6,7 @@
 #' @param formulas Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.
 #' @param nchangepoints Vector of integers: which numbers of changepoints to try.
 #' @param weighting Weight samples equally or proportional to number of individuals captured. Defaults to `'proprotional'`; any other value will weight samples equally.
-#' 
+#'
 #' @inheritParams LDATS::TS_on_LDA
 #'
 #' @return the changepoint model(s) resulting from running `LDATS::TS_on_LDA`.
@@ -22,13 +22,13 @@ run_TS <- function(data, ldamodels,
         wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
-    
+
     if (!check_time_data_format(data))
     {
         wrongFormat = simpleWarning("Timename column is cannot be made integers without losing information")
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
-    
+
     ## Get formulas
     if(("time" %in% formulas) && ("intercept" %in% formulas)) {
         form <- as.formula(paste0("~ ", data$metadata$timename))
@@ -37,16 +37,16 @@ run_TS <- function(data, ldamodels,
     } else {
         formulas <- formulas
     }
-    
+
     timename <- data$metadata$timename
-    
+
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {
         weights <- LDATS::document_weights(data$abundance)
     } else {
         weights <- NULL
     }
-    
+
     LDATS::TS_on_LDA(LDA_models = ldamodels,
                      document_covariate_table = as.data.frame(data$covariates),
                      formulas = formulas,

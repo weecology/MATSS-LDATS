@@ -1,0 +1,20 @@
+[1] ".Rprofile loaded"
+### [bt]: This is batchtools v0.9.11
+### [bt]: Starting calculation of 1 jobs
+### [bt]: Setting working directory to '/orange/ewhite/MATSS-LDATS'
+Loading required package: MATSS
+Please look at our data formats by running `vignette("data-formats")`
+Loading required package: matssldats
+
+Attaching package: ‘matssldats’
+
+The following object is masked from ‘package:MATSS’:
+
+    run_LDA
+
+### [bt]: Memory measurement disabled
+### [bt]: Starting job [batchtools job.id=1]
+### [bt]: Setting seed to 1 ...
+
+### [bt]: Job terminated successfully [batchtools job.id=1]
+### [bt]: Calculation finished!
