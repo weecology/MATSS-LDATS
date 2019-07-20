@@ -9,6 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(MATSS)
+library(matssldats)
 library(drake)
 ```
 
@@ -19,14 +20,14 @@ library(drake)
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-ts_results <- readd(results_ts, cache = cache)
+ts_results <- readd(ts_results, cache = cache)
 
-selected_ts_results <- readd(results_ts_select, cache = cache)
+selected_ts_results <- readd(ts_select_results, cache = cache)
 ```
 
 ## Errors
-Find TS models that threw errors and remove them:
-```{r find error ts, echo = F}
+Find TS models that threw errors while running and remove them:
+```{r find error ts, echo = F, include = F}
 ts_errors <- NULL
 for (i in seq(ts_results)){
     if(!is.list(ts_results[[i]])) {
@@ -35,15 +36,19 @@ for (i in seq(ts_results)){
         ts_errors <- c(ts_errors, i)
     }
 }
-  ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors))]]
+ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors))]]
 
-  
-  # Remaining ts models:
-  names(ts_results)
+```
+
+These TS models ran successfully:
+
+```{r successful ts, echo = F, include = F}
+# Remaining ts models:
+print(names(ts_results))
 ```
 
 Find TS models that threw errors in selection and remove them:
-```{r find error ts select, echo = F}
+```{r find error ts select, echo = F, include = F}
 ts_select_errors <- NULL
 for (i in seq(selected_ts_results)){
     if(!is.list(selected_ts_results[[i]])) {
@@ -52,9 +57,144 @@ for (i in seq(selected_ts_results)){
         ts_select_errors <- c(ts_select_errors, i)
     }
 }
-  selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
+selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(selected_ts_results) %in% ts_select_errors))]]
+```
 
-  
-  # Remaining ts models:
-  names(selected_ts_results)
+These TS models were selected correctly:
+
+```{r successful ts_select, echo = F, include = F}
+# Remaining ts models:
+print(names(selected_ts_results))
+```
+
+## Community-level results
+
+```{r community level summary stats, include = F}
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
+lda_ts_result_summary
+```
+
+## Cross-community results
+```{r plot ts cross comm results}
+
+plot(lda_ts_result_summary$ntopics, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by number of LDA topics', 
+     xlab = 'Number of LDA topics', ylab = 'Number of changepoints')
+
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by length of timeseries', 
+     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
+```
+
+## Detailed model results
+
+```{r detailed ts model results, fig.width = 15, fig.height = 10, echo = F}
+
+#ts_models_summary <- readd(ts_models_summary, cache = cache)
+
+ts_results <- readd(ts_results, cache =cache)
+ts_models_summary <- collect_ts_result_models_summary(ts_results)
+
+get_data_names <- function(model_name) {
+    
+    if(grepl("ts_select", model_name)) {
+        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
+    }
+    data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
+    data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
+    if(grepl("filtered", data_name)){
+        data_name <- unlist(strsplit(data_name, split = "filtered_"))[2]
+    }
+    return(data_name)
+}
+
+get_filtered <- function(model_name) {
+    if(grepl("ts_select", model_name)) {
+        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
+    }
+    data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
+    data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
+    if(grepl("filtered", data_name)){
+        return("filtered")
+    }
+    return("complete")
+}
+
+get_max_topics <- function(model_name) {
+    max_topics <- unlist(strsplit(model_name, split = "_"))[[length(unlist(strsplit(model_name, split = "_")))]]
+    return(max_topics)
+}
+
+generalize_formula <- function(model_formula) {
+    if(!grepl("1", model_formula)) {
+        model_formula = "gamma ~ time"
+    }
+    return(model_formula)
+}
+
+ts_models_summary$gen_formula <- vapply(ts_models_summary$formula,
+                                        generalize_formula,
+                                        FUN.VALUE = "gamma ~ 1")
+ts_models_summary$data_name <- vapply(ts_models_summary$ts_name,
+                                      get_data_names,
+                                      FUN.VALUE = "maizuru_data")
+ts_models_summary$max_topics <- vapply(ts_models_summary$ts_name,
+                                       get_max_topics,
+                                       FUN.VALUE = "16")
+ts_models_summary$filtered <- vapply(ts_models_summary$ts_name,
+                                     get_filtered,
+                                     FUN.VALUE = "filtered")
+
+ts_models_summary <- ts_models_summary %>%
+    dplyr::mutate(filtered_topics = paste(filtered, max_topics, sep = "_"),
+                  cpts_formula = paste(nchangepoints, gen_formula, sep = "_"))
+
+# print(ts_models_summary)
+
+nb_close_summary <- ts_models_summary %>%
+    dplyr::mutate(AIC = as.numeric(AIC)) %>%
+    dplyr::group_by(data_name, filtered_topics) %>%
+    dplyr::mutate(min_AIC = min(AIC)) %>%
+    dplyr::mutate(delta_AIC = AIC - min_AIC) %>%
+    dplyr::mutate(is_close = abs(delta_AIC) <= 2) %>%
+    dplyr::summarize(nb_close = sum(is_close)) %>%
+    dplyr::ungroup()
+
+library(ggplot2)
+
+ts_aic_plot <- ggplot(data = ts_models_summary, aes(x = filtered_topics,
+                                                    y = AIC,
+                                                    color = cpts_formula)) +
+    geom_point() +
+    ylab("AIC") +
+    scale_y_discrete(labels = NULL) +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
+
+
+print(ts_aic_plot)
+
+nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
+                                                     y = nb_close)) +
+    geom_jitter(height = 0, width = .05) +
+    theme(legend.position = "none")  +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
+print(nb_close_plot)
+
+lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
+                                          get_data_names,
+                                          FUN.VALUE = "maizuru_data")
+lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
+                                         get_filtered,
+                                         FUN.VALUE = "filtered")
+lda_ts_result_summary <- lda_ts_result_summary %>%
+    dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
+
+nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
+    geom_point() +
+    theme(legend.position = "none")  +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
+
 ```

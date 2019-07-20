@@ -4,8 +4,7 @@
 \alias{run_LDA}
 \title{Run Latent Dirichlet Allocation on Tabular Data}
 \usage{
-run_LDA(data, max_topics = 6, nseeds = 200,
-  control = LDATS::LDA_controls_list())
+run_LDA(data, max_topics = 6, nseeds = 200, control = list())
 }
 \arguments{
 \item{data}{a data.frame or tibble; each row is an observation (e.g. in
@@ -21,8 +20,11 @@ test a number of topics from 2 to \code{max_topics})}
 \item{nseeds}{Number of seeds (replicate starts) to use for each 
 value of \code{topics}. Must be conformable to \code{integer} value.}
 
-\item{control}{Class \code{LDA_controls} list of control parameters to be
-used in \code{LDA} (note that \code{seed} will be overwritten).}
+\item{control}{A \code{list} of parameters to control the running and 
+selecting of LDA models. Values not input assume default values set 
+by \code{\link{LDA_set_control}}. Values for running the LDAs replace 
+defaults in (\code{LDAcontol}, see \code{\link[topicmodels]{LDA}} (but if
+ \code{seed} is given, it will be overwritten; use \code{iseed} instead).}
 }
 \value{
 the best fit model object, from running \code{LDATS::parLDA()}

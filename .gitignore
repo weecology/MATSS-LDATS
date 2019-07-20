@@ -28,6 +28,17 @@ vignettes/*.pdf
 /*_cache/
 /cache/
 
+.drake/*
+.drake
+/.drake/*
+
+.drake_history/*
+.drake_history
+
+.future/*
+.future
+/.future/*
+
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
@@ -42,3 +53,5 @@ matssldats.Rproj
 .Rproj.user
 
 drake/*
+/drake/
+/drake/*

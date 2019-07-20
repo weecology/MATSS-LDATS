@@ -11,38 +11,45 @@ Read in the results
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-ts_results <- readd(results_ts, cache = cache)
+ts_results <- readd(ts_results, cache = cache)
 
-selected_ts_results <- readd(results_ts_select, cache = cache)
+selected_ts_results <- readd(ts_select_results, cache = cache)
 ```
 
 Errors
 ------
 
-Find TS models that threw errors and remove them:
+Find TS models that threw errors while running and remove them:
 
-    ## [1] "analysis_ts_jornada_data_analysis_lda_jornada_data"
-    ## [1] "Incorrect data structure"
-    ## [1] "analysis_ts_sgs_data_analysis_lda_sgs_data"
-    ## [1] "Incorrect data structure"
-    ## [1] "analysis_ts_bbs_data_analysis_lda_bbs_data"
-    ## [1] "Incorrect data structure"
-
-    ## [1] "analysis_ts_maizuru_data_analysis_lda_maizuru_data"
-    ## [2] "analysis_ts_portal_data_analysis_lda_portal_data"  
-    ## [3] "analysis_ts_sdl_data_analysis_lda_sdl_data"        
-    ## [4] "analysis_ts_mtquad_data_analysis_lda_mtquad_data"
+These TS models ran successfully:
 
 Find TS models that threw errors in selection and remove them:
 
-    ## [1] "analysis_ts_select_analysis_ts_jornada_data_analysis_lda_jornada_data"
-    ## [1] "Incorrect input structure"
-    ## [1] "analysis_ts_select_analysis_ts_sgs_data_analysis_lda_sgs_data"
-    ## [1] "Incorrect input structure"
-    ## [1] "analysis_ts_select_analysis_ts_bbs_data_analysis_lda_bbs_data"
-    ## [1] "Incorrect input structure"
+These TS models were selected correctly:
 
-    ## [1] "analysis_ts_select_analysis_ts_maizuru_data_analysis_lda_maizuru_data"
-    ## [2] "analysis_ts_select_analysis_ts_portal_data_analysis_lda_portal_data"  
-    ## [3] "analysis_ts_select_analysis_ts_sdl_data_analysis_lda_sdl_data"        
-    ## [4] "analysis_ts_select_analysis_ts_mtquad_data_analysis_lda_mtquad_data"
+Community-level results
+-----------------------
+
+Cross-community results
+-----------------------
+
+``` r
+plot(lda_ts_result_summary$ntopics, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by number of LDA topics', 
+     xlab = 'Number of LDA topics', ylab = 'Number of changepoints')
+```
+
+![](ts_report_files/figure-markdown_github/plot%20ts%20cross%20comm%20results-1.png)
+
+``` r
+plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints, 
+     main = 'Number of changepoints by length of timeseries', 
+     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of changepoints')
+```
+
+![](ts_report_files/figure-markdown_github/plot%20ts%20cross%20comm%20results-2.png)
+
+Detailed model results
+----------------------
+
+![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-1.png)![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-2.png)

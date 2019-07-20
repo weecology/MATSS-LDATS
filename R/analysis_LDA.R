@@ -19,7 +19,7 @@
 #'
 run_LDA <- function(data,
                     max_topics = 6, nseeds = 200,
-                    control = LDATS::LDA_controls_list())
+                    control = list())
 {
     if (!MATSS::check_data_format(data))
     {
@@ -33,8 +33,5 @@ run_LDA <- function(data,
     LDA_models = LDATS::LDA_set(document_term_table = abundances,
                                 topics = topics_vector,
                                 nseeds = nseeds, control = control)
-
-    #### Select the best LDA (AIC) ####
-    LDATS::select_LDA(LDA_models = LDA_models, control = control)
 
 }
