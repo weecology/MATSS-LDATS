@@ -58,6 +58,15 @@ db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
 
+## View the graph of the plan
+if (interactive())
+{
+    config <- drake_config(pipeline, cache = cache)
+    sankey_drake_graph(config, build_times = "none")  # requires "networkD3" package
+    vis_drake_graph(config, build_times = "none")     # requires "visNetwork" package
+}
+
+
 ## Run the pipeline
 nodename <- Sys.info()["nodename"]
 if(grepl("ufhpc", nodename)) {

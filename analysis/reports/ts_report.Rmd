@@ -27,7 +27,7 @@ selected_ts_results <- readd(ts_select_results, cache = cache)
 
 ## Errors
 Find TS models that threw errors while running and remove them:
-```{r find error ts, echo = F}
+```{r find error ts, echo = F, include = F}
 ts_errors <- NULL
 for (i in seq(ts_results)){
     if(!is.list(ts_results[[i]])) {
@@ -42,13 +42,13 @@ ts_results <- ts_results[seq(ts_results)[which(!(seq(ts_results) %in% ts_errors)
 
 These TS models ran successfully:
 
-```{r successful ts, echo = F}
+```{r successful ts, echo = F, include = F}
 # Remaining ts models:
 print(names(ts_results))
 ```
 
 Find TS models that threw errors in selection and remove them:
-```{r find error ts select, echo = F}
+```{r find error ts select, echo = F, include = F}
 ts_select_errors <- NULL
 for (i in seq(selected_ts_results)){
     if(!is.list(selected_ts_results[[i]])) {
@@ -62,14 +62,14 @@ selected_ts_results <- selected_ts_results[seq(selected_ts_results)[which(!(seq(
 
 These TS models were selected correctly:
 
-```{r successful ts_select, echo = F}
+```{r successful ts_select, echo = F, include = F}
 # Remaining ts models:
 print(names(selected_ts_results))
 ```
 
 ## Community-level results
 
-```{r community level summary stats}
+```{r community level summary stats, include = F}
 lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 lda_ts_result_summary
 ```
@@ -88,7 +88,7 @@ plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints,
 
 ## Detailed model results
 
-```{r detailed ts model results, fig.width = 15, fig.height = 10}
+```{r detailed ts model results, fig.width = 15, fig.height = 10, echo = F}
 
 #ts_models_summary <- readd(ts_models_summary, cache = cache)
 
@@ -96,6 +96,10 @@ ts_results <- readd(ts_results, cache =cache)
 ts_models_summary <- collect_ts_result_models_summary(ts_results)
 
 get_data_names <- function(model_name) {
+    
+    if(grepl("ts_select", model_name)) {
+        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
+    }
     data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
     data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
     if(grepl("filtered", data_name)){
@@ -105,6 +109,9 @@ get_data_names <- function(model_name) {
 }
 
 get_filtered <- function(model_name) {
+    if(grepl("ts_select", model_name)) {
+        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
+    }
     data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
     data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
     if(grepl("filtered", data_name)){
@@ -142,7 +149,7 @@ ts_models_summary <- ts_models_summary %>%
     dplyr::mutate(filtered_topics = paste(filtered, max_topics, sep = "_"),
                   cpts_formula = paste(nchangepoints, gen_formula, sep = "_"))
 
-print(ts_models_summary)
+# print(ts_models_summary)
 
 nb_close_summary <- ts_models_summary %>%
     dplyr::mutate(AIC = as.numeric(AIC)) %>%
@@ -174,5 +181,20 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
     theme_bw() +
     facet_wrap(facets = data_name ~ .)
 print(nb_close_plot)
+
+lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
+                                          get_data_names,
+                                          FUN.VALUE = "maizuru_data")
+lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
+                                         get_filtered,
+                                         FUN.VALUE = "filtered")
+lda_ts_result_summary <- lda_ts_result_summary %>%
+    dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
+
+nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
+    geom_point() +
+    theme(legend.position = "none")  +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
 
 ```
