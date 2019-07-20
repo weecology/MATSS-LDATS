@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run Latent Dirichlet Allocation on Tabular Data — run_LDA • matssldats</title>
+<title>Extract results from LDA results — extract_lda_variable • matssldats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Run Latent Dirichlet Allocation on Tabular Data — run_LDA" />
+<meta property="og:title" content="Extract results from LDA results — extract_lda_variable" />
 
-<meta property="og:description" content="Test the Latent Dirichlet Allocation (LDA) model on the data
-with different number of topics (from 2 to max_topics), select the best
-one using AIC, and return the model object that is selected." />
+<meta property="og:description" content="Extract results from LDA results" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -101,56 +99,35 @@ one using AIC, and return the model object that is selected." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run Latent Dirichlet Allocation on Tabular Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/analysis_LDA.R'><code>R/analysis_LDA.R</code></a></small>
-    <div class="hidden name"><code>run_LDA.Rd</code></div>
+    <h1>Extract results from LDA results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/extract_results.R'><code>R/extract_results.R</code></a></small>
+    <div class="hidden name"><code>extract_lda_variable.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Test the Latent Dirichlet Allocation (LDA) model on the data
-with different number of topics (from 2 to <code>max_topics</code>), select the best
-one using AIC, and return the model object that is selected.</p>
+    <p>Extract results from LDA results</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>run_LDA</span>(<span class='no'>data</span>, <span class='kw'>max_topics</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>nseeds</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>())</pre>
+    <pre class="usage"><span class='fu'>extract_lda_variable</span>(<span class='no'>lda_result</span>, <span class='no'>variable_name</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>a data.frame or tibble; each row is an observation (e.g. in
-time or space), and each column is a variable. Here, the common usage is
-for each column to be a species or taxon, and each row to be an observed
-sample. In the original specification for LDA, each row is a document,
-and each column is a word, with the entries being the counts of the words
-in each document.</p></td>
+      <th>lda_result</th>
+      <td><p>an LDA model</p></td>
     </tr>
     <tr>
-      <th>max_topics</th>
-      <td><p>the maximum number of topics to try (the function will
-test a number of topics from 2 to <code>max_topics</code>)</p></td>
-    </tr>
-    <tr>
-      <th>nseeds</th>
-      <td><p>Number of seeds (replicate starts) to use for each 
-value of <code>topics</code>. Must be conformable to <code>integer</code> value.</p></td>
-    </tr>
-    <tr>
-      <th>control</th>
-      <td><p>A <code>list</code> of parameters to control the running and 
-selecting of LDA models. Values not input assume default values set 
-by <code>LDA_set_control</code>. Values for running the LDAs replace 
-defaults in (<code>LDAcontol</code>, see <code><a href='https://www.rdocumentation.org/packages/topicmodels/topics/lda'>LDA</a></code> (but if
- <code>seed</code> is given, it will be overwritten; use <code>iseed</code> instead).</p></td>
+      <th>variable_name</th>
+      <td><p>"ntopics", "ntimeseries", or "ntimesteps"</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the best fit model object, from running <code>LDATS::parLDA()</code></p>
+    <p>value of that variable</p>
     
 
   </div>

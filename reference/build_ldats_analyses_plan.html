@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run Latent Dirichlet Allocation on Tabular Data — run_LDA • matssldats</title>
+<title>Build a drake plan for LDATS analysis — build_ldats_analyses_plan • matssldats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Run Latent Dirichlet Allocation on Tabular Data — run_LDA" />
+<meta property="og:title" content="Build a drake plan for LDATS analysis — build_ldats_analyses_plan" />
 
-<meta property="og:description" content="Test the Latent Dirichlet Allocation (LDA) model on the data
-with different number of topics (from 2 to max_topics), select the best
-one using AIC, and return the model object that is selected." />
+<meta property="og:description" content="Construct the expanded Drake plan for LDA time series analyses" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -101,32 +99,26 @@ one using AIC, and return the model object that is selected." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run Latent Dirichlet Allocation on Tabular Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/analysis_LDA.R'><code>R/analysis_LDA.R</code></a></small>
-    <div class="hidden name"><code>run_LDA.Rd</code></div>
+    <h1>Build a drake plan for LDATS analysis</h1>
+    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/build_ldats_plans.R'><code>R/build_ldats_plans.R</code></a></small>
+    <div class="hidden name"><code>build_ldats_analyses_plan.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Test the Latent Dirichlet Allocation (LDA) model on the data
-with different number of topics (from 2 to <code>max_topics</code>), select the best
-one using AIC, and return the model object that is selected.</p>
+    <p>Construct the expanded Drake plan for LDA time series analyses</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>run_LDA</span>(<span class='no'>data</span>, <span class='kw'>max_topics</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>nseeds</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>())</pre>
+    <pre class="usage"><span class='fu'>build_ldats_analyses_plan</span>(<span class='no'>datasets</span>, <span class='kw'>max_topics</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3</span>), <span class='kw'>nseeds</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+  <span class='kw'>nchangepoints</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>formulas</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"time"</span>, <span class='st'>"intercept"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>a data.frame or tibble; each row is an observation (e.g. in
-time or space), and each column is a variable. Here, the common usage is
-for each column to be a species or taxon, and each row to be an observed
-sample. In the original specification for LDA, each row is a document,
-and each column is a word, with the entries being the counts of the words
-in each document.</p></td>
+      <th>datasets</th>
+      <td><p>the drake plan for the datasets to analyze</p></td>
     </tr>
     <tr>
       <th>max_topics</th>
@@ -139,18 +131,18 @@ test a number of topics from 2 to <code>max_topics</code>)</p></td>
 value of <code>topics</code>. Must be conformable to <code>integer</code> value.</p></td>
     </tr>
     <tr>
-      <th>control</th>
-      <td><p>A <code>list</code> of parameters to control the running and 
-selecting of LDA models. Values not input assume default values set 
-by <code>LDA_set_control</code>. Values for running the LDAs replace 
-defaults in (<code>LDAcontol</code>, see <code><a href='https://www.rdocumentation.org/packages/topicmodels/topics/lda'>LDA</a></code> (but if
- <code>seed</code> is given, it will be overwritten; use <code>iseed</code> instead).</p></td>
+      <th>nchangepoints</th>
+      <td><p>Vector of integers: which numbers of changepoints to try.</p></td>
+    </tr>
+    <tr>
+      <th>formulas</th>
+      <td><p>Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the best fit model object, from running <code>LDATS::parLDA()</code></p>
+    <p>a drake plan</p>
     
 
   </div>
