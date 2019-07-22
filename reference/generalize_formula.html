@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run Changepoint Model on LDA + TimeSeries Data — select_TS • matssldats</title>
+<title>Get generalized formula for TS model — generalize_formula • matssldats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Run Changepoint Model on LDA + TimeSeries Data — select_TS" />
+<meta property="og:title" content="Get generalized formula for TS model — generalize_formula" />
 
-<meta property="og:description" content="Run the timeseries model from ldats on LDA models and time-series data." />
+<meta property="og:description" content="Get generalized formula for TS model" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,31 +99,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run Changepoint Model on LDA + TimeSeries Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/analysis_TS.R'><code>R/analysis_TS.R</code></a></small>
-    <div class="hidden name"><code>select_TS.Rd</code></div>
+    <h1>Get generalized formula for TS model</h1>
+    <small class="dont-index">Source: <a href='https://github.com/weecology/MATSS-LDATS/blob/master/R/extract_results.R'><code>R/extract_results.R</code></a></small>
+    <div class="hidden name"><code>generalize_formula.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Run the timeseries model from <code>ldats</code> on LDA models and time-series data.</p>
+    <p>Get generalized formula for TS model</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>select_TS</span>(<span class='no'>changepoint_models</span>)</pre>
+    <pre class="usage"><span class='fu'>generalize_formula</span>(<span class='no'>model_formula</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>changepoint_models</th>
-      <td><p>changepoint model object to check</p></td>
+      <th>model_formula</th>
+      <td><p>string to process</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>best fit TS model</p>
+    <p>formula as "gamma ~ time" instead of "gamma ~ TIMENAME"</p>
     
 
   </div>
