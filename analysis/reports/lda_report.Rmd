@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(MATSS)
 library(drake)
+library(matssldats)
 ```
 
 ## Read in the results
@@ -24,7 +25,7 @@ lda_results <- readd(lda_results, cache = cache)
 
 ## Errors
 Find LDAs that threw errors and remove them:
-```{r find error LDAS, echo = F}
+```{r find error LDAS, echo = F, eval =F, include = F}
 
 for (i in seq(lda_results)){
     if(!is.list(lda_results[[i]])) {
@@ -39,7 +40,7 @@ for (i in seq(lda_results)){
 
 Plot a maximum of 15.
 
-```{r plot LDA, echo = F}
+```{r plot LDA, echo = F, eval = F, include = F}
 
 for (i in 1:min(15, length(lda_results)))
 {

@@ -45,9 +45,15 @@ collect_lda_result_summary <- function(lda_results) {
         maxtopics = vapply(names(lda_results), extract_max_topics, FUN.VALUE = 10),
         ntimeseries = vapply(lda_results, FUN = extract_lda_variable, variable_name = "ntimeseries", FUN.VALUE = 3),
         ntimesteps = vapply(lda_results, FUN = extract_lda_variable, variable_name = "ntimesteps", FUN.VALUE = 3),
+      filtered  = vapply(names(lda_results), FUN = get_filtered, FUN.VALUE = "complete"),
+      data_name =  vapply(names(lda_results),
+                          FUN = get_data_names,
+                          model_type = "lda_selected",
+                          FUN.VALUE = "maizuru_data"),
         stringsAsFactors = FALSE,
         row.names = NULL
     )
+
     
     return(lda_result_summary)
 }
@@ -86,9 +92,19 @@ collect_ts_result_summary <- function(selected_ts_results) {
         ts_name = names(successful_ts_select_results),
         nchangepoints = vapply(successful_ts_select_results, FUN = try(extract_ts_variable), variable_name = "nchangepoints", FUN.VALUE = 3),
         formula = vapply(successful_ts_select_results, FUN = try(extract_ts_variable), variable_name = "formula", FUN.VALUE = "~1"),
+        maxtopics = vapply(names(successful_ts_select_results), extract_max_topics, FUN.VALUE = 10),
+        filtered  = vapply(names(successful_ts_select_results), FUN = get_filtered, FUN.VALUE = "complete"),
+        data_name = vapply(names(successful_ts_select_results),
+                            get_data_names,
+                            model_type = "ts_selected",
+                            FUN.VALUE = "maizuru_data"),
         stringsAsFactors = FALSE,
         row.names = NULL
     )
+    
+    ts_result_summary$gen_formula <- vapply(ts_result_summary$formula,
+                                                generalize_formula,
+                                                FUN.VALUE = "gamma ~ 1")
     
     return(ts_result_summary)
 }
@@ -99,19 +115,82 @@ collect_ts_result_summary <- function(selected_ts_results) {
 #' @return df of tables joined
 #' @export
 #' @importFrom dplyr mutate left_join
-#' @importFrom stringr str_split
 collect_lda_ts_results <- function(lda_result_summary, ts_result_summary){
-    lda_result_summary <- lda_result_summary %>%
-        dplyr::mutate(data = stringr::str_split(lda_result_summary$lda_name, 
-                                                "select_lda_", simplify = T)[,2])
-    ts_result_summary <- ts_result_summary %>%
-        dplyr::mutate(data = stringr::str_split(ts_result_summary$ts_name, "select_lda_", simplify = T)[,2])
+    lda_result_summary$data_name <- vapply(lda_result_summary$lda_name,
+                                           get_data_names,
+                                           model_type = "lda_selected",
+                                           FUN.VALUE = "maizuru_data")
+                      
+
+    lda_ts_result_summary <- dplyr::left_join(lda_result_summary, ts_result_summary, by = c("filtered", "data_name", "maxtopics"))
     
-    lda_ts_result_summary <- dplyr::left_join(lda_result_summary, ts_result_summary, by = "data")
+    ts_result_summary$filtered_topics <- paste(ts_result_summary$filtered, ts_result_summary$max_topics,
+                                               sep = "_")
+    
+    ts_result_summary$cpts_formula <- paste(ts_result_summary$nchangepoints,
+                                            ts_result_summary$gen_formula,
+                                            sep = "_")
     
     return(lda_ts_result_summary)
 }
 
+
+#' Get data name out of model name
+#'
+#' @param model_name model name, string to process
+#' @param model_type "ts_notselected", "ts_selected", "lda_selected"
+#'
+#' @return data name
+#' @export
+get_data_names <- function(model_name, model_type = "ts_notselected") {
+    if(model_type == "ts_notselected") {
+        if(grepl("ts_select", model_name)) {
+            model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
+        }
+        data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
+        data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
+        if(grepl("filtered", data_name)){
+            data_name <- unlist(strsplit(data_name, split = "filtered_"))[2]
+        }
+    }
+    if(model_type %in% c("lda_selected", "ts_selected")) {
+        data_name <- unlist(strsplit(model_name, split = "select_lda_"))[2]
+        if(grepl("filtered", data_name)) {
+            data_name <- unlist(strsplit(data_name, split = "filtered_"))[2]
+        }
+        max_topics <- unlist(strsplit(data_name, split = "_"))[length(unlist(strsplit(data_name, split = "_")))]
+        max_topics <- paste0("_", max_topics)
+        data_name <- substr(data_name, 0, nchar(data_name) - nchar(max_topics))
+    }
+    return(data_name)
+}
+
+#' Get whether a model was run on filtered data
+#' From model name
+#'
+#' @param model_name string to process
+#'
+#' @return "filtered", "complete"
+#' @export
+get_filtered <- function(model_name) {
+    if(grepl("filtered", model_name)){
+        return("filtered")
+    }
+    return("complete")
+}
+
+#' Get generalized formula for TS model
+#'
+#' @param model_formula  string to process
+#'
+#' @return formula as "gamma ~ time" instead of "gamma ~ TIMENAME"
+#' @export
+generalize_formula <- function(model_formula) {
+    if(!grepl("1", model_formula)) {
+        model_formula = "gamma ~ time"
+    }
+    return(model_formula)
+}
 
 #' Make detailed TS result summary table
 #' @param ts_results All ts results (not selected)
@@ -138,5 +217,28 @@ collect_ts_result_models_summary <- function(ts_results) {
     
     ts_result_summary <- dplyr::bind_rows(ts_result_summaries)
     
+    
+    
+    ts_result_summary$gen_formula <- vapply(ts_result_summary$formula,
+                                            generalize_formula,
+                                            FUN.VALUE = "gamma ~ 1")
+    ts_result_summary$data_name <- vapply(ts_result_summary$ts_name,
+                                          get_data_names,
+                                          FUN.VALUE = "maizuru_data",
+                                          model_type = "ts_notselected")
+    ts_result_summary$max_topics <- vapply(ts_result_summary$ts_name,
+                                           extract_max_topics,
+                                           FUN.VALUE = 16)
+    ts_result_summary$filtered <- vapply(ts_result_summary$ts_name,
+                                         get_filtered,
+                                         FUN.VALUE = "filtered")
+    ts_result_summary$filtered_topics <- paste(ts_result_summary$filtered, ts_result_summary$max_topics,
+                                               sep = "_")
+    
+    ts_result_summary$cpts_formula <- paste(ts_result_summary$nchangepoints,
+                                            ts_result_summary$gen_formula,
+                                            sep = "_")
     return(ts_result_summary)
 }
+
+

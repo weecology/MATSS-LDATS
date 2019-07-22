@@ -95,62 +95,6 @@ plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$nchangepoints,
 ts_results <- readd(ts_results, cache =cache)
 ts_models_summary <- collect_ts_result_models_summary(ts_results)
 
-get_data_names <- function(model_name) {
-    
-    if(grepl("ts_select", model_name)) {
-        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
-    }
-    data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
-    data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
-    if(grepl("filtered", data_name)){
-        data_name <- unlist(strsplit(data_name, split = "filtered_"))[2]
-    }
-    return(data_name)
-}
-
-get_filtered <- function(model_name) {
-    if(grepl("ts_select", model_name)) {
-        model_name <- unlist(strsplit(model_name, split = "ts_select_"))[2]
-    }
-    data_name <- unlist(strsplit(model_name, split = "ts_"))[2]
-    data_name <- unlist(strsplit(data_name, split = "_lda_select"))[1]
-    if(grepl("filtered", data_name)){
-        return("filtered")
-    }
-    return("complete")
-}
-
-get_max_topics <- function(model_name) {
-    max_topics <- unlist(strsplit(model_name, split = "_"))[[length(unlist(strsplit(model_name, split = "_")))]]
-    return(max_topics)
-}
-
-generalize_formula <- function(model_formula) {
-    if(!grepl("1", model_formula)) {
-        model_formula = "gamma ~ time"
-    }
-    return(model_formula)
-}
-
-ts_models_summary$gen_formula <- vapply(ts_models_summary$formula,
-                                        generalize_formula,
-                                        FUN.VALUE = "gamma ~ 1")
-ts_models_summary$data_name <- vapply(ts_models_summary$ts_name,
-                                      get_data_names,
-                                      FUN.VALUE = "maizuru_data")
-ts_models_summary$max_topics <- vapply(ts_models_summary$ts_name,
-                                       get_max_topics,
-                                       FUN.VALUE = "16")
-ts_models_summary$filtered <- vapply(ts_models_summary$ts_name,
-                                     get_filtered,
-                                     FUN.VALUE = "filtered")
-
-ts_models_summary <- ts_models_summary %>%
-    dplyr::mutate(filtered_topics = paste(filtered, max_topics, sep = "_"),
-                  cpts_formula = paste(nchangepoints, gen_formula, sep = "_"))
-
-# print(ts_models_summary)
-
 nb_close_summary <- ts_models_summary %>%
     dplyr::mutate(AIC = as.numeric(AIC)) %>%
     dplyr::group_by(data_name, filtered_topics) %>%
@@ -182,19 +126,19 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
     facet_wrap(facets = data_name ~ .)
 print(nb_close_plot)
 
-lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
-                                          get_data_names,
-                                          FUN.VALUE = "maizuru_data")
-lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
-                                         get_filtered,
-                                         FUN.VALUE = "filtered")
-lda_ts_result_summary <- lda_ts_result_summary %>%
-    dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
-
-nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
-    geom_point() +
-    theme(legend.position = "none")  +
-    theme_bw() +
-    facet_wrap(facets = data_name ~ .)
+# lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
+#                                           get_data_names,
+#                                           FUN.VALUE = "maizuru_data")
+# lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
+#                                          get_filtered,
+#                                          FUN.VALUE = "filtered")
+# lda_ts_result_summary <- lda_ts_result_summary %>%
+#     dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
+# 
+# nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
+#     geom_point() +
+#     theme(legend.position = "none")  +
+#     theme_bw() +
+#     facet_wrap(facets = data_name ~ .)
 
 ```
