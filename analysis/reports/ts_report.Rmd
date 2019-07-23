@@ -125,7 +125,19 @@ nb_close_plot <- ggplot(data = nb_close_summary, aes(x = filtered_topics,
     theme_bw() +
     facet_wrap(facets = data_name ~ .)
 print(nb_close_plot)
+```
 
+```{r ncpts}
+lda_ts_result_summary$filtered_topics <- paste(lda_ts_result_summary$filtered, 
+                                               lda_ts_result_summary$topics,
+                                               sep= "_")
+
+ncpts_lot <- ggplot(data = lda_ts_result_summary, aes(x = maxtopics, y = nchangepoints, color = gen_formula)) +
+ geom_jitter(height = 0) +
+    theme(legend.position = "none")  +
+    theme_bw() +
+  facet_wrap(facets = filtered ~ .)
+ncpts_lot
 # lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
 #                                           get_data_names,
 #                                           FUN.VALUE = "maizuru_data")

@@ -53,3 +53,37 @@ Detailed model results
 ----------------------
 
 ![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-1.png)![](ts_report_files/figure-markdown_github/detailed%20ts%20model%20results-2.png)
+
+``` r
+lda_ts_result_summary$filtered_topics <- paste(lda_ts_result_summary$filtered, 
+                                               lda_ts_result_summary$topics,
+                                               sep= "_")
+
+ncpts_lot <- ggplot(data = lda_ts_result_summary, aes(x = maxtopics, y = nchangepoints, color = gen_formula)) +
+ geom_jitter(height = 0) +
+    theme(legend.position = "none")  +
+    theme_bw() +
+  facet_wrap(facets = filtered ~ .)
+ncpts_lot
+```
+
+    ## Warning: Removed 8 rows containing missing values (geom_point).
+
+![](ts_report_files/figure-markdown_github/ncpts-1.png)
+
+``` r
+# lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
+#                                           get_data_names,
+#                                           FUN.VALUE = "maizuru_data")
+# lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
+#                                          get_filtered,
+#                                          FUN.VALUE = "filtered")
+# lda_ts_result_summary <- lda_ts_result_summary %>%
+#     dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
+# 
+# nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
+#     geom_point() +
+#     theme(legend.position = "none")  +
+#     theme_bw() +
+#     facet_wrap(facets = data_name ~ .)
+```
