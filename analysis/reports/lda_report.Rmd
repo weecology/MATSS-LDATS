@@ -21,6 +21,8 @@ db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
 lda_results <- readd(lda_results, cache = cache)
+lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
+
 ```
 
 ## Errors
@@ -38,45 +40,89 @@ for (i in seq(lda_results)){
 
 ## Plot LDAS
 
-Plot a maximum of 15.
 
-```{r plot LDA, echo = F, eval = F, include = F}
+```{r plot LDA, echo = F, eval = T, include = T, out.width=c('25%', '25%', '25%', '25%'), fig.show='hold'}
+lda_result_summary <- readd(lda_result_summary, cache = cache)
+datasets <- unique(lda_result_summary$data_name)
 
-for (i in 1:min(15, length(lda_results)))
-{
-    print(names(lda_results)[i])
+for(i in c(1, 8, 11, 13)) {
     
-    # if (names(lda_results)[i] == "lda__data")
-    # {
-    #     LDATS:::plot.LDA_VEM(lda_results[[i]][1][[1]], 
-    #                          xtime = drake::readd(_data, cache = cache)$censusdate,
-    #                          xname = 'Year')
-    #     title(main = names(lda_results)[i])
-    # } else {
-        LDATS:::plot.LDA_VEM(lda_results[[i]][1][[1]], xname = 'Time step')
-        title(main = names(lda_results)[i])
-    #  }
+    this_name <- datasets[i]
+    
+    these_models <- dplyr::filter(lda_result_summary,
+                                  data_name == this_name)
+    filtered_5 <- these_models %>%
+        dplyr::filter(filtered == "filtered", 
+                      maxtopics == 5)
+    filtered_16 <- these_models %>%
+        dplyr::filter(filtered == "filtered", 
+                      maxtopics == 16)
+    complete_5 <- these_models %>%
+        dplyr::filter(filtered == "complete", 
+                      maxtopics == 5)
+    complete_16 <- these_models %>%
+        dplyr::filter(filtered == "complete", 
+                      maxtopics == 16)
+    
+    indices <- c(
+        which(names(lda_results) == filtered_5$lda_name),
+        which(names(lda_results) == filtered_16$lda_name),
+        which(names(lda_results) == complete_5$lda_name),
+        which(names(lda_results) == complete_16$lda_name)
+    )
+    
+
+    for(j in 1:4) {
+        LDATS:::plot.LDA_VEM(lda_results[[indices[j]]][1][[1]], xname = 'Time step')
+        title(main = names(lda_results)[indices[j]])
+    }
     
 }
+# 
+# for (i in 1:min(15, length(lda_results)))
+# {
+#     print(names(lda_results)[i])
+#     
+#     # if (names(lda_results)[i] == "lda__data")
+#     # {
+#     #     LDATS:::plot.LDA_VEM(lda_results[[i]][1][[1]], 
+#     #                          xtime = drake::readd(_data, cache = cache)$censusdate,
+#     #                          xname = 'Year')
+#     #     title(main = names(lda_results)[i])
+#     # } else {
+#    
+#     #  }
+#     
+# }
 ```
 
 ## Summarize LDA results
 
-```{r summarize LDA results}
+```{r summarize LDA results, include = F, eval = F}
 
-lda_ts_result_summary <- readd(lda_ts_result_summary, cache = cache)
 
 lda_ts_result_summary
 ```
 
-```{r plot lda summary, echo = F, eval = F}
+```{r plot lda summary, echo = F, eval = T, fig.height=8}
+# 
+# plot(lda_ts_result_summary$ntimeseries, lda_ts_result_summary$ntopics, 
+#      main = 'Number of topics by number of timeseries', 
+#      xlab = 'Number of timeseries', ylab = 'Number of topics')
+# 
+# plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$ntopics, 
+#      main = 'Number of topics by length of timeseries', 
+#      xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of topics')
 
-plot(lda_ts_result_summary$ntimeseries, lda_ts_result_summary$ntopics, 
-     main = 'Number of topics by number of timeseries', 
-     xlab = 'Number of timeseries', ylab = 'Number of topics')
+library(ggplot2)
 
-plot(lda_ts_result_summary$ntimesteps, lda_ts_result_summary$ntopics, 
-     main = 'Number of topics by length of timeseries', 
-     xlab = 'Length of timeseries (number of timesteps)', ylab = 'Number of topics')
+ntopics_plot <- ggplot(data = lda_result_summary, aes(x = maxtopics, y = ntopics, color = filtered)) +
+                          geom_jitter(height = 0, width = 2) +
+    scale_y_continuous(breaks = c(1:16), limits = c(0, 20)) +
+    scale_x_continuous(breaks = c(5, 16)) +
+    theme(legend.position = "none")  +
+    theme_bw() +
+    facet_wrap(facets = data_name ~ .)
+print(ntopics_plot)
 
 ```
