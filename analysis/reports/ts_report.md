@@ -72,6 +72,23 @@ ncpts_lot
 ![](ts_report_files/figure-markdown_github/ncpts-1.png)
 
 ``` r
+lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+plot(lda_select_lda_bbs_data_rtrg_1_11_5)
+```
+
+![](ts_report_files/figure-markdown_github/ncpts-2.png)
+
+    ## $`k: 5, seed: 122`
+    ## NULL
+
+``` r
+ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5)
+```
+
+![](ts_report_files/figure-markdown_github/ncpts-3.png)
+
+``` r
 # lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
 #                                           get_data_names,
 #                                           FUN.VALUE = "maizuru_data")
