@@ -89,6 +89,23 @@ plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5)
 ![](ts_report_files/figure-markdown_github/ncpts-3.png)
 
 ``` r
+lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
+plot(lda_select_lda_bbs_data_rtrg_1_11_16)
+```
+
+![](ts_report_files/figure-markdown_github/ncpts-4.png)
+
+    ## $`k: 12, seed: 4`
+    ## NULL
+
+``` r
+ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
+plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16)
+```
+
+![](ts_report_files/figure-markdown_github/ncpts-5.png)
+
+``` r
 # lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
 #                                           get_data_names,
 #                                           FUN.VALUE = "maizuru_data")
