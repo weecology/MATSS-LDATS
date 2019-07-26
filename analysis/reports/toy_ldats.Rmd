@@ -23,18 +23,105 @@ dat_lda <- matssldats::run_LDA(data = dat, max_topics = 3, nseeds = 1)
 
 ```{r fit small TS, eval =F}
 dat_ts <- matssldats::run_TS(data = dat,ldamodels = dat_lda, nchangepoints = c(0, 1), 
-                                weighting = "proportional", control = list(nit = 100))
+                             weighting = "proportional", control = list(nit = 100))
 ```
 
 ```{r load above}
 load(here::here("analysis", "reports", "toy_ldats_stash", "toy_ldats_stash.RData"))
 ```
 
-```{r plot LDAs and TS fits for each combination}
+```{r plot LDAs and TS fits for each combination, eval =F}
+for(i in 1:length(dat_lda)) {
+    plot(dat_lda[[i]])
+
+    ntopics <- dat_lda[[i]]@k
+    
+    for(j in 1:length(dat_ts)) {
+        ts_topics <- ncol(dat_ts[[j]]$data$gamma)
+        if(ts_topics == ntopics) {
+            plot(dat_ts[[j]])
+        }
+    }
+}
 
 ```
 
 ```{r backpredict abundances from LDA and TS}
+#fitted_proportions <- 
+ 
+get_fitted_proportions <- function(x) {
+     rhos <- x$rhos
+    nrhos <- ncol(rhos)
+    if (!is.null(nrhos)) {
+        if (selection == "median") {
+            spec_rhos <- apply(rhos, 2, median)
+        }
+        else if (selection == "mode") {
+            spec_rhos <- apply(rhos, 2, LDATS::modalvalue)
+        }
+        else {
+            stop("selection input not supported")
+        }
+    }
+    else {
+        spec_rhos <- NULL
+    }
+    x$control$timename <- NULL
+    seg_mods <- LDATS::multinom_TS(x$data, x$formula, spec_rhos, x$timename, 
+        x$weights, x$control)
+    nsegs <- length(seg_mods[[1]])
+    t1 <- min(x$data[, x$timename])
+    t2 <- max(x$data[, x$timename])
+    ntopics <- ncol(as.matrix(x$data[[x$control$response]]))
+    seg1 <- c(0, spec_rhos[-length(rhos)])
+    seg2 <- c(spec_rhos, t2)
+    time_obs <- rep(NA, nrow(x$data))
+    pred_vals <- matrix(NA, nrow(x$data), ntopics)
+    sp1 <- 1
+    for (i in 1:nsegs) {
+        mod_i <- seg_mods[[1]][[i]]
+        spec_vals <- sp1:(sp1 + nrow(mod_i$fitted.values) - 
+            1)
+        pred_vals[spec_vals, ] <- mod_i$fitted.values
+        time_obs[spec_vals] <- mod_i$timevals
+        sp1 <- sp1 + nrow(mod_i$fitted.values)
+    }
+    return(pred_vals)
+}   
+    
+pred_vals_1 <- get_fitted_proportions(dat_ts[[1]])    
+
+get_fitted_abundances <- function(fitted_proportions, ldamodel, abundance_data) {
+    betas <- exp(ldamodel@beta)
+    
+    total_abundances <- rowSums(abundance_data)
+    
+    topic_abundances <- ceiling(fitted_proportions * total_abundances)
+    
+    censuses <- list()
+    blank_species <- matrix(nrow = 1, ncol = ncol(betas))
+    blank_species <- as.data.frame(blank_species)
+    colnames(blank_species) <- as.character(1:ncol(betas))
+    for(i in 1:nrow(fitted_proportions)) {
+        censuses[[i]] <- list()
+        for(j in 1:ncol(fitted_proportions)) {
+    censuses[[i]][[j]] <- sample.int(n = ncol(betas), size = topic_abundances[i, j], prob = betas[j, ], replace = T)
+        }
+        censuses[[i]] <- as.data.frame(t(as.matrix(table(unlist(censuses[[i]])))))
+        
+        
+        censuses[[i]] <- dplyr::left_join(censuses[[i]], blank_species)
+        
+        censuses[[i]][which(is.na(censuses[[i]]))] <- as.integer(0)
+        
+    }
+    censuses <- dplyr::bind_rows(censuses)
+    return(censuses)
+}
+
+abund <-get_fitted_abundances(pred_vals_1, dat_lda[[1]], dat$abundance)
+
+head(abund)
 
 ```
 
