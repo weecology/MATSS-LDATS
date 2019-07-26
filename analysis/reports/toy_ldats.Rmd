@@ -1,0 +1,43 @@
+---
+title: "Playing with LDA_TS fits"
+author: "Renata Diaz"
+date: "7/26/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MATSS)
+library(matssldats)
+
+```
+
+```{r load toy data, eval =F}
+dat <- get_portal_rodents()
+```
+
+```{r fit small LDA, eval =F}
+dat_lda <- matssldats::run_LDA(data = dat, max_topics = 3, nseeds = 1)
+```
+
+```{r fit small TS, eval =F}
+dat_ts <- matssldats::run_TS(data = dat,ldamodels = dat_lda, nchangepoints = c(0, 1), 
+                                weighting = "proportional", control = list(nit = 100))
+```
+
+```{r load above}
+load(here::here("analysis", "reports", "toy_ldats_stash", "toy_ldats_stash.RData"))
+```
+
+```{r plot LDAs and TS fits for each combination}
+
+```
+
+```{r backpredict abundances from LDA and TS}
+
+```
+
+```{r compare backpredictions across LDA_TS models}
+
+```
