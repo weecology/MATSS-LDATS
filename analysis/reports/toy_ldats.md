@@ -23,7 +23,7 @@ load(here::here("analysis", "reports", "toy_ldats_stash", "toy_ldats_stash.RData
 ``` r
 for(i in 1:length(dat_lda)) {
     plot(dat_lda[[i]])
-
+    
     ntopics <- dat_lda[[i]]@k
     
     for(j in 1:length(dat_ts)) {
@@ -36,3 +36,159 @@ for(i in 1:length(dat_lda)) {
 ```
 
 ![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-1.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-2.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-3.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-4.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-5.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-6.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-7.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-8.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-9.png)![](toy_ldats_files/figure-markdown_github/plot%20LDAs%20and%20TS%20fits%20for%20each%20combination-10.png)
+
+``` r
+#fitted_proportions <- 
+
+get_fitted_proportions <- function(x, selection = "median") {
+    rhos <- x$rhos
+    nrhos <- ncol(rhos)
+    if (!is.null(nrhos)) {
+        if (selection == "median") {
+            spec_rhos <- apply(rhos, 2, median)
+        }
+        else if (selection == "mode") {
+            spec_rhos <- apply(rhos, 2, LDATS::modalvalue)
+        }
+        else {
+            stop("selection input not supported")
+        }
+    }
+    else {
+        spec_rhos <- NULL
+    }
+    x$control$timename <- NULL
+    seg_mods <- LDATS::multinom_TS(x$data, x$formula, spec_rhos, x$timename, 
+                                   x$weights, x$control)
+    nsegs <- length(seg_mods[[1]])
+    t1 <- min(x$data[, x$timename])
+    t2 <- max(x$data[, x$timename])
+    ntopics <- ncol(as.matrix(x$data[[x$control$response]]))
+    seg1 <- c(0, spec_rhos[-length(rhos)])
+    seg2 <- c(spec_rhos, t2)
+    time_obs <- rep(NA, nrow(x$data))
+    pred_vals <- matrix(NA, nrow(x$data), ntopics)
+    sp1 <- 1
+    for (i in 1:nsegs) {
+        mod_i <- seg_mods[[1]][[i]]
+        spec_vals <- sp1:(sp1 + nrow(mod_i$fitted.values) - 
+                              1)
+        pred_vals[spec_vals, ] <- mod_i$fitted.values
+        time_obs[spec_vals] <- mod_i$timevals
+        sp1 <- sp1 + nrow(mod_i$fitted.values)
+    }
+    return(pred_vals)
+}   
+
+get_fitted_abundances <- function(fitted_proportions, ldamodel, abundance_data) {
+    betas <- exp(ldamodel@beta)
+    
+    total_abundances <- rowSums(abundance_data)
+    
+    topic_abundances <- ceiling(fitted_proportions * total_abundances)
+    
+    censuses <- list()
+    blank_species <- matrix(nrow = 1, ncol = ncol(betas))
+    blank_species <- as.data.frame(blank_species)
+    colnames(blank_species) <- as.character(1:ncol(betas))
+    for(i in 1:nrow(fitted_proportions)) {
+        censuses[[i]] <- list()
+        for(j in 1:ncol(fitted_proportions)) {
+            censuses[[i]][[j]] <- sample.int(n = ncol(betas), size = topic_abundances[i, j], prob = betas[j, ], replace = T)
+        }
+        censuses[[i]] <- as.data.frame(t(as.matrix(table(unlist(censuses[[i]])))))
+        
+        
+        censuses[[i]] <- dplyr::left_join(censuses[[i]], blank_species)
+        
+        censuses[[i]][which(is.na(censuses[[i]]))] <- as.integer(0)
+        
+    }
+    censuses <- dplyr::bind_rows(censuses)
+    return(censuses)
+}
+set.seed(352)
+
+get_total_off <- function(predicted_census, abundance_table) {
+    
+    predicted_census <- dplyr::select(predicted_census,
+                                      as.character(c(1:ncol(predicted_census))))
+    
+    off <- abs(predicted_census - abundance_table)
+    
+    total_off <- rowSums(off) * (rowSums(abundance_table) / max(rowSums(abundance_table)))
+    
+    total_total_off <- sum(total_off)
+    
+    return(total_total_off)
+}
+
+pred_vals_1 <- get_fitted_proportions(dat_ts[[1]])    
+abund <- get_fitted_abundances(pred_vals_1, dat_lda[[1]], dat$abundance)
+total_off <- get_total_off(abund, dat$abundance)
+```
+
+``` r
+ts_ks <- list() 
+
+for(i in 1:length(dat_ts)) {
+    ts_ks[[i]] <- substr(names(dat_ts)[i], 4, 4)
+}
+
+ts_ks <- unlist(ts_ks)
+ts_ks <- as.integer(ts_ks)
+
+how_far_off <- list()
+
+for(l in 1:length(dat_lda)) {
+    this_lda <- dat_lda[[l]]
+    these_ts <- list()
+    for (p in 1:length(dat_ts)) {
+        if(ts_ks[p] == this_lda@k) {
+            these_ts[[length(these_ts) + 1]] <- dat_ts[[p]]
+        }
+    }
+    
+    for (t in 1:length(these_ts)) {
+        this_pred_vals <- get_fitted_proportions(these_ts[[t]])
+        this_fitted_abund <- get_fitted_abundances(this_pred_vals, this_lda, dat$abundance)
+        this_far_off <- get_total_off(this_fitted_abund, dat$abundance)
+        
+        how_far_off[[length(how_far_off) + 1]] <- data.frame(
+            ntopics = this_lda@k,
+            nchangepoints = these_ts[[t]]$nchangepoints,
+            formula = deparse(these_ts[[t]]$formula),
+            total_off = this_far_off
+        )
+    }
+    
+}
+
+how_far_off <- dplyr::bind_rows(how_far_off)
+```
+
+    ## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
+
+    ## Warning in bind_rows_(x, .id): binding character and factor vector,
+    ## coercing into character vector
