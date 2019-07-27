@@ -56,3 +56,5 @@ matssldats.Rproj
 drake/*
 /drake/
 /drake/*
+
+/analysis/reports/lda_ts_plots/*

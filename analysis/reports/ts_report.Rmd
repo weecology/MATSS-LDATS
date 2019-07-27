@@ -11,6 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 library(MATSS)
 library(matssldats)
 library(drake)
+
+
+library(ggplot2) 
+library(cowplot)
+library(magick)
 ```
 
 ## Read in the results
@@ -133,36 +138,60 @@ lda_ts_result_summary$filtered_topics <- paste(lda_ts_result_summary$filtered,
                                                sep= "_")
 
 ncpts_lot <- ggplot(data = lda_ts_result_summary, aes(x = maxtopics, y = nchangepoints, color = gen_formula)) +
- geom_jitter(height = 0) +
+    geom_jitter(height = 0) +
     theme(legend.position = "none")  +
     theme_bw() +
-  facet_wrap(facets = filtered ~ .)
+    facet_wrap(facets = filtered ~ .)
 ncpts_lot
-lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-plot(lda_select_lda_bbs_data_rtrg_1_11_5)
-ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5)
+
+```
+
+```{r plot LDAs + cpt estimates, echo = F}
+lda_results <- readd(lda_results, cache = cache)
+lda_ts_result_summary <- lda_ts_result_summary %>%
+    dplyr::filter(data_name != "sgs_data") %>%
+    dplyr::filter(data_name != "jornada_data") %>%
+    dplyr::filter(data_name != "maizuru_data") %>%
+    dplyr::arrange(dplyr::desc(data_name), dplyr::desc(filtered),
+                   dplyr::desc(maxtopics),
+                   dplyr::desc(gen_formula), dplyr::desc(nchangepoints))
 
 
+dir.create(here::here("analysis", "reports", "lda_ts_plots"))
 
-
-lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
-plot(lda_select_lda_bbs_data_rtrg_1_11_16)
-ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
-plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16)
-# lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
-#                                           get_data_names,
-#                                           FUN.VALUE = "maizuru_data")
-# lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
-#                                          get_filtered,
-#                                          FUN.VALUE = "filtered")
-# lda_ts_result_summary <- lda_ts_result_summary %>%
-#     dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
-# 
-# nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
-#     geom_point() +
-#     theme(legend.position = "none")  +
-#     theme_bw() +
-#     facet_wrap(facets = data_name ~ .)
+for(i in 1:nrow(lda_ts_result_summary)) {
+    if(is.na(lda_ts_result_summary$ts_name[i])) {
+        next
+    }
+    
+    if(!dir.exists(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i]))) {
+        dir.create(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i]))
+    }
+    
+    this_ts <- selected_ts_results [[ which(names(selected_ts_results) == lda_ts_result_summary$ts_name[i])]]
+    this_lda <- lda_results [[ which(names(lda_results) == lda_ts_result_summary$lda_name[i])]][[1]]
+    
+    lda_cols <- LDATS::set_LDA_plot_colors(this_lda)
+    jpeg(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "lda.jpg"))
+    plot(this_lda, cols = lda_cols)
+    dev.off()
+    jpeg(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "ts.jpg"))
+    ts_cols <- LDATS::set_gamma_colors(this_ts, cols = lda_cols)
+    LDATS::pred_gamma_TS_plot(this_ts, cols = ts_cols, xlab = "Time")
+    dev.off()
+    
+    p1 <- ggdraw() + draw_image(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "lda.jpg")) +
+        draw_figure_label(label = lda_ts_result_summary$data_name[i], position = "top.left")
+    p2 <- ggdraw()+ draw_image(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "ts.jpg")) + 
+        draw_figure_label(label = paste("max",
+                                        lda_ts_result_summary$maxtopics[i],
+                                        "topics,",
+                                        lda_ts_result_summary$nchangepoints[i],
+                                        "cpts,",
+                                        lda_ts_result_summary$gen_formula[i]),
+                          position = "top.left")
+    
+    gridExtra::grid.arrange(grobs = list(p1, p2), nrow = 1, ncol =2 )
+}
 
 ```

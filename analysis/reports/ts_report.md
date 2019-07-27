@@ -60,10 +60,10 @@ lda_ts_result_summary$filtered_topics <- paste(lda_ts_result_summary$filtered,
                                                sep= "_")
 
 ncpts_lot <- ggplot(data = lda_ts_result_summary, aes(x = maxtopics, y = nchangepoints, color = gen_formula)) +
- geom_jitter(height = 0) +
+    geom_jitter(height = 0) +
     theme(legend.position = "none")  +
     theme_bw() +
-  facet_wrap(facets = filtered ~ .)
+    facet_wrap(facets = filtered ~ .)
 ncpts_lot
 ```
 
@@ -71,53 +71,8 @@ ncpts_lot
 
 ![](ts_report_files/figure-markdown_github/ncpts-1.png)
 
-``` r
-lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-plot(lda_select_lda_bbs_data_rtrg_1_11_5)
-```
+    ## Warning in dir.create(here::here("analysis", "reports", "lda_ts_plots")):
+    ## '/Users/renatadiaz/Documents/GitHub/weecology/MATSS-LDATS/analysis/reports/
+    ## lda_ts_plots' already exists
 
-![](ts_report_files/figure-markdown_github/ncpts-2.png)
-
-    ## $`k: 5, seed: 122`
-    ## NULL
-
-``` r
-ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5)
-```
-
-![](ts_report_files/figure-markdown_github/ncpts-3.png)
-
-``` r
-lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
-plot(lda_select_lda_bbs_data_rtrg_1_11_16)
-```
-
-![](ts_report_files/figure-markdown_github/ncpts-4.png)
-
-    ## $`k: 12, seed: 4`
-    ## NULL
-
-``` r
-ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16, cache = cache)
-plot(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16)
-```
-
-![](ts_report_files/figure-markdown_github/ncpts-5.png)
-
-``` r
-# lda_ts_result_summary$data_name <- vapply(lda_ts_result_summary$ts_name,
-#                                           get_data_names,
-#                                           FUN.VALUE = "maizuru_data")
-# lda_ts_result_summary$filtered <- vapply(lda_ts_result_summary$ts_name,
-#                                          get_filtered,
-#                                          FUN.VALUE = "filtered")
-# lda_ts_result_summary <- lda_ts_result_summary %>%
-#     dplyr::mutate(filtered_topics = paste(filtered, maxtopics, sep = "_"))
-# 
-# nb_topics_plot <- ggplot(data = lda_ts_result_summary, aes(x = filtered_topics, y = ntopics)) +
-#     geom_point() +
-#     theme(legend.position = "none")  +
-#     theme_bw() +
-#     facet_wrap(facets = data_name ~ .)
-```
+![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-1.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-2.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-3.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-4.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-5.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-6.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-7.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-8.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-9.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-10.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-11.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-12.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-13.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-14.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-15.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-16.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-17.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-18.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-19.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-20.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-21.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-22.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-23.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-24.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-25.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-26.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-27.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-28.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-29.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-30.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-31.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-32.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-33.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-34.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-35.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-36.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-37.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-38.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-39.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-40.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-41.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-42.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-43.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-44.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-45.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-46.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-47.png)![](ts_report_files/figure-markdown_github/plot%20LDAs%20+%20cpt%20estimates-48.png)
