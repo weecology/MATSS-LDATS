@@ -181,7 +181,8 @@ for(i in 1:nrow(lda_ts_result_summary)) {
     dev.off()
     
     p1 <- ggdraw() + draw_image(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "lda.jpg")) +
-        draw_figure_label(label = lda_ts_result_summary$data_name[i], position = "top.left")
+        draw_figure_label(label = paste(lda_ts_result_summary$data_name[i],
+                                        lda_ts_result_summary$filtered[i]), position = "top.left")
     p2 <- ggdraw()+ draw_image(here::here("analysis", "reports", "lda_ts_plots", lda_ts_result_summary$ts_name[i], "ts.jpg")) + 
         draw_figure_label(label = paste("max",
                                         lda_ts_result_summary$maxtopics[i],
