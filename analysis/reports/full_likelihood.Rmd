@@ -26,6 +26,8 @@ Tacking a full likelihood computation on to existing runs of LDA_TS models, movi
 Likelihood of observed dataset (observed term frequencies in each document) from LDA and TS model...
 
 ```{r pull in an LDA and a TS model}
+dat1 <- readd(bbs_data_rtrg_1_11, cache = cache)
+counts1 <- dat1$abundance
 lda1 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
 ts1 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
 
@@ -37,6 +39,8 @@ plot(ts1)
 
 ```{r get beta and theta}
 beta1 <- lda1$`k: 5, seed: 122`@beta
+
+beta1exp <- exp(beta1)
 
 get_thetas <- function(x) {
     rhos <- x$rhos
@@ -75,5 +79,25 @@ theta1 <- get_thetas(ts1)
 
 P1 <- theta1 %*% beta1
 
-head(P1)
+P1exp <- theta1 %*% beta1exp
+
+head(P1exp)
+
+rowSums(P1exp)
+```
+
+```{r get document likelihoods}
+
+get_doc_lik <- function(index, counts_matrix, p_matrix) {
+    counts <- as.integer(counts_matrix[index, ])
+    ps <- p_matrix[index, ]
+    doc_loglik <- dmultinom(x = counts, prob = ps, log = TRUE)
+    return(doc_loglik)
+}
+
+doc_lik1 <- vapply(1:nrow(counts1), FUN = get_doc_lik, counts_matrix = counts1, 
+                   p_matrix = P1exp, FUN.VALUE = -1)
+
+sum(doc_lik1)
+
 ```
