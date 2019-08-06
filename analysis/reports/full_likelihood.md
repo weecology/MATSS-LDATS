@@ -239,3 +239,19 @@ sum(doc_lik1)
 ```
 
     ## [1] -18622
+
+``` r
+ldapars <- attr(logLik(lda1[[1]]), "df")
+tspars <- attr(logLik(ts1), "df")
+
+totalpars <- ldapars + tspars
+
+nobs <- attr(logLik(ts1), "nobs")
+
+AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) + 
+    (2 * totalpars^2 + 2 * totalpars)/(nobs - totalpars - 1)
+
+AICc
+```
+
+    ## [1] 37130.76
