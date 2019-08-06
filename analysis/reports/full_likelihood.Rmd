@@ -1,0 +1,79 @@
+---
+title: "Toy full likelihood"
+author: "Renata Diaz"
+date: "8/6/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+
+library(MATSS)
+library(drake)
+library(matssldats)
+library(LDATS)
+
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+```
+
+## Full model likelihood
+
+Based on Slack & in person conversation with Hao Ye & Juniper Simonis.
+
+Tacking a full likelihood computation on to existing runs of LDA_TS models, moving towards whole-model evaluation of goodness of fit (instead of evaluting and selecting LDA and TS components separately and sequentially). 
+
+Likelihood of observed dataset (observed term frequencies in each document) from LDA and TS model...
+
+```{r pull in an LDA and a TS model}
+lda1 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+ts1 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+
+plot(lda1)
+
+plot(ts1)
+```
+
+
+```{r get beta and theta}
+beta1 <- lda1$`k: 5, seed: 122`@beta
+
+get_thetas <- function(x) {
+    rhos <- x$rhos
+    nrhos <- ncol(rhos)
+    if (!is.null(nrhos)){
+        if (selection == "median"){
+            spec_rhos <- apply(rhos, 2, median)
+        } else if (selection == "mode"){
+            spec_rhos <- apply(rhos, 2, modalvalue)
+        } else {
+            stop("selection input not supported")
+        }
+    } else{
+        spec_rhos <- NULL
+    }
+    seg_mods <- multinom_TS(x$data, x$formula, spec_rhos,  
+                            x$timename, x$weights, x$control)
+    
+    time_obs <- rep(NA, nrow(x$data))
+    ntopics <- ncol(as.matrix(x$data[[x$control$response]]))
+    nsegs <- length(seg_mods[[1]])
+    pred_vals <- matrix(NA, nrow(x$data), ntopics)
+    sp1 <- 1
+    for (i in 1:nsegs){
+        mod_i <- seg_mods[[1]][[i]]
+        spec_vals <- sp1:(sp1 + nrow(mod_i$fitted.values) - 1)
+        pred_vals[spec_vals, ] <- mod_i$fitted.values
+        time_obs[spec_vals] <- mod_i$timevals
+        sp1 <- sp1 + nrow(mod_i$fitted.values)
+    }
+    
+    return(pred_vals) 
+}
+
+theta1 <- get_thetas(ts1)
+
+P1 <- theta1 %*% beta1
+
+head(P1)
+```
