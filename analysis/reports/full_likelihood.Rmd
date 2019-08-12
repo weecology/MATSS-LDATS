@@ -134,3 +134,29 @@ aicc_plot <- ggplot(data = all_aicc, aes(x = all_aicc)) +
 all_aicc
 
 ```
+
+
+```{r get all model aiccs}
+ts_all <- readd(ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+
+get_all_aiccs <- function(lda_model, ts_model, dat_list) {
+    betaexp <- exp(lda_model[[1]]@beta)
+    all_thetas <- all_thetas <- lapply(X = c(1:nrow(ts_model$etas)), FUN = get_theta, ts_model = ts_model)
+    all_aicc <- vapply(X = all_thetas, FUN = get_aicc, beta = betaexp, lda_model = lda_model, ts_model = ts_model, FUN.VALUE = 100.1)
+    return(all_aicc)
+}
+
+all_aicc <- get_all_aiccs(lda1, ts1, dat1)
+
+all_model_aiccs <- lapply(ts_all, FUN = get_all_aiccs, lda_model = lda1, dat_list = dat1)
+
+all_model_aiccs1 <- dplyr::bind_rows(all_model_aiccs) %>%
+    tidyr::gather(key = "model", value = "AICc")
+
+all_aicc_plot <- ggplot(data = all_model_aiccs1, aes(x = model, y = AICc, color = model)) + 
+    geom_point() +
+    theme_bw()
+
+all_aicc_plot
+
+```
