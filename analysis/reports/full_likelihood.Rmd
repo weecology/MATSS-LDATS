@@ -29,18 +29,70 @@ Likelihood of observed dataset (observed term frequencies in each document) from
 dat1 <- readd(bbs_data_rtrg_1_11, cache = cache)
 counts1 <- dat1$abundance
 lda1 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-ts1 <- readd(ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
+ts1 <- readd(ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)[[4]]
 
-plot(lda1)
+#plot(lda1)
 
-plot(ts1)
+#plot(ts1)
 ```
 
 
-```{r get beta and theta}
+```{r get beta}
 beta1 <- lda1$`k: 5, seed: 122`@beta
 
 beta1exp <- exp(beta1)
+```
+
+
+```{r generate a single set of thetas from TS fit}
+
+ts1
+
+get_relevant_covars <- function(covariates_table, ts_formula) {
+    formula_string <- unlist(as.character(ts_formula))
+    
+    formula_string <- formula_string[ which((formula_string != "~") & (formula_string != "gamma") & (formula_string != "1"))]
+
+    covariates_table$intercept <- 1
+    covars <- as.data.frame(covariates_table[ , c("intercept", formula_string)])
+    
+    return(covars)
+}
+
+get_theta <- function(ts_model, sim = 1){
+
+covars <- get_relevant_covars(ts_model$data, ts_model$formula)
+
+ncovar <- ncol(covars)
+nseg <- ifelse(is.null(ts_model$rhos), 1, ncol(ts_model$rhos) + 1)
+ntopics <- ncol(ts_model$data$gamma)
+
+ndocs <- nrow(ts_model$data)
+
+X <- matrix(nrow = ndocs, ncol = ncovar, data = unlist(covars), byrow = FALSE)
+
+model_Eta <- ts_model$etas[sim, ]
+
+Eta_matrix <- matrix(nrow = ncovar  * nseg, ncol = ntopics,
+                     data = c(rep(0, times = ncovar * nseg), model_Eta), byrow = FALSE)
+
+rho = ts_model$rhos[sim,]
+
+tD <- unlist(ts_model$data[ , ts_model$timename])
+
+Theta <- sim_TS_data(X, Eta_matrix, rho, tD, err = 0)
+
+return(Theta) 
+}
+
+theta1 <- get_theta(ts1)
+```
+
+
+```{r get P table}
+
+P1exp <- theta1 %*% beta1exp
+
 ```
 
 ```{r get document likelihoods}
@@ -74,7 +126,6 @@ AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) +
 AICc
 
 ```
-
 
 ```{r old scraps, include = F, eval = F}
 
