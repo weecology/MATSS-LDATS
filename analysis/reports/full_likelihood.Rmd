@@ -8,12 +8,9 @@ output: github_document
 ```{r setup, include=FALSE}
 
 library(MATSS)
-library(drake)
 library(matssldats)
 library(LDATS)
-
-db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
-cache <- storr::storr_dbi("datatable", "keystable", db)
+source(here::here("analysis", "reports", "full_ldats_likelihood_stash", "full_ldats_likelihood.R"))
 
 ```
 
@@ -25,138 +22,99 @@ Tacking a full likelihood computation on to existing runs of LDA_TS models, movi
 
 Likelihood of observed dataset (observed term frequencies in each document) from LDA and TS model...
 
-```{r pull in an LDA and a TS model}
-dat1 <- readd(bbs_data_rtrg_1_11, cache = cache)
-counts1 <- dat1$abundance
-lda1 <- readd(lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-ts1 <- readd(ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)[[4]]
+```{r run multiple LDA and TS models, include = T, eval = F}
+dat1 <- get_portal_rodents()
+
+ldas <- LDA_set(dat1$abundance, topics = c(2, 5), nseeds = 1)
+
+ts_fits <- run_TS(dat1, ldas, formulas = c("intercept", "time"), 
+                  nchangepoints = c(0, 1), weighting = "proportional")
 
 #plot(lda1)
 
 #plot(ts1)
 ```
 
-```{r functions}
+```{r load models, include = F, eval = T}
+load(here::here("analysis", "reports", "full_ldats_likelihood_stash", "models.RData"))
+```
 
-get_relevant_covars <- function(covariates_table, ts_formula) {
-    formula_string <- unlist(as.character(ts_formula))
-    
-    formula_string <- formula_string[ which((formula_string != "~") & (formula_string != "gamma") & (formula_string != "1"))]
+```{r map ts fits to ldas}
 
-    covariates_table$intercept <- 1
-    covars <- as.data.frame(covariates_table[ , c("intercept", formula_string)])
-    
-    return(covars)
-}
+ts_fit_names <- strsplit(names(ts_fits), split = ", ")
 
-get_theta <- function(ts_model, sim = 1){
+ts_fit_data <- data.frame(
+    ts_index = 1:length(ts_fits),
+    ts_names = unlist(names(ts_fits)),
+    k = vapply(X = ts_fit_names, FUN = function(X) return(X[[1]]), FUN.VALUE = "k: 2"),
+    seed = vapply(X = ts_fit_names, FUN = function(X) return(X[[2]]), 
+                FUN.VALUE = "seed: 1"),
+    formula = vapply(X = ts_fit_names, FUN = function(X) return(X[[3]]), 
+                FUN.VALUE = "gamma ~ time"),
+    changepoints = vapply(X = ts_fit_names, FUN = function(X) return(X[[4]]), 
+                FUN.VALUE = "0 changepoints")
+)
 
-covars <- get_relevant_covars(ts_model$data, ts_model$formula)
+ts_fit_data$k <- substr(ts_fit_data$k, start = 4, stop = nchar(as.character(ts_fit_data$k)))
+ts_fit_data$seed <- substr(ts_fit_data$seed, start = 7, stop = nchar(as.character(ts_fit_data$seed)))
+ts_fit_data$changepoints <- substr(ts_fit_data$changepoints, start = 1, stop = nchar(as.character(ts_fit_data$changepoints))- 13)
 
-ncovar <- ncol(covars)
-nseg <- ifelse(is.null(ts_model$rhos), 1, ncol(ts_model$rhos) + 1)
-ntopics <- ncol(ts_model$data$gamma)
+ts_fit_data$lda_name <- paste0("k: ",
+                               ts_fit_data$k, 
+                               ", seed: ",
+                               ts_fit_data$seed)
+ts_fit_data$lda_index <- vapply(ts_fit_data$lda_name, function(x, ldamodels) return(which(names(ldamodels) == x)), ldamodels = ldas, FUN.VALUE = 1)
 
-ndocs <- nrow(ts_model$data)
-
-X <- matrix(nrow = ndocs, ncol = ncovar, data = unlist(covars), byrow = FALSE)
-
-model_Eta <- ts_model$etas[sim, ]
-
-Eta_matrix <- matrix(nrow = ncovar  * nseg, ncol = ntopics,
-                     data = c(rep(0, times = ncovar * nseg), model_Eta), byrow = FALSE)
-
-rho = ts_model$rhos[sim,]
-
-tD <- unlist(ts_model$data[ , ts_model$timename])
-
-Theta <- sim_TS_data(X, Eta_matrix, rho, tD, err = 0)
-
-return(Theta) 
-}
-
-
-get_doc_lik <- function(counts_matrix, p_matrix, index) {
-    counts <- as.integer(counts_matrix[index, ])
-    ps <- p_matrix[index, ]
-    doc_loglik <- dmultinom(x = counts, prob = ps, log = TRUE)
-    return(doc_loglik)
-}
-
-
-get_aicc <- function(beta, theta, lda_model, ts_model) {
-    P1exp <- theta %*% beta1exp
-
-doc_lik1 <- vapply(1:nrow(counts1), FUN = get_doc_lik, counts_matrix = counts1, 
-                   p_matrix = P1exp, FUN.VALUE = -1)
-
-ldapars <- attr(logLik(lda_model[[1]]), "df")
-tspars <- attr(logLik(ts_model), "df")
-
-totalpars <- ldapars + tspars
-
-nobs <- attr(logLik(ts_model), "nobs")
-
-AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) + 
-    (2 * totalpars^2 + 2 * totalpars)/(nobs - totalpars - 1)
-
-return(AICc)
+dat_to_aiccs <- function(data_row, ldamodels, tsmodels, datalist) {
+    return(get_all_aiccs(lda_model = ldamodels[as.integer(data_row[8])],
+                        ts_model = tsmodels[[as.integer(data_row[1])]],
+                        counts_matrix = datalist$abundance))
 }
 
 ```
 
-```{r get beta}
-beta1 <- lda1$`k: 5, seed: 122`@beta
 
-beta1exp <- exp(beta1)
+```{r get aics}
+
+model_aiccs <- apply(ts_fit_data, MARGIN = 1, FUN = dat_to_aiccs,
+                     ldamodels = ldas, tsmodels = ts_fits, datalist = dat1)
+
+model_aiccs <- as.data.frame(model_aiccs)
+
+colnames(model_aiccs) <- ts_fit_data$ts_names
+
+model_aiccs <- tidyr::gather(model_aiccs, key = "ts_names", value = "AICc") %>%
+    dplyr::left_join(ts_fit_data, by = "ts_names")
+
 ```
 
-
-```{r get all thetas}
-all_thetas <- lapply(X = c(1:nrow(ts1$etas)), FUN = get_theta, ts_model = ts1)
-```
-
-```{r get AICcs}
-all_aicc <- vapply(X = all_thetas, FUN = get_aicc, beta = beta1exp, lda_model = lda1, ts_model = ts1, FUN.VALUE = 100.1)
-
-```
 
 ```{r plot AICcs}
 
 library(ggplot2)
 
-all_aicc <- as.data.frame(all_aicc)
-
-aicc_plot <- ggplot(data = all_aicc, aes(x = all_aicc)) + 
-    geom_histogram() +
-    theme_bw()
-
-all_aicc
-
-```
-
-
-```{r get all model aiccs}
-ts_all <- readd(ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = cache)
-
-get_all_aiccs <- function(lda_model, ts_model, dat_list) {
-    betaexp <- exp(lda_model[[1]]@beta)
-    all_thetas <- all_thetas <- lapply(X = c(1:nrow(ts_model$etas)), FUN = get_theta, ts_model = ts_model)
-    all_aicc <- vapply(X = all_thetas, FUN = get_aicc, beta = betaexp, lda_model = lda_model, ts_model = ts_model, FUN.VALUE = 100.1)
-    return(all_aicc)
-}
-
-all_aicc <- get_all_aiccs(lda1, ts1, dat1)
-
-all_model_aiccs <- lapply(ts_all, FUN = get_all_aiccs, lda_model = lda1, dat_list = dat1)
-
-all_model_aiccs1 <- dplyr::bind_rows(all_model_aiccs) %>%
-    tidyr::gather(key = "model", value = "AICc")
-
-all_aicc_plot <- ggplot(data = all_model_aiccs1, aes(x = model, y = AICc, color = model)) + 
+all_aicc_plot <- ggplot(data = model_aiccs, aes(x = ts_index, y = AICc, color = k)) + 
     geom_point() +
     theme_bw()
 
 all_aicc_plot
+
+ts_index_summary <- model_aiccs %>%
+    dplyr::select(ts_index, k, changepoints, formula) %>%
+    dplyr::distinct()
+
+ts_index_summary
+
+```
+
+```{r identify best model and close fits}
+
+close_models <- model_aiccs %>%
+    dplyr::mutate(AICc_close = 2 >= (AICc - min(AICc))) %>%
+    dplyr::filter(AICc_close) %>%
+    dplyr::mutate(AICc_ismin = AICc == min(AICc)) %>%
+    dplyr::arrange(dplyr::desc(AICc_ismin))
+
+close_models
 
 ```
