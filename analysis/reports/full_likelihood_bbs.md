@@ -13,14 +13,15 @@ Tacking a full likelihood computation on to existing runs of LDA\_TS models, mov
 Likelihood of observed dataset (observed term frequencies in each document) from LDA and TS model...
 
 ``` r
-dat1 <- get_portal_rodents()
+dat1 <- get_bbs_route_region_data(route = 1, region = 11, path = get_default_data_path())
+
 
 ldas <- LDA_set(dat1$abundance, topics = c(2, 5, 16), nseeds = 1)
 
 ts_fits <- run_TS(dat1, ldas, formulas = c("intercept", "time"), 
                   nchangepoints = c(0, 1), weighting = "proportional")
 
-save(dat1, ldas, ts_fits, file = here::here("analysis", "reports", "full_ldats_likelihood_stash", "models.RData"))
+save(dat1, ldas, ts_fits, file = here::here("analysis", "reports", "full_ldats_likelihood_stash", "models_bbs_1_11.RData"))
 #plot(lda1)
 
 #plot(ts1)
@@ -83,7 +84,7 @@ all_aicc_plot <- ggplot(data = model_aiccs, aes(x = ts_index, y = AICc, color = 
 all_aicc_plot
 ```
 
-![](full_likelihood_files/figure-markdown_github/plot%20AICcs-1.png)
+![](full_likelihood_bbs_files/figure-markdown_github/plot%20AICcs-1.png)
 
 ``` r
 ts_index_summary <- model_aiccs %>%
@@ -93,19 +94,19 @@ ts_index_summary <- model_aiccs %>%
 ts_index_summary
 ```
 
-    ##    ts_index  k changepoints               formula
-    ## 1         1  2            0 gamma ~ newmoonnumber
-    ## 2         2  5            0 gamma ~ newmoonnumber
-    ## 3         3 16            0 gamma ~ newmoonnumber
-    ## 4         4  2            0             gamma ~ 1
-    ## 5         5  5            0             gamma ~ 1
-    ## 6         6 16            0             gamma ~ 1
-    ## 7         7  2            1 gamma ~ newmoonnumber
-    ## 8         8  5            1 gamma ~ newmoonnumber
-    ## 9         9 16            1 gamma ~ newmoonnumber
-    ## 10       10  2            1             gamma ~ 1
-    ## 11       11  5            1             gamma ~ 1
-    ## 12       12 16            1             gamma ~ 1
+    ##    ts_index  k changepoints      formula
+    ## 1         1  2            0 gamma ~ year
+    ## 2         2  5            0 gamma ~ year
+    ## 3         3 16            0 gamma ~ year
+    ## 4         4  2            0    gamma ~ 1
+    ## 5         5  5            0    gamma ~ 1
+    ## 6         6 16            0    gamma ~ 1
+    ## 7         7  2            1 gamma ~ year
+    ## 8         8  5            1 gamma ~ year
+    ## 9         9 16            1 gamma ~ year
+    ## 10       10  2            1    gamma ~ 1
+    ## 11       11  5            1    gamma ~ 1
+    ## 12       12 16            1    gamma ~ 1
 
 ``` r
 close_models <- model_aiccs %>%
@@ -117,26 +118,24 @@ close_models <- model_aiccs %>%
 close_models
 ```
 
-    ##                                                ts_names     AICc ts_index
-    ## 1 k: 16, seed: 2, gamma ~ newmoonnumber, 0 changepoints 17050.55        3
-    ##    k seed               formula changepoints       lda_name lda_index
-    ## 1 16    2 gamma ~ newmoonnumber            0 k: 16, seed: 2         3
-    ##   AICc_close AICc_ismin
-    ## 1       TRUE       TRUE
+    ##                                       ts_names    AICc ts_index  k seed
+    ## 1 k: 16, seed: 2, gamma ~ year, 0 changepoints 36753.1        3 16    2
+    ##        formula changepoints       lda_name lda_index AICc_close AICc_ismin
+    ## 1 gamma ~ year            0 k: 16, seed: 2         3       TRUE       TRUE
 
 ``` r
 plot(ldas[[close_models$lda_index[1]]])
 ```
 
-![](full_likelihood_files/figure-markdown_github/plot%20selected%20model-1.png)
+![](full_likelihood_bbs_files/figure-markdown_github/plot%20selected%20model-1.png)
 
 ``` r
 plot(ts_fits[[close_models$ts_index[1]]])
 ```
 
-![](full_likelihood_files/figure-markdown_github/plot%20selected%20model-2.png)
+![](full_likelihood_bbs_files/figure-markdown_github/plot%20selected%20model-2.png)
 
-Compared to results using select functions (which would have found k = 5, gamma ~ newmoonnumber, and 1 changepoint):
+The select functions would have found the same.
 
 ``` r
 lda_select <- select_LDA(ldas)

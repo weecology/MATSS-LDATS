@@ -25,11 +25,12 @@ Likelihood of observed dataset (observed term frequencies in each document) from
 ```{r run multiple LDA and TS models, include = T, eval = F}
 dat1 <- get_portal_rodents()
 
-ldas <- LDA_set(dat1$abundance, topics = c(2, 5), nseeds = 1)
+ldas <- LDA_set(dat1$abundance, topics = c(2, 5, 16), nseeds = 1)
 
 ts_fits <- run_TS(dat1, ldas, formulas = c("intercept", "time"), 
                   nchangepoints = c(0, 1), weighting = "proportional")
 
+save(dat1, ldas, ts_fits, file = here::here("analysis", "reports", "full_ldats_likelihood_stash", "models.RData"))
 #plot(lda1)
 
 #plot(ts1)
@@ -116,5 +117,31 @@ close_models <- model_aiccs %>%
     dplyr::arrange(dplyr::desc(AICc_ismin))
 
 close_models
+
+```
+
+```{r plot selected model}
+
+plot(ldas[[close_models$lda_index[1]]])
+plot(ts_fits[[close_models$ts_index[1]]])
+
+```
+
+Compared to results using select functions (which would have found k = 5, gamma ~ newmoonnumber, and 1 changepoint):
+
+```{r select functions, eval = F}
+lda_select <- select_LDA(ldas)
+
+ts_options <- ts_fits[ ts_index_summary$ts_index[which(as.integer(ts_index_summary$k) == lda_select[[1]]@k)]]
+
+ts_aiccs <- vapply(ts_options, FUN = AICc, FUN.VALUE = 101)
+
+ts_aiccs
+
+ts_selected <- ts_options[[which(ts_aiccs == min(ts_aiccs))]]
+
+plot(lda_select)
+plot(ts_selected)
+
 
 ```
