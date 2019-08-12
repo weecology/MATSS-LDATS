@@ -36,17 +36,7 @@ ts1 <- readd(ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5, cache = 
 #plot(ts1)
 ```
 
-
-```{r get beta}
-beta1 <- lda1$`k: 5, seed: 122`@beta
-
-beta1exp <- exp(beta1)
-```
-
-
-```{r generate a single set of thetas from TS fit}
-
-ts1
+```{r functions}
 
 get_relevant_covars <- function(covariates_table, ts_formula) {
     formula_string <- unlist(as.character(ts_formula))
@@ -85,44 +75,62 @@ Theta <- sim_TS_data(X, Eta_matrix, rho, tD, err = 0)
 return(Theta) 
 }
 
-theta1 <- get_theta(ts1)
-```
 
-
-```{r get P table}
-
-P1exp <- theta1 %*% beta1exp
-
-```
-
-```{r get document likelihoods}
-
-get_doc_lik <- function(index, counts_matrix, p_matrix) {
+get_doc_lik <- function(counts_matrix, p_matrix, index) {
     counts <- as.integer(counts_matrix[index, ])
     ps <- p_matrix[index, ]
     doc_loglik <- dmultinom(x = counts, prob = ps, log = TRUE)
     return(doc_loglik)
 }
 
+
+get_aicc <- function(beta, theta, lda_model, ts_model) {
+    P1exp <- theta %*% beta1exp
+
 doc_lik1 <- vapply(1:nrow(counts1), FUN = get_doc_lik, counts_matrix = counts1, 
                    p_matrix = P1exp, FUN.VALUE = -1)
 
-sum(doc_lik1)
-
-```
-
-```{r calc AICc}
-
-ldapars <- attr(logLik(lda1[[1]]), "df")
-tspars <- attr(logLik(ts1), "df")
+ldapars <- attr(logLik(lda_model[[1]]), "df")
+tspars <- attr(logLik(ts_model), "df")
 
 totalpars <- ldapars + tspars
 
-nobs <- attr(logLik(ts1), "nobs")
+nobs <- attr(logLik(ts_model), "nobs")
 
 AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) + 
     (2 * totalpars^2 + 2 * totalpars)/(nobs - totalpars - 1)
 
-AICc
+return(AICc)
+}
+
+```
+
+```{r get beta}
+beta1 <- lda1$`k: 5, seed: 122`@beta
+
+beta1exp <- exp(beta1)
+```
+
+
+```{r get all thetas}
+all_thetas <- lapply(X = c(1:nrow(ts1$etas)), FUN = get_theta, ts_model = ts1)
+```
+
+```{r get AICcs}
+all_aicc <- vapply(X = all_thetas, FUN = get_aicc, beta = beta1exp, lda_model = lda1, ts_model = ts1, FUN.VALUE = 100.1)
+
+```
+
+```{r plot AICcs}
+
+library(ggplot2)
+
+all_aicc <- as.data.frame(all_aicc)
+
+aicc_plot <- ggplot(data = all_aicc, aes(x = all_aicc)) + 
+    geom_histogram() +
+    theme_bw()
+
+all_aicc
 
 ```
