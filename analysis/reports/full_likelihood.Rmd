@@ -41,6 +41,42 @@ plot(ts1)
 beta1 <- lda1$`k: 5, seed: 122`@beta
 
 beta1exp <- exp(beta1)
+```
+
+```{r get document likelihoods}
+
+get_doc_lik <- function(index, counts_matrix, p_matrix) {
+    counts <- as.integer(counts_matrix[index, ])
+    ps <- p_matrix[index, ]
+    doc_loglik <- dmultinom(x = counts, prob = ps, log = TRUE)
+    return(doc_loglik)
+}
+
+doc_lik1 <- vapply(1:nrow(counts1), FUN = get_doc_lik, counts_matrix = counts1, 
+                   p_matrix = P1exp, FUN.VALUE = -1)
+
+sum(doc_lik1)
+
+```
+
+```{r calc AICc}
+
+ldapars <- attr(logLik(lda1[[1]]), "df")
+tspars <- attr(logLik(ts1), "df")
+
+totalpars <- ldapars + tspars
+
+nobs <- attr(logLik(ts1), "nobs")
+
+AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) + 
+    (2 * totalpars^2 + 2 * totalpars)/(nobs - totalpars - 1)
+
+AICc
+
+```
+
+
+```{r old scraps, include = F, eval = F}
 
 get_thetas <- function(x) {
     rhos <- x$rhos
@@ -84,36 +120,4 @@ P1exp <- theta1 %*% beta1exp
 head(P1exp)
 
 rowSums(P1exp)
-```
-
-```{r get document likelihoods}
-
-get_doc_lik <- function(index, counts_matrix, p_matrix) {
-    counts <- as.integer(counts_matrix[index, ])
-    ps <- p_matrix[index, ]
-    doc_loglik <- dmultinom(x = counts, prob = ps, log = TRUE)
-    return(doc_loglik)
-}
-
-doc_lik1 <- vapply(1:nrow(counts1), FUN = get_doc_lik, counts_matrix = counts1, 
-                   p_matrix = P1exp, FUN.VALUE = -1)
-
-sum(doc_lik1)
-
-```
-
-```{r calc AICc}
-
-ldapars <- attr(logLik(lda1[[1]]), "df")
-tspars <- attr(logLik(ts1), "df")
-
-totalpars <- ldapars + tspars
-
-nobs <- attr(logLik(ts1), "nobs")
-
-AICc <- (-2 * (sum(doc_lik1))) + 2*(totalpars) + 
-    (2 * totalpars^2 + 2 * totalpars)/(nobs - totalpars - 1)
-
-AICc
-
 ```
