@@ -20,7 +20,7 @@ if (FALSE)
 ## Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
-datasets <- datasets[10:12, ]
+datasets <- datasets[10, ]
 
 analyses <- build_ldats_analyses_plan(datasets, max_topics = 3, nchangepoints = c(1), formulas = c("time", "intercept"), nseeds = 2)
 
