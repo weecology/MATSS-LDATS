@@ -22,7 +22,7 @@ datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T
 
 datasets <- datasets[10:12, ]
 
-analyses <- build_ldats_analyses_plan(datasets, max_topics = c(5, 16), nchangepoints = c(0:1), formulas = c("time", "intercept"), nseeds = 2)
+analyses <- build_ldats_analyses_plan(datasets, max_topics = 3, nchangepoints = c(1), formulas = c("time", "intercept"), nseeds = 2)
 
 summary_tables <- drake_plan(
     lda_result_summary = collect_lda_result_summary(lda_results = lda_results),
