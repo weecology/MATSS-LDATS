@@ -1,0 +1,8 @@
+[1] ".Rprofile loaded"
+<environment: R_GlobalEnv>
+<environment: R_GlobalEnv>
+[1] "I know I am on SLURM!"
+Running LDA with 2 topics (seed 2)
+Running LDA with 2 topics (seed 4)
+Running LDA with 3 topics (seed 2)
+Running LDA with 3 topics (seed 4)
