@@ -111,9 +111,13 @@ ts_index_summary
 ```{r identify best model and close fits}
 
 close_models <- model_aiccs %>%
-    dplyr::mutate(AICc_close = 2 >= (AICc - min(AICc))) %>%
-    dplyr::filter(AICc_close) %>%
-    dplyr::mutate(AICc_ismin = AICc == min(AICc)) %>%
+    dplyr::group_by(ts_names) %>%
+    dplyr::summarize(mean_aicc = mean(AICc),
+                     sd_aicc = sd(AICc)) %>% 
+    dplyr::ungroup() %>%
+    dplyr::mutate(mean_AICc_close = 2 >= (mean_aicc - min(mean_aicc))) %>%
+    dplyr::filter(mean_AICc_close) %>%
+    dplyr::mutate(AICc_ismin = mean_aicc == min(mean_aicc)) %>%
     dplyr::arrange(dplyr::desc(AICc_ismin))
 
 close_models
@@ -122,14 +126,14 @@ close_models
 
 ```{r plot selected model}
 
-plot(ldas[[close_models$lda_index[1]]])
-plot(ts_fits[[close_models$ts_index[1]]])
+plot(ldas[[ model_aiccs$lda_index[which(model_aiccs$ts_names == close_models$ts_names[1])][1] ]])
+plot(ts_fits[[model_aiccs$ts_index[which(model_aiccs$ts_names == close_models$ts_names[1])][1]]])
 
 ```
 
 Compared to results using select functions (which would have found k = 5, gamma ~ newmoonnumber, and 1 changepoint):
 
-```{r select functions, eval = F}
+```{r select functions}
 lda_select <- select_LDA(ldas)
 
 ts_options <- ts_fits[ ts_index_summary$ts_index[which(as.integer(ts_index_summary$k) == lda_select[[1]]@k)]]
@@ -141,7 +145,7 @@ ts_aiccs
 ts_selected <- ts_options[[which(ts_aiccs == min(ts_aiccs))]]
 
 plot(lda_select)
-plot(ts_selected)
-
+#plot(ts_selected)
+ts_selected
 
 ```
