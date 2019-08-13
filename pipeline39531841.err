@@ -1,128 +1,0 @@
-Loading required package: future
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-
-..........................................target sdl_data
-.target mtquad_data
-.target bbs_data_rtrg_1_11
-.target bbs_data_rtrg_2_11
-.target bbs_data_rtrg_3_11
-.target bbs_data_rtrg_4_11
-.target bbs_data_rtrg_6_11
-.target filtered_maizuru_data
-.target filtered_jornada_data
-.target filtered_sgs_data
-.target filtered_cowley_lizards_data
-.target filtered_cowley_snakes_data
-.target filtered_karoo_data
-.target filtered_kruger_data
-.target filtered_portal_data
-.target lda_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..
-target lda_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target sdl_data warnings:
-  Didn't find any downloaded data in ~/veg-plots-sdl.
-Did you run get_retriever_data() first?
-fail sdl_data
-Error: Target `sdl_data` failed. Call `diagnose(sdl_data)` for details. Error message:
-  no applicable method for 'select_' applied to an object of class "NULL"
-Execution halted
