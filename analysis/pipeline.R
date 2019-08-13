@@ -30,19 +30,20 @@ summary_tables <- drake_plan(
     lda_ts_result_summary = collect_lda_ts_results(lda_result_summary, ts_result_summary),
     ts_models_summary = collect_ts_result_models_summary(ts_results = ts_results)
 )
+# 
+# ## Summary reports
+# # I don't quite understand the pathing here... - Hao
+# reports <- drake_plan(
+#     lda_report = rmarkdown::render(
+#         knitr_in("analysis/reports/lda_report.Rmd")
+#     ) ,
+#     ts_report = rmarkdown::render(
+#         knitr_in("analysis/reports/ts_report.Rmd")
+#     )
+# )
 
-## Summary reports
-# I don't quite understand the pathing here... - Hao
-reports <- drake_plan(
-    lda_report = rmarkdown::render(
-        knitr_in("analysis/reports/lda_report.Rmd")
-    ) ,
-    ts_report = rmarkdown::render(
-        knitr_in("analysis/reports/ts_report.Rmd")
-    )
-)
-
-pipeline <- dplyr::bind_rows(datasets, analyses, summary_tables, reports)
+pipeline <- dplyr::bind_rows(datasets, analyses, summary_tables)
+#, #reports)
 
 
 
