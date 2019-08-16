@@ -9,26 +9,27 @@
 #'
 #' @inheritParams LDATS::TS_on_LDA
 #'
-#' @return the changepoint model(s) resulting from running `LDATS::TS_on_LDA`.
+#' @return list of `ts = [the changepoint model(s)]` and `upstream = list(data = data, lda = lda)` resulting from running `LDATS::TS_on_LDA`.
 #' @export
 #'
 run_TS <- function(data, ldamodels,
                    formulas = c("intercept", "time"),
                    nchangepoints = 0:6,
                    weighting = 'proportional',
-                   control = list())
+                   control = list(nit = 1000,
+                                  magnitude = max(1, floor(0.03 * nrow(data$abundance)))))
 {
     if (!MATSS::check_data_format(data)) {
         wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
-
+    
     if (!check_time_data_format(data))
     {
         wrongFormat = simpleWarning("Timename column is cannot be made integers without losing information")
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
-
+    
     ## Get formulas
     if(("time" %in% formulas) && ("intercept" %in% formulas)) {
         form <- as.formula(paste0("~ ", data$metadata$timename))
@@ -37,21 +38,27 @@ run_TS <- function(data, ldamodels,
     } else {
         formulas <- formulas
     }
-
+    
     timename <- data$metadata$timename
-
+    
     #### Run TS models ####
     if (tolower(weighting) == 'proportional') {
         weights <- LDATS::document_weights(data$abundance)
     } else {
         weights <- NULL
     }
-
-    LDATS::TS_on_LDA(LDA_models = ldamodels,
-                     document_covariate_table = as.data.frame(data$covariates),
-                     formulas = formulas,
-                     nchangepoints = nchangepoints,
-                     timename = timename,
-                     weights = weights,
-                     control = list(nit = 1000, magnitude = max(1, floor(0.03 * nrow(data$abundance)))))
+    
+    ldamodels <- ldamodels$lda
+    
+    ts_models <- LDATS::TS_on_LDA(LDA_models = ldamodels,
+                                  document_covariate_table = as.data.frame(data$covariates),
+                                  formulas = formulas,
+                                  nchangepoints = nchangepoints,
+                                  timename = timename,
+                                  weights = weights,
+                                  control = control)
+    
+    return(list(ts = ts_models,
+                upstream = list(lda = ldamodels,
+                                data = data)))
 }

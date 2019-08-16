@@ -1,2224 +1,0 @@
-Loading required package: future
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-
-..............................target sdl_data
-.target mtquad_data
-.target bbs_data_rtrg_1_11
-.target bbs_data_rtrg_2_11
-.target filtered_bbs_data_rtrg_3_11
-.target filtered_bbs_data_rtrg_4_11
-.target filtered_bbs_data_rtrg_6_11
-.target lda_maizuru_data_5
-.target lda_jornada_data_5
-.target lda_cowley_lizards_data_5
-.target lda_cowley_snakes_data_5
-.target lda_karoo_data_5
-.target lda_kruger_data_5
-.target lda_portal_data_5
-.target lda_bbs_data_rtrg_3_11_5
-.target lda_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..
-target lda_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target filtered_bbs_data_rtrg_2_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_bbs_data_rtrg_3_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target filtered_sdl_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..
-.target lda_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target filtered_mtquad_data
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target filtered_bbs_data_rtrg_1_11
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_3_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_filtered_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_sgs_data_lda_select_lda_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..
-.target lda_select_lda_filtered_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_sgs_data_lda_select_lda_sgs_data_5 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_sgs_data_lda_select_lda_sgs_data_5 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target lda_select_lda_filtered_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_3_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_jornada_data_lda_select_lda_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_karoo_data_lda_select_lda_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_filtered_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_jornada_data_lda_select_lda_jornada_data_5 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_jornada_data_lda_select_lda_jornada_data_5 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_kruger_data_lda_select_lda_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_maizuru_data_lda_select_lda_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cowley_lizard...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowley_snakes_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_portal_data_lda_select_lda_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_5 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_5 messages:
-  The timename column cannot be coerced to integers without losing information.
-..
-target ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_5 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_5 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_portal_data_lda_select_lda_filtered_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_sgs_data_lda_select_lda_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target lda_select_lda_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cowley_lizard...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowley_snakes_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_sgs_data_lda_select_lda_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_sgs_data_lda_select_lda_sgs_data_16 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_sgs_data_lda_select_lda_sgs_data_16 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_jornada_data_lda_select_lda_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_karoo_data_lda_select_lda_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_portal_data_lda_select_lda_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_16 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_16 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_jornada_data_lda_select_lda_jornada_data_16 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_jornada_data_lda_select_lda_jornada_data_16 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_kruger_data_lda_select_lda_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_karoo_data_lda_select_lda_karoo_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_filtered_portal_data_lda_select_lda_filtered_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_data_rtrg_3_11_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-..target ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_data_rtrg_4_11_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target lda_select_lda_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_maizuru_data_lda_select_lda_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_kruger_data_lda_select_lda_kruger_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-..target ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_16 warnings:
-  Timename column is cannot be made integers without losing information
-Target ts_filtered_jornada_data_lda_select_lda_filtered_jornada_data_16 messages:
-  The timename column cannot be coerced to integers without losing information.
-..target ts_select_ts_jornada_data_lda_select_lda_jornada_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_karoo_data_lda_select_lda_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-..target lda_select_lda_filtered_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_sdl_data_lda_select_lda_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-.target lda_select_lda_filtered_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_mtquad_data_lda_select_lda_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_kruger_data_lda_select_lda_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cow...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowl...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_select_ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_jornada_data_lda_select_lda_filtered_jornada_da...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_cowley_lizards_data_lda_select_lda_cowley_lizards_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_sdl_data_lda_select_lda_sdl_data_5 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_cowley_snakes_data_lda_select_lda_cowley_snakes_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_portal_data_lda_select_lda_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_sgs_data_lda_select_lda_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_sdl_data_lda_select_lda_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_cowley_lizards_data_lda_select_lda_filtered_cow...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_cowley_snakes_data_lda_select_lda_filtered_cowl...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_portal_data_lda_select_lda_filtered_portal_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_sgs_data_lda_select_lda_filtered_sgs_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_jornada_data_lda_select_lda_jornada_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_karoo_data_lda_select_lda_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_sdl_data_lda_select_lda_sdl_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_filtered_karoo_data_lda_select_lda_filtered_karoo_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_maizuru_data_lda_select_lda_maizuru_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_3_11_lda_select_lda_bbs_data_rtrg_3_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_4_11_lda_select_lda_bbs_data_rtrg_4_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_4_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_kruger_data_lda_select_lda_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_jornada_data_lda_select_lda_filtered_jornada_da...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_6_11_lda_select_lda_bbs_data_rtrg_6_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-.target ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_portal_data_lda_select_lda_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_kruger_data_lda_select_lda_filtered_kruger_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_3_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_da...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_portal_data_lda_select_lda_filtered_portal_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_sdl_data_lda_select_lda_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_sdl_data_lda_select_lda_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_maizuru_data_lda_select_lda_filtered_maizuru_da...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_mtquad_data_lda_select_lda_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_select_ts_maizuru_data_lda_select_lda_maizuru_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_bbs_data_rtrg_2_11_lda_select_lda_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_5 warnings:
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_5
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_sdl_data_lda_select_lda_filtered_sdl_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_mtquad_data_lda_select_lda_mtquad_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_mtquad_data_lda_select_lda_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_6_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_filtered_mtquad_data_lda_select_lda_filtered_mtquad_data_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...
-target lda_select_lda_filtered_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_bbs_data_rtrg_1_11_lda_select_lda_bbs_data_rtrg_1_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_data_rtrg_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Warning: target ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_data_rtrg_1_11_16 warnings:
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-  Relative discrepancies in model vcov matrix are large.
-..target ts_select_ts_filtered_bbs_data_rtrg_1_11_lda_select_lda_filtered_bbs_...
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_select_lda_filtered_bbs_data_rtrg_2_11_16
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.target ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_data_rtrg_...
-.target lda_results
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_result_summary
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_ts_filtered_bbs_data_rtrg_2_11_lda_select_lda_filtered_bbs_...
-.target ts_results
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target ts_select_results
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_result_summary
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-...target ts_models_summary
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_ts_result_summary
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-..target lda_report
-.target ts_report
-
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Target lda_report messages:
-  
-
-processing file: lda_report.Rmd
-  output file: lda_report.knit.md
-
-  
-Preview created: lda_report.html
-  
-Output created: lda_report.md
-.
-Attaching package: ‘future’
-
-The following object is masked from ‘package:drake’:
-
-    plan
-
-Target ts_report messages:
-  
-
-processing file: ts_report.Rmd
-  output file: ts_report.knit.md
-
-  
-Preview created: ts_report.html
-  
-Output created: ts_report.md
-..
