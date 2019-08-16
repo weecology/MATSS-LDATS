@@ -20,7 +20,7 @@ if (FALSE)
 ## Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
-datasets <- datasets[10, ]
+datasets <- datasets[10:11, ]
 # 
 # notransients_datasets <- drake::drake_plan(
 #     filtered = target(remove_transients(data, threshold = .3),
