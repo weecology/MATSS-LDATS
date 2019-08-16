@@ -50,3 +50,69 @@ AIC_plots <- lapply(unique(full_lik_expanded$data_name),
 gridExtra::grid.arrange(grobs = AIC_plots, ncol = 1)
 
 ```
+
+```{r plot observed v predicted}
+
+pred_results <- readd(pred_results, cache = cache)
+
+for(i in 1:length(pred_results)) {
+    full_lik_results[[i]]$prediction <- pred_results[[i]]$prediction
+}
+
+wrangle_obs_pred <- function(prediction, obs_dat_list) {
+    
+    model_name <- prediction$model_name
+    prediction <- prediction[[1]]
+    
+    obs_dat <- obs_dat_list$abundance %>%
+        dplyr::mutate(timestep = unlist(obs_dat_list$covariates[ , which(colnames(obs_dat_list$covariates) == obs_dat_list$metadata$timename)]),
+                      source = "observed",
+                      model_name = model_name)
+    
+    colnames(prediction) <- colnames(obs_dat)[1:(ncol(obs_dat) - 3)]
+    pred_dat <- as.data.frame(prediction) %>%
+        dplyr::mutate(timestep = obs_dat$timestep, 
+                      source = "pred",
+                      model_name = model_name)
+    
+    all_dat <- dplyr::bind_rows(obs_dat, pred_dat) %>%
+        tidyr::gather(key = "species", value = "abundance", -timestep, -source)
+    
+    return(all_dat)
+    
+}
+
+wrangle_all_predictions <- function(full_lik_list) {
+    obs_dat_list <- full_lik_list$data
+    
+    predictions_list <- full_lik_list$prediction
+    
+    for(i in 1:length(predictions_list)) {
+        predictions_list[[i]] <- list(predictions_list[[i]], model_name = full_lik_list$model_info$ts_model_name[i])
+    }
+    
+    full_lik_list$prediction <- lapply(predictions_list, FUN = wrangle_obs_pred, obs_dat_list = obs_dat_list)
+    
+
+    return(full_lik_list)
+    
+}
+
+full_lik_results <- lapply(full_lik_results, wrangle_all_predictions)
+
+plot_obs_pred <- function(obs_pred_data) {
+    
+    obs_pred_plot <- ggplot2::ggplot(data = obs_pred_data, aes(x = timestep, y = abundance, color = source)) +
+        ggplot2::geom_line() +
+        ggplot2::theme_bw() +
+        ggplot2::facet_wrap(facets = species ~ .) +
+        ggplot2::ggtitle(obs_pred_data$model_name[1])
+
+    return(obs_pred_plot)
+}
+
+plot_all_preds <- function(full_lik_list) {
+    all_plots <- lapply(full_lik_list$prediction, FUN = plot_obs_pred)
+}
+
+```

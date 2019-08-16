@@ -25,7 +25,11 @@ build_ldats_analyses_plan <- function(datasets, max_topics = c(3), nseeds = 4,
         full_lik = target(get_full_lik(ts),
                           transform = map(ts)),
         full_lik_results = target(collect_analyses(list(full_lik)),
-                                  transform = combine(full_lik))
+                                  transform = combine(full_lik)),
+        pred = target(predict_abundances(full_lik),
+                      transform = map(full_lik)),
+        pred_results = target(collect_analyses(list(pred)),
+                              transform = combine(pred))
     )
 }
 

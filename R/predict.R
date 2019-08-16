@@ -172,14 +172,14 @@ get_full_lik <- function(ts_list) {
     ts_index_index <- which(colnames(model_info) == "ts_model_index")
     
     beta_thetas <- apply(model_info,
-                        MARGIN = 1,
-                        FUN = function(tablerow) 
-                            return(
-                                get_bt(
-                                    lda_model = lda_models[[as.integer(tablerow[lda_index_index])]], 
-                                    ts_model = ts_models[[as.integer(tablerow[ts_index_index])]]
-                                )
-                            )
+                         MARGIN = 1,
+                         FUN = function(tablerow) 
+                             return(
+                                 get_bt(
+                                     lda_model = lda_models[[as.integer(tablerow[lda_index_index])]], 
+                                     ts_model = ts_models[[as.integer(tablerow[ts_index_index])]]
+                                 )
+                             )
     )
     
     ts_AICc <- apply(model_info,
@@ -193,12 +193,10 @@ get_full_lik <- function(ts_list) {
                          ))
     
     return(list(data = data,
-                lda = lda_models,
-                ts = ts_models,
                 beta_thetas = beta_thetas,
                 model_info = model_info,
                 ts_AICc = ts_AICc))
-           
+    
 }
 
 
@@ -269,18 +267,68 @@ get_all_aiccs <- function(bt_list, ldamodel, tsmodel, counts_matrix) {
 #' @importFrom dplyr bind_rows right_join
 #' @importFrom tidyr gather
 expand_full_lik_results <- function(full_lik) {
+    
+    model_info <- full_lik$model_info
+    
+    aiccs <- full_lik$ts_AICc
+    aiccs <- lapply(aiccs, FUN = unlist)
+    names(aiccs) <- model_info$ts_model_name
+    
+    br_aiccs <- dplyr::bind_rows(aiccs) %>%
+        tidyr::gather(key = "ts_model_name", value = "TS_AICc")
+    
+    model_info <- dplyr::right_join(model_info, br_aiccs, by = "ts_model_name")
+    
+    return(model_info)
+    
+}
 
-model_info <- full_lik$model_info
+#' Predict abundances given model
+#'
+#' @param full_lik result of get_full_lik
+#' @param seed for reprod
+#'
+#' @return list of predictions
+#' @export
+#'
+predict_abundances <- function(full_lik, seed = 1977) {
+    
+    sample_sizes <- rowSums(full_lik$data$abundance)
+    
+    set.seed(seed)
+    
+    pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))
+    
+    p_list <- lapply(pars_list, FUN = function(pars_list) return(pars_list$theta_vals %*% pars_list$beta_vals))
+    
+    predictions <- lapply(p_list, FUN = sample_corpus, sample_sizes = sample_sizes)
+    
 
-aiccs <- full_lik$ts_AICc
-aiccs <- lapply(aiccs, FUN = unlist)
-names(aiccs) <- model_info$ts_model_name
+    return(list(data = full_lik$data,
+                model_info = full_lik$model_info,
+                prediction = predictions))
+}
 
-br_aiccs <- dplyr::bind_rows(aiccs) %>%
-    tidyr::gather(key = "ts_model_name", value = "TS_AICc")
-
-model_info <- dplyr::right_join(model_info, br_aiccs, by = "ts_model_name")
-
-return(model_info)
-
+#' Sample a corpus given sample sizes and ps of documents
+#'
+#' @param sample_sizes sizes of documents
+#' @param docterm_ps probabilities of terms in each document
+#'
+#' @return sampled corpus
+#' @export
+#'
+sample_corpus <- function(sample_sizes, docterm_ps) {
+    
+    document <- apply(as.matrix(1:nrow(docterm_ps)),
+                      MARGIN = 1,
+                      FUN = function(row_index, sample_sizes, docterm_ps) 
+                          return(rmultinom(n = 1, size = sample_sizes[row_index],
+                                           prob = docterm_ps[row_index, ])),
+                      sample_sizes = sample_sizes, 
+                      docterm_ps = docterm_ps) %>%
+        as.data.frame() %>%
+        t()
+    
+    return(document)
+    
 }
