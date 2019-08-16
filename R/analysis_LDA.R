@@ -35,6 +35,21 @@ run_LDA <- function(data,
                                 nseeds = nseeds, control = control)
     
     return(list(lda = LDA_models,
-                data = data))
+                upstream = list(data = data)))
 
+}
+
+#' LDA select
+#'
+#' @param lda_list list of LDA + data
+#'
+#' @return list of selected LDA + data
+#' @export
+#' @importFrom LDATS select_LDA AICc
+select_LDA_list <- function(lda_list) {
+    lda = lda_list$lda
+    lda_select <- LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc))
+    
+    return(list(lda = lda_select, 
+                upstream = list(data = data)))
 }

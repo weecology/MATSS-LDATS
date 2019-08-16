@@ -49,6 +49,9 @@ run_TS <- function(data, ldamodels,
     }
     
     ldamodels <- ldamodels$lda
+    if(is.null(control$magnitude)) {
+        control$magnitude = max(1, floor(0.03 * nrow(data$abundance)))
+    }
     
     ts_models <- LDATS::TS_on_LDA(LDA_models = ldamodels,
                                   document_covariate_table = as.data.frame(data$covariates),
@@ -61,4 +64,19 @@ run_TS <- function(data, ldamodels,
     return(list(ts = ts_models,
                 upstream = list(lda = ldamodels,
                                 data = data)))
+}
+
+#' Select TS from list
+#'
+#' @param ts_list list of ts, upstream
+#'
+#' @return list of selected ts, upstream
+#' @export
+#' @importFrom LDATS select_TS
+select_TS_list <- function(ts_list) {
+    ts <- ts_list$ts
+    ts_select <- try(LDATS::select_TS(ts))
+    
+    return(list(ts = ts_select,
+                upstream = ts_list$upstream))
 }
