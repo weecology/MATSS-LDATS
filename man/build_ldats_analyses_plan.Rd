@@ -5,7 +5,8 @@
 \title{Build a drake plan for LDATS analysis}
 \usage{
 build_ldats_analyses_plan(datasets, max_topics = c(3), nseeds = 4,
-  nchangepoints = c(2, 3), formulas = c("time", "intercept"))
+  nchangepoints = c(2, 3), formulas = c("time", "intercept"),
+  lda_control = list(), ts_control = list())
 }
 \arguments{
 \item{datasets}{the drake plan for the datasets to analyze}

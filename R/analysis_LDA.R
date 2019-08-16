@@ -14,7 +14,7 @@
 #'   test a number of topics from 2 to `max_topics`)
 #' @inheritParams LDATS::LDA_set
 #'
-#' @return the best fit model object, from running `LDATS::parLDA()`
+#' @return list of `lda = [the set of LDA models]` from running LDATS::parLDA()` and `upstream = list(data = data)`
 #' @export
 #'
 run_LDA <- function(data,
@@ -33,5 +33,23 @@ run_LDA <- function(data,
     LDA_models = LDATS::LDA_set(document_term_table = abundances,
                                 topics = topics_vector,
                                 nseeds = nseeds, control = control)
+    
+    return(list(lda = LDA_models,
+                upstream = list(data = data)))
 
+}
+
+#' LDA select
+#'
+#' @param lda_list list of LDA + data
+#'
+#' @return list of selected LDA + data
+#' @export
+#' @importFrom LDATS select_LDA AICc
+select_LDA_list <- function(lda_list) {
+    lda = lda_list$lda
+    lda_select <- LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc))
+    
+    return(list(lda = lda_select, 
+                upstream = list(data = data)))
 }
