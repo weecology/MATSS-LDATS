@@ -25,7 +25,7 @@ Monte Carlo (ptMCMC) controls. Values not input assume defaults set by
 \code{\link{TS_control}}.}
 }
 \value{
-list of \code{ts = [the changepoint model(s)]} and \code{upstream = list(data = data, lda = lda)} resulting from running \code{LDATS::TS_on_LDA}.
+list of \code{ts = [the changepoint model(s)], data = data, lda = lda)} resulting from running \code{LDATS::TS_on_LDA}.
 }
 \description{
 Run the timeseries model from \code{ldats} on LDA models and time-series data.

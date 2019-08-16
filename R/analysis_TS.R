@@ -9,8 +9,9 @@
 #'
 #' @inheritParams LDATS::TS_on_LDA
 #'
-#' @return list of `ts = [the changepoint model(s)]` and `upstream = list(data = data, lda = lda)` resulting from running `LDATS::TS_on_LDA`.
+#' @return list of `ts = [the changepoint model(s)], data = data, lda = lda)` resulting from running `LDATS::TS_on_LDA`.
 #' @export
+#' @importFrom dplyr left_join
 #'
 run_TS <- function(data, ldamodels,
                    formulas = c("intercept", "time"),
@@ -48,12 +49,13 @@ run_TS <- function(data, ldamodels,
         weights <- NULL
     }
     
-    ldamodels <- ldamodels$lda
+    ldas <- ldamodels$lda
+    
     if(is.null(control$magnitude)) {
         control$magnitude = max(1, floor(0.03 * nrow(data$abundance)))
     }
     
-    ts_models <- LDATS::TS_on_LDA(LDA_models = ldamodels,
+    ts_models <- LDATS::TS_on_LDA(LDA_models = ldas,
                                   document_covariate_table = as.data.frame(data$covariates),
                                   formulas = formulas,
                                   nchangepoints = nchangepoints,
@@ -61,22 +63,28 @@ run_TS <- function(data, ldamodels,
                                   weights = weights,
                                   control = control)
     
-    return(list(ts = ts_models,
-                upstream = list(lda = ldamodels,
-                                data = data)))
-}
-
-#' Select TS from list
-#'
-#' @param ts_list list of ts, upstream
-#'
-#' @return list of selected ts, upstream
-#' @export
-#' @importFrom LDATS select_TS
-select_TS_list <- function(ts_list) {
-    ts <- ts_list$ts
-    ts_select <- try(LDATS::select_TS(ts))
+    ts_model_info <- make_ts_table(names(ts_models))
     
-    return(list(ts = ts_select,
-                upstream = ts_list$upstream))
+    model_info <- dplyr::left_join(ldamodels$model_info, ts_model_info, by = c("k", "seed"))
+    
+    
+    return(list(ts = ts_models,
+                lda = ldas,
+                data = data,
+                model_info = model_info))
 }
+#' 
+#' #' Select TS from list
+#' #'
+#' #' @param ts_list list of ts, upstream
+#' #'
+#' #' @return list of selected ts, upstream
+#' #' @export
+#' #' @importFrom LDATS select_TS
+#' select_TS_list <- function(ts_list) {
+#'     ts <- ts_list$ts
+#'     ts_select <- try(LDATS::select_TS(ts))
+#'     
+#'     return(list(ts = ts_select,
+#'                 upstream = ts_list$upstream))
+#' }

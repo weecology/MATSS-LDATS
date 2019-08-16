@@ -27,7 +27,7 @@ defaults in (\code{LDAcontol}, see \code{\link[topicmodels]{LDA}} (but if
  \code{seed} is given, it will be overwritten; use \code{iseed} instead).}
 }
 \value{
-list of \code{lda = [the set of LDA models]} from running LDATS::parLDA()\code{and}upstream = list(data = data)`
+list of \code{lda = [the set of LDA models]} from running LDATS::parLDA(), \code{data = data)}
 }
 \description{
 Test the Latent Dirichlet Allocation (LDA) model on the data

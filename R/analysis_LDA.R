@@ -14,9 +14,10 @@
 #'   test a number of topics from 2 to `max_topics`)
 #' @inheritParams LDATS::LDA_set
 #'
-#' @return list of `lda = [the set of LDA models]` from running LDATS::parLDA()` and `upstream = list(data = data)`
+#' @return list of `lda = [the set of LDA models]` from running LDATS::parLDA(), `data = data)`
 #' @export
-#'
+#' @importFrom dplyr filter mutate group_by ungroup
+#' 
 run_LDA <- function(data,
                     max_topics = 6, nseeds = 200,
                     control = list())
@@ -30,12 +31,26 @@ run_LDA <- function(data,
     #### Run LDAs ####
     abundances <- data$abundance
     topics_vector <- seq(from = 2, to = max_topics, by = 1)
-    LDA_models = LDATS::LDA_set(document_term_table = abundances,
+    LDA_models <- LDATS::LDA_set(document_term_table = abundances,
                                 topics = topics_vector,
                                 nseeds = nseeds, control = control)
     
+    model_info <- make_lda_table(names(LDA_models)) %>%
+        dplyr::mutate(LDA_AICc = vapply(LDA_models, FUN = LDATS::AICc, FUN.VAL = 100)) %>%
+        dplyr::group_by(k) %>%
+        dplyr::mutate(is_best_seed = (LDA_AICc == min(LDA_AICc))) %>%
+        dplyr::ungroup()
+    
+    LDA_models <- LDA_models[ which(model_info$is_best_seed)]
+    
+    class(LDA_models) <- "LDA_set"
+    
+    model_info <- dplyr::filter(model_info, is_best_seed) %>%
+        dplyr::mutate(lda_model_index = 1:sum(is_best_seed))
+    
     return(list(lda = LDA_models,
-                upstream = list(data = data)))
+                data = data,
+                model_info = model_info))
 
 }
 
@@ -46,10 +61,10 @@ run_LDA <- function(data,
 #' @return list of selected LDA + data
 #' @export
 #' @importFrom LDATS select_LDA AICc
-select_LDA_list <- function(lda_list) {
-    lda = lda_list$lda
-    lda_select <- LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc))
-    
-    return(list(lda = lda_select, 
-                upstream = list(data = data)))
-}
+# select_LDA_list <- function(lda_list) {
+#     lda = lda_list$lda
+#     lda_select <- LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc))
+#     
+#     return(list(lda = lda_select, 
+#                 upstream = list(data = data)))
+# }

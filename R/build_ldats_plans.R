@@ -9,26 +9,23 @@
 #' @export
 #'
 build_ldats_analyses_plan <- function(datasets, max_topics = c(3), nseeds = 4, 
-                             nchangepoints = c(2, 3), formulas = c("time", "intercept"), 
-                             lda_control = list(), ts_control = list())
+                                      nchangepoints = c(2, 3), formulas = c("time", "intercept"), 
+                                      lda_control = list(), ts_control = list())
 {
     drake::drake_plan(
-        lda = target(run_LDA(data, max_topics = topic_limit, nseeds = !!nseeds, control = !!lda_control),
-                     transform = cross(data = !!rlang::syms(datasets$target),
-                                       topic_limit = !!(max_topics))),
-        # lda_select = target(LDATS::select_LDA(lda, control = list(measurer = LDATS::AICc)),
-        #                      transform = map(lda)),
+        lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds, control = !!lda_control),
+                     transform = map(data = !!rlang::syms(datasets$target))),
         ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints, formulas = !!formulas, control = !!ts_control),
                     transform = map(data = !!rlang::syms(datasets$target),
                                     lda)),
-        # ts_select = target(try(LDATS::select_TS(ts)),
-        #                    transform = map(ts)),
         lda_results = target(collect_analyses(list(lda)),
                              transform = combine(lda)),
         ts_results = target(collect_analyses(list(ts)),
-                            transform = combine(ts))#,
-        # ts_select_results = target(collect_analyses(list(ts_select)),
-        #                            transform = combine(ts_select))
+                            transform = combine(ts)),
+        full_lik = target(get_full_lik(ts),
+                          transform = map(ts)),
+        full_lik_results = target(collect_analyses(list(full_lik)),
+                                  transform = combine(full_lik))
     )
 }
 
