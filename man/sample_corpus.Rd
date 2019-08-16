@@ -4,12 +4,12 @@
 \alias{sample_corpus}
 \title{Sample a corpus given sample sizes and ps of documents}
 \usage{
-sample_corpus(sample_sizes, docterm_ps)
+sample_corpus(docterm_ps, obs_dat)
 }
 \arguments{
-\item{sample_sizes}{sizes of documents}
-
 \item{docterm_ps}{probabilities of terms in each document}
+
+\item{sample_sizes}{sizes of documents}
 }
 \value{
 sampled corpus

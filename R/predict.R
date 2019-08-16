@@ -293,16 +293,18 @@ expand_full_lik_results <- function(full_lik) {
 #'
 predict_abundances <- function(full_lik, seed = 1977) {
     
-    sample_sizes <- rowSums(full_lik$data$abundance)
-    
+
     set.seed(seed)
     
     pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))
     
     p_list <- lapply(pars_list, FUN = function(pars_list) return(pars_list$theta_vals %*% pars_list$beta_vals))
     
-    predictions <- lapply(p_list, FUN = sample_corpus, sample_sizes = sample_sizes)
+    predictions <- lapply(p_list, FUN = sample_corpus, obs_dat = full_lik$data$abundance)
     
+    for(i in 1:length(predictions)) {
+        predictions[[i]]$model_name <- full_lik$model_info$ts_model_name[i]
+    }
 
     return(list(data = full_lik$data,
                 model_info = full_lik$model_info,
@@ -317,7 +319,9 @@ predict_abundances <- function(full_lik, seed = 1977) {
 #' @return sampled corpus
 #' @export
 #'
-sample_corpus <- function(sample_sizes, docterm_ps) {
+sample_corpus <- function(docterm_ps, obs_dat) {
+    
+    sample_sizes <- rowSums(obs_dat)
     
     document <- apply(as.matrix(1:nrow(docterm_ps)),
                       MARGIN = 1,
@@ -325,10 +329,24 @@ sample_corpus <- function(sample_sizes, docterm_ps) {
                           return(rmultinom(n = 1, size = sample_sizes[row_index],
                                            prob = docterm_ps[row_index, ])),
                       sample_sizes = sample_sizes, 
-                      docterm_ps = docterm_ps) %>%
+                      docterm_ps = docterm_ps)
+    document <- document %>%
         as.data.frame() %>%
         t()
     
-    return(document)
+    obs_dat <- obs_dat %>%
+        dplyr::mutate(timestep = 1:nrow(obs_dat),
+                      source = "observed")
+    
+    colnames(document) <- colnames(obs_dat)[1:(ncol(obs_dat) - 2)]
+    pred_dat <- as.data.frame(document) %>%
+        dplyr::mutate(timestep = obs_dat$timestep, 
+                      source = "pred")
+    
+    all_dat <- dplyr::bind_rows(obs_dat, pred_dat) %>%
+        tidyr::gather(key = "species", value = "abundance", -timestep, -source)
+    
+    
+    return(all_dat)
     
 }
