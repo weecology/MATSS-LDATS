@@ -28,7 +28,7 @@ portal_annual_dataset <- drake_plan(
 
 datasets <- rbind(datasets, portal_annual_dataset)
 
-datasets$trigger <- expr("trigger(command = FALSE, depend = FALSE)")
+datasets$trigger <- rlang::expr("trigger(command = FALSE)")
 
 # lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(2:3), nseeds = 5)
 
