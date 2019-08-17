@@ -10,8 +10,8 @@
 #'   sample. In the original specification for LDA, each row is a document,
 #'   and each column is a word, with the entries being the counts of the words
 #'   in each document.
-#' @param max_topics the maximum number of topics to try (the function will
-#'   test a number of topics from 2 to `max_topics`)
+#' @param max_topics the maximum number of topics to try 
+#' @param n_topics alternatively only try 1 number of topics
 #' @inheritParams LDATS::LDA_set
 #'
 #' @return list of `lda = [the set of LDA models]` from running LDATS::parLDA(), `data = data)`
@@ -19,7 +19,9 @@
 #' @importFrom dplyr filter mutate group_by ungroup
 #' 
 run_LDA <- function(data,
-                    max_topics = 6, nseeds = 200,
+                    max_topics = 6, 
+                    n_topics = NULL,
+                    nseeds = 200,
                     control = list())
 {
     if (!MATSS::check_data_format(data))
@@ -27,13 +29,18 @@ run_LDA <- function(data,
         wrongFormat = simpleWarning("Incorrect data structure, see data-formats vignette")
         tryCatch(warning(wrongFormat), finally = return('Incorrect data structure'))
     }
-
+    
     #### Run LDAs ####
     abundances <- data$abundance
-    topics_vector <- seq(from = 2, to = max_topics, by = 1)
+    
+    if(is.null(n_topics)) {
+        topics_vector <- seq(from = 2, to = max_topics, by = 1)
+    } else {
+        topics_vector <- n_topics
+    }
     LDA_models <- LDATS::LDA_set(document_term_table = abundances,
-                                topics = topics_vector,
-                                nseeds = nseeds, control = control)
+                                 topics = topics_vector,
+                                 nseeds = nseeds, control = control)
     
     model_info <- make_lda_table(names(LDA_models)) %>%
         dplyr::mutate(LDA_AICc = vapply(LDA_models, FUN = LDATS::AICc, FUN.VAL = 100)) %>%
@@ -41,17 +48,17 @@ run_LDA <- function(data,
         dplyr::mutate(is_best_seed = (LDA_AICc == min(LDA_AICc))) %>%
         dplyr::ungroup()
     
-    LDA_models <- LDA_models[ which(model_info$is_best_seed)]
+    # LDA_models <- LDA_models[ which(model_info$is_best_seed)]
     
     class(LDA_models) <- "LDA_set"
     
-    model_info <- dplyr::filter(model_info, is_best_seed) %>%
-        dplyr::mutate(lda_model_index = 1:sum(is_best_seed))
+  #  model_info <- dplyr::filter(model_info, is_best_seed) %>%
+   #     dplyr::mutate(lda_model_index = 1:sum(is_best_seed))
     
     return(list(lda = LDA_models,
                 data = data,
                 model_info = model_info))
-
+    
 }
 
 #' LDA select

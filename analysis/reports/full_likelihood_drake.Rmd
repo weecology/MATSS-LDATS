@@ -26,7 +26,10 @@ full_lik_expanded <- lapply(full_lik_results, FUN = expand_full_lik_results) %>%
     dplyr::bind_rows(.id = "data_name") %>%
     dplyr::mutate(data_name = vapply(data_name, FUN = function(X) return(unlist(strsplit(X, split = "lda_"))[[2]]), FUN.VALUE = "mtquad"),
                   ts_model_desc = paste0(changepoints, "; ", formula),
-                  k = as.character(k))
+                  k = as.character(k),
+                  seed = as.character(seed)) %>%
+    dplyr::mutate(data_name = vapply(data_name, FUN = function(X) 
+        return(substr(X, start = 0, stop = (max(gregexpr('_', X)[[1]]) - 1))), FUN.VALUE = "mt"))
 
 
 
@@ -38,10 +41,10 @@ library(ggplot2)
 
 
 make_aic_plot <- function(model_data) {
-    ggplot(data = model_data, aes(x = ts_model_desc, y = TS_AICc, colour = k)) + 
+    t <- ggplot(data = model_data, aes(x = seed, y = TS_AICc, colour = seed)) + 
         geom_violin(stat = "ydensity") +
         theme_bw() +
-        facet_wrap(facets = data_name ~ .)
+        facet_grid(rows = vars(ts_model_desc), cols = vars(k), scales = "fixed", switch = "y")
 }
 
 AIC_plots <- lapply(unique(full_lik_expanded$data_name),
@@ -51,7 +54,7 @@ gridExtra::grid.arrange(grobs = AIC_plots, ncol = 1)
 
 ```
 
-```{r plot observed v predicted}
+```{r plot observed v predicted, eval  = F}
 
 pred_results <- readd(pred_results, cache = cache)
 

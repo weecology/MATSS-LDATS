@@ -11,8 +11,7 @@ build_ldats_analyses_plan(datasets, max_topics = c(3), nseeds = 4,
 \arguments{
 \item{datasets}{the drake plan for the datasets to analyze}
 
-\item{max_topics}{the maximum number of topics to try (the function will
-test a number of topics from 2 to \code{max_topics})}
+\item{max_topics}{the maximum number of topics to try}
 
 \item{nseeds}{Number of seeds (replicate starts) to use for each 
 value of \code{topics}. Must be conformable to \code{integer} value.}

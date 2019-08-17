@@ -4,14 +4,12 @@
 \alias{run_TS}
 \title{Run Changepoint Model on LDA + TimeSeries Data}
 \usage{
-run_TS(data, ldamodels, formulas = c("intercept", "time"),
+run_TS(ldamodels, formulas = c("intercept", "time"),
   nchangepoints = 0:6, weighting = "proportional", control = list(nit
   = 1000, magnitude = max(1, floor(0.03 * nrow(data$abundance)))))
 }
 \arguments{
-\item{data}{The dataset, in the \code{MATSS} format. Including covariates & metadata.}
-
-\item{ldamodels}{The LDA model(s) produced by running \code{run_LDA} on the dataset.}
+\item{ldamodels}{The list of dataset, LDA model(s), and model info produced by running \code{run_LDA} on the dataset.}
 
 \item{formulas}{Defaults to NULL. If nothing supplied, ~timename. If supplied, uses that.}
 

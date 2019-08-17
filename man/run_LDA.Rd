@@ -4,7 +4,8 @@
 \alias{run_LDA}
 \title{Run Latent Dirichlet Allocation on Tabular Data}
 \usage{
-run_LDA(data, max_topics = 6, nseeds = 200, control = list())
+run_LDA(data, max_topics = 6, n_topics = NULL, nseeds = 200,
+  control = list())
 }
 \arguments{
 \item{data}{a data.frame or tibble; each row is an observation (e.g. in
@@ -14,8 +15,9 @@ sample. In the original specification for LDA, each row is a document,
 and each column is a word, with the entries being the counts of the words
 in each document.}
 
-\item{max_topics}{the maximum number of topics to try (the function will
-test a number of topics from 2 to \code{max_topics})}
+\item{max_topics}{the maximum number of topics to try}
+
+\item{n_topics}{alternatively only try 1 number of topics}
 
 \item{nseeds}{Number of seeds (replicate starts) to use for each 
 value of \code{topics}. Must be conformable to \code{integer} value.}
