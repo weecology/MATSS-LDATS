@@ -17,22 +17,36 @@ if (FALSE)
 }
 
 
-## Clean and transform the data into the appropriate format
+# Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
-datasets <- datasets[10, ]
+datasets <- datasets[11, ]
+
+portal_annual_dataset <- drake_plan(
+    portal_ann_data = get_portal_annual_data()
+)
+
+datasets <- rbind(datasets, portal_annual_dataset)
+
+datasets$trigger <- expr("trigger(command = FALSE, depend = FALSE)")
 
 # lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(2:3), nseeds = 5)
 
-lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(2:3), nseeds = 2)
+lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(2:5), nseeds = 4)
 
 lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
 
 
 ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 100))
 
+reports <- drake_plan(
+    full_like_report = rmarkdown::render(
+        knitr_in("analysis/reports/full_likelihood_drake.Rmd")
+    )
+)
 
-pipeline <- dplyr::bind_rows(datasets, lda_plan, ts_plan) #, summary_tables, reports)
+
+pipeline <- dplyr::bind_rows(datasets, lda_plan, ts_plan, reports) #, summary_tables, reports)
 
 
 ## Set up the cache and config

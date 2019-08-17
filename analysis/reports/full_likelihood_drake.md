@@ -12,6 +12,9 @@ full_lik_expanded <- lapply(full_lik_results, FUN = expand_full_lik_results) %>%
                   seed = as.character(seed)) %>%
     dplyr::mutate(data_name = vapply(data_name, FUN = function(X) 
         return(substr(X, start = 0, stop = (max(gregexpr('_', X)[[1]]) - 1))), FUN.VALUE = "mt"))
+
+max_k <- max(as.numeric(full_lik_expanded$k))
+max_seed <- length(unique(full_lik_expanded$seed))
 ```
 
 ``` r
@@ -19,10 +22,12 @@ library(ggplot2)
 
 
 make_aic_plot <- function(model_data) {
-    t <- ggplot(data = model_data, aes(x = seed, y = TS_AICc, colour = seed)) + 
+    ggplot(data = model_data, aes(x = seed, y = TS_AICc, colour = seed)) + 
         geom_violin(stat = "ydensity") +
         theme_bw() +
-        facet_grid(rows = vars(ts_model_desc), cols = vars(k), scales = "fixed", switch = "y")
+        facet_grid(rows = vars(ts_model_desc), cols = vars(k), scales = "fixed", switch = "y") +
+        ggtitle(label = model_data$data_name[1]) +
+        theme(legend.position = "none")
 }
 
 AIC_plots <- lapply(unique(full_lik_expanded$data_name),
