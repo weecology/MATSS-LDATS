@@ -1,0 +1,743 @@
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+.................target bbs_data_rtrg_1_11
+.target portal_ann_data
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target lda_bbs_data_rtrg_1_11_2
+.target lda_bbs_data_rtrg_1_11_3
+.target lda_bbs_data_rtrg_1_11_4
+.target lda_bbs_data_rtrg_1_11_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target portal_ann_data messages:
+  Loading in data version 1.124.0
+..target lda_portal_ann_data_2
+.target lda_portal_ann_data_3
+.target lda_portal_ann_data_4
+.target lda_portal_ann_data_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_bbs_data_rtrg_1_11_5 messages:
+  Running LDA with 5 topics (seed 2)
+  Running LDA with 5 topics (seed 4)
+  Running LDA with 5 topics (seed 6)
+  Running LDA with 5 topics (seed 8)
+..target ts_lda_bbs_data_rtrg_1_11_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_portal_ann_data_3 messages:
+  Running LDA with 3 topics (seed 2)
+  Running LDA with 3 topics (seed 4)
+  Running LDA with 3 topics (seed 6)
+  Running LDA with 3 topics (seed 8)
+..target ts_lda_portal_ann_data_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_portal_ann_data_4 messages:
+  Running LDA with 4 topics (seed 2)
+  Running LDA with 4 topics (seed 4)
+  Running LDA with 4 topics (seed 6)
+  Running LDA with 4 topics (seed 8)
+..target ts_lda_portal_ann_data_4
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_portal_ann_data_5 messages:
+  Running LDA with 5 topics (seed 2)
+  Running LDA with 5 topics (seed 4)
+  Running LDA with 5 topics (seed 6)
+  Running LDA with 5 topics (seed 8)
+..target ts_lda_portal_ann_data_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_bbs_data_rtrg_1_11_2 messages:
+  Running LDA with 2 topics (seed 2)
+  Running LDA with 2 topics (seed 4)
+  Running LDA with 2 topics (seed 6)
+  Running LDA with 2 topics (seed 8)
+..target ts_lda_bbs_data_rtrg_1_11_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_portal_ann_data_2 messages:
+  Running LDA with 2 topics (seed 2)
+  Running LDA with 2 topics (seed 4)
+  Running LDA with 2 topics (seed 6)
+  Running LDA with 2 topics (seed 8)
+..target ts_lda_portal_ann_data_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_bbs_data_rtrg_1_11_3 messages:
+  Running LDA with 3 topics (seed 2)
+  Running LDA with 3 topics (seed 4)
+  Running LDA with 3 topics (seed 6)
+  Running LDA with 3 topics (seed 8)
+..target ts_lda_bbs_data_rtrg_1_11_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target lda_bbs_data_rtrg_1_11_4 messages:
+  Running LDA with 4 topics (seed 2)
+  Running LDA with 4 topics (seed 4)
+  Running LDA with 4 topics (seed 6)
+  Running LDA with 4 topics (seed 8)
+..target ts_lda_bbs_data_rtrg_1_11_4
+.target lda_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_4 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_portal_ann_data_4
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_5 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_portal_ann_data_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_portal_ann_data_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_portal_ann_data_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_bbs_data_rtrg_1_11_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_5 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 5, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 5, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 5, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_bbs_data_rtrg_1_11_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_portal_ann_data_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_4 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 4, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 4, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 4, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_bbs_data_rtrg_1_11_4
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_portal_ann_data_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_portal_ann_data_4
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_portal_ann_data_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_bbs_data_rtrg_1_11_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_bbs_data_rtrg_1_11_4
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target pred_full_lik_ts_lda_bbs_data_rtrg_1_11_5
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  ...
+..target full_lik_ts_lda_bbs_data_rtrg_1_11_3
+.target ts_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+.target pred_full_lik_ts_lda_bbs_data_rtrg_1_11_3
+.target full_lik_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+...target pred_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+...target full_like_report
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target full_like_report messages:
+  
+
+processing file: full_likelihood_drake.Rmd
+  output file: full_likelihood_drake.knit.md
+
+  
+Preview created: full_likelihood_drake.html
+  
+Output created: full_likelihood_drake.md
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+...
