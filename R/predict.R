@@ -163,6 +163,11 @@ get_bt <- function(lda_model, ts_model) {
 #' @export
 #'
 get_full_lik <- function(ts_list) {
+    
+    if(is.null(ts_list$ts)) {
+        return()
+    }
+    
     ts_models <- ts_list$ts
     lda_models <- ts_list$lda
     data <- ts_list$data
@@ -293,7 +298,10 @@ expand_full_lik_results <- function(full_lik) {
 #'
 predict_abundances <- function(full_lik, seed = 1977) {
     
-
+    if(is.null(full_lik)) {
+        return()
+    }
+    
     set.seed(seed)
     
     pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))

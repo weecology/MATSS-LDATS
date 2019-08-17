@@ -57,13 +57,13 @@ run_TS <- function(ldamodels,
         control$magnitude = max(1, floor(0.03 * nrow(data$abundance)))
     }
     
-    ts_models <- LDATS::TS_on_LDA(LDA_models = ldas,
+    ts_models <- try(LDATS::TS_on_LDA(LDA_models = ldas,
                                   document_covariate_table = as.data.frame(data$covariates),
                                   formulas = formulas,
                                   nchangepoints = nchangepoints,
                                   timename = timename,
                                   weights = weights,
-                                  control = control)
+                                  control = control))
     
     ts_model_info <- make_ts_table(names(ts_models))
     
