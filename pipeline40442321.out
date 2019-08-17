@@ -1,36 +1,0 @@
-[1] ".Rprofile loaded"
-<environment: R_GlobalEnv>
-<environment: R_GlobalEnv>
-[1] "I know I am on SLURM!"
-  |                                                                         |                                                                 |   0%  |                                                                         |........                                                         |  12%
-  ordinary text without R code
-
-  |                                                                         |................                                                 |  25%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |........................                                         |  38%
-  ordinary text without R code
-
-  |                                                                         |................................                                 |  50%
-label: expand full like results
-  |                                                                         |.........................................                        |  62%
-  ordinary text without R code
-
-  |                                                                         |.................................................                |  75%
-label: plot AICcs (with options) 
-List of 1
- $ fig.dim: language c(min((max_seed * 2), 12), length = max_k * 8)
-
-  |                                                                         |.........................................................        |  88%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: plot observed v predicted (with options) 
-List of 1
- $ eval: symbol F
-
-
-/usr/bin/pandoc +RTS -K512m -RTS full_likelihood_drake.utf8.md --to markdown_github-ascii_identifiers --from markdown+autolink_bare_uris+tex_math_single_backslash --output full_likelihood_drake.md --standalone --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/default.md 
-/usr/bin/pandoc +RTS -K512m -RTS full_likelihood_drake.md --to html4 --from markdown_github-ascii_identifiers --output full_likelihood_drake.html --standalone --self-contained --highlight-style pygments --template /home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/preview.html --variable 'github-markdown-css:/home/diaz.renata/R_libs/rmarkdown/rmarkdown/templates/github_document/resources/github.css' --email-obfuscation none 
