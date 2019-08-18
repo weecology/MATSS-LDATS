@@ -30,7 +30,7 @@ if (!"memory" %in% names(resources)) {
 #SBATCH --error=<%= log.file %>
 #SBATCH --ntasks=1
 
-#SBATCH --time=<%= 480 %>
+#SBATCH --time=<%= 960 %>
 #SBATCH --cpus-per-task=<%= 1 %>
 #SBATCH --mem-per-cpu=<%= "8GB" %>
 

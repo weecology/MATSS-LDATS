@@ -28,17 +28,18 @@ portal_annual_dataset <- drake_plan(
 
 portal_annual_dataset$trigger <- datasets$trigger[1]
 
-datasets <- rbind(datasets, portal_annual_dataset)
+# datasets <- rbind(datasets, portal_annual_dataset)
 
+datasets <- portal_annual_dataset
 
 # lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(2:3), nseeds = 5)
 
-lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(seq(2, 16, by = 2)), nseeds = 100)
+lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(c(2, seq(3, 15, by = 3))), nseeds = 50)
 
 lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
 
 
-ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 10000))
+ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 1000))
 
 reports <- drake_plan(
     full_like_report = rmarkdown::render(
