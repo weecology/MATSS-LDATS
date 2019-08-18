@@ -9,7 +9,7 @@ sample_corpus(docterm_ps, obs_dat)
 \arguments{
 \item{docterm_ps}{probabilities of terms in each document}
 
-\item{sample_sizes}{sizes of documents}
+\item{obs_dat}{abundance matrix}
 }
 \value{
 sampled corpus

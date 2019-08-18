@@ -321,9 +321,8 @@ predict_abundances <- function(full_lik, seed = 1977) {
 
 #' Sample a corpus given sample sizes and ps of documents
 #'
-#' @param sample_sizes sizes of documents
 #' @param docterm_ps probabilities of terms in each document
-#'
+#' @param obs_dat abundance matrix
 #' @return sampled corpus
 #' @export
 #'

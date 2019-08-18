@@ -20,24 +20,29 @@ full_lik_results <- readd(full_lik_results, cache = cache)
 
 ```
 
-```{r expand full like results}
+## AICc: All models, all k, all seeds
+
+```{r expand full like results, echo = F}
 
 full_lik_expanded <- lapply(full_lik_results, FUN = expand_full_lik_results) %>%
     dplyr::bind_rows(.id = "data_name") %>%
     dplyr::mutate(data_name = vapply(data_name, FUN = function(X) return(unlist(strsplit(X, split = "lda_"))[[2]]), FUN.VALUE = "mtquad"),
                   ts_model_desc = paste0(changepoints, "; ", formula),
+                  ts_model_desc_k = paste0(changepoints, "; ", k, "; ", formula),
                   k = as.character(k),
                   seed = as.character(seed)) %>%
     dplyr::mutate(data_name = vapply(data_name, FUN = function(X) 
         return(substr(X, start = 0, stop = (max(gregexpr('_', X)[[1]]) - 1))), FUN.VALUE = "mt"))
 
-max_k <- max(as.numeric(full_lik_expanded$k))
+max_k <- length(unique(full_lik_expanded$k))
 max_seed <- length(unique(full_lik_expanded$seed))
+max_models <- length(unique(full_lik_expanded$ts_model_desc))
+max_data <- length(unique(full_lik_expanded$data_name))
 
 
 ```
 
-```{r plot AICcs, fig.dim=c(min((max_seed * 2), 12), length = max_k * 8)}
+```{r plot AICcs, fig.dim=c(min(max_k * 3, 12), length = max_models * 3), echo =F}
 
 library(ggplot2)
 
@@ -58,31 +63,121 @@ gridExtra::grid.arrange(grobs = AIC_plots, ncol = 1)
 
 ```
 
-```{r plot observed v predicted, eval  = F}
 
-pred_results <- readd(pred_results, cache = cache)
+## Best AICcs for each dataset
 
-plot_obs_pred <- function(obs_pred_data) {
-    
+```{r plot best AICc, fig.dim=c(min(max_k * 3, 12), length = max_data * 4), echo = F} 
+
+full_lik_best <- full_lik_expanded %>%
+    dplyr::select(data_name, ts_model_desc_k, TS_AICc) %>%
+    dplyr::group_by(data_name, ts_model_desc_k) %>%
+    dplyr::summarize(mean_aicc = mean(TS_AICc), 
+                     median_aicc = median(TS_AICc),
+                     sd_aicc = sd(TS_AICc)) %>%
+    dplyr::ungroup() %>%
+    dplyr::left_join(dplyr::select(full_lik_expanded, data_name, ts_model_desc_k, k, ts_model_desc, formula, changepoints) %>% dplyr::distinct(), by = c("data_name", "ts_model_desc_k"))
+
+
+make_best_mean_aicc_plot <- function(model_data) {
+    ggplot(data = model_data, aes(x = k, y = mean_aicc, colour = ts_model_desc)) + 
+        geom_jitter(width = 0.05, height =0) +
+        theme_bw() +
+        ggtitle(label = paste0(model_data$data_name[1], " mean"))
+}
+
+
+make_best_median_aicc_plot <- function(model_data) {
+    ggplot(data = model_data, aes(x = k, y = median_aicc, colour = ts_model_desc)) + 
+        geom_jitter(width = 0.05, height =0) +
+        theme_bw() +
+        ggtitle(label = paste0(model_data$data_name[1], " median"))
+}
+
+best_mean_AIC_plots <- lapply(unique(full_lik_best$data_name),
+                              FUN = function(dat_name) return(make_best_mean_aicc_plot(dplyr::filter(full_lik_best, data_name == dat_name))))
+
+gridExtra::grid.arrange(grobs = best_mean_AIC_plots, ncol = 1)
+
+
+best_median_AIC_plots <- lapply(unique(full_lik_best$data_name),
+                                FUN = function(dat_name) return(make_best_median_aicc_plot(dplyr::filter(full_lik_best, data_name == dat_name))))
+
+gridExtra::grid.arrange(grobs = best_median_AIC_plots, ncol = 1)
+
+
+```
+
+
+## Predicted abundances for all species, from best TS + LDA model
+```{r plot best observed v predicted, eval  = T, echo = F}
+
+best_aicc_means <- dplyr::select(full_lik_best, data_name, mean_aicc) %>%
+    dplyr::group_by(data_name) %>%
+    dplyr::filter(mean_aicc == min(mean_aicc)) %>%
+    dplyr::ungroup()
+
+full_lik_best_ts <- full_lik_expanded %>%
+    plyr::join(best_aicc_means, by = "data_name", type = "left") %>%
+    dplyr::group_by(ts_model_name) %>%
+    dplyr::mutate(sim_index = 1:dplyr::n()) %>%
+    dplyr::ungroup() %>%
+    dplyr::group_by(data_name) %>%
+    dplyr::mutate(distance_to_best = abs(TS_AICc - mean_aicc)) %>%
+    dplyr::filter(distance_to_best == min(distance_to_best)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(ts_drake_name =  paste0("ts_lda_", data_name, "_", k),
+                  fl_drake_name = paste0("full_lik_ts_lda_", data_name, "_", k))
+
+best_full_lik <- full_lik_results[ full_lik_best_ts$fl_drake_name]
+
+best_ts <- apply(as.matrix(full_lik_best_ts$ts_drake_name), MARGIN = 1,
+                 FUN = function(tsname) return(readd(tsname, character_only = TRUE, cache = cache)))
+
+best_ts <- apply(as.matrix(1:nrow(full_lik_best_ts)), MARGIN = 1, FUN =
+                     function(modelrow, full_lik_best_ts) 
+                         return(list(
+                             ts = best_ts[[modelrow]]$ts[[ full_lik_best_ts$ts_model_index[modelrow]]],
+                             lda = best_ts[[modelrow]]$lda[[
+                                 full_lik_best_ts$lda_model_index[modelrow]]]
+                         )), full_lik_best_ts = full_lik_best_ts)
+
+best_bts <- apply(as.matrix(1:nrow(full_lik_best_ts)), MARGIN = 1,
+                  FUN = function(modelrow, full_lik_best_ts)
+                      return(list(
+                        beta_vals = best_full_lik[full_lik_best_ts$fl_drake_name[modelrow]][[1]][[2]][[full_lik_best_ts$ts_model_index[modelrow]]]$beta_vals,
+                        thetas = best_full_lik[full_lik_best_ts$fl_drake_name[modelrow]][[1]][[2]][[full_lik_best_ts$ts_model_index[modelrow]]]$thetas[[full_lik_best_ts$sim_index[modelrow]]])), full_lik_best_ts = full_lik_best_ts)
+
+names(best_bts) <- full_lik_best_ts$ts_drake_name
+
+best_plist <- lapply(best_bts, FUN = function(btlist)
+    return(btlist$thetas %*% btlist$beta_vals))
+names(best_plist) <- full_lik_best_ts$data_name
+
+best_dat_plist <- apply(as.matrix(1:length(best_plist)), MARGIN = 1, FUN = function(pindex, best_plist, full_lik_best_ts) 
+    return(list(model_name = paste0(full_lik_best_ts$data_name[pindex], " ", full_lik_best_ts$ts_model_name[pindex]),
+                    plist = as.data.frame(best_plist[pindex][[1]]),
+                obs_dat = as.data.frame( best_full_lik[full_lik_best_ts$fl_drake_name[pindex]][[1]]$data$abundance))), best_plist = best_plist, full_lik_best_ts = full_lik_best_ts)
+
+best_predictions <- lapply(best_dat_plist, FUN = function(bestplist) 
+    return(list(prediction = sample_corpus(docterm_ps = bestplist$plist, obs_dat = bestplist$obs_dat),
+                model_name = bestplist$model_name)))
+
+plot_obs_pred <- function(prediction_list) {
+    obs_pred_data = prediction_list$prediction
     obs_pred_plot <- ggplot2::ggplot(data = obs_pred_data, aes(x = timestep, y = abundance, color = source)) +
         ggplot2::geom_line() +
         ggplot2::theme_bw() +
         ggplot2::facet_wrap(facets = species ~ .) +
-        ggplot2::ggtitle(obs_pred_data$model_name[1])
-
+        ggplot2::ggtitle(prediction_list$model_name)
+    
     return(obs_pred_plot)
 }
 
 
-plot_all_model_preds <- function(list_of_predictions) {
-    all_plots <- lapply(list_of_predictions$prediction, FUN = plot_obs_pred)
-    return(all_plots)
-}
+all_plots <- lapply(best_predictions, FUN = plot_obs_pred)
 
-all_plots_all_pred <- lapply(pred_results, plot_all_model_preds)
-
-for(i in 1:length(all_plots_all_pred)) {
-gridExtra::grid.arrange(grobs = all_plots_all_pred[[i]], ncol = 1)
+for(i in 1:length(all_plots)) {
+    gridExtra::grid.arrange(grobs = all_plots[i], ncol = 1)
 }
 
 ```
