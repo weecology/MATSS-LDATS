@@ -1,0 +1,107 @@
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+............................................target ts_lda_bbs_data_rtrg_1_11_2
+.target ts_lda_bbs_data_rtrg_1_11_4
+.target ts_lda_bbs_data_rtrg_1_11_6
+.target ts_lda_bbs_data_rtrg_1_11_8
+.target ts_lda_portal_ann_data_2
+.target ts_lda_portal_ann_data_4
+.target ts_lda_bbs_data_rtrg_1_11_10
+.target ts_lda_portal_ann_data_6
+.target ts_lda_bbs_data_rtrg_1_11_12
+.target ts_lda_portal_ann_data_8
+.target ts_lda_bbs_data_rtrg_1_11_14
+.target ts_lda_bbs_data_rtrg_1_11_16
+.target ts_lda_portal_ann_data_10
+.target ts_lda_portal_ann_data_12
+.target ts_lda_portal_ann_data_14
+.target ts_lda_portal_ann_data_16
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_1_11_14 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_1_11_14 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 12
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 14
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 16
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 18
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 20
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 22
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 24
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 26
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 28
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 30
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 32
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 34
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 36
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 38
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 40
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 42
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 44
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 46
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 48
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 50
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 52
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 54
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 56
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 14, seed: 58
+
+  ...
+fail ts_lda_bbs_data_rtrg_1_11_14
+Error: Target `ts_lda_bbs_data_rtrg_1_11_14` failed. Call `diagnose(ts_lda_bbs_data_rtrg_1_11_14)` for details. Error message:
+  'names' attribute [2] must be the same length as the vector [0]
+Execution halted

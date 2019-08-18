@@ -1,0 +1,31 @@
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+..............................target ts_lda_bbs_data_rtrg_1_11_2
+.target ts_lda_bbs_data_rtrg_1_11_4
+.target ts_lda_bbs_data_rtrg_1_11_6
+.target ts_lda_bbs_data_rtrg_1_11_8
+.target ts_lda_portal_ann_data_2
+.target ts_lda_portal_ann_data_4
+.target ts_lda_bbs_data_rtrg_1_11_10
+.target ts_lda_portal_ann_data_6
+.target ts_lda_bbs_data_rtrg_1_11_12
+.target ts_lda_portal_ann_data_8
+.target ts_lda_bbs_data_rtrg_1_11_14
+.target ts_lda_bbs_data_rtrg_1_11_16
+.target ts_lda_portal_ann_data_10
+.target ts_lda_portal_ann_data_12
+.target ts_lda_portal_ann_data_14
+.target ts_lda_portal_ann_data_16
+fail ts_lda_portal_ann_data_10
+Error: Target `ts_lda_portal_ann_data_10` failed. Call `diagnose(ts_lda_portal_ann_data_10)` for details. Error message:
+  Worker terminated unexpectedly before the target could complete. Is something wrong with your system or job scheduler?
+In addition: Warning message:
+No checksum available for target ts_lda_portal_ann_data_10. 
+Execution halted
