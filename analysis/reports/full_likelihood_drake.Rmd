@@ -16,8 +16,11 @@ library(drake)
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 
-full_lik_results <- readd(full_lik_results, cache = cache)
+all_lik_names <- cached(cache = cache)[ which(grepl(cached(cache = cache), pattern = "full_lik"))]
 
+full_lik_results <- lapply(all_lik_names, FUN = readd, character_only = T, cache = cache)
+
+names(full_lik_results) <- all_lik_names
 ```
 
 ## AICc: All models, all k, all seeds
@@ -51,7 +54,7 @@ make_aic_plot <- function(model_data) {
     ggplot(data = model_data, aes(x = seed, y = TS_AICc, colour = seed)) + 
         geom_violin(stat = "ydensity") +
         theme_bw() +
-        facet_grid(rows = vars(ts_model_desc), cols = vars(k), scales = "fixed", switch = "y") +
+        facet_grid(rows = vars(ts_model_desc), cols = vars(as.integer(k)), scales = "fixed", switch = "y") +
         ggtitle(label = model_data$data_name[1]) +
         theme(legend.position = "none")
 }
@@ -79,7 +82,7 @@ full_lik_best <- full_lik_expanded %>%
 
 
 make_best_mean_aicc_plot <- function(model_data) {
-    ggplot(data = model_data, aes(x = k, y = mean_aicc, colour = ts_model_desc)) + 
+    ggplot(data = model_data, aes(x = as.integer(k), y = mean_aicc, colour = ts_model_desc)) + 
         geom_jitter(width = 0.05, height =0) +
         theme_bw() +
         ggtitle(label = paste0(model_data$data_name[1], " mean"))
@@ -87,7 +90,7 @@ make_best_mean_aicc_plot <- function(model_data) {
 
 
 make_best_median_aicc_plot <- function(model_data) {
-    ggplot(data = model_data, aes(x = k, y = median_aicc, colour = ts_model_desc)) + 
+    ggplot(data = model_data, aes(x = as.integer(k), y = median_aicc, colour = ts_model_desc)) + 
         geom_jitter(width = 0.05, height =0) +
         theme_bw() +
         ggtitle(label = paste0(model_data$data_name[1], " median"))
