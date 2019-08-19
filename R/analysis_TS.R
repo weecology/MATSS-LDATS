@@ -65,6 +65,10 @@ run_TS <- function(ldamodels,
                                   weights = weights,
                                   control = control))
     
+    if(!("TS_on_LDA" %in% class(ts_models))) {
+        return(NULL)
+    }
+    
     model_info <- make_ts_table(names(ts_models))
     
     model_info <- dplyr::left_join(ldamodels$model_info, model_info, by = c("k", "seed"))
