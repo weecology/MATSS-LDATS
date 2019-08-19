@@ -34,12 +34,13 @@ max_data <- length(unique(model_summary$data_object_name))
 
 ### Mean AICcs
 
-```{r plot mean AICcs, fig.dim=c(min(max_k * 3, 12), length = max_models * 3), echo =F}
+```{r plot mean AICcs, fig.dim=c(min(max_k * 3, 12), length = max_data * 5), echo =F}
 
 library(ggplot2)
 
 make_mean_aic_plot <- function(model_data) {
     ggplot(data = model_data, aes(x = ts_model_desc, y = meanAICc, colour = ts_model_desc, fill = ts_model_desc)) + 
+         geom_point(size= 1) +
         geom_violin(stat = "ydensity") +
         theme_bw() +
         facet_grid(cols = vars(as.factor(k))) +
@@ -56,10 +57,11 @@ gridExtra::grid.arrange(grobs = AIC_mean_plots, ncol = 1)
 
 ### Median AICcs
 
-```{r plot median AICcs,  fig.dim=c(min(max_k * 3, 12), length = max_models * 3), echo =F}
+```{r plot median AICcs,  fig.dim=c(min(max_k * 3, 12), length = max_data * 5), echo =F}
 
 make_median_aic_plot <- function(model_data) {
     ggplot(data = model_data, aes(x = ts_model_desc, y = medianAICc, colour = ts_model_desc, fill = ts_model_desc)) + 
+        geom_point(size= 1) +
         geom_violin(stat = "ydensity") +
         theme_bw() +
         facet_grid(cols = vars(as.factor(k))) +

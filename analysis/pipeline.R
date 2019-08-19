@@ -20,7 +20,7 @@ if (FALSE)
 # Clean and transform the data into the appropriate format
 datasets <- build_datasets_plan(include_retriever_data = T, include_bbs_data = T,bbs_subset = c(1:5))
 
-datasets <- datasets[c(6,7,11,12), ]
+datasets <- datasets[c(7,12), ]
 
 portal_annual_dataset <- drake_plan(
     portal_ann_data = get_portal_annual_data()
@@ -32,14 +32,14 @@ datasets <- rbind(datasets, portal_annual_dataset)
 
 # datasets <- portal_annual_dataset
 
-lda_plan <- build_lda_plan(datasets, n_topics = c(2, seq(3, 15, by = 3)), nseeds = 5)
+lda_plan <- build_lda_plan(datasets, n_topics = c(2, seq(3, 15, by = 3)), nseeds = 50)
 
 #lda_plan <- build_lda_plan(datasets, n_topics = as.numeric(c(2, seq(3, 6, by = 3))), nseeds = 2)
 
 lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
 
 
-ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 100))
+ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 1000))
 # 
 # reports <- drake_plan(
 #     full_like_report = target(rmarkdown::render(
