@@ -39,7 +39,7 @@ ts_predict <- function(l = NULL, lda_model = NULL, ts_model = NULL, data = NULL,
     model_name <- NULL
     
     if(!is.null(l)) {
-        model_name <- paste0(l$data_object_name, "; ", l$ts_model_desc)
+        model_name <- paste0(l$data_object_name, "; ", l$ts_model_desc_k)
     }
     
     return(list(prediction = prediction,
