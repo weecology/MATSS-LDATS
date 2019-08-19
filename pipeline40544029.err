@@ -1,0 +1,1829 @@
+Loading required package: future
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+
+.............................target ts_lda_bbs_data_rtrg_1_11_9
+.target ts_lda_bbs_data_rtrg_1_11_12
+.target ts_lda_bbs_data_rtrg_1_11_15
+.target ts_lda_portal_ann_data_12
+.target ts_lda_karoo_data_2
+.target ts_lda_bbs_data_rtrg_2_11_2
+.target ts_lda_karoo_data_3
+.target ts_lda_bbs_data_rtrg_2_11_3
+.target ts_lda_kruger_data_2
+.target ts_lda_portal_ann_data_15
+.target ts_lda_kruger_data_3
+.target ts_lda_karoo_data_6
+.target ts_lda_bbs_data_rtrg_2_11_6
+.target ts_lda_kruger_data_6
+.target ts_lda_karoo_data_9
+.target ts_lda_bbs_data_rtrg_2_11_9
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_1_11_15 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_1_11_15 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+..target ts_lda_kruger_data_9
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_karoo_data_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  ...
+..target ts_lda_karoo_data_12
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_karoo_data_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  ...
+..target ts_lda_bbs_data_rtrg_2_11_12
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_karoo_data_6 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  ...
+..target ts_lda_portal_ann_data_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_karoo_data_9 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_karoo_data_9 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  ...
+..target ts_lda_portal_ann_data_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_portal_ann_data_12 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix [... truncated]
+Target ts_lda_portal_ann_data_12 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  ...
+..target ts_lda_bbs_data_rtrg_2_11_15
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_kruger_data_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  ...
+..target ts_lda_karoo_data_15
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_portal_ann_data_15 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix [... truncated]
+Target ts_lda_portal_ann_data_15 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  ...
+..target ts_lda_portal_ann_data_6
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_kruger_data_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  ...
+..target ts_lda_kruger_data_12
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_kruger_data_6 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  ...
+..target ts_lda_bbs_data_rtrg_1_11_2
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_2_11_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  ...
+..target ts_lda_portal_ann_data_9
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_2_11_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  ...
+..target ts_lda_bbs_data_rtrg_1_11_3
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_2_11_6 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  ...
+..target ts_lda_kruger_data_15
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_2_11_9 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  ...
+..target ts_lda_bbs_data_rtrg_1_11_6
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_1_11_9 warnings:
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_1_11_9 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  ...
+..target lda_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_1_11_12 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_1_11_12 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_kruger_data_9 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_kruger_data_9 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_karoo_data_12 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are  [... truncated]
+Target ts_lda_karoo_data_12 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_karoo_data_15 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are  [... truncated]
+Target ts_lda_karoo_data_15 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_6 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  ...
+.
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_kruger_data_12 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_kruger_data_12 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_portal_ann_data_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_2 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 2, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 2, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_2_11_15 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_2_11_15 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_bbs_data_rtrg_2_11_12 warnings:
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_bbs_data_rtrg_2_11_12 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 12, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 12, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_portal_ann_data_9 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_portal_ann_data_9 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 9, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 9, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Warning: target ts_lda_kruger_data_15 warnings:
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+  Relative discrepancies in model vcov matrix are large.
+Target ts_lda_kruger_data_15 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 15, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 15, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_6 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 6, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 6, seed: 4
+
+  ...
+.
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+Target ts_lda_bbs_data_rtrg_1_11_3 messages:
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 6
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 8
+
+  Running TS model with 0 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 10
+
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 4
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 6
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 8
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ year on LDA model k: 3, seed: 10
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 2
+
+    Estimating changepoint distribution
+    Estimating regressor distribution
+  Running TS model with 1 changepoints and equation gamma ~ 1 on LDA model k: 3, seed: 4
+
+  ...
+..target ts_results
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..target model_summary
+
+Attaching package: ‘future’
+
+The following object is masked from ‘package:drake’:
+
+    plan
+
+..
