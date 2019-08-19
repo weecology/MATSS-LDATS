@@ -65,28 +65,23 @@ run_TS <- function(ldamodels,
                                   weights = weights,
                                   control = control))
     
-    ts_model_info <- make_ts_table(names(ts_models))
+    model_info <- make_ts_table(names(ts_models))
     
-    model_info <- dplyr::left_join(ldamodels$model_info, ts_model_info, by = c("k", "seed"))
+    model_info <- dplyr::left_join(ldamodels$model_info, model_info, by = c("k", "seed"))
+    
+    model_info$meanAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
+        return(mean(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
+                       lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
+                       data = data))), FUN.VALUE = 100)
+      
+    
+    model_info$medianAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
+        return(median(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
+                            lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
+                            data = data))), FUN.VALUE = 100)
     
     
     return(list(ts = ts_models,
-                lda = ldas,
-                data = data,
                 model_info = model_info))
 }
-#' 
-#' #' Select TS from list
-#' #'
-#' #' @param ts_list list of ts, upstream
-#' #'
-#' #' @return list of selected ts, upstream
-#' #' @export
-#' #' @importFrom LDATS select_TS
-#' select_TS_list <- function(ts_list) {
-#'     ts <- ts_list$ts
-#'     ts_select <- try(LDATS::select_TS(ts))
-#'     
-#'     return(list(ts = ts_select,
-#'                 upstream = ts_list$upstream))
-#' }
+    

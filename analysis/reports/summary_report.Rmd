@@ -1,0 +1,142 @@
+---
+title: "Summary report"
+author: "Renata Diaz"
+date: "8/19/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+
+library(MATSS)
+library(matssldats)
+library(LDATS)
+library(drake)
+library(dplyr)
+# define where the cache is located
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+loadd(model_summary, cache = cache)
+
+```
+
+## AICc: All models, all k, all seeds
+
+```{r expand full like results, echo = F}
+
+max_k <- length(unique(model_summary$k))
+max_seed <- length(unique(model_summary$seed))
+max_models <- length(unique(model_summary$ts_model_desc))
+max_data <- length(unique(model_summary$data_object_name))
+
+
+```
+
+### Mean AICcs
+
+```{r plot mean AICcs, fig.dim=c(min(max_k * 3, 12), length = max_models * 3), echo =F}
+
+library(ggplot2)
+
+make_mean_aic_plot <- function(model_data) {
+    ggplot(data = model_data, aes(x = ts_model_desc, y = meanAICc, colour = ts_model_desc, fill = ts_model_desc)) + 
+        geom_violin(stat = "ydensity") +
+        theme_bw() +
+   facet_grid(cols = vars(as.factor(k))) +
+        ggtitle(paste0("Mean AICc: ", label = model_data$data_object_name[1])) +
+        theme(legend.position = "bottom") +
+        theme(axis.text.x = element_text(angle = 60, hjust = 1))
+}
+
+AIC_mean_plots <- lapply(unique(model_summary$data_object_name),
+                    FUN = function(dat_name) return(make_mean_aic_plot(dplyr::filter(model_summary, data_object_name == dat_name))))
+
+gridExtra::grid.arrange(grobs = AIC_mean_plots, ncol = 1)
+```
+
+### Median AICcs
+
+```{r plot median AICcs,  fig.dim=c(min(max_k * 3, 12), length = max_models * 3), echo =F}
+
+make_median_aic_plot <- function(model_data) {
+    ggplot(data = model_data, aes(x = ts_model_desc, y = medianAICc, colour = ts_model_desc, fill = ts_model_desc)) + 
+        geom_violin(stat = "ydensity") +
+        theme_bw() +
+   facet_grid(cols = vars(as.factor(k))) +
+        ggtitle(paste0("Median AICc: ", label = model_data$data_object_name[1])) +
+        theme(legend.position = "bottom") +
+        theme(axis.text.x = element_text(angle = 60, hjust = 1))
+}
+
+AIC_median_plots <- lapply(unique(model_summary$data_object_name),
+                    FUN = function(dat_name) return(make_median_aic_plot(dplyr::filter(model_summary, data_object_name == dat_name))))
+
+gridExtra::grid.arrange(grobs = AIC_median_plots, ncol = 1)
+
+```
+
+
+## Best AICcs for each dataset
+
+```{r plot best AICc, fig.dim=c(min(max_k * 3, 12), length = max_data * 4), eval = T, echo = F} 
+
+best_model_summary <- model_summary %>%
+    group_by(data_object_name) %>%
+    arrange(meanAICc) %>%
+    mutate(meanAICc_rank = row_number()) %>%
+    ungroup() %>%
+    filter(meanAICc_rank <= 10)
+
+
+make_best_mean_aicc_plot <- function(model_data) {
+    ggplot(data = model_data, aes(x = ts_model_desc, y = meanAICc, colour = ts_model_desc)) + 
+        geom_jitter(width = 0.05, height =0) +
+           facet_grid(cols = vars(as.factor(k))) +
+        theme_bw() +
+        ggtitle(label = paste0(model_data$data_object_name[1], " mean")) +
+        theme(legend.position = "bottom") +
+        theme(axis.text.x = element_text(angle = 60, hjust = 1))
+}
+
+
+best_mean_AIC_plots <- lapply(unique(best_model_summary$data_object_name),
+                              FUN = function(dat_name) return(make_best_mean_aicc_plot(dplyr::filter(best_model_summary, data_object_name == dat_name))))
+
+gridExtra::grid.arrange(grobs = best_mean_AIC_plots, ncol = 1)
+
+
+```
+
+
+## Predicted abundances for all species
+
+### Best TS + LDA model
+
+```{r plot best observed v predicted, eval  =T, echo = F}
+
+best_ts_models <- filter(best_model_summary, meanAICc_rank == 1)
+
+best_ts_models <- lapply(as.list(1:nrow(best_ts_models)),
+                         FUN = function(rowindex) return(as.list(best_ts_models[rowindex,])))
+
+best_predictions <- lapply(best_ts_models, FUN = ts_predict, lda_model = NULL, ts_model = NULL, data = NULL, sim = NULL, seed = 1977)
+
+plot_obs_pred <- function(prediction_list) {
+    obs_pred_data = prediction_list$prediction
+    obs_pred_plot <- ggplot2::ggplot(data = obs_pred_data, aes(x = timestep, y = abundance, color = source)) +
+        ggplot2::geom_line() +
+        ggplot2::theme_bw() +
+        ggplot2::facet_wrap(facets = species ~ .) +
+        ggplot2::ggtitle(prediction_list$model_name)
+    
+    return(obs_pred_plot)
+}
+
+
+all_plots <- lapply(best_predictions, FUN = plot_obs_pred)
+
+for(i in 1:length(all_plots)) {
+    gridExtra::grid.arrange(grobs = all_plots[i], ncol = 1)
+}
+
+```

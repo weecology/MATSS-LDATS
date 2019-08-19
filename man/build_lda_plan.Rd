@@ -2,27 +2,38 @@
 % Please edit documentation in R/build_ldats_plans.R
 \name{build_lda_plan}
 \alias{build_lda_plan}
-\title{#' @name build_ts_analysis_plan
-#' @title Build a drake plan for TS analysis
+\title{#' @name build_ldats_analyses_plan
+#' @title Build a drake plan for LDATS analysis
 #' @description Construct the expanded Drake plan for LDA time series analyses
-#' @param methods the drake plan for the methods to run
 #' @param datasets the drake plan for the datasets to analyze
-#' @param lda_targets the drake plan for the LDA targets
+#' @inheritParams run_LDA
+#' @inheritParams run_TS
 #'
 #' @return a drake plan
 #' @export
 #'
-build_ts_analysis_plan <- function(methods, datasets, lda_targets)
+build_ldats_analyses_plan <- function(datasets, max_topics = c(3), nseeds = 4,
+nchangepoints = c(2, 3), formulas = c("time", "intercept"),
+lda_control = list(), ts_control = list())
 {
 drake::drake_plan(
-analysis = target(fun(lda, data),
-transform = map(fun = !!rlang::syms(methods$target),
-data = !!rlang::syms(datasets$target),
-lda = !!rlang::syms(lda_targets$target)
-)
-),
-results = target(MATSS::collect_analyses(list(analysis)),
-transform = combine(analysis, .by = fun))
+lda = target(run_LDA(data, max_topics = !!max_topics, nseeds = !!nseeds, control = !!lda_control),
+transform = map(data = !!rlang::syms(datasets$target))),
+ts = target(run_TS(data, lda, nchangepoints = !!nchangepoints, formulas = !!formulas, control = !!ts_control),
+transform = map(data = !!rlang::syms(datasets$target),
+lda)),
+lda_results = target(collect_analyses(list(lda)),
+transform = combine(lda)),
+ts_results = target(collect_analyses(list(ts)),
+transform = combine(ts)),
+full_lik = target(get_full_lik(ts),
+transform = map(ts)),
+full_lik_results = target(collect_analyses(list(full_lik)),
+transform = combine(full_lik)),
+pred = target(predict_abundances(full_lik),
+transform = map(full_lik)),
+pred_results = target(collect_analyses(list(pred)),
+transform = combine(pred))
 )
 }}
 \usage{
@@ -44,6 +55,31 @@ build_lda_plan(datasets, max_topics = c(3), n_topics = NULL,
 drake plan for just LDAs
 }
 \description{
+#' @name build_ts_analysis_plan
+#' @title Build a drake plan for TS analysis
+#' @description Construct the expanded Drake plan for LDA time series analyses
+#' @param methods the drake plan for the methods to run
+#' @param datasets the drake plan for the datasets to analyze
+#' @param lda_targets the drake plan for the LDA targets
+#'
+#' @return a drake plan
+#' @export
+#'
+build_ts_analysis_plan <- function(methods, datasets, lda_targets)
+{
+drake::drake_plan(
+analysis = target(fun(lda, data),
+transform = map(fun = !!rlang::syms(methods$target),
+data = !!rlang::syms(datasets$target),
+lda = !!rlang::syms(lda_targets$target)
+)
+),
+results = target(MATSS::collect_analyses(list(analysis)),
+transform = combine(analysis, .by = fun))
+)
+}
+}
+\details{
 #' @name build_ts_select_plan
 #' @title Build a drake plan for select_TS analysis
 #' @description Construct the expanded Drake plan for selecting changepoint models
@@ -62,7 +98,6 @@ results = target(MATSS::collect_analyses(list(analysis)),
 transform = combine(analysis, .by = fun))
 )
 }
-}
-\details{
+
 Build just an LDA plan
 }

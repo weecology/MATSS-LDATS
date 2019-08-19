@@ -2,7 +2,21 @@
 % Please edit documentation in R/predict.R
 \name{get_doc_lik}
 \alias{get_doc_lik}
-\title{Compute loglikelihood of observed data given probabilities}
+\title{#' Generate table of LDA and TS info
+#'
+#' @param lda_model_names names of LDA models
+#' @param ts_model_names names of TS models
+#'
+#' @return df of LDA nad TS model info
+#' @export
+#' @importFrom dplyr left_join
+make_lda_ts_table <- function(lda_model_names, ts_model_names) {
+ts_table <- make_ts_table(ts_model_names)
+lda_table <- make_lda_table(lda_model_names)\preformatted{lda_ts_table <- dplyr::left_join(ts_table, lda_table, by = c("seed", "k"))
+return(lda_ts_table)
+}
+
+}}
 \usage{
 get_doc_lik(counts_matrix, p_matrix, index)
 }
@@ -17,5 +31,68 @@ get_doc_lik(counts_matrix, p_matrix, index)
 loglik of a single document
 }
 \description{
+#' Get beta and theta matrices from lda and ts model
+#'
+#' @param lda_model LDA model
+#' @param ts_model TS model fit using that LDA model
+#'
+#' @return list of beta_vals and all theta estimats from the TS model
+#' @export
+#'
+get_bt <- function(lda_model, ts_model) {
+betaexp = exp(lda_model@beta)
+all_thetas <- lapply(X = c(1:nrow(ts_model$etas)), FUN = get_theta, ts_model = ts_model)
+return(list(beta_vals = betaexp, thetas = all_thetas))
+}
+}
+\details{
+#' Get document-term probabilities and AICc from ts_model
+#'
+#' @param ts_list result of run_TS
+#'
+#' @return list of data, lda model, ts model, betas & thetas, and AICc estimates
+#' @export
+#'
+get_full_lik <- function(ts_list) {\preformatted{if(is.null(ts_list$ts)) {
+    return()
+}
+
+ts_models <- ts_list$ts
+lda_models <- ts_list$lda
+data <- ts_list$data
+model_info <- ts_list$model_info
+
+lda_index_index <- which(colnames(model_info) == "lda_model_index")
+ts_index_index <- which(colnames(model_info) == "ts_model_index")
+
+beta_thetas <- apply(model_info,
+                     MARGIN = 1,
+                     FUN = function(tablerow) 
+                         return(
+                             get_bt(
+                                 lda_model = lda_models[[as.integer(tablerow[lda_index_index])]], 
+                                 ts_model = ts_models[[as.integer(tablerow[ts_index_index])]]
+                             )
+                         )
+)
+
+ts_AICc <- apply(model_info,
+                 MARGIN = 1,
+                 FUN = function(tablerow) 
+                     return(
+                         get_all_aiccs(bt_list = beta_thetas[[as.integer(tablerow[ts_index_index])]],
+                                       ldamodel = lda_models[[as.integer(tablerow[lda_index_index])]],
+                                       tsmodel = ts_models[[as.integer(tablerow[ts_index_index])]],
+                                       counts_matrix = data$abundance)
+                     ))
+
+return(list(data = data,
+            beta_thetas = beta_thetas,
+            model_info = model_info,
+            ts_AICc = ts_AICc))
+}
+
+}
+
 Compute loglikelihood of observed data given probabilities
 }

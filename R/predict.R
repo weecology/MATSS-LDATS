@@ -140,70 +140,70 @@ make_ts_table <- function(ts_model_names) {
 #'     lda_ts_table <- dplyr::left_join(ts_table, lda_table, by = c("seed", "k"))
 #'     return(lda_ts_table)
 #' }
-
-#' Get beta and theta matrices from lda and ts model
-#'
-#' @param lda_model LDA model
-#' @param ts_model TS model fit using that LDA model
-#'
-#' @return list of beta_vals and all theta estimats from the TS model
-#' @export
-#'
-get_bt <- function(lda_model, ts_model) {
-    betaexp = exp(lda_model@beta)
-    all_thetas <- lapply(X = c(1:nrow(ts_model$etas)), FUN = get_theta, ts_model = ts_model)
-    return(list(beta_vals = betaexp, thetas = all_thetas))
-}
-
-#' Get document-term probabilities and AICc from ts_model
-#'
-#' @param ts_list result of run_TS
-#'
-#' @return list of data, lda model, ts model, betas & thetas, and AICc estimates
-#' @export
-#'
-get_full_lik <- function(ts_list) {
-    
-    if(is.null(ts_list$ts)) {
-        return()
-    }
-    
-    ts_models <- ts_list$ts
-    lda_models <- ts_list$lda
-    data <- ts_list$data
-    model_info <- ts_list$model_info
-    
-    lda_index_index <- which(colnames(model_info) == "lda_model_index")
-    ts_index_index <- which(colnames(model_info) == "ts_model_index")
-    
-    beta_thetas <- apply(model_info,
-                         MARGIN = 1,
-                         FUN = function(tablerow) 
-                             return(
-                                 get_bt(
-                                     lda_model = lda_models[[as.integer(tablerow[lda_index_index])]], 
-                                     ts_model = ts_models[[as.integer(tablerow[ts_index_index])]]
-                                 )
-                             )
-    )
-    
-    ts_AICc <- apply(model_info,
-                     MARGIN = 1,
-                     FUN = function(tablerow) 
-                         return(
-                             get_all_aiccs(bt_list = beta_thetas[[as.integer(tablerow[ts_index_index])]],
-                                           ldamodel = lda_models[[as.integer(tablerow[lda_index_index])]],
-                                           tsmodel = ts_models[[as.integer(tablerow[ts_index_index])]],
-                                           counts_matrix = data$abundance)
-                         ))
-    
-    return(list(data = data,
-                beta_thetas = beta_thetas,
-                model_info = model_info,
-                ts_AICc = ts_AICc))
-    
-}
-
+#' 
+#' #' Get beta and theta matrices from lda and ts model
+#' #'
+#' #' @param lda_model LDA model
+#' #' @param ts_model TS model fit using that LDA model
+#' #'
+#' #' @return list of beta_vals and all theta estimats from the TS model
+#' #' @export
+#' #'
+#' get_bt <- function(lda_model, ts_model) {
+#'     betaexp = exp(lda_model@beta)
+#'     all_thetas <- lapply(X = c(1:nrow(ts_model$etas)), FUN = get_theta, ts_model = ts_model)
+#'     return(list(beta_vals = betaexp, thetas = all_thetas))
+#' }
+#' 
+#' #' Get document-term probabilities and AICc from ts_model
+#' #'
+#' #' @param ts_list result of run_TS
+#' #'
+#' #' @return list of data, lda model, ts model, betas & thetas, and AICc estimates
+#' #' @export
+#' #'
+#' get_full_lik <- function(ts_list) {
+#'     
+#'     if(is.null(ts_list$ts)) {
+#'         return()
+#'     }
+#'     
+#'     ts_models <- ts_list$ts
+#'     lda_models <- ts_list$lda
+#'     data <- ts_list$data
+#'     model_info <- ts_list$model_info
+#'     
+#'     lda_index_index <- which(colnames(model_info) == "lda_model_index")
+#'     ts_index_index <- which(colnames(model_info) == "ts_model_index")
+#'     
+#'     beta_thetas <- apply(model_info,
+#'                          MARGIN = 1,
+#'                          FUN = function(tablerow) 
+#'                              return(
+#'                                  get_bt(
+#'                                      lda_model = lda_models[[as.integer(tablerow[lda_index_index])]], 
+#'                                      ts_model = ts_models[[as.integer(tablerow[ts_index_index])]]
+#'                                  )
+#'                              )
+#'     )
+#'     
+#'     ts_AICc <- apply(model_info,
+#'                      MARGIN = 1,
+#'                      FUN = function(tablerow) 
+#'                          return(
+#'                              get_all_aiccs(bt_list = beta_thetas[[as.integer(tablerow[ts_index_index])]],
+#'                                            ldamodel = lda_models[[as.integer(tablerow[lda_index_index])]],
+#'                                            tsmodel = ts_models[[as.integer(tablerow[ts_index_index])]],
+#'                                            counts_matrix = data$abundance)
+#'                          ))
+#'     
+#'     return(list(data = data,
+#'                 beta_thetas = beta_thetas,
+#'                 model_info = model_info,
+#'                 ts_AICc = ts_AICc))
+#'     
+#' }
+#' 
 
 #' Compute loglikelihood of observed data given probabilities
 #'
@@ -246,78 +246,78 @@ get_aicc <- function(beta_matrix, theta_matrix, lda_model, ts_model, counts_matr
     return(AICc)
 }
 
-
-#' Get all AICcs
-#' Wrapper for `get_aicc`.
-#' @param bt_list list of beta and theta values 
-#' @param ldamodel source lda model
-#' @param tsmodel source ts model
-#' @param counts_matrix abundance
-#'
-#' @return list of AICcs from each estimate of theta
-#' @export
-#'
-get_all_aiccs <- function(bt_list, ldamodel, tsmodel, counts_matrix) {
-    all_aicc <- vapply(X = bt_list$thetas, FUN = get_aicc, beta_matrix = bt_list$beta_vals, counts_matrix = counts_matrix, lda_model = ldamodel, ts_model = tsmodel, FUN.VALUE = 100.1)
-    return(as.list(all_aicc))
-}
-
-#' Expand full like
-#'
-#' @param result of get_full_lik
-#'
-#' @return model info with every AICc on its own line
-#' @export
-#'
-#' @importFrom dplyr bind_rows right_join
-#' @importFrom tidyr gather
-expand_full_lik_results <- function(full_lik) {
-    
-    model_info <- full_lik$model_info
-    
-    aiccs <- full_lik$ts_AICc
-    aiccs <- lapply(aiccs, FUN = unlist)
-    names(aiccs) <- model_info$ts_model_name
-    
-    br_aiccs <- dplyr::bind_rows(aiccs) %>%
-        tidyr::gather(key = "ts_model_name", value = "TS_AICc")
-    
-    model_info <- dplyr::right_join(model_info, br_aiccs, by = "ts_model_name")
-    
-    return(model_info)
-    
-}
-
-#' Predict abundances given model
-#'
-#' @param full_lik result of get_full_lik
-#' @param seed for reprod
-#'
-#' @return list of predictions
-#' @export
-#'
-predict_abundances <- function(full_lik, seed = 1977) {
-    
-    if(is.null(full_lik)) {
-        return()
-    }
-    
-    set.seed(seed)
-    
-    pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))
-    
-    p_list <- lapply(pars_list, FUN = function(pars_list) return(pars_list$theta_vals %*% pars_list$beta_vals))
-    
-    predictions <- lapply(p_list, FUN = sample_corpus, obs_dat = full_lik$data$abundance)
-    
-    for(i in 1:length(predictions)) {
-        predictions[[i]]$model_name <- full_lik$model_info$ts_model_name[i]
-    }
-
-    return(list(data = full_lik$data,
-                model_info = full_lik$model_info,
-                prediction = predictions))
-}
+#' 
+#' #' Get all AICcs
+#' #' Wrapper for `get_aicc`.
+#' #' @param bt_list list of beta and theta values 
+#' #' @param ldamodel source lda model
+#' #' @param tsmodel source ts model
+#' #' @param counts_matrix abundance
+#' #'
+#' #' @return list of AICcs from each estimate of theta
+#' #' @export
+#' #'
+#' get_all_aiccs <- function(bt_list, ldamodel, tsmodel, counts_matrix) {
+#'     all_aicc <- vapply(X = bt_list$thetas, FUN = get_aicc, beta_matrix = bt_list$beta_vals, counts_matrix = counts_matrix, lda_model = ldamodel, ts_model = tsmodel, FUN.VALUE = 100.1)
+#'     return(as.list(all_aicc))
+#' }
+#' 
+#' #' Expand full like
+#' #'
+#' #' @param result of get_full_lik
+#' #'
+#' #' @return model info with every AICc on its own line
+#' #' @export
+#' #'
+#' #' @importFrom dplyr bind_rows right_join
+#' #' @importFrom tidyr gather
+#' expand_full_lik_results <- function(full_lik) {
+#'     
+#'     model_info <- full_lik$model_info
+#'     
+#'     aiccs <- full_lik$ts_AICc
+#'     aiccs <- lapply(aiccs, FUN = unlist)
+#'     names(aiccs) <- model_info$ts_model_name
+#'     
+#'     br_aiccs <- dplyr::bind_rows(aiccs) %>%
+#'         tidyr::gather(key = "ts_model_name", value = "TS_AICc")
+#'     
+#'     model_info <- dplyr::right_join(model_info, br_aiccs, by = "ts_model_name")
+#'     
+#'     return(model_info)
+#'     
+#' }
+#' 
+#' #' Predict abundances given model
+#' #'
+#' #' @param full_lik result of get_full_lik
+#' #' @param seed for reprod
+#' #'
+#' #' @return list of predictions
+#' #' @export
+#' #'
+#' predict_abundances <- function(full_lik, seed = 1977) {
+#'     
+#'     if(is.null(full_lik)) {
+#'         return()
+#'     }
+#'     
+#'     set.seed(seed)
+#'     
+#'     pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))
+#'     
+#'     p_list <- lapply(pars_list, FUN = function(pars_list) return(pars_list$theta_vals %*% pars_list$beta_vals))
+#'     
+#'     predictions <- lapply(p_list, FUN = sample_corpus, obs_dat = full_lik$data$abundance)
+#'     
+#'     for(i in 1:length(predictions)) {
+#'         predictions[[i]]$model_name <- full_lik$model_info$ts_model_name[i]
+#'     }
+#' 
+#'     return(list(data = full_lik$data,
+#'                 model_info = full_lik$model_info,
+#'                 prediction = predictions))
+#' }
 
 #' Sample a corpus given sample sizes and ps of documents
 #'
