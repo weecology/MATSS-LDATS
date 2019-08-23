@@ -27,7 +27,22 @@ for(i in 1:nrow(portal_model_summary)) {
 all_pred <- bind_rows(portal_predictions)
 
 all_pred[ which(all_pred$source == "observed"), "k"] <- NA
+
+
+print(portal_model_summary)
 ```
+
+    ## # A tibble: 4 x 17
+    ##   ts_object_name     k  seed lda_model_name lda_model_index LDA_AICc
+    ##   <chr>          <dbl> <dbl> <chr>                    <int>    <dbl>
+    ## 1 ts_lda_portal…     3    58 k: 3, seed: 58              29   75618.
+    ## 2 ts_lda_portal…     6    14 k: 6, seed: 14               7   74427.
+    ## 3 ts_lda_portal…     9     8 k: 9, seed: 8                4   74277.
+    ## 4 ts_lda_portal…    12    86 k: 12, seed: …              43   74185.
+    ## # … with 11 more variables: is_best_seed <lgl>, formula <chr>,
+    ## #   changepoints <dbl>, ts_model_name <chr>, ts_model_index <int>,
+    ## #   meanAICc <dbl>, medianAICc <dbl>, lda_object_name <chr>,
+    ## #   data_object_name <chr>, ts_model_desc <chr>, ts_model_desc_k <chr>
 
 ``` r
 abs_abund_plot <- ggplot(data = filter(all_pred, source == "observed"), aes(x = timestep, y = abundance)) +

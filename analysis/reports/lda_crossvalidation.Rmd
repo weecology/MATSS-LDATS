@@ -1,0 +1,75 @@
+---
+title: "K comparison"
+author: "Renata Diaz"
+date: "8/23/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MATSS)
+library(matssldats)
+library(LDATS)
+library(drake)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r get some data}
+portal_annual_data <- get_portal_annual_data()
+
+```
+
+```{r subsample data}
+set.seed(1977)
+
+train_test_years <- data.frame(
+    year = portal_annual_data$covariates$year
+)
+
+train_test_years$train <- as.logical(sample(c(0:1), size = nrow(train_test_years), replace = T, 
+                                 prob = c(.5, .5)))
+train_data <- list(
+    abundance = portal_annual_data$abundance[ which(train_test_years$train), ],
+    covariates = portal_annual_data$covariates[ which(train_test_years$train), ],
+    metadata = portal_annual_data$metadata
+)
+
+test_data <-  list(
+    abundance = portal_annual_data$abundance[ which(!train_test_years$train), ],
+    covariates = portal_annual_data$covariates[ which(!train_test_years$train), ],
+    metadata = portal_annual_data$metadata
+)
+
+```
+
+```{r fit LDAS}
+
+trained_ldas <- LDA_set(document_term_table = train_data$abundance, topics = c(3, 6, 9, 12), nseeds = 20)
+
+trained_ldas_summary <- data.frame(lda_name = names(trained_ldas)) %>%
+    mutate(lda_name = as.character(lda_name))
+
+trained_ldas_summary$k <- vapply(trained_ldas_summary$lda_name,
+                                 FUN = function(a_name)
+                                     return(
+                                         as.integer(substr(strsplit(a_name, split = ", ")[[1]][1], start = 3, stop = 5))),
+                                 FUN.VALUE = 3)
+
+trained_ldas_summary$seed <- vapply(trained_ldas_summary$lda_name,
+                                    FUN = function(a_name)
+                                        return(as.integer(strsplit(a_name, split = "seed: ")[[1]][2])),
+                                    FUN.VALUE = 2)
+
+```
+
+```{r evaluate LDA fit to test data}
+
+one_lda <- trained_ldas$`k: 3, seed: 2`
+
+
+
+```
+
+add kfold?

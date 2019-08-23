@@ -47,6 +47,8 @@ all_pred <- bind_rows(portal_predictions)
 all_pred[ which(all_pred$source == "observed"), "k"] <- NA
 
 
+print(portal_model_summary)
+
 ```
 
 ```{r plot absolute abund predictions, fig.dim = c(15, 15)} 
