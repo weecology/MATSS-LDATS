@@ -208,3 +208,24 @@ plot(lda_portal_ann_data_6$lda[[portal_6$lda_model_index[1]]])
 plot(ts_lda_portal_ann_data_6$ts[[portal_6$ts_model_index[1]]])
 
 ```
+
+
+### Portal with 3 topics
+```{r get portal best with 3, echo = F}
+
+portal_3 <- model_summary %>%
+    dplyr::filter(data_object_name == "portal_ann_data", k == 3) %>%
+    dplyr::filter(meanAICc == min(meanAICc))
+    
+loadd(portal_3$ts_object_name[1], portal_3$lda_object_name, character_only = T, cache = cache)
+
+portal_3_pred <- ts_predict(as.list(portal_3[1,]), lda_model = NULL, ts_model = NULL, data = NULL, sim = NULL, seed = 1977)
+
+portal_3_pred_plot <- plot_obs_pred(portal_3_pred)
+
+portal_3_pred_plot
+
+plot(lda_portal_ann_data_3$lda[[portal_3$lda_model_index[1]]])
+plot(ts_lda_portal_ann_data_3$ts[[portal_3$ts_model_index[1]]])
+
+```
