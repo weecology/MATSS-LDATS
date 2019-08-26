@@ -2,6 +2,8 @@ library(MATSS)
 library(matssldats)
 library(dplyr)
 
+sequential <- TRUE
+
 data <- get_portal_annual_data()
 
 nseg <- 5
