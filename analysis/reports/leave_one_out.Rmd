@@ -1,0 +1,49 @@
+---
+title: "Leave one out"
+author: "Renata Diaz"
+date: "8/26/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MATSS)
+library(matssldats)
+library(dplyr)
+library(ggplot2)
+
+full_data <- get_portal_annual_data()
+
+load(file = here::here("analysis", "loo", "all_model_eval.Rds"))
+
+```
+
+```{r aicc plots}
+
+avg_performance <- all_model_eval %>%
+    group_by(ts_model_name, k, formula, seed, changepoints, lda_model_name, lda_model_index, ts_model_index) %>%
+    summarize(avg_aicc = mean(interpolated_aicc)) %>%
+    ungroup() %>%
+    mutate(ts_model_desc = paste0(changepoints, "; ", formula),
+           k = as.factor(k))
+
+avg_aicc_plot <- ggplot(data = avg_performance, aes(x = ts_model_desc, y = avg_aicc, color = k)) +
+    geom_violin() +
+    theme_bw()
+
+avg_aicc_plot
+
+avg_performance_zoomed <- avg_performance %>%
+    arrange(avg_aicc) %>%
+    mutate(aicc_rank = row_number()) %>%
+    filter(aicc_rank <= 10)
+
+
+avg_aicc_plot_zoomed <- ggplot(data = avg_performance_zoomed, aes(x = ts_model_desc, y = avg_aicc, color = k)) +
+    geom_boxplot(alpha = 0) +
+    theme_bw()
+
+avg_aicc_plot_zoomed
+
+```
+
