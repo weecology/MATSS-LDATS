@@ -2,7 +2,7 @@
 title: "Leave one out"
 author: "Renata Diaz"
 date: "8/26/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
