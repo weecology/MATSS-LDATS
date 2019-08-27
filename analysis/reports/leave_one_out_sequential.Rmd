@@ -101,6 +101,15 @@ all_pred <- all_pred[ -which(all_pred$source == "observed"), ]
 all_pred <- bind_rows(all_pred, observed_with_ks)
 
 
+ seg_starts <- floor(seq.int(0, nrow(data$abundance) +1, length.out = 6))
+ 
+ year_assignments <- data.frame(
+     year = unique(all_pred$timestep)
+ )
+ 
+ year_assignments$assignment <- which(seg_starts == min( seg_starts[ which(seg_starts >= year)]))
+    
+
 ```
 
 ### Absolute abundances
