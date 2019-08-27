@@ -132,7 +132,7 @@ abs_abund_plot
 ### Relative abundances
 ```{r plot relative abundances, fig.dim = c(10, 60)}
 rel_pred <- all_pred %>%
-    group_by(timestep, source, k, in_segment) %>%
+    group_by(timestep, source, k, in_segment, segment) %>%
     mutate(abundance = abundance / sum(abundance)) %>%
     ungroup()
 
