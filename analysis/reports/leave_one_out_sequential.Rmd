@@ -101,34 +101,38 @@ all_pred <- all_pred[ -which(all_pred$source == "observed"), ]
 all_pred <- bind_rows(all_pred, observed_with_ks)
 
 
- seg_starts <- floor(seq.int(0, nrow(data$abundance) +1, length.out = 6))
+ seg_starts <- floor(seq.int(0, nrow(full_data$abundance) +1, length.out = 6))
  
  year_assignments <- data.frame(
-     year = unique(all_pred$timestep)
+     timestep = unique(all_pred$timestep)
  )
  
- year_assignments$assignment <- which(seg_starts == min( seg_starts[ which(seg_starts >= year)]))
-    
+ for(i in 1:length(year_assignments$timestep)) {
+ year_assignments$assignment[i] <- min(which(seg_starts >= year_assignments$timestep[i])) - 1
+ }
+    all_pred <- all_pred %>%
+        left_join(year_assignments, by = "timestep") %>%
+        mutate(in_segment = segment == assignment)
 
 ```
 
 ### Absolute abundances
-```{r plot absolute abund predictions, fig.dim = c(9, 30)} 
+```{r plot absolute abund predictions, fig.dim = c(10, 60)} 
 
     abs_abund_plot <- ggplot(data = filter(all_pred, source == "observed"), aes(x = timestep, y = abundance)) +
     geom_line() +
     geom_line(data = filter(all_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
     theme_bw() +
-    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
+    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
     theme(legend.position = "none")
 
 abs_abund_plot
 ```
 
 ### Relative abundances
-```{r plot relative abundances, fig.dim = c(9, 30)}
+```{r plot relative abundances, fig.dim = c(10, 60)}
 rel_pred <- all_pred %>%
-    group_by(timestep, source, k) %>%
+    group_by(timestep, source, k, in_segment) %>%
     mutate(abundance = abundance / sum(abundance)) %>%
     ungroup()
 
@@ -136,7 +140,7 @@ rel_abund_plot <- ggplot(data = filter(rel_pred, source == "observed"), aes(x = 
     geom_line() +
     geom_line(data = filter(rel_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
     theme_bw() +
-    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
+    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
     theme(legend.position = "none")
 
 rel_abund_plot
