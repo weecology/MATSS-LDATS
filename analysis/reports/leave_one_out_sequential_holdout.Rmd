@@ -1,0 +1,173 @@
+---
+title: "Leave one out"
+author: "Renata Diaz"
+date: "8/26/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(MATSS)
+library(matssldats)
+library(dplyr)
+library(ggplot2)
+
+full_data <- get_portal_annual_data()
+
+load(file = here::here("analysis", "loo", "all_model_eval_sequential_holdout.Rds"))
+
+```
+
+
+### AICc plots
+```{r aicc plots}
+
+avg_performance <- all_model_eval_s_h %>%
+    group_by(ts_model_name, k, formula, seed, changepoints, lda_model_name, lda_model_index, ts_model_index) %>%
+    summarize(avg_aicc = mean(interpolated_aicc)) %>%
+    ungroup() %>%
+    mutate(ts_model_desc = paste0(changepoints, "; ", formula),
+           k = as.factor(k))
+
+avg_aicc_plot <- ggplot(data = avg_performance, aes(x = ts_model_desc, y = avg_aicc, color = k)) +
+    geom_violin() +
+    theme_bw()
+
+avg_aicc_plot
+
+avg_performance_zoomed <- avg_performance %>%
+    arrange(avg_aicc) %>%
+    mutate(aicc_rank = row_number()) %>%
+    filter(aicc_rank <= 10)
+
+
+avg_aicc_plot_zoomed <- ggplot(data = avg_performance_zoomed, aes(x = ts_model_desc, y = avg_aicc, color = k)) +
+    geom_boxplot(alpha = 0) +
+    theme_bw()
+
+avg_aicc_plot_zoomed
+
+```
+
+### Predictions
+
+
+
+```{r load best models for Portal}
+
+prediction_models <- all_model_eval_s_h %>%
+    filter(changepoints == 0,
+           formula == "gamma ~ year") %>%
+    group_by(k, formula, changepoints, segment) %>%
+    filter(interpolated_aicc == min(interpolated_aicc)) %>%
+    ungroup() %>%
+    distinct()
+
+
+portal_predictions <- list() 
+
+for(i in 1:5) {
+    
+    these_models <- filter(prediction_models, segment == i)
+    
+    load(here::here("analysis", "loo", paste0("loo_ts_", i, ".Rds")))
+    
+    portal_predictions[[i]] <- list()
+    
+    for(j in 1:3) {
+        this_seg$ts_models$ts[[these_models$ts_model_index[j]]]$data <- left_join(full_data$covariates, this_seg$ts_models$ts[[these_models$ts_model_index[j]]]$data, by = "year")
+        portal_predictions[[i]][[j]] <- ts_predict(lda_model = this_seg$lda_models$lda[[these_models$lda_model_index[j]]], ts_model = this_seg$ts_models$ts[[these_models$ts_model_index[j]]], data = full_data , seed = 1977)$prediction
+        portal_predictions[[i]][[j]]$k <- these_models$k[j]
+        portal_predictions[[i]][[j]]$segment <- these_models$segment[j]
+        }
+}
+
+
+all_pred <- bind_rows(lapply(portal_predictions, bind_rows))
+
+
+observed_with_ks <- all_pred[ which(all_pred$source == "observed"),]
+
+observed_with_ks[,"k"] <- 3
+
+observed_with_ks <- rbind(observed_with_ks,
+                          observed_with_ks %>%
+                              mutate(k = 6),
+                          observed_with_ks %>%
+                              mutate(k =12))
+
+
+all_pred <- all_pred[ -which(all_pred$source == "observed"), ] 
+all_pred <- bind_rows(all_pred, observed_with_ks)
+
+
+ seg_starts <- floor(seq.int(0, nrow(full_data$abundance) +1, length.out = 6))
+ 
+ year_assignments <- data.frame(
+     timestep = unique(all_pred$timestep)
+ )
+ 
+ for(i in 1:length(year_assignments$timestep)) {
+ year_assignments$assignment[i] <- min(which(seg_starts >= year_assignments$timestep[i])) - 1
+ }
+    all_pred <- all_pred %>%
+        left_join(year_assignments, by = "timestep") %>%
+        mutate(in_segment = segment == assignment)
+
+```
+
+### Absolute abundances
+```{r plot absolute abund predictions, fig.dim = c(10, 20)} 
+
+    abs_abund_plot <- ggplot(data = filter(all_pred, source == "observed"), aes(x = timestep, y = abundance)) +
+    geom_line() +
+    geom_line(data = filter(all_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
+    theme_bw() +
+    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
+    theme(legend.position = "none")
+
+abs_abund_plot
+```
+
+### Relative abundances
+```{r plot relative abundances, fig.dim = c(10, 20)}
+rel_pred <- all_pred %>%
+    group_by(timestep, source, k, in_segment, segment) %>%
+    mutate(abundance = abundance / sum(abundance)) %>%
+    ungroup()
+
+rel_abund_plot <- ggplot(data = filter(rel_pred, source == "observed"), aes(x = timestep, y = abundance)) +
+    geom_line() +
+    geom_line(data = filter(rel_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
+    theme_bw() +
+    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
+    theme(legend.position = "none")
+
+rel_abund_plot
+```
+
+### Observed-predicted
+
+```{r observed-predicted plots, fig.dim=c(9, 60)}
+
+obs_abund <- rel_pred %>%
+    filter(source == "observed") %>%
+    select(timestep, species, abundance) %>%
+    distinct() %>%
+    rename(obs_abund = abundance)
+
+obs_pred <- rel_pred %>%
+    filter(source != "observed") %>%
+    left_join(obs_abund, by = c("timestep", "species"))
+
+obs_pred_plot <- ggplot(data = obs_pred, aes(x = obs_abund, y = abundance, color = as.factor(segment))) +
+    geom_point(alpha = .5) +
+    theme_bw() +
+    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
+    geom_line(aes(x = obs_abund, y = obs_abund), color = "black") +
+    theme(legend.position = "none") +
+    xlim(min(obs_pred$abundance, obs_pred$obs_abund), max(obs_pred$abundance, obs_pred$obs_abund)) +
+    ylim(min(obs_pred$abundance, obs_pred$obs_abund), max(obs_pred$abundance, obs_pred$obs_abund))
+
+obs_pred_plot
+```
