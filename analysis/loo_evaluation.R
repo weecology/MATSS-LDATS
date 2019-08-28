@@ -8,9 +8,11 @@ full_data <- get_portal_annual_data()
 get_interpolated_aicc <- function(ts_model_info_row, this_seg, full_data, holdout_only = F) {
     this_ts <- this_seg$ts_models$ts[[ts_model_info_row$ts_model_index]]
     this_ts$data <- left_join(full_data$covariates, this_ts$data, by = "year") 
+    counts_matrix <- full_data$abundance
     
     if(holdout_only) {
         this_ts$data <- filter(this_ts$data, is.na(gamma[,1]))
+        counts_matrix <- full_data$abundance[ which(full_data$covariates$year %in% this_ts$data$year), ]
     }
     
     this_lda <- this_seg$lda_models$lda[[ts_model_info_row$lda_model_index]]
@@ -22,7 +24,7 @@ get_interpolated_aicc <- function(ts_model_info_row, this_seg, full_data, holdou
     for(sim_index in 1:length(all_aiccs)) {
         this_theta <- get_theta(ts_model = this_ts, sim = sim_index)
         
-        all_aiccs[sim_index] <- get_aicc(betas, this_theta, this_lda, this_ts, full_data$abundance)
+        all_aiccs[sim_index] <- get_aicc(betas, this_theta, this_lda, this_ts, counts_matrix)
     }        
     
     this_aicc <- mean(all_aiccs)
