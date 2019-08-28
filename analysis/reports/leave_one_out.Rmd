@@ -130,7 +130,7 @@ all_pred <- bind_rows(all_pred, observed_with_ks)
     geom_line() +
     geom_line(data = filter(all_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
     theme_bw() +
-    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
+    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
     theme(legend.position = "none")
 
 abs_abund_plot
@@ -147,8 +147,32 @@ rel_abund_plot <- ggplot(data = filter(rel_pred, source == "observed"), aes(x = 
     geom_line() +
     geom_line(data = filter(rel_pred, source == "pred"), aes(x = timestep, y = abundance, color = as.factor(segment))) +
     theme_bw() +
-    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
+    facet_grid(rows = vars(species), cols = vars(k), switch = "y") +
     theme(legend.position = "none")
 
 rel_abund_plot
+```
+
+```{r observed-predicted plots, fig.dim=c(9, 60)}
+
+obs_abund <- rel_pred %>%
+    filter(source == "observed") %>%
+    select(timestep, species, abundance) %>%
+    distinct() %>%
+    rename(obs_abund = abundance)
+
+obs_pred <- rel_pred %>%
+    filter(source != "observed") %>%
+    left_join(obs_abund, by = c("timestep", "species"))
+
+obs_pred_plot <- ggplot(data = obs_pred, aes(x = obs_abund, y = abundance, color = as.factor(segment))) +
+    geom_point(alpha = .5) +
+    theme_bw() +
+    facet_grid(rows = vars(species, in_segment), cols = vars(k), switch = "y") +
+    geom_line(aes(x = obs_abund, y = obs_abund), color = "black") +
+    theme(legend.position = "none") +
+    xlim(min(obs_pred$abundance, obs_pred$obs_abund), max(obs_pred$abundance, obs_pred$obs_abund)) +
+    ylim(min(obs_pred$abundance, obs_pred$obs_abund), max(obs_pred$abundance, obs_pred$obs_abund))
+
+obs_pred_plot
 ```

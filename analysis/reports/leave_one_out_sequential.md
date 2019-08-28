@@ -16,3 +16,7 @@ Renata Diaz
 ### Relative abundances
 
 ![](leave_one_out_sequential_files/figure-markdown_github/plot%20relative%20abundances-1.png)
+
+### Observed-predicted
+
+![](leave_one_out_sequential_files/figure-markdown_github/observed-predicted%20plots-1.png)
