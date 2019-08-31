@@ -12,6 +12,7 @@
 #'   in each document.
 #' @param max_topics the maximum number of topics to try 
 #' @param n_topics alternatively only try 1 number of topics
+#' @param seed alternatively run using a single fixed seed
 #' @inheritParams LDATS::LDA_set
 #'
 #' @return list of `lda = [the set of LDA models]` from running LDATS::parLDA(), `data = data)`
@@ -22,7 +23,8 @@ run_LDA <- function(data,
                     max_topics = 6, 
                     n_topics = NULL,
                     nseeds = 200,
-                    control = list())
+                    control = list(),
+                    seed = NULL)
 {
     if (!MATSS::check_data_format(data))
     {
@@ -38,9 +40,17 @@ run_LDA <- function(data,
     } else {
         topics_vector <- n_topics
     }
-    LDA_models <- LDATS::LDA_set(document_term_table = abundances,
-                                 topics = topics_vector,
-                                 nseeds = nseeds, control = control)
+    
+    if(is.null(seed)) {
+        LDA_models <- LDATS::LDA_set(document_term_table = abundances,
+                                     topics = topics_vector,
+                                     nseeds = nseeds, control = control)
+    } else {
+        LDA_models <- LDATS::LDA_set(document_term_table = abundances,
+                                     topics = topics_vector,
+                                     seed = seed, control = control)
+        
+    }
     
     model_info <- make_lda_table(names(LDA_models)) %>%
         dplyr::mutate(LDA_AICc = vapply(LDA_models, FUN = LDATS::AICc, FUN.VAL = 100)) %>%
@@ -50,10 +60,10 @@ run_LDA <- function(data,
     
     # LDA_models <- LDA_models[ which(model_info$is_best_seed)]
     
-    class(LDA_models) <- "LDA_set"
+    class(LDA_models) <- c("LDA_set", "list")
     
-  #  model_info <- dplyr::filter(model_info, is_best_seed) %>%
-   #     dplyr::mutate(lda_model_index = 1:sum(is_best_seed))
+    #  model_info <- dplyr::filter(model_info, is_best_seed) %>%
+    #     dplyr::mutate(lda_model_index = 1:sum(is_best_seed))
     
     return(list(lda = LDA_models,
                 data = data,

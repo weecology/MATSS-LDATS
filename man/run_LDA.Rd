@@ -5,7 +5,7 @@
 \title{Run Latent Dirichlet Allocation on Tabular Data}
 \usage{
 run_LDA(data, max_topics = 6, n_topics = NULL, nseeds = 200,
-  control = list())
+  control = list(), seed = NULL)
 }
 \arguments{
 \item{data}{a data.frame or tibble; each row is an observation (e.g. in
@@ -27,6 +27,8 @@ selecting of LDA models. Values not input assume default values set
 by \code{\link{LDA_set_control}}. Values for running the LDAs replace 
 defaults in (\code{LDAcontol}, see \code{\link[topicmodels]{LDA}} (but if
  \code{seed} is given, it will be overwritten; use \code{iseed} instead).}
+
+\item{seed}{alternatively run using a single fixed seed}
 }
 \value{
 list of \code{lda = [the set of LDA models]} from running LDATS::parLDA(), \code{data = data)}

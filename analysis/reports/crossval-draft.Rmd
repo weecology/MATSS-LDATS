@@ -1,0 +1,27 @@
+---
+title: "Crossvalidating w tests"
+author: "Renata Diaz"
+date: "8/31/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MATSS)
+library(matssldats)
+library(drake)
+```
+
+```{r get data}
+portal_ann_data = get_portal_annual_data()
+```
+
+```{r drake plan for get data}
+portal_annual_dataset <- drake_plan(
+    portal_ann_data = get_portal_annual_data()
+)
+```
+
+```{r set up LDAs}
+
+```
