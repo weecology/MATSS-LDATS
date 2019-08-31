@@ -173,9 +173,16 @@ subset_data <- function(data, n_segs = NULL, sequential = T, buffer = NULL, whic
         this_metadata$segment <- i
         this_metadata$assignments <- timesteps
         
+        
+        timesteps_out <- which(timesteps$assignments == i)
+        
+        if(!is.null(buffer)) {
+        timesteps_out <- which(abs(1:nrow(timesteps) - timesteps_out) <= buffer)
+        }
+        
         data_out[[i]] <- list(
-            abundance = data$abundance[ which(timesteps$assignments != i), ],
-            covariates = data$covariates[ which(timesteps$assignments != i), ],
+            abundance = data$abundance[ -timesteps_out, ],
+            covariates = data$covariates[ -timesteps_out, ],
             metadata = this_metadata,
             test_abundance = data$abundance[ which(timesteps$assignments == i), ],
             test_covariates = data$covariates[ which(timesteps$assignments == i), ]
