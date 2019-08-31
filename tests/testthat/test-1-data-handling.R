@@ -11,7 +11,7 @@ test_that("exclude transients works", {
     
 })
 
-test_that("data subsetting works") {
+test_that("data subsetting works", {
     data_segs <- subset_data(portal_annual, buffer = 2)
     
     expect_equal(length(data_segs), nrow(portal_annual$abundance))
@@ -22,4 +22,4 @@ test_that("data subsetting works") {
     
     expect_false(data_segs[[1]]$test_covariates$year %in% data_segs[[1]]$covariates$year)
     
-}
+})
