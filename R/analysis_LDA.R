@@ -46,7 +46,7 @@ run_LDA <- function(data,
                                      topics = topics_vector,
                                      nseeds = nseeds, control = control)
     } else {
-        LDA_models <- LDATS::LDA_set(document_term_table = abundances,
+        LDA_models <- LDATS::LDA_set_user_seeds(document_term_table = abundances,
                                      topics = topics_vector,
                                      seed = seed, control = control)
         
