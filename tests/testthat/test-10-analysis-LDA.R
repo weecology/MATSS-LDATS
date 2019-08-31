@@ -75,5 +75,8 @@ test_that("model info comes out properly", {
     output <- run_LDA(data, max_topics = 3, seed = this_seed)
     expect_equal(nrow(output$model_info), length(output$lda))
     expect_equal(output$model_info$lda_model_name, names(output$lda))
-    expect_true(all())
+    expect_true(all(this_seed %in% output$model_info$seed))
+    expect_true(all(these_topics %in% output$model_info$k))
+    
 })
+    
