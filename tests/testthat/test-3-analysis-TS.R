@@ -1,29 +1,15 @@
-context("Check LDA analysis function")
+context("Check TS analysis function")
 
-# create test data
-set.seed(42)
-n <- 100 # number of samples
-topics <- matrix(c(0.4, 0.4, 0.2, 0, 0, 0, 
-                   0, 0, 0, 0, 0.5, 0.5), 
-                 nrow = 2, byrow = TRUE)
-m <- NROW(topics) # number of topics
-topic_prop <- matrix(abs(rnorm(n * m)), nrow = n)
-topic_prop <- topic_prop / 
-    matrix(rep(rowSums(topic_prop), m), nrow = n)
-
-total_abundance <- rpois(n, 200)
-abundance <- floor(total_abundance * topic_prop %*% topics)
+# load prepackaged data
+load(here::here("analysis", "exclosures_data.Rds"))
 
 
-test_that("run_LDA function works", {
-    # does run_LDA check data format?
-    expect_warning(output <- run_LDA(abundance, nseeds = 20), 
-                   "Incorrect data structure, see data-formats vignette")
-    expect_equal(output, "Incorrect data structure")
+test_that("run_TS function works without heldout data", {
+    expect_error(output1 <- run_LDA(data = portal_annual, max_topics = 3, nseeds = 2), NA)
+    expect_error(output2 <- run_LDA(data = portal_annual, max_topics = 3, seed = 2), NA)
+    expect_error(output3 <- run_LDA(data = portal_annual, n_topics = 3, nseeds = 2), NA)
+    expect_error(output4 <- run_LDA(data = portal_annual, n_topics = 3, seed = 2), NA)
     
-    # does run_LDA run and produce a valid output
-    data <- list(abundance = data.frame(abundance))
-    expect_error(output <- run_LDA(data, max_topics = 2, nseeds = 50), NA)
     expect_true(all(c("LDA_set", "list") %in% class(output$lda)))
     lda_model <- output$lda[[1]]
     
@@ -79,20 +65,3 @@ test_that("model info comes out properly", {
     expect_true(all(these_topics %in% output$model_info$k))
     
 })
-
-test_that("run_LDA function works in all configuraitons", {
-    data <- list(abundance = data.frame(abundance))
-    
-    expect_error(output1 <- run_LDA(data = data, max_topics = 3, nseeds = 2), NA)
-    expect_true(length(output1$lda) == 4)
-    
-    expect_error(output2 <- run_LDA(data = data, max_topics = 3, seed = 2), NA)
-    expect_true(length(output2$lda) == 2)
-    
-    expect_error(output3 <- run_LDA(data = data, n_topics = 3, nseeds = 2), NA)
-    expect_true(length(output3$lda) == 2)
-    
-    expect_error(output4 <- run_LDA(data = data, n_topics = 3, seed = 2), NA)
-    expect_true(length(output4$lda) == 1)
-}
-)
