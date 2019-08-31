@@ -166,6 +166,24 @@ get_aicc <- function(beta_matrix, theta_matrix, lda_model, ts_model, counts_matr
     return(AICc)
 }
 
+
+
+#' Calculate loglik of observed data given estimates of beta and theta
+#'
+#' @param beta_matrix topic-term probabilities
+#' @param theta_matrix document-topic probabilties
+#' @param counts_matrix observed abundance data
+#'
+#' @return loglik
+#' @export
+#'
+get_loglik <- function(beta_matrix, theta_matrix, counts_matrix) {
+    doc_ps <-  theta_matrix %*% beta_matrix
+    doc_lik1 <- vapply(1:nrow(counts_matrix), FUN = get_doc_lik, counts_matrix = counts_matrix, 
+                       p_matrix = doc_ps, FUN.VALUE = -1)
+    return(sum(doc_lik1))
+}
+
 #' 
 #' #' Get all AICcs
 #' #' Wrapper for `get_aicc`.

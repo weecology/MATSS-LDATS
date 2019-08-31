@@ -85,6 +85,14 @@ run_TS <- function(ldamodels,
                             data = data))), FUN.VALUE = 100)
     
     
+    if("test_abundance" %in% names(data)) {
+        model_info$testll <- vapply(1:nrow(model_info), FUN = function(rowindex)
+            return(mean(ts_test_loglik(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
+                                  lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
+                                  data = data))), FUN.VALUE = 100)
+    }
+    
+    
     return(list(ts = ts_models,
                 model_info = model_info))
 }

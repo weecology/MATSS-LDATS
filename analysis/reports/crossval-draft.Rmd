@@ -17,11 +17,49 @@ portal_ann_data = get_portal_annual_data()
 ```
 
 ```{r drake plan for get data}
-portal_annual_dataset <- drake_plan(
+datasets <- drake_plan(
     portal_ann_data = get_portal_annual_data()
 )
 ```
 
-```{r set up LDAs}
 
+```{r subset data}
+all_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T)
+
+one_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T, which_seg = 1)
+
+```
+
+```{r data subset plan}
+
+subset_plan <- drake_plan(
+     datsub = target(subset_data(data, n_segs = 28, sequential = T, buffer = NULL, which_seg = this_seg),
+                 transform = cross(data = !!rlang::syms(datasets$target), this_seg = !!(1:28)))
+)
+```
+
+
+
+```{r set up LDAs}
+one_lda <- run_LDA(data = one_data_out, n_topics = 2, seed = 2)
+
+all_topics <- c(3, 6, 9, 12)
+max_n_seeds <- 20
+seeds <- seq(2, length.out = max_n_seeds, by = 2)
+lda_control <- list()
+
+lda_plan <-  drake::drake_plan(
+    lda = target(run_LDA(data, n_topics = ntopics, seed = seed, control = !!lda_control),
+                 transform = cross(data = !!rlang::syms(subset_plan$target), ntopics = !!all_topics, seed = !!seeds)),
+    lda_results = target(collect_analyses(list(lda)),
+                         transform = combine(lda))
+)
+```
+
+```{r set up ts}
+one_ts <- run_TS(ldamodels = one_lda, nchangepoints = c(0,1), formulas = c("time", "intercept"),  control = list(nit = 100))
+
+lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
+
+ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 1000))
 ```
