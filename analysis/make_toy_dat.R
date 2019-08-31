@@ -11,7 +11,8 @@ newabundance <- portal_annual$abundance %>%
     group_by(year, species) %>%
     summarize(abundance = sum(abundance)) %>%
     ungroup() %>%
-    tidyr::spread(key = "species", value = "abundance")
+    tidyr::spread(key = "species", value = "abundance") %>%
+    mutate(year = as.integer(year))
 
 portal_annual$abundance <- select(newabundance, -year)
 portal_annual$covariates <- select(newabundance, year)

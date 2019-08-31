@@ -21,5 +21,6 @@ test_that("data subsetting works", {
     expect_true(nrow(data_segs[[1]]$test_abundance) == 1)
     
     expect_false(data_segs[[1]]$test_covariates$year %in% data_segs[[1]]$covariates$year)
+    expect_type(data_segs[[1]]$test_covariates$year, "integer")
     
 })
