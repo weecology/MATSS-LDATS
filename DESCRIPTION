@@ -44,7 +44,7 @@ Suggests:
     pkgdown,
     covr
 Remotes: 
-    weecology/LDATS,
+    weecology/LDATS@lda-user-seed,
     weecology/MATSS
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
