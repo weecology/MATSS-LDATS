@@ -24,16 +24,19 @@ datasets <- drake_plan(
 
 
 ```{r subset data}
-all_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T)
 
-one_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T, which_seg = 1)
+acf(rowSums(portal_ann_data$abundance))
+
+all_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T, buffer = 2)
+
+one_data_out <- subset_data(data = portal_ann_data, n_segs = 28, sequential = T, buffer = 2, which_seg = 1)
 
 ```
 
 ```{r data subset plan}
 
 subset_plan <- drake_plan(
-     datsub = target(subset_data(data, n_segs = 28, sequential = T, buffer = NULL, which_seg = this_seg),
+     datsub = target(subset_data(data, n_segs = 28, sequential = T, buffer = 2, which_seg = this_seg),
                  transform = cross(data = !!rlang::syms(datasets$target), this_seg = !!(1:28)))
 )
 ```
@@ -41,6 +44,7 @@ subset_plan <- drake_plan(
 
 
 ```{r set up LDAs}
+one_lda <- run_LDA(data = one_data_out, max_topics = 3, seed = 2)
 one_lda <- run_LDA(data = one_data_out, n_topics = 2, seed = 2)
 
 all_topics <- c(3, 6, 9, 12)
