@@ -67,3 +67,13 @@ test_that("run_LDA function with user specified seed works", {
     expect_equal(model_topics[idx, ], topics, tolerance = 0.05)
     expect_equal(lda_model@gamma[, idx], topic_prop, tolerance = 0.1)
 })
+
+test_that("model info comes out properly", {
+    data <- list(abundance = data.frame(abundance))
+    this_seed = 10
+    these_topics = c(2,3)
+    output <- run_LDA(data, max_topics = 3, seed = this_seed)
+    expect_equal(nrow(output$model_info), length(output$lda))
+    expect_equal(output$model_info$lda_model_name, names(output$lda))
+    expect_true(all())
+})
