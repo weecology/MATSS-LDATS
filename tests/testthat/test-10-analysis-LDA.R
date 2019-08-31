@@ -41,3 +41,29 @@ test_that("run_LDA function works", {
     expect_equal(model_topics[idx, ], topics, tolerance = 0.05)
     expect_equal(lda_model@gamma[, idx], topic_prop, tolerance = 0.1)
 })
+test_that("run_LDA function with user specified seed works", {
+    # does run_LDA check data format?
+    expect_warning(output <- run_LDA(abundance, seed = 20), 
+                   "Incorrect data structure, see data-formats vignette")
+    expect_equal(output, "Incorrect data structure")
+    
+    # does run_LDA run and produce a valid output
+    data <- list(abundance = data.frame(abundance))
+    expect_error(output <- run_LDA(data, max_topics = 2, seed = 10), NA)
+    expect_true(all(c("LDA_set", "list") %in% class(output$lda)))
+    lda_model <- output$lda[[1]]
+    
+    # does the fitted model have the right # of topics
+    expect_equal(lda_model@k, m)
+    
+    # see if we need to swap order of topics
+    model_topics <- exp(lda_model@beta)
+    idx <- seq_len(m)
+    if (sum(sum(abs(model_topics - topics))) > 
+        sum(sum(abs(model_topics[rev(idx), ] - topics))))
+    {
+        idx <- rev(idx)
+    }
+    expect_equal(model_topics[idx, ], topics, tolerance = 0.05)
+    expect_equal(lda_model@gamma[, idx], topic_prop, tolerance = 0.1)
+})
