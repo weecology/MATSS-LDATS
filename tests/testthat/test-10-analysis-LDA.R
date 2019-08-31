@@ -24,7 +24,7 @@ test_that("run_LDA function works", {
     # does run_LDA run and produce a valid output
     data <- list(abundance = data.frame(abundance))
     expect_error(output <- run_LDA(data, max_topics = 2, nseeds = 50), NA)
-    expect_true(all(c("LDA_set", "list") %in% class(output$lda)))
+    expect_true(all(c("LDA_set") %in% class(output$lda)))
     lda_model <- output$lda[[1]]
     
     # does the fitted model have the right # of topics
