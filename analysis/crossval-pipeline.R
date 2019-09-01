@@ -41,7 +41,6 @@ lda_plan <-  drake::drake_plan(
 
 
 ## ----set up ts-----------------------------------------------------------
-one_ts <- run_TS(ldamodels = one_lda, nchangepoints = c(0,1), formulas = c("time", "intercept"),  control = list(nit = 1000))
 
 lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
 
