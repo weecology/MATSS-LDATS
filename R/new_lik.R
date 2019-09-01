@@ -92,7 +92,7 @@ ts_test_loglik <- function(ts_model, lda_model, data) {
     
     ts_model$data <- all_data
                                   
-    heldout_data_rows <- which(all_data[ ,data$metadata$timename] %in% data$test_covariates[ , data$metadata$timename])
+    heldout_data_rows <- which(all_data[ ,data$metadata$timename] %in% unlist(data$test_covariates[ , data$metadata$timename]))
        
     all_thetas <- lapply(as.list(1:nrow(ts_model$etas)), 
                          FUN = get_theta, ts_model = ts_model)

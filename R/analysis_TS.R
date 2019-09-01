@@ -73,21 +73,23 @@ run_TS <- function(ldamodels,
     
     model_info <- dplyr::left_join(ldamodels$model_info, model_info, by = c("k", "seed"))
     
-    model_info$meanAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
-        return(mean(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
-                       lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
-                       data = data))), FUN.VALUE = 100)
-      
-    
-    model_info$medianAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
-        return(median(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
-                            lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
-                            data = data))), FUN.VALUE = 100)
     
     
     if("test_abundance" %in% names(data)) {
         model_info$testll <- vapply(1:nrow(model_info), FUN = function(rowindex)
             return(mean(ts_test_loglik(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
+                                  lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
+                                  data = data))), FUN.VALUE = 100)
+    } else {
+        
+        model_info$meanAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
+            return(mean(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
+                                lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
+                                data = data))), FUN.VALUE = 100)
+        
+        
+        model_info$medianAICc <- vapply(1:nrow(model_info), FUN = function(rowindex)
+            return(median(ts_AICc(ts_model = ts_models[[model_info$ts_model_index[rowindex]]],
                                   lda_model = ldamodels$lda[[model_info$lda_model_index[rowindex]]],
                                   data = data))), FUN.VALUE = 100)
     }
