@@ -1,51 +1,51 @@
-#' #' Generate predictions from ts model
-#' #'
-#' #' @param l row from a model_info table as a list 
-#' #' @param lda_model or you can give lda model
-#' #' @param ts_model and ts model
-#' #' @param data and data
-#' #' @param cache_location cache location
-#' #' @param sim sim to pull?
-#' #' @param seed seed to set?
-#' #'
-#' #' @return matrix of predicted and observed data
-#' #' @export
-#' #'
-#' ts_predict <- function(l = NULL, lda_model = NULL, ts_model = NULL, data = NULL, sim = NULL, seed = 1977) {
-#'     
-#'     if(!is.null(l)) {
-#'         lda_model <- readd(l$lda_object_name, character_only = T, cache = cache)
-#'         data <- lda_model$data  
-#'         lda_model <- lda_model$lda[[l$lda_model_index]]
-#'         
-#'         ts_model <- readd(l$ts_object_name, character_only = T, cache = cache)
-#'         ts_model <- ts_model$ts[[l$ts_model_index]]
-#'     }
-#'     betas <- exp(lda_model@beta)
-#'     
-#'     
-#'     if(is.null(sim)) {
-#'         set.seed(seed)
-#'         sim <- sample(1:nrow(ts_model$etas), size = 1)
-#'     }
-#'     
-#'     thetas <- get_theta(ts_model = ts_model, sim = sim)
-#'     
-#'     docterm_ps <- thetas %*% betas
-#'     obs_dat <- data$abundance
-#'     
-#'     prediction <- sample_corpus(docterm_ps = docterm_ps, obs_dat = obs_dat)
-#'     
-#'     model_name <- NULL
-#'     
-#'     if(!is.null(l)) {
-#'         model_name <- paste0(l$data_object_name, "; ", l$ts_model_desc_k)
-#'     }
-#'     
-#'     return(list(prediction = prediction,
-#'                 model_name = model_name)
-#'     )
-#' }
+#' Generate predictions from ts model
+#'
+#' @param l row from a model_info table as a list 
+#' @param lda_model or you can give lda model
+#' @param ts_model and ts model
+#' @param data and data
+#' @param cache_location cache location
+#' @param sim sim to pull?
+#' @param seed seed to set?
+#'
+#' @return matrix of predicted and observed data
+#' @export
+#'
+ts_predict <- function(l = NULL, lda_model = NULL, ts_model = NULL, data = NULL, sim = NULL, seed = 1977) {
+    
+    if(!is.null(l)) {
+        lda_model <- readd(l$lda_object_name, character_only = T, cache = cache)
+        data <- lda_model$data  
+        lda_model <- lda_model$lda[[l$lda_model_index]]
+        
+        ts_model <- readd(l$ts_object_name, character_only = T, cache = cache)
+        ts_model <- ts_model$ts[[l$ts_model_index]]
+    }
+    betas <- exp(lda_model@beta)
+    
+    
+    if(is.null(sim)) {
+        set.seed(seed)
+        sim <- sample(1:nrow(ts_model$etas), size = 1)
+    }
+    
+    thetas <- get_theta(ts_model = ts_model, sim = sim)
+    
+    docterm_ps <- thetas %*% betas
+    obs_dat <- data$abundance
+    
+    prediction <- sample_corpus(docterm_ps = docterm_ps, obs_dat = obs_dat)
+    
+    model_name <- NULL
+    
+    if(!is.null(l)) {
+        model_name <- paste0(l$data_object_name, "; ", l$ts_model_desc_k)
+    }
+    
+    return(list(prediction = prediction,
+                model_name = model_name)
+    )
+}
 
 
 

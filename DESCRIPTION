@@ -40,8 +40,8 @@ Imports:
     stringr,
     future.batchtools
 Suggests:
-    pkgdown,
     testthat,
+    pkgdown,
     covr
 Remotes: 
     weecology/LDATS@lda-user-seed,
