@@ -1,0 +1,107 @@
+---
+title: "24 hours progress"
+author: "Renata Diaz"
+date: "9/2/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MATSS)
+library(matssldats)
+library(drake)
+
+## ----get data------------------------------------------------------------
+
+
+## ----drake plan for get data---------------------------------------------
+datasets <- drake_plan(
+    portal_ann_data = get_portal_annual_data()
+)
+
+## ----data subset plan----------------------------------------------------
+
+subset_plan <- drake_plan(
+     datsub = target(subset_data(data, n_segs = 28, sequential = T, buffer = 2, which_seg = this_seg),
+                 transform = cross(data = !!rlang::syms(datasets$target), this_seg = !!(1:28)))
+)
+
+
+## ----set up LDAs---------------------------------------------------------
+all_topics <- c(3, 6, 9, 12)
+max_n_seeds <- 20
+seeds <- seq(2, length.out = max_n_seeds, by = 2)
+lda_control <- list()
+
+lda_plan <-  drake::drake_plan(
+    lda = target(run_LDA(data, n_topics = ntopics, seed = seed, control = !!lda_control),
+                 transform = cross(data = !!rlang::syms(subset_plan$target), ntopics = !!all_topics, seed = !!seeds)),
+    lda_results = target(collect_analyses(list(lda)),
+                         transform = combine(lda))
+)
+
+
+## ----set up ts-----------------------------------------------------------
+
+lda_names <- lda_plan$target[ which(!grepl(lda_plan$target, pattern = "_results"))]
+
+ts_plan <- build_ts_plan(ldamodels_names = lda_names, nchangepoints = c(0:1), formulas = c("time", "intercept"), ts_control = list(nit = 1000))
+
+
+pipeline <- dplyr::bind_rows(datasets, subset_plan, lda_plan, ts_plan)
+
+
+## Set up the cache and config
+db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
+cache <- storr::storr_dbi("datatable", "keystable", db)
+
+```
+
+```{r 24 hr progress}
+finished_targets <- cached(cache = cache)
+
+all_targets <- pipeline$target
+
+progress <- intersect(finished_targets, all_targets)
+remain <- setdiff(all_targets, finished_targets)
+
+remain_summary <- data.frame(
+    full_name = remain,
+    start = substr(remain, 0, 3)
+)
+
+library(dplyr)
+
+remain_summary <- remain_summary %>%
+    group_by(start) %>%
+    summarize(count = n()) %>%
+    ungroup()
+
+done_summary <- data.frame(
+    full_name = finished_targets,
+    start = substr(finished_targets, 0, 3)
+)
+
+done_summary <- done_summary %>%
+    group_by(start) %>%
+    summarize(count = n()) %>%
+    ungroup()
+
+```
+### Completed targets summary
+
+```{r done}
+print(done_summary)
+```
+
+In 24 hours, did all LDA models and 1600 ts models (with 16 workers).
+
+### Remaining targets summary
+```{r remain}
+print(remain_summary)
+```
+
+634 ts models remain, and I increased it to 32 workers. 
+
+So I expect this last leg to take a maximum of 6 hours. That's calculated conservatively assuming that the 1600 ts models took all 24 hours. 
+
