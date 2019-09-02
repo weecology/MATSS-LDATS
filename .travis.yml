@@ -38,7 +38,7 @@ matrix:
     - R CMD INSTALL .
     - rm README.Rmd
     - Rscript -e 'pkgdown::build_site()'
-    - Rscript -e 'covr::codecov()'
+    - Rscript -e 'library(covr); codecov()'
     deploy:
       provider: pages
       skip-cleanup: true
