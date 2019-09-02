@@ -40,7 +40,8 @@ Imports:
     rlang, 
     stringr,
     future.batchtools,
-    testthat,
+    testthat
+Suggests:
     pkgdown
 Remotes: 
     weecology/LDATS@lda-user-seed,
