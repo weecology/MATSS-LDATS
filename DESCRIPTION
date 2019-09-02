@@ -32,7 +32,6 @@ Imports:
     MATSS (>= 0.0.2),
     drake (>= 7.0.0),
     LDATS (>= 0.1.0), 
-    covr,
     dplyr,
     magrittr,
     knitr,
@@ -42,7 +41,8 @@ Imports:
     future.batchtools,
     testthat
 Suggests:
-    pkgdown
+    pkgdown,
+    covr
 Remotes: 
     weecology/LDATS@lda-user-seed,
     weecology/MATSS
