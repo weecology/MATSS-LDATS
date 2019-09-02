@@ -1,28 +1,9 @@
----
-title: "Crossvalidating w tests"
-author: "Renata Diaz"
-date: "8/31/2019"
-output: github_document
----
+Crossvalidating w tests
+================
+Renata Diaz
+8/31/2019
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(MATSS)
-library(matssldats)
-library(drake)
-library(dplyr)
-library(ggplot2)
-
-## Set up the cache and config
-db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
-cache <- storr::storr_dbi("datatable", "keystable", db)
-
-loadd(portal_ann_data, cache = cache)
-
-```
-
-```{r load ts models}
-
+``` r
 ts_done <- cached(cache = cache) [ which(grepl("ts_", cached(cache = cache)))]
 
 ts_results <- list()
@@ -37,12 +18,9 @@ model_info <- all_model_info(ts_results)
 
 rm(ts_results)
 rm(ts_done)
-
 ```
 
-
-```{r eval performance over all subgroups}
-
+``` r
 avg_performance <- model_info %>%
     distinct() %>%
     group_by(k, seed, lda_model_name, lda_model_index, formula, changepoints, ts_model_name, ts_model_index, ts_model_desc, ts_model_desc_k) %>%
@@ -56,8 +34,11 @@ avg_performance_plot <- ggplot(data = avg_performance, aes(x = ts_model_desc, y 
     theme_bw()
 
 avg_performance_plot
+```
 
+![](crossval-draft_files/figure-markdown_github/eval%20performance%20over%20all%20subgroups-1.png)
 
+``` r
 best_performers <- avg_performance %>%
     arrange(desc(mean_testll)) %>%
     mutate(rank = row_number()) %>%
@@ -67,11 +48,11 @@ best_performers_plot <-  ggplot(data = best_performers, aes(x = ts_model_desc, y
     geom_boxplot() +
     theme_bw()
 best_performers_plot
-
 ```
 
-```{r best model}
+![](crossval-draft_files/figure-markdown_github/eval%20performance%20over%20all%20subgroups-2.png)
 
+``` r
 best_model_names <- model_info %>%
     distinct() %>%
     filter(ts_model_name == best_performers$ts_model_name[1])
@@ -105,13 +86,11 @@ predictions <- bind_rows(predicted_corpuses, .id = "year") %>%
 #     filter(source == "pred")
 # 
 # rowSums(portal_ann_data$abundance) == rowSums(predicted[ , 3:ncol(predicted)])
-
 ```
 
 ### Species absolute abundances
 
-```{r abs abund plots}
-
+``` r
 abs_plot <- ggplot(data = predictions, aes(x = year, y = abundance, color = source)) +
     geom_line() +
     facet_wrap(species ~ .) +
@@ -120,8 +99,9 @@ abs_plot <- ggplot(data = predictions, aes(x = year, y = abundance, color = sour
 abs_plot
 ```
 
-```{r rel abund plots}
+![](crossval-draft_files/figure-markdown_github/abs%20abund%20plots-1.png)
 
+``` r
 rel_predictions <- predictions %>%
     group_by(year, source) %>%
     mutate(total_annual_abund = sum(abundance)) %>%
@@ -137,8 +117,9 @@ rel_plot <- ggplot(data = rel_predictions, aes(x = year, y = rel_abundance, colo
 rel_plot
 ```
 
-```{r obs-pred 1:1 plots, fig.width = 6, fig.height = 9}
+![](crossval-draft_files/figure-markdown_github/rel%20abund%20plots-1.png)
 
+``` r
 obspred_dat <- rel_predictions %>%
     select(year, source, species, rel_abundance) %>%
     tidyr::spread(key = "source", value = "rel_abundance")
@@ -154,3 +135,5 @@ obspred_plot <- ggplot(data = obspred_dat, aes(x = observed, y = pred)) +
 
 obspred_plot
 ```
+
+![](crossval-draft_files/figure-markdown_github/obs-pred%201:1%20plots-1.png)
