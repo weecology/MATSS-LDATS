@@ -94,5 +94,11 @@ test_that("run_LDA function works in all configuraitons", {
     
     expect_error(output4 <- run_LDA(data = data, n_topics = 3, seed = 2), NA)
     expect_true(length(output4$lda) == 1)
+    
+    for(i in 1:length(output1$lda)) {
+        expect_true(LDATS::AICc(output1$lda[[i]]) == output1$model_info$LDA_AICc[i])
+        expect_true(output1$lda[[i]]@k == output1$model_info$k[i])
+    }
+    
 }
 )

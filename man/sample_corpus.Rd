@@ -2,20 +2,7 @@
 % Please edit documentation in R/predict.R
 \name{sample_corpus}
 \alias{sample_corpus}
-\title{#' Get all AICcs
-#' Wrapper for \code{get_aicc}.
-#' @param bt_list list of beta and theta values
-#' @param ldamodel source lda model
-#' @param tsmodel source ts model
-#' @param counts_matrix abundance
-#'
-#' @return list of AICcs from each estimate of theta
-#' @export
-#'
-get_all_aiccs <- function(bt_list, ldamodel, tsmodel, counts_matrix) {
-all_aicc <- vapply(X = bt_list$thetas, FUN = get_aicc, beta_matrix = bt_list$beta_vals, counts_matrix = counts_matrix, lda_model = ldamodel, ts_model = tsmodel, FUN.VALUE = 100.1)
-return(as.list(all_aicc))
-}}
+\title{Sample a corpus given sample sizes and ps of documents}
 \usage{
 sample_corpus(docterm_ps, obs_dat)
 }
@@ -28,60 +15,5 @@ sample_corpus(docterm_ps, obs_dat)
 sampled corpus
 }
 \description{
-#' Expand full like
-#'
-#' @param result of get_full_lik
-#'
-#' @return model info with every AICc on its own line
-#' @export
-#'
-#' @importFrom dplyr bind_rows right_join
-#' @importFrom tidyr gather
-expand_full_lik_results <- function(full_lik) {\preformatted{model_info <- full_lik$model_info
-
-aiccs <- full_lik$ts_AICc
-aiccs <- lapply(aiccs, FUN = unlist)
-names(aiccs) <- model_info$ts_model_name
-
-br_aiccs <- dplyr::bind_rows(aiccs) \%>\%
-    tidyr::gather(key = "ts_model_name", value = "TS_AICc")
-
-model_info <- dplyr::right_join(model_info, br_aiccs, by = "ts_model_name")
-
-return(model_info)
-}
-
-}
-}
-\details{
-#' Predict abundances given model
-#'
-#' @param full_lik result of get_full_lik
-#' @param seed for reprod
-#'
-#' @return list of predictions
-#' @export
-#'
-predict_abundances <- function(full_lik, seed = 1977) {\preformatted{if(is.null(full_lik)) {
-    return()
-}
-
-set.seed(seed)
-
-pars_list <- lapply(full_lik$beta_thetas, FUN = function(beta_theta) return(list(beta_vals = beta_theta$beta_vals, theta_vals = beta_theta$thetas[[ sample(1:length(beta_theta$thetas), size = 1)]])))
-
-p_list <- lapply(pars_list, FUN = function(pars_list) return(pars_list$theta_vals \%*\% pars_list$beta_vals))
-
-predictions <- lapply(p_list, FUN = sample_corpus, obs_dat = full_lik$data$abundance)
-
-for(i in 1:length(predictions)) {
-    predictions[[i]]$model_name <- full_lik$model_info$ts_model_name[i]
-}
-}
-
-return(list(data = full_lik$data,
-model_info = full_lik$model_info,
-prediction = predictions))
-}
 Sample a corpus given sample sizes and ps of documents
 }
