@@ -38,10 +38,10 @@ Imports:
     rmarkdown,
     rlang, 
     stringr,
-    future.batchtools,
-    testthat
+    future.batchtools
 Suggests:
     pkgdown,
+    testthat,
     covr
 Remotes: 
     weecology/LDATS@lda-user-seed,
