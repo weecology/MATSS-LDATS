@@ -53,9 +53,20 @@ best_performers_plot
 ![](crossval-draft_files/figure-markdown_github/eval%20performance%20over%20all%20subgroups-2.png)
 
 ``` r
+best_performers <- best_performers <- avg_performance %>%
+    group_by(k) %>%
+    arrange(desc(mean_testll)) %>%
+    mutate(rank = row_number()) %>%
+    filter(rank == 1) %>%
+    ungroup()
+
+predictions <- list() 
+for(j in c(3, 6, 12)) {
+    best_performer <- filter(best_performers, k == j)
+    
 best_model_names <- model_info %>%
     distinct() %>%
-    filter(ts_model_name == best_performers$ts_model_name[1])
+    filter(ts_model_name == best_performer$ts_model_name[1])
 
 best_ldas <- list() 
 best_ts_models <- list()
@@ -75,24 +86,28 @@ for(i in 1:nrow(best_model_names)) {
     names(predicted_corpuses)[i] <- best_ldas[[i]]$data$test_covariates$year
 }
 
-predictions <- bind_rows(predicted_corpuses, .id = "year") %>%
+predictions[[j]] <- bind_rows(predicted_corpuses, .id = "year") %>%
     select(-timestep) %>%
     mutate(year = as.integer(year)) %>%
     arrange(year)
-# 
-# observed <- predictions %>%
-#     filter(source == "observed")
-# predicted <- predictions %>%
-#     filter(source == "pred")
-# 
-# rowSums(portal_ann_data$abundance) == rowSums(predicted[ , 3:ncol(predicted)])
+
+}
+
+predictions <- predictions[c(3,6,12)]
+
+names(predictions) <- c(3,6,12)
+
+predictions <- bind_rows(predictions, .id = "k")
+
+predictions$k <-as.factor(predictions$k)
 ```
 
 ### Species absolute abundances
 
 ``` r
-abs_plot <- ggplot(data = predictions, aes(x = year, y = abundance, color = source)) +
+abs_plot <- ggplot(data = filter(predictions, source == "pred"), aes(x = year, y = abundance, color = k)) +
     geom_line() +
+    geom_line(data = filter(predictions, source == "observed"), aes(x = year, y = abundance), color = "black", alpha = .7) +
     facet_wrap(species ~ .) +
     theme_bw()
 
@@ -103,13 +118,14 @@ abs_plot
 
 ``` r
 rel_predictions <- predictions %>%
-    group_by(year, source) %>%
+    group_by(year, source, k) %>%
     mutate(total_annual_abund = sum(abundance)) %>%
     ungroup() %>%
     mutate(rel_abundance = abundance / total_annual_abund)
 
-rel_plot <- ggplot(data = rel_predictions, aes(x = year, y = rel_abundance, color = source)) +
+rel_plot <- ggplot(data = filter(rel_predictions, source == "pred"), aes(x = year, y = rel_abundance, color = k)) +
     geom_line() +
+    geom_line(data =filter(rel_predictions, source == "observed"), color = "black", alpha = .7) +
     facet_wrap(species ~ .) +
     ylim(0, 1) +
     theme_bw()
@@ -121,12 +137,13 @@ rel_plot
 
 ``` r
 obspred_dat <- rel_predictions %>%
-    select(year, source, species, rel_abundance) %>%
-    tidyr::spread(key = "source", value = "rel_abundance")
+    select(year, k, source, species, rel_abundance) %>%
+    tidyr::spread(key = "source", value = "rel_abundance") %>%
+    mutate(k = as.factor(k))
 
 obspred_plot <- ggplot(data = obspred_dat, aes(x = observed, y = pred)) +
     geom_point() +
-    facet_wrap(species ~ ., ncol = 4) +
+    facet_grid(rows = vars(species), cols = vars(k)) +
     theme_bw() +
     ylim(0, 1) +
     xlim(0, 1) + 
