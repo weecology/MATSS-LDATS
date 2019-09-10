@@ -1,156 +1,53 @@
-Crossvalidating w tests
+Leave-one-out all years
 ================
 Renata Diaz
-8/31/2019
+9/10/2019
 
-``` r
-ts_done <- cached(cache = cache) [ which(grepl("ts_", cached(cache = cache)))]
+Crossval method
+---------------
 
-ts_results <- list()
+-   Create 1 dataset for every time step. Each dataset has 1 timestep removed plus the adjacent 2 timesteps in either direction.
+    -   RMD went with a 2 timestep buffer based on autocorrelation plots of *total abundance*.
+-   Fit LDA models with 20 seeds, 3, 6, 9, and 12 topics.
+-   For every LDA model, run 4 TS models with the usual array of 0 or 1 changepoints and ~ year or ~ 1, for 1000 iterations.
+    -   The above steps took about 36 hours on the hipergator. It broke `collect_results` in a mysterious way, but that seems fine(?).
+-   For every TS model, for every draw from the posterior, calculate the loglikelihood of the observed abundances at the *central withheld timestep* coming from that TS model. Report the mean of these loglikelihoods across all the draws from the posterior.
+-   For every combination of *LDA number of topics and seed* and *TS model*, calculate the average loglikelihood across all datasets (the datasets differ in which timesteps are withheld). This gives a performance score for every model configuration like `3 topics, seed 20, 0 changepoints, ~ time`.
 
-for(i in 1:length(ts_done)) {
-    ts_results[[i]] <- readd(ts_done[i], character_only = T, cache = cache)
-}
-
-names(ts_results) <- ts_done
-
-model_info <- all_model_info(ts_results)
-
-rm(ts_results)
-rm(ts_done)
-```
-
-``` r
-avg_performance <- model_info %>%
-    distinct() %>%
-    group_by(k, seed, lda_model_name, lda_model_index, formula, changepoints, ts_model_name, ts_model_index, ts_model_desc, ts_model_desc_k) %>%
-    summarize(nmodels = n(),
-              mean_testll = mean(testll)) %>%
-    ungroup() %>%
-    mutate(k = as.factor(k))
-
-avg_performance_plot <- ggplot(data = avg_performance, aes(x = ts_model_desc, y = mean_testll, color = k)) +
-    geom_boxplot() +
-    theme_bw()
-
-avg_performance_plot
-```
+#### Average performance across model seeds:
 
 ![](crossval-draft_files/figure-markdown_github/eval%20performance%20over%20all%20subgroups-1.png)
 
-``` r
-best_performers <- avg_performance %>%
-    arrange(desc(mean_testll)) %>%
-    mutate(rank = row_number()) %>%
-    filter(rank <= 10)
+#### Zooming in to the highest 10 scores:
 
-best_performers_plot <-  ggplot(data = best_performers, aes(x = ts_model_desc, y = mean_testll, color = k)) +
-    geom_boxplot() +
-    theme_bw()
-best_performers_plot
-```
+![](crossval-draft_files/figure-markdown_github/best%20performers-1.png)
 
-![](crossval-draft_files/figure-markdown_github/eval%20performance%20over%20all%20subgroups-2.png)
+Best-performing model
+---------------------
 
-``` r
-best_performers <- best_performers <- avg_performance %>%
-    group_by(k) %>%
-    arrange(desc(mean_testll)) %>%
-    mutate(rank = row_number()) %>%
-    filter(rank == 1) %>%
-    ungroup()
+    ## Joining, by = c("lda_model_name", "ts_model_desc")
 
-predictions <- list() 
-for(j in c(3, 6, 12)) {
-    best_performer <- filter(best_performers, k == j)
-    
-best_model_names <- model_info %>%
-    distinct() %>%
-    filter(ts_model_name == best_performer$ts_model_name[1])
+![](crossval-draft_files/figure-markdown_github/best%20model-1.png)![](crossval-draft_files/figure-markdown_github/best%20model-2.png)![](crossval-draft_files/figure-markdown_github/best%20model-3.png)![](crossval-draft_files/figure-markdown_github/best%20model-4.png)![](crossval-draft_files/figure-markdown_github/best%20model-5.png)![](crossval-draft_files/figure-markdown_github/best%20model-6.png)![](crossval-draft_files/figure-markdown_github/best%20model-7.png)![](crossval-draft_files/figure-markdown_github/best%20model-8.png)
 
-best_ldas <- list() 
-best_ts_models <- list()
-for(i in 1:nrow(best_model_names)) {
-    best_ldas[[i]] <- readd(best_model_names$lda_object_name[i], character_only = T, cache = cache)
-    best_ts_models[[i]] <- readd(best_model_names$ts_object_name[i], character_only = T, cache = cache)[[1]][[best_model_names$ts_model_index[i]]]
-}
+Predictions from best models
+----------------------------
 
-predicted_corpuses <- list()
+Method to generate predictions:
 
-for(i in 1:nrow(best_model_names)) {
-    predicted_corpuses[[i]] <- ts_predict_corpus(best_ts_models[[i]], best_ldas[[i]]$lda[[1]], 
-                                                 data = best_ldas[[i]]$data,
-                                                 predict_data = list(abundance = best_ldas[[i]]$data$test_abundance,
-                                                                     covariates = best_ldas[[i]]$data$test_covariates))
-    
-    names(predicted_corpuses)[i] <- best_ldas[[i]]$data$test_covariates$year
-}
-
-predictions[[j]] <- bind_rows(predicted_corpuses, .id = "year") %>%
-    select(-timestep) %>%
-    mutate(year = as.integer(year)) %>%
-    arrange(year)
-
-}
-
-predictions <- predictions[c(3,6,12)]
-
-names(predictions) <- c(3,6,12)
-
-predictions <- bind_rows(predictions, .id = "k")
-
-predictions$k <-as.factor(predictions$k)
-```
+-   For each number of topics, identify the best-performing LDA seed + TS model configuration with that number of topics over all timesteps of witheld data. There will be one of these models for every timestep, each one fit to all of the data *except* that timestep + a buffer.
+-   For each timestep, use the LDA + TS model with that timestep withheld for predictions.
+    -   Generate a term-document probability matrix *for all years* using Beta and Eta matrices from a random draw from that model's posterior
+    -   Sample abundances for *only the central missing year* to get abundances for that timestep.
+-   Stitch all these predictions together to make predictions across the full timeseries.
 
 ### Species absolute abundances
 
-``` r
-abs_plot <- ggplot(data = filter(predictions, source == "pred"), aes(x = year, y = abundance, color = k)) +
-    geom_line() +
-    geom_line(data = filter(predictions, source == "observed"), aes(x = year, y = abundance), color = "black", alpha = .7) +
-    facet_wrap(species ~ .) +
-    theme_bw()
-
-abs_plot
-```
-
 ![](crossval-draft_files/figure-markdown_github/abs%20abund%20plots-1.png)
 
-``` r
-rel_predictions <- predictions %>%
-    group_by(year, source, k) %>%
-    mutate(total_annual_abund = sum(abundance)) %>%
-    ungroup() %>%
-    mutate(rel_abundance = abundance / total_annual_abund)
-
-rel_plot <- ggplot(data = filter(rel_predictions, source == "pred"), aes(x = year, y = rel_abundance, color = k)) +
-    geom_line() +
-    geom_line(data =filter(rel_predictions, source == "observed"), color = "black", alpha = .7) +
-    facet_wrap(species ~ .) +
-    ylim(0, 1) +
-    theme_bw()
-
-rel_plot
-```
+### Species relative abundances
 
 ![](crossval-draft_files/figure-markdown_github/rel%20abund%20plots-1.png)
 
-``` r
-obspred_dat <- rel_predictions %>%
-    select(year, k, source, species, rel_abundance) %>%
-    tidyr::spread(key = "source", value = "rel_abundance") %>%
-    mutate(k = as.factor(k))
-
-obspred_plot <- ggplot(data = obspred_dat, aes(x = observed, y = pred)) +
-    geom_point() +
-    facet_grid(rows = vars(species), cols = vars(k)) +
-    theme_bw() +
-    ylim(0, 1) +
-    xlim(0, 1) + 
-    geom_line(data = data.frame(x = seq(0, 1, by = 0.1), y = seq(0, 1, by = 0.1)), 
-              aes(x = x, y = y))
-
-obspred_plot
-```
+### Relative abundance observed-predicted plots
 
 ![](crossval-draft_files/figure-markdown_github/obs-pred%201:1%20plots-1.png)
