@@ -25,6 +25,8 @@ Crossval method
 Best-performing model
 ---------------------
 
+This is 4 arbitrary datasets' (withheld timesteps centered on 1, 8, 15, 22) versions of the best-performing model. They all look generally like this.
+
     ## Joining, by = c("lda_model_name", "ts_model_desc")
 
 ![](crossval-draft_files/figure-markdown_github/best%20model-1.png)![](crossval-draft_files/figure-markdown_github/best%20model-2.png)![](crossval-draft_files/figure-markdown_github/best%20model-3.png)![](crossval-draft_files/figure-markdown_github/best%20model-4.png)![](crossval-draft_files/figure-markdown_github/best%20model-5.png)![](crossval-draft_files/figure-markdown_github/best%20model-6.png)![](crossval-draft_files/figure-markdown_github/best%20model-7.png)![](crossval-draft_files/figure-markdown_github/best%20model-8.png)
