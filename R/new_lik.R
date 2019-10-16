@@ -98,7 +98,7 @@ subset_data <- function(data, n_segs = NULL, sequential = T, buffer = NULL, whic
         n_segs <- nrow(data$abundance)
     }
     
-    timesteps <- data$covariates[ , data$metadata$timename]
+    timesteps <- as.data.frame(data$covariates[ , data$metadata$timename])
     
     if(sequential) {
         
